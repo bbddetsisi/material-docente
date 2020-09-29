@@ -9,12 +9,11 @@ auto-scaling:
 backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 paginate: true
-header: Tema 2 - Modelado de datos
-footer: ETSI Sistemas Informáticos
+header: Modelado de datos
 ---
 <!--
 _header: ''
-_footer: Icono diseñado por Flaticon
+_footer: ![Licencia de Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) Esta obra está bajo una [licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/). Icono diseñado por Flaticon
 -->
 <style>
 img[alt~="center"] {

@@ -9,15 +9,19 @@ auto-scaling:
 backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 paginate: true
-header: Tema 7 - Almacenamiento basado en ficheros
-footer: ETSI Sistemas Informáticos
+header: Almacenamiento basado en ficheros
 ---
+<!--
+_header: ''
+_footer: ![Licencia de Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) Esta obra está bajo una [licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+-->
 <style>
 img[alt~="center"] {
   display: block;
   margin: 0 auto;
 }
 </style>
+
 ![bg left:40% 80%](img/files.png)
 
 # TEMA 7
