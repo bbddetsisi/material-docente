@@ -21,16 +21,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - id: files
-        uses: jitterbit/get-changed-files@v1
       - name: Setup Node.js environment
         uses: actions/setup-node@v1.4.3
       - name: Build the PDFs of added/changed files
         run: |
           set -x
           assets=()
-          for changed_file in ${{ steps.files.outputs.added_modified }}; do
-            npx @marpteam/marp-cli $changed_file --allow-local-files -o "$(basename $changed_file .md).pdf"
+          for f in "$GITHUB_WORKSPACE/**/*.md" ; do
+            npx @marpteam/marp-cli $f --allow-local-files -o "$(basename $f .md).pdf"
           done
           for asset in ./*.pdf; do
             assets+=("-a" "$asset")
