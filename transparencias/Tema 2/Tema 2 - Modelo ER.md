@@ -341,7 +341,7 @@ Recuerda las opciones posibles: cardinalidad mínima (0, 1), cardinalidad máxim
 
 ---
 <style scoped>
-p {text-align: justify}
+p {text-align: justify; font-size: 0.8rem}
 </style>
 
 ## Entidad débil (identificación)
@@ -351,7 +351,7 @@ p {text-align: justify}
 
 ![center](img/identificacion.png)
 
-Dos surtidores de la base de datos pueden tener el mismo número si están en gasolineras distintas ➡️ El surtidor ‘adquiere’ la clave de `Gasolinera`.
+Dos surtidores de la base de datos pueden tener el mismo número si están en gasolineras distintas ➡️ El surtidor ‘adquiere’ la clave de `Gasolinera`. En algunas notaciones, el atributo discriminador se indica con subrayado discontinuo, como es el caso del número de surtidor.
 
 ---
 
