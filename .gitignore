@@ -32,4 +32,11 @@ Temporary Items
 # End of https://www.toptal.com/developers/gitignore/api/macos
 
 # PDF files
-*.pdf
+#*.pdf
+
+# Latex files
+ejercicios/*.aux
+ejercicios/*.log
+ejercicios/*.fls
+ejercicios/*.synctex.gz
+ejercicios/*.fdb_latexmk
