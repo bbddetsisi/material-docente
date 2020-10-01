@@ -1,0 +1,51 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=3.5cm]{geometry}
+
+
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0.6pt}
+
+\pagestyle{fancy}
+\setlength\headheight{50pt}
+\lhead{\includegraphics[height=1.5cm]{figs/upm_logo}}
+\chead{Bases de Datos\\\vspace{.5em} Problemas de álgebra relacional\\\vspace{-.1em}}
+\rhead{\includegraphics[height=1.5cm]{figs/etsisi_logo}}
+\lfoot{\textbf{Tema 3:} Modelo relacional}
+\cfoot{}
+\rfoot{\thepage}
+
+\parskip 1.1ex % paragraph spacing
+\setlength{\parindent}{0pt} % no indent
+
+\begin{document}
+
+\section{Editoriales}
+
+Sean las relaciones siguientes:
+
+\texttt{EDITORIALES(\underline{E\#}, Nombre, Ciudad)}
+
+\texttt{LIBROS(\underline{L\#}, Título, Autor, Año)}
+
+\texttt{PAPELERÍAS(\underline{P\#}, Nombre, Ciudad)}
+
+\texttt{ELP(\underline{E\#}, \underline{L\#}, \underline{P\#}, Cantidad)}
+
+Se pide escribir en álgebra relacional las respuestas a las preguntas siguientes:
+
+\begin{itemize}
+    \item Obtener los nombres de las papelerías abastecidas por alguna editorial de "Madrid".
+    \item Obtener los valores de E\# para las editoriales que suministran a las papelerías P1 y P3 libros publicados en el años 1978.
+    \item Obtener los valores de P\# de las papelerías abastecidas completamente por la editorial E1.
+    \item Obtener los valores de L\# para los libros suministrados por todas las papelerías que no sean de "Madrid".
+
+\end{itemize}
+
+\end{document}
