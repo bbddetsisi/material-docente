@@ -33,20 +33,21 @@ s {
 p {
   text-align: justify;
 }
-/* Tablas centradas */
+/*Tablas centradas*/
 table {
   width: auto;
   margin-left: auto;
   margin-right: auto
 }
 </style>
-![bg left:40% 60%](img/relational.svg)
 
 # TEMA 3
 
 # Modelo relacional
 
 ### Modelado lógico de bases de datos
+
+![bg left:40% 60%](img/relational.svg)
 
 ---
 
@@ -88,7 +89,7 @@ Como modelo de datos que es, el Modelo Relacional consta de tres partes diferent
 
 ## Elementos del modelo (Parte Estructural)
 
--Las relaciones de este modelo pueden definirse de manera matemática:
+Las relaciones de este modelo pueden definirse de manera matemática:
 
 > $R$ es una relación sobre los conjuntos $D_1,D_2,\ldots,D_n$, si es un subconjunto del producto cartesiano $D_1\times D_2\times \ldots \times D_n$.
 
@@ -116,7 +117,7 @@ Representación gráfica de una relación:
 
 Representación textual:
 
-$R \left ( A_1,A_2,\ldots,A_n \right )$
+$$R \left ( A_1,A_2,\ldots,A_n \right )$$
 
 ---
 <style scoped>
@@ -172,15 +173,15 @@ p {
 
 ## Condiciones del modelo (Parte Estructural)
 
-- Cada tabla debe contener un solo tipo de filas.
-- Una tabla no puede contener filas duplicadas.
-- Cada columna debe estar identificada por un nombre específico.
-- Cada columna tiene que ser única, no pudiendo existir columnas duplicadas.
-- Cada valor en una columna tiene que ser único, no permitiéndose valores múltiples para - un atributo.
-- Cada columna debe extraer sus valores de un dominio.
-- Un mismo dominio podrá servir para columnas diferentes.
-- Las filas pueden estar en cualquier orden.
-- Las columnas pueden estar en cualquier orden.
+1. Cada tabla debe contener un solo tipo de filas.
+2. Una tabla no puede contener filas duplicadas.
+3. Cada columna debe estar identificada por un nombre específico.
+4. Cada columna tiene que ser única, no pudiendo existir columnas duplicadas.
+5. Cada valor en una columna tiene que ser único, no permitiéndose valores múltiples para un atributo.
+6. Cada columna debe extraer sus valores de un dominio.
+7. Un mismo dominio podrá servir para columnas diferentes.
+8. Las filas pueden estar en cualquier orden.
+9. Las columnas pueden estar en cualquier orden.
 
 ---
 
@@ -192,7 +193,7 @@ Definición de **base de datos relacional**:
 
 Los atributos serán símbolos tomados de un conjunto finito $\mathbb{U}$ ("universo" del modelo conceptual). Usaremos $A,B,\ldots$ para denotar atributos simples y $V,W,X\ldots$, para designar conjuntos de los mismos o descriptores.
 
-**NOTA**: en adelante denominaremos indistintamente "descriptor" a un atributo simple o a un conjunto de atributos. 
+**NOTA**: en adelante denominaremos indistintamente "descriptor" a un atributo simple o a un conjunto de atributos.
 
 ---
 
@@ -244,6 +245,10 @@ Cada relación tendrá una combinación de atributos que, tomados en conjunto, *
   - Compuestas (formadas por más de un atributo)
 
 ---
+<style scoped>
+p {font-size:0.9rem}
+li {font-size:0.9rem}
+</style>
 
 ## Elementos del modelo (Parte Semántica)
 
@@ -251,11 +256,6 @@ Restricciones semánticas del modelo relacional:
 
 1. **Restricción de Integridad de Entidad**. Ningún valor de la clave primaria de una relación puede ser nulo o tener algún componente nulo. Asimismo, una clave primaria no admite valores repetidos.
 2. **Restricción de Integridad de Dominio**. Un atributo no puede tomar valores que excedan del rango asociado.
-
----
-
-## Elementos del modelo (Parte Semántica)
-
 3. **Restricción de Integridad Referencial**: Para un atributo $A$ perteneciente a una clave primaria compuesta de una relación $R$, se cumple que para todo valor $a$ de dicho atributo $A$ en $R$ tiene que existir otra relación $S$ con una clave primaria $B$ tal que $a$ ocurre como un valor de $B$ en la relación $S$.
 
 ---
@@ -435,6 +435,10 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 ![center](img/interseccion.png)
 
 ---
+<style scoped>
+  p {font-size: 0.85rem}
+  li {font-size: 0.85rem}
+</style>
 
 ## División
 
@@ -463,13 +467,13 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 ## Unión natural (Natural Join)
 
 - $R\Join S$ o $R * S$
-  - El resultado es una relación con los atributos de ambas relaciones y se obtiene combinando las tuplas de ambas relaciones que tengan el mismo valor en los atributos comunes
-  - Normalmente la operación de join se realiza entre los atributos comunes de dos tablas que corresponden a la clave primaria de una tabla y la clave foránea correspondiente de la otra tabla
+  - El resultado es una relación con los atributos de ambas relaciones y se obtiene combinando las tuplas de ambas relaciones que tengan el mismo valor en los atributos comunes.
+  - Normalmente la operación de join se realiza entre los atributos comunes de dos tablas que corresponden a la clave primaria de una tabla y la clave foránea correspondiente de la otra tabla.
   - Método:
-    - Se realiza el producto cartesiano R x S
-    - Se seleccionan aquellas filas del producto cartesiano para las que los atributos comunes tengan el mismo valor
-  - Se elimina del resultado una ocurrencia (columna) de cada uno de los atributos comunes
-  - Equivalencia con operadores básicos: $R\Join_F S=\sigma_F(R\times S)$
+    - Se realiza el producto cartesiano $R\times S$.
+    - Se seleccionan aquellas filas del producto cartesiano para las que los atributos comunes tengan el mismo valor.
+  - Se elimina del resultado una ocurrencia (columna) de cada uno de los atributos comunes.
+  - Equivalencia con operadores básicos: $R\Join_F S=\sigma_F(R\times S)$.
 
 ---
 
@@ -493,11 +497,11 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 ## Asociación o $\theta\textrm{-Join}$
 
 - $R\Join_F S$ o $R *_F S$
-- Define una relación que contiene las tuplas que satisfacen el predicado $F$ en el producto cartesiano de $R$ y $S$.
-- El predicado $F$ es de la forma $R.a_i \theta S.b_i$ donde $\theta$ representa un operador de comparación:
-$(<, \leq, >, \geq, =, \neq)$.
-- El predicado no tiene por que definirse sobre atributos comunes.
-- **Equijoin**: Si el predicado $F$ contiene únicamente el operador de igualdad.
+  - Define una relación que contiene las tuplas que satisfacen el predicado $F$ en el producto cartesiano $R\times S$.
+  - El predicado $F$ es de la forma $R.a_i \theta S.b_i$ donde $\theta$ representa un operador de comparación:
+  $(<, \leq, >, \geq, =, \neq)$.
+  - El predicado no tiene por que definirse sobre atributos comunes.
+  - **Equijoin**: Si el predicado $F$ contiene únicamente el operador de igualdad.
 
 ---
 
