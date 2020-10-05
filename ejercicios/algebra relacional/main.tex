@@ -7,6 +7,7 @@
 \usepackage{url}
 \usepackage[spanish]{babel}
 \usepackage{fancyhdr}
+\usepackage{scrextend}
 
 \renewcommand{\headrulewidth}{0.6pt}
 \renewcommand{\footrulewidth}{0.6pt}
@@ -29,13 +30,13 @@
 
 Sean las relaciones siguientes:
 
-\texttt{EDITORIALES(\underline{E\#}, Nombre, Ciudad)}
+\begin{addmargin}[1.5em]{0em}
+    \texttt{EDITORIALES(\underline{E\#}, Nombre, Ciudad)}\\
+    \texttt{LIBROS(\underline{L\#}, Título, Autor, Año)}\\
+    \texttt{PAPELERÍAS(\underline{P\#}, Nombre, Ciudad)}\\
+    \texttt{ELP(\underline{E\#}, \underline{L\#}, \underline{P\#}, Cantidad)}
+\end{addmargin}
 
-\texttt{LIBROS(\underline{L\#}, Título, Autor, Año)}
-
-\texttt{PAPELERÍAS(\underline{P\#}, Nombre, Ciudad)}
-
-\texttt{ELP(\underline{E\#}, \underline{L\#}, \underline{P\#}, Cantidad)}
 
 Se pide escribir en álgebra relacional las respuestas a las preguntas siguientes:
 
@@ -50,13 +51,12 @@ Se pide escribir en álgebra relacional las respuestas a las preguntas siguiente
 
 Dada la bases de datos compuesta por las siguientes relaciones:
 
-\texttt{PROGRAMAS(\underline{P\#}, Memoria, SO, Distribuidor)}
-
-\texttt{USUARIOS(\underline{U\#}, Edad, Sexo)}
-
-\texttt{ORDENADORES(\underline{O\#}, Modelo, SO, Capacidad)}
-
-\texttt{USOS(\underline{U\#}, \underline{P\#}, \underline{O\#}, Tiempo)}
+\begin{addmargin}[1.5em]{0em}
+    \texttt{PROGRAMAS(\underline{P\#}, Memoria, SO, Distribuidor)}\\
+    \texttt{USUARIOS(\underline{U\#}, Edad, Sexo)}\\
+    \texttt{ORDENADORES(\underline{O\#}, Modelo, SO, Capacidad)}\\
+    \texttt{USOS(\underline{U\#}, \underline{P\#}, \underline{O\#}, Tiempo)}
+\end{addmargin}
 
 Se pide expresar en términos de álgebra relacional la secuencia de operaciones necesaria para efectuar las siguientes consultas a la base de datos:
 
@@ -71,11 +71,11 @@ Se pide expresar en términos de álgebra relacional la secuencia de operaciones
 
 Sean las relaciones siguientes:
 
-\texttt{SOCIO(\underline{Aficionado}, \underline{Videoclub})}
-
-\texttt{GUSTA(\underline{Aficionado}, \underline{Película})}
-
-\texttt{VIDEOTECA(\underline{Videoclub}, \underline{Película})}
+\begin{addmargin}[1.5em]{0em}
+    \texttt{SOCIO(\underline{Aficionado}, \underline{Videoclub})}\\
+    \texttt{GUSTA(\underline{Aficionado}, \underline{Película})}\\
+    \texttt{VIDEOTECA(\underline{Videoclub}, \underline{Película})}
+\end{addmargin}
 
 Se pide escibir en álgebra relacional las sentencias necesarias para responder a las preguntas siguientes:
 
@@ -90,13 +90,12 @@ Se pide escibir en álgebra relacional las sentencias necesarias para responder 
 
 Dada la base de datos formada por las siguientes tablas:
 
-\texttt{MÁQUINAS(\underline{M\#}, Tipo, Matrícula, PrecioHora)}
-
-\texttt{FINCAS(\underline{F\#}, Nombre, Extensión)}
-
-\texttt{TRABAJADOR(\underline{T\#}, Nombre, Dirección)}
-
-\texttt{PARTES(\underline{T\#}, \underline{M\#}, \underline{F\#}, \underline{Fecha}, TipoFaena, Tiempo)}
+\begin{addmargin}[1.5em]{0em}
+    \texttt{MÁQUINAS(\underline{M\#}, Tipo, Matrícula, PrecioHora)}\\
+    \texttt{FINCAS(\underline{F\#}, Nombre, Extensión)}\\
+    \texttt{TRABAJADOR(\underline{T\#}, Nombre, Dirección)}\\
+    \texttt{PARTES(\underline{T\#}, \underline{M\#}, \underline{F\#}, \underline{Fecha}, TipoFaena, Tiempo)}
+\end{addmargin}
 
 Se pide dar soluciones algebráicas a las siguientes consultas:
 
@@ -111,11 +110,11 @@ Se pide dar soluciones algebráicas a las siguientes consultas:
 
 Dada la base de datos compuesta por las siguientes tablas:
 
-\texttt{ALUMNOS(\underline{A\#}, Nombre, Grupo)}
-
-\texttt{PRÁCTICAS(\underline{P\#}, Curso, Fecha)}
-
-\texttt{ENTREGA(\underline{A\#}, \underline{P\#}, Nota)}
+\begin{addmargin}[1.5em]{0em}
+    \texttt{ALUMNOS(\underline{A\#}, Nombre, Grupo)}\\
+    \texttt{PRÁCTICAS(\underline{P\#}, Curso, Fecha)}\\
+    \texttt{ENTREGA(\underline{A\#}, \underline{P\#}, Nota)}
+\end{addmargin}
 
 Se pide dar solución en álgebra relacional a las consultas:
 
@@ -132,13 +131,12 @@ Se pide dar solución en álgebra relacional a las consultas:
 
 La Federación Internacional de Ciclismo Profesional desea tener una Base de Datos Relacional (BDR) con las siguientes tablas:
 
-\texttt{EQUIPOS(\underline{E\#}, Nombre, País)}
-
-\texttt{CICLISTAS(\underline{C\#}, Nombre, E\#)}
-
-\texttt{COMPETICIONES(\underline{M\#}, Nombre, País, Duración)}
-
-\texttt{CLASIFICACIÓN(\underline{M\#}, \underline{C\#}, Puesto)}
+\begin{addmargin}[1.5em]{0em}
+    \texttt{EQUIPOS(\underline{E\#}, Nombre, País)}\\
+    \texttt{CICLISTAS(\underline{C\#}, Nombre, E\#)}\\
+    \texttt{COMPETICIONES(\underline{M\#}, Nombre, País, Duración)}\\
+    \texttt{CLASIFICACIÓN(\underline{M\#}, \underline{C\#}, Puesto)}
+\end{addmargin}
 
 Se pide escribir las sentencias necesarias en álgebra relacional para:
 
@@ -152,13 +150,12 @@ Se pide escribir las sentencias necesarias en álgebra relacional para:
 
 Dada las tablas siguientes:
 
-\texttt{CONDUCTOR(\underline{C\#}, DNI, Nombre)}
-
-\texttt{AGENTE(\underline{A\#}, Nombre, Rango)}
-
-\texttt{INFRACCIÓN(\underline{I\#}, Descripción, Importe)}
-
-\texttt{DENUNCIA(\underline{C\#}, \underline{A\#}, \underline{I\#}, \underline{Fecha}, Pagada)}
+\begin{addmargin}[1.5em]{0em}
+    \texttt{CONDUCTOR(\underline{C\#}, DNI, Nombre)}\\
+    \texttt{AGENTE(\underline{A\#}, Nombre, Rango)}\\
+    \texttt{INFRACCIÓN(\underline{I\#}, Descripción, Importe)}\\
+    \texttt{DENUNCIA(\underline{C\#}, \underline{A\#}, \underline{I\#}, \underline{Fecha}, Pagada)}
+\end{addmargin}
 
 Se pide escribir en álgebra relacional las sentencias necesarias para:
 
