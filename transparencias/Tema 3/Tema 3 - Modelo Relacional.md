@@ -246,8 +246,8 @@ Cada relación tendrá una combinación de atributos que, tomados en conjunto, *
 
 ---
 <style scoped>
-p {font-size:0.9rem}
-li {font-size:0.9rem}
+p {font-size:0.8rem}
+li {font-size:0.8rem}
 </style>
 
 ## Elementos del modelo (Parte Semántica)
@@ -256,7 +256,7 @@ Restricciones semánticas del modelo relacional:
 
 1. **Restricción de Integridad de Entidad**. Ningún valor de la clave primaria de una relación puede ser nulo o tener algún componente nulo. Asimismo, una clave primaria no admite valores repetidos.
 2. **Restricción de Integridad de Dominio**. Un atributo no puede tomar valores que excedan del rango asociado.
-3. **Restricción de Integridad Referencial**: Para un atributo $A$ perteneciente a una clave primaria compuesta de una relación $R$, se cumple que para todo valor $a$ de dicho atributo $A$ en $R$ tiene que existir otra relación $S$ con una clave primaria $B$ tal que $a$ ocurre como un valor de $B$ en la relación $S$.
+3. **Restricción de Integridad Referencial**: Cualquier atributo de una relación que sea declarado como clave foránea solo puede contener valores nulos o valores existentes que provienen, o bien de la clave primaria o bien de una clave candidata de la relación a la que referencia. En otras palabras, si un atributo que es clave foránea toma un determinado valor, dicho valor tiene que existir ya sea como clave primaria o candidata en la relación a la que referencia dicha clave foránea.
 
 ---
 <style scoped>
