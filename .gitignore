@@ -31,8 +31,8 @@ Temporary Items
 
 # End of https://www.toptal.com/developers/gitignore/api/macos
 
-# PDF files
-*.pdf
+# PDF files (No podemos ignorar los PDFs en el directorio raíz, lo necesita la generación automática de PDFs
+# *.pdf
 
 # Latex files into 'ejercicios' path
 /ejercicios/**/*.aux
@@ -40,3 +40,6 @@ Temporary Items
 /ejercicios/**/*.fls
 /ejercicios/**/*.synctex.gz
 /ejercicios/**/*.fdb_latexmk
+/ejercicios/**/*.pdf
+
+/transparencias/**/*.pdf
