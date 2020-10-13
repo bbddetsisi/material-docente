@@ -312,7 +312,7 @@ Añadir la clave de la entidad de la parte "uno" de la relación a la relación 
 
 ## Paso a tablas: Relaciones 1:1
 
-- Si la cardinalidad mínima es **igual** en ambos extremos de la relación, se añade la clave de una de las entidades a la relación correspondiente a la entidad restante, incluyendo los atributos de la relación si los hubiere.
+- Si la cardinalidad mínima es **igual** en ambos extremos de la relación, se añade la clave de una de las entidades a la entidad restante, incluyendo los atributos de la relación si los hubiere.
 - Si la cardinalidad mínima es **diferente** en los extremos de la relación, se añade la clave de la entidad *"uno"* a la tabla de la entidad *"cero"*.
 
 ![center w:550](img/rel_11.png)
@@ -408,7 +408,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 
 - $\sigma_\textrm{predicado} (R)$
   - Es un operador unario.
-  - Define una relación con los mimos atributos que $R$ y que contiene solo aquellas filas de $R$ que satisfacen la condición especificada (predicado).
+  - Define una relación con los mismos atributos que $R$ y que contiene solo aquellas filas de $R$ que satisfacen la condición especificada (predicado).
 
 ![center](img/seleccion.png)
 
