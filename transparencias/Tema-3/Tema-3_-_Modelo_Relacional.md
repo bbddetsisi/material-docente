@@ -460,8 +460,8 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 
 ---
 <style scoped>
-  p {font-size: 0.85rem}
-  li {font-size: 0.85rem}
+  p {font-size: 0.75rem}
+  li {font-size: 0.75rem}
 </style>
 
 ## Unión natural (Natural Join)
@@ -512,6 +512,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 ---
 
 ## Ejemplos (I)
+
 <style scoped>
   p {font-size: 0.7rem}
   li {font-size: 0.7rem}
