@@ -1,13 +1,26 @@
 \documentclass[a4paper]{article}
 
+\usepackage[spanish, activeacute]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, margin=3.5cm]{geometry}
 \usepackage{lmodern,textcomp}
 \usepackage{graphicx}
 \usepackage{url}
-\usepackage[spanish]{babel}
 \usepackage{fancyhdr}
 \usepackage{scrextend}
+\usepackage{comment}
+\usepackage{mathtools}
+
+\usepackage{hyperref}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={3.0},
+]{doclicense}
+
+% Alternar estas dos lineas para mostrar o no las soluciones
+\includecomment{solution}
+%\excludecomment{solution}
 
 \renewcommand{\headrulewidth}{0.6pt}
 \renewcommand{\footrulewidth}{0.6pt}
@@ -42,10 +55,21 @@ Se pide escribir en álgebra relacional las respuestas a las preguntas siguiente
 
 \begin{enumerate}
     \item Obtener los nombres de las papelerías abastecidas por alguna editorial de `Madrid'.
-    \item Obtener los valores de \texttt{E\#} para las editoriales que suministran a las papelerías P1 y P3 libros publicados en el años 1978.
+    \item Obtener los valores de \texttt{E\#} para las editoriales que suministran a las papelerías P1 y P3 libros publicados en el año 1978.
     \item Obtener los valores de \texttt{P\#} de las papelerías abastecidas completamente por la editorial E1.
     \item Obtener los valores de \texttt{L\#} para los libros suministrados por todas las papelerías que no sean de "Madrid".
 \end{enumerate}
+
+\begin{solution}
+    Solución:
+
+    \begin{enumerate}
+        \item $\Pi_{Nombre} \left( PAPELERIA \bowtie ELP \bowtie \sigma_{Ciudad='Madrid'} \left( EDITORIALES \right) \right)$
+        \item $\Pi_{E\#} \left( \sigma_{A\tilde{n}o=1978} \left( LIBRO \right) \bowtie \sigma_{P\#='P1'} \left( ELP \right) \right) \cup \Pi_{E\#} \left( \sigma_{A\tilde{n}o=1978} \left( LIBRO \right) \bowtie \sigma_{P\#='P3'} \left( ELP \right) \right)$
+        \item $\Pi_{P\#} \left( \sigma_{E\#='E1'} \left( ELP \right) \right) - \Pi_{P\#} \left( \sigma_{E\# \neq 'E1'} \left( ELP \right) \right)$
+        \item $\Pi_{L\#,P\#} \left( ELP \right) \div \Pi_{P\#} \left( \sigma_{Ciudad \neq 'Madrid'} \left( PAPELERIAS \right) \right)$
+    \end{enumerate}
+\end{solution}
 
 \section{Programas}
 
@@ -67,6 +91,17 @@ Se pide expresar en términos de álgebra relacional la secuencia de operaciones
     \item Obtener los modelos de los ordenadores que son usados por personas mayores de 30 años durante más de 3 horas.
 \end{enumerate}
 
+\begin{solution}
+    Solución:
+
+    \begin{enumerate}
+        \item $\Pi_{U\#, P\#} \left( USOS \right) \div \Pi_{\#} \left( \sigma_{Distribuidor='D1'} \left( PROGRAMAS \right) \right)$
+        \item $\Pi_{P\#} \left( \sigma_{U\#='U5'} \left( USOS \right)\right) - \Pi_{P\#} \left( \sigma_{U\#\neq'U5'} \left( USOS \right)\right)$
+        \item $\Pi_{Distribuidor} \left( \sigma_{P\#='P5'} \left( Programas \right) \right) \cap \Pi_{Distribuidor} \left( \sigma_{P\#='P8'} \left( Programas \right) \right)$
+        \item $\Pi_{Modelo} \left( \sigma_{Edad > 30} \left( USUARIOS \right) \bowtie \sigma_{tiempo > 3} \left( USOS \right) \bowtie ORDENADORES \right)$
+    \end{enumerate}
+\end{solution}
+
 \section{Videoteca}
 
 Sean las relaciones siguientes:
@@ -85,6 +120,17 @@ Se pide escibir en álgebra relacional las sentencias necesarias para responder 
     \item Aficionados que son socios al menos de un videoclub que dispone de alguna película de su gusto.
     \item Aficionados que no son socios de ningún videoclub donde tengan alguna película de su gusto.
 \end{enumerate}
+
+\begin{solution}
+    Solución:
+
+    \begin{enumerate}
+        \item $\Pi_{Pelicula} \left( \sigma_{Aficionado='Jose Perez'} \left( GUSTA \right) \right)$
+        \item $\Pi_{Videoclub} \left( VIDEOTECA \bowtie \sigma_{Aficionado='Jose Perez'} \left( GUSTA \right) \right)$
+        \item $\Pi_{Aficionado} \left( SOCIO \bowtie \Pi_{Aficionado,Videoclub} \left( VIDEOTECA \bowtie GUSTA \right) \right)$
+        \item $\Pi_{Aficionado} \left( GUSTA \right) - \Pi_{Aficionado} \left( SOCIO \bowtie \Pi_{Aficionado,Videoclub} \left( VIDEOTECA \bowtie GUSTA \right) \right)$
+    \end{enumerate}
+\end{solution}
 
 \section{Maquinaria}
 
@@ -105,6 +151,17 @@ Se pide dar soluciones algebráicas a las siguientes consultas:
     \item Obtener el valor de \texttt{M\#} para aquellas máquinas que no han sido utilizadas nunca en ningún trabajo.
     \item Obtener todos los nombres de fincas en las que se ha trabajado más de 5 horas con máquinas cuyo precio por hora sea superior a 25€.
 \end{enumerate}
+
+\begin{solution}
+    Solución:
+
+    \begin{enumerate}
+        \item $\Pi_{T\#,M\#} \left( PARTES \right) \div \Pi_{M\#} \left( \sigma_{Tipo=1} \left( MAQUINAS \right) \right)$
+        \item $\Pi_{F\#} \left( \sigma_{M\#='M1'} \left( PARTES \right) \right) \cap \Pi_{F\#} \left( \sigma_{M\#='M3'} \left( PARTES \right) \right)$
+        \item $\Pi_{M\#} \left( MAQUINAS \right) - \Pi_{M\#} \left( PARTES \right)$
+        \item $\Pi_{Nombre} \left( FINCAS \bowtie \left( \sigma_{tiempo>5} \left( PARTES \right) \bowtie \sigma_{PrecioHora>25} \left( MAQUINAS \right) \right) \right)$
+    \end{enumerate}
+\end{solution}
 
 \section{Prácticas}
 
@@ -127,6 +184,19 @@ Se pide dar solución en álgebra relacional a las consultas:
     \item Obtener el nombre de los alumnos que no han suspendido ninguna práctica de las que han entregado.
 \end{enumerate}
 
+\begin{solution}
+    Solución:
+
+    \begin{enumerate}
+        \item $\Pi_{Nombre} \left( ALUMNOS \bowtie \left( \Pi_{A\#,P\#} \left( \sigma_{Nota>5} \left( ENTREGA \right) \right) \div \Pi_{P\#} \left( \sigma_{Curso=3} \left( PRACTICAS \right) \right) \right) \right)$
+        \item $\Pi_{Nombre} \left( ALUMNOS \bowtie \left( \Pi_{A\#,P\#} \left( ENTREGA \right) \div \Pi_{P\#} \left( \sigma_{Curso=3} \left( PRACTICAS \right) \right)\right) \right)$
+        \item $\Pi_{A\#} \left( \sigma_{Curso=2} \left( ENTREGA \bowtie PRACTICAS \right) \right) \cap \Pi_{A\#} \left( \sigma_{Curso=3} \left( ENTREGA \bowtie PRACTICAS \right) \right)$
+        \item $\Pi_{A\#} \left( \sigma_{Curso=2} \left( ENTREGA \bowtie PRACTICAS \right) \right) - \Pi_{A\#} \left( \sigma_{Curso \neq 2} \left( ENTREGA \bowtie PRACTICAS \right) \right)$
+        \item $\Pi_{A\#} \left( \sigma_{Grupo='BD-11'} \left( ALUMNOS \right) \bowtie \left( \sigma_{Curso=2} \left( PRACTICAS \right) \bowtie ENTREGA \right) \right)$
+        \item $\Pi_{Nombre} \left( ALUMNOS \bowtie \left( \Pi_{A\#} \left( \sigma_{Nota \geq 5} \left( ENTREGA \right) \right) - \Pi_{A\#} \left( \sigma_{Nota<5} \left( ENTREGA \right) \right) \right) \right)$
+    \end{enumerate}
+\end{solution}
+
 \section{Ciclismo}
 
 La Federación Internacional de Ciclismo Profesional desea tener una Base de Datos Relacional (BDR) con las siguientes tablas:
@@ -145,6 +215,16 @@ Se pide escribir las sentencias necesarias en álgebra relacional para:
     \item Obtener los ciclistas de equipos españoles que han competido en todas las competiciones de España.
     \item Obtener los ciclistas que han obtenido un primer y un segundo puestos en competiciones con una duración inferior a 15 días.
 \end{enumerate}
+
+\begin{solution}
+    Solución:
+
+    \begin{enumerate}
+        \item $\Pi_{C\#} \left( CLASIFICACION \right) - \Pi_{C\#} \left( CLASIFICACION \bowtie \sigma_{Duracion>15} \left( COMPETICIONES \right) \right)$
+        \item $\Pi_{C\#} \left( CICLISTAS \bowtie \sigma_{Pais=Espa\tilde{n}a} \left( EQUIPOS \right) \bowtie \\ \left( \Pi_{C\#,M\#} \left( CLASIFICACION \right) \div \Pi_{M\#} \left( \sigma_{Pais='Espa\tilde{n}a'} \left( COMPETICIONES \right) \right) \right) \right)$
+        \item $\Pi_{C\#} \left( \sigma_{Duracion<15} \left( COMPETICIONES \right) \bowtie \sigma_{Puesto=1} \left( CLASIFICACION \right) \right) \cap \Pi_{C\#} \left( \sigma_{Duracion<15} \left( COMPETICIONES \right) \bowtie \sigma_{Puesto=2} \left( CLASIFICACION \right) \right)$
+    \end{enumerate}
+\end{solution}
 
 \section{Intracciones de tráfico}
 
@@ -165,5 +245,17 @@ Se pide escribir en álgebra relacional las sentencias necesarias para:
     \item Obtener el código de aquellos conductores que no tengan ninguna denuncia pendiente de pago (atributo \texttt{Pagada}).
 \end{enumerate}
 
+\begin{solution}
+    Solución:
+
+    \begin{enumerate}
+        \item $\Pi_{Nombre} \left( CONDUCTOR \bowtie \left( \Pi_{C\#,I\#} \left( DENUNCIA \right) \div \Pi_{I\#} \left( \sigma_{Importe<600} \left( INFRACCION \right) \right) \right) \right)$
+        \item $\Pi_{A\#} \left( \sigma_{Descripcion='Estacionamiento'} \left( DENUNCIA \bowtie INFRACCION \right) \right) - \Pi_{A\#} \left( \sigma_{Descripcion \neq 'Estacionamiento'} \left( DENUNCIA \bowtie INFRACCION \right) \right)$
+        \item $\Pi_{C\#} \left( DENUNCIA \right) - \Pi_{C\#} \left( \sigma_{Pagada='No'} \left( DENUNCIA \right) \right)$
+    \end{enumerate}
+\end{solution}
+
+\noindent\rule{\textwidth}{1pt}
+\doclicenseThis
 
 \end{document}
