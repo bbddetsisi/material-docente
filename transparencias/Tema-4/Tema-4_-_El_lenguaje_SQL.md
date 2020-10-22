@@ -235,8 +235,8 @@ Más tipos de datos: [documentación](https://dev.mysql.com/doc/refman/8.0/en/da
 
 ---
 <style scoped>
-  td {font-size: 0.8rem}
-  thead {font-size: 0.8rem}
+  td {font-size: 0.75rem}
+  thead {font-size: 0.75rem}
   s {text-decoration: underline; background-color: transparent}
 </style>
 
@@ -274,8 +274,8 @@ CREATE TABLE [schema.]nombre_tabla (
 
 ---
 <style scoped>
-  td {font-size: 0.8rem}
-  thead {font-size: 0.8rem}
+  td {font-size: 0.75rem}
+  thead {font-size: 0.75rem}
   s {text-decoration: underline; background-color: transparent}
 </style>
 
@@ -292,7 +292,7 @@ CREATE TABLE corporacion.personas (
   nombre    VARCHAR(30) NOT NULL,
   apellidos VARCHAR(30) NOT NULL,
   dni       VARCHAR(10) UNIQUE NOT NULL,
-  fecha_nac DATETIME
+  fecha_nac DATETIME,
   PRIMARY KEY (id)
 );
 ```
@@ -453,7 +453,7 @@ li {
   - No debe especificarse su valor cuando se realiza el `INSERT INTO`.
 
 ```SQL
-CREATE TABLE corporacion.dersonas (
+CREATE TABLE corporacion.personas (
   id        INTEGER UNIQUE NOT NULL AUTO_INCREMENT,
   nombre    VARCHAR(30) NOT NULL,
   apellidos VARCHAR(30) NOT NULL,
