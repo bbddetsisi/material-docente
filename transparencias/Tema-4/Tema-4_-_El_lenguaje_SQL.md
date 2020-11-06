@@ -1493,7 +1493,7 @@ Se debe poner una condición de unión en el `WHERE` por cada atributo común en
 
 ```SQL
 SELECT c.nombre AS cond, descripcion, m.nombre AS maq
-FROM conductores c, trabajos t, proyectos p, maquinas m 
+FROM conductores c, trabajos t, proyectos p, maquinas m
 WHERE c.codC = t.codC
   AND t.codP = p.codP
   AND t.codM = m.codM
@@ -1737,7 +1737,7 @@ DELETE FROM proyectos
 
 ---
 
-### Estas diapositivas está basadas en el siguiente material:
+### Estas diapositivas está basadas en el siguiente material
 
 - Pedro Pablo Alarcón (2012), *Lenguaje SQL*. Aplicación de la Gestión de Información, Departamento de OEI, Escuela Universitaria de Informática, Universidad Politécnica de Madrid.
 - Eugenio Santos (2006), *Integridad Referencial*. Aplicación de la Gestión de Información, Departamento de OEI, Escuela Universitaria de Informática, Universidad Politécnica de Madrid.
