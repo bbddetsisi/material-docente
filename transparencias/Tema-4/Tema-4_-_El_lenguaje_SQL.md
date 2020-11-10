@@ -895,28 +895,30 @@ SELECT codC, codM, codP, fecha
 
 ---
 <style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.7rem}
-  pre {font-size:0.7rem}
-  p {font-size: 0.8rem}
+  td {font-size: 0.5rem}
+  thead {font-size: 0.5rem}
+  blockquote {font-size: 0.6rem}
+  li {font-size: 0.6rem}
+  pre {font-size:0.6rem}
+  p {font-size: 0.7rem}
 </style>
 
 ## Operadores `ALL` y `ANY`
 
 - Permiten comparar valores con respecto de un conjunto.
-- El segundo operando suele ser una subconsulta.
+- El segundo operando **debe** ser una subconsulta.
 - Van acompañados de un operador de comparación (`>`, `>=`, `<`, `<=`, `=`, `<>`):
 - `ALL` implica que la condición se cumpla respecto de todo el conjunto.
 - `ANY` implica que la condición se cumpla respecto de, al menos, un elemento del conjunto.
 
-> Obtener proyectos que no sean de Arganda ni de Rivas:
+> Obtener proyectos que no sean ninguna de las localidades de aquellos conductores con categoría superior a 17:
 
 ```SQL
 SELECT descripcion, localidad
   FROM proyectos
-  WHERE localidad <> ALL (’Arganda’, ‘Rivas’);
+  WHERE localidad <> ALL (SELECT localidad
+                          FROM conductores
+                          WHERE categoria > 17);
 ```
 
 | Descripción | Localidad |
