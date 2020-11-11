@@ -83,7 +83,7 @@ Para entender el problema que motiva el uso de transacciones, vamos a realizar v
 
 $$\{A,B,X,Y,\ldots\}$$
 
-- Se definene dos operaciones:
+- Se definen dos operaciones:
   - $\mathtt{leer\_item}(X)$: Lee un elemento de la base de datos llamado $X$ en una variable $X$ del programa.
   - $\mathtt{escribir\_item}(X)$: Escribe el valor de la variable de programa $X$ en el elemento de la base de datos llamado $X$.
 
@@ -442,7 +442,7 @@ Los parámetros de un procedimiento pueden ser de entrada, salida o entrada/sali
 
 - `IN`: El procedimiento puede modificar el valor, pero la modificación no es visible para el invocador cuando el procedimiento acaba (por defecto).
 - `OUT`: Su valor inicial es NULL dentro del procedimiento, y su valor es visible para el invocador cuando el procedimiento acaba.
-- `INOUT`: El parámetro es inicializado en la llamada, puede ser modificado por el procedimiento, y cualquier cambio hecho por el procedimiento es visible tras la ejecución.
+- `INOUT`: El parámetro se inicializa en la llamada, puede ser modificado por el procedimiento, y cualquier cambio hecho por el procedimiento es visible tras la ejecución.
 
 ---
 
