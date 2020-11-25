@@ -977,7 +977,7 @@ FOR EACH ROW
 BEGIN
   IF NEW.fecha_nac > CURRENT_DATE()
   THEN
-   SIGNAL SQLSTATE '02000’
+   SIGNAL SQLSTATE '02000'
    SET MESSAGE_TEXT = 'Error: no aceptamos alumnos del futuro';
   END IF;
 END$$
