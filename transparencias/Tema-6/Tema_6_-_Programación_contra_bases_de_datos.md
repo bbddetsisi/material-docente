@@ -348,7 +348,7 @@ try {
 
 Para invocar un procedimiento debemos usar la clase `CallableStatement`. La llamada a un procedimiento implica:
 
-1. Preparar la llamada (alto conste computacional, conviene reutilizar llamadas anteriores si es posible).
+1. Preparar la llamada (alto coste computacional, conviene reutilizar llamadas anteriores si es posible).
 2. Registrar los parámetros de salida (si existen)
 3. Establecer los parámetros de entrada (si existen)
 4. Llamar al procedimiento
@@ -364,7 +364,7 @@ Para invocar un procedimiento debemos usar la clase `CallableStatement`. La llam
 Supongamos que tenemos definido el siguiente procedimiento:
 
 ```sql
-CREATE PROCEDURE (demoSp IN inputParam VARCHAR(255), INOUT inOutParam INT)
+CREATE PROCEDURE demoSp (IN inputParam VARCHAR(255), INOUT inOutParam INT)
 BEGIN
   ...
 END
@@ -453,26 +453,6 @@ stmt.executeUpdate();
 
 ---
 
-## PreparedStatement
-
-También podemos usar esta clase para parametrizar consultas a la base de datos:
-
-```java
-String name = "Alice";
-int age = 27;
-
-PreparedStatement stmt;
-stmt = conn.prepareStatement("SELECT name, age FROM people WHERE name = ? AND age <= ?");
-
-stmt.setString(1, name);
-stmt.setInt(2, age);
-
-ResultSet rs= stmt.executeQuery();
-```
-
-De esta forma mitigamos los posibles ataques de inyección SQL.
-
----
 <style scoped>
   li {font-size: 0.9rem}
   p {font-size: 0.9rem}
