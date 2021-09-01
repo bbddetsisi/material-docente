@@ -350,3 +350,76 @@ Computacionalmente costosas.
 
 ---
 
+## Introducción
+
+# ARQUITECTURA CLIENTE-SERVIDOR
+
+---
+
+## Arquitectura cliente-servidor
+
+Las bases de datos funcionan bajo una arquitectura cliente-servidor:
+- La base de datos es el servidor
+- Las aplicaciones que se conectan a la base de datos son los clientes
+
+Esta arquitectura permite compartir los datos entre diferentes aplicaciones:
+- Un solo servidor
+- Múltiples clientes
+
+
+---
+
+<style scoped>
+li { font-size: 0.9rem; }
+p { font-size: 0.9rem; }
+section {padding-right: 24px;}
+</style>
+
+## Infraestructura física
+
+Habitualmente, la base de datos (servidor) y la aplicación (cliente) se separan en diferentes máquinas físicas.
+
+Existe un protocolo de comunicación entre el cliente y el servidor.
+- ¿Cómo se realizan las peticiones?
+- ¿Cómo se responde?
+
+
+![bg right:40% 90%](img/cliente-servidor.png)
+
+---
+
+## Ventajas
+
+Se centraliza el acceso a los datos evitando inconsistencias.
+
+Facilita la escalabilidad:
+- Se puede aumentar la capacidad de clientes y servidores por separado.
+
+Mejora el mantenimiento del sistema:
+- El mantenimiento de la base de datos depende exclusivamente de la propia base de datos.
+
+Facilita el desarrollo de aplicaciones al abstraerse de la gestión de los datos.
+
+
+---
+
+## Desventajas
+
+Se puede congestionar el acceso a los datos si el ratio cliente/servidor no es adecuado.
+
+No hay robustez frente a caídas o ataques al servidor:
+- Este riesgo se minimiza si se replica el servidor
+
+Existe dependencia de la conexión a la base de datos para el funcionamiento de la aplicación.
+
+---
+
+## Conexión con la base de datos
+
+La conexión a base de datos se realiza a partir de un URL (*Universal Resource Location*).
+
+Ejemplo:
+
+```
+jdbc:mysql://mydb.com:3306/dbname
+```
