@@ -69,7 +69,7 @@ p {
   - Guardar la información de los clientes.
   - Tipos de combustible.
   
-  ---
+---
 
 ## ¿Cuál prefieres?
 
