@@ -47,7 +47,7 @@ Corresponden a hechos o realidades del mundo real.
 
 A partir de ellos, intentamos reconstruir la información del mundo real.
 
-Son “almacenados” usando un método de comunicación (ej.: figuras o lenguajes) en un medio semipermanente de “registrarlos” (ej.: piedras o papel).
+Son "almacenados" usando un método de comunicación (ej.: figuras o lenguajes) en un medio semipermanente de "registrarlos" (ej.: piedras o papel).
 
 ---
 
@@ -83,6 +83,11 @@ Existen dos aproximaciones para el almacenamiento de los datos utilizados por un
 - Bases de datos
 
 ---
+
+<style scoped>
+li { font-size: 0.9rem; }
+p { font-size: 0.9rem; }
+</style>
 
 ## Sistemas basados en ficheros
 
@@ -235,7 +240,7 @@ Es el tipo de base de datos más utilizado.
 Utilizan el lenguaje SQL (*Structured Query Languaje*) para consultar y manipular datos.
 
 Los datos son almacenados en tablas:
-- Es posible ”unir” diferentes tablas para recuperar información
+- Es posible "unir" diferentes tablas para recuperar información
 
 ![bg vertical right:25% 75%](img/mysql.png)
 ![bg 75%](img/oracle.png)
@@ -293,7 +298,7 @@ Almacena toda la información en pares `<clave, valor>`.
 - El valor puede ser cualquier objeto.
 - Ejemplo:
     - Clave: `aa0000`
-    - Valor: `nombre = “Juan”; apellidos = “García Torres”`
+    - Valor: `nombre = "Juan"; apellidos = "García Torres"`
 
 Altamente divisibles
 
