@@ -478,3 +478,199 @@ Una posible solución:
 Una posible solución:
 
 ![center](img/peliculas.png)
+
+---
+
+## Modelado de datos
+
+# EJEMPLO PASO A PASO 
+“La ETSISI”
+
+---
+
+## La ETSISI
+
+En la ETSISI nos han pedido que diseñemos el diagrama entidad relación para posteriormente crear una base de datos de la información relativa a los alumnos
+
+---
+<style scoped>
+  p {font-size: 0.7rem}
+  li {font-size: 0.7rem}
+</style>
+
+## Nuestro modelo
+
+En la ETSISI se imparten estudios que pueden ser de tipo grado o máster, para los que tenemos que guardar el nombre, el número máximo de alumnos y las asignaturas que incluyen, que pueden ser compartidas entre títulos. También debemos indicar en qué aula concreta se imparte cada asignatura (que tendrán un aforo máximo según si hay que mantener distancia de seguridad o no).
+
+Por otro lado, tenemos alumnos que se identifican por su Nombre, DNI y E-mail. Los alumnos se matriculan en una asignatura concreta y en un cuatrimestre concreto (una asignatura puede impartirse en varios cuatrimestres). Hay que saber la fecha en la que realizan la matrícula. También se lleva un registro de las calificaciones obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura (indicando mes y año).
+
+Por último, también hay que registrar los profesores y las asignaturas que imparten. Un profesor tiene los mismos datos que un alumno, pero también su número de cuenta y su número de empleado. Además, para facilitar que se cubran posibles bajas, para cada profesor hay que indicar aquellos que pueden cubrirle.
+
+---
+<style scoped>
+  p {font-size: 0.7rem}
+  li {font-size: 0.7rem}
+  s {
+  text-decoration: none;
+  background-color: yellow}
+</style>
+
+
+## ¿Qué entidades observamos?
+
+En la ETSISI se imparten estudios que pueden ser de tipo grado o máster, para los que tenemos que guardar el nombre, el número máximo de alumnos y las ~~asignaturas~~ que incluyen, que pueden ser compartidas entre ~~títulos~~. También debemos indicar en qué ~~aula~~ concreta se imparte cada asignatura (que tendrán un aforo máximo según si hay que mantener distancia de seguridad o no).
+
+Por otro lado, tenemos ~~alumnos~~ que se identifican por su Nombre, DNI y E-mail. Los alumnos se matriculan en una asignatura concreta y en un ~~cuatrimestre~~ concreto (una asignatura puede impartirse en varios cuatrimestres). Hay que saber la fecha en la que realizan la matrícula. También se lleva un registro de las ~~calificaciones~~ obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura (indicando mes y año).
+
+Por último, también hay que registrar los ~~profesores~~ y las asignaturas que imparten. Un profesor tiene los mismos datos que un alumno, pero también su número de cuenta y su número de empleado. Además, para facilitar que se cubran posibles bajas, para cada profesor hay que indicar aquellos que pueden cubrirle.
+
+---
+
+## Entidades
+<style scoped>
+  p {font-size: 0.8rem}
+  li {font-size: 0.8rem}
+</style>
+
+- "Calificación” cada ocurrencia de calificación necesitará de un estudiante y de una asignatura. No tendrá una clave primaria propia,  por lo que es una entidad débil 
+
+
+![center](img/ejercicio-paso-a-paso-entidades.png)
+
+---
+<style scoped>
+  p {font-size: 0.7rem}
+  li {font-size: 0.7rem}
+  s {
+  text-decoration: none;
+  background-color: yellow}
+</style>
+
+## ¿Qué atributos observamos?
+
+En la ETSISI se imparten estudios que pueden ser de ~~tipo~~ grado o máster, para los que tenemos que guardar el ~~nombre, el número máximo ~~ de alumnos y las asignaturas que incluyen, que pueden ser compartidas entre títulos. También debemos indicar en qué ~~aula~~ concreta se imparte cada asignatura (~~que tendrán un aforo máximo según si hay que mantener distancia de seguridad o no~~).
+
+Por otro lado, tenemos alumnos que se identifican por su ~~Nombre, DNI y E-mail~~. Los alumnos se matriculan en una asignatura concreta y en un cuatrimestre concreto (una asignatura puede impartirse en varios cuatrimestres). Hay que saber la ~~fecha~~ en la que realizan la matrícula. También se lleva un registro de las ~~calificaciones~~ obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura (indicando ~~mes y año~~).
+
+Por último, también hay que registrar los ~~profesores~~ y las asignaturas que imparten. Un profesor tiene los mismos datos que un alumno, pero también su ~~número de cuenta y su número de empleado~~. Además, para facilitar que se cubran posibles bajas, para cada profesor hay que indicar aquellos que pueden cubrirle.
+
+---
+
+## Atributos
+<style scoped>
+  p {font-size: 0.8rem}
+  li {font-size: 0.8rem}
+</style>
+
+- La "Fecha" de matriculación estará en la relación, puesto que no tenemos entidad Matrícula
+
+![center](img/ejercicio-paso-a-paso-atributos.png)
+
+---
+<style scoped>
+  p {font-size: 0.7rem}
+  li {font-size: 0.7rem}
+  s {
+  text-decoration: none;
+  background-color: yellow}
+</style>
+
+
+## ¿Qué relaciones observamos?
+
+En la ETSISI se imparten ~~estudios~~ que pueden ser de tipo grado o máster, para los que tenemos que guardar el nombre, el número máximo de alumnos y ~~las asignaturas que incluyen~~, que pueden ser compartidas entre títulos. También debemos indicar ~~en qué aula concreta se imparte cada asignatura~~ (que tendrán un aforo máximo según si hay que mantener distancia de seguridad o no).
+
+Por otro lado, tenemos alumnos que se identifican por su Nombre, DNI y E-mail. Los ~~alumnos se matriculan en una asignatura concreta y en un cuatrimestre concreto~~ (~~una asignatura puede impartirse en varios cuatrimestres~~). Hay que saber la fecha en la que realizan la matrícula. También se lleva un ~~registro de las calificaciones obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura~~ (indicando mes y año).
+
+Por último, también hay que ~~registrar los profesores y las asignaturas que imparten~~. Un profesor tiene los mismos datos que un alumno, pero también su número de cuenta y su número de empleado. Además, para facilitar que se cubran posibles bajas, para cada ~~profesor hay que indicar aquellos que pueden cubrirle~~.
+
+---
+## Relaciones
+<style scoped>
+  p {font-size: 0.8rem}
+  li {font-size: 0.8rem}
+</style>
+
+- Las asignaturas que incluyen (los estudios)
+
+
+![center](img/ejercicio-paso-a-paso-relacion-asignatura-estudios.png)
+
+---
+## Relaciones
+<style scoped>
+  p {font-size: 0.8rem}
+  li {font-size: 0.8rem}
+</style>
+
+- Indicar en qué aula concreta se imparte cada asignatura
+
+
+![center](img/ejercicio-paso-a-paso-relacion-asignatura-aula.png)
+
+---
+## Relaciones
+<style scoped>
+  p {font-size: 0.8rem}
+  li {font-size: 0.8rem}
+</style>
+
+- Los alumnos se matriculan en una asignatura concreta y en un cuatrimestre concreto
+
+![center](img/ejercicio-paso-a-paso-relacion-matricular.png)
+
+
+---
+## Relaciones
+<style scoped>
+  p {font-size: 0.8rem}
+  li {font-size: 0.8rem}
+</style>
+
+- Una asignatura puede impartirse en varios cuatrimestres
+
+
+![center](img/ejercicio-paso-a-paso-relacion-seimparte.png)
+
+
+---
+## Relaciones
+<style scoped>
+  p {font-size: 0.8rem}
+  li {font-size: 0.8rem}
+</style>
+
+- Registro de las calificaciones obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura
+
+![center](img/ejercicio-paso-a-paso-relacion-calficaciones.png)
+
+---
+## Relaciones
+<style scoped>
+  p {font-size: 0.8rem}
+  li {font-size: 0.8rem}
+</style>
+
+- Registrar los profesores y las asignaturas que imparten
+
+![center](img/ejercicio-paso-a-paso-relacion-imparte.png)
+
+---
+## Relaciones
+<style scoped>
+  p {font-size: 0.8rem}
+  li {font-size: 0.8rem}
+</style>
+
+- Para cada profesor hay que indicar aquellos que pueden cubrirle
+
+![center](img/ejercicio-paso-a-paso-relacion-cubre.png)
+
+
+---
+
+## Relaciones Completo
+
+
+![center](img/ejercicio-paso-a-paso-relacion-todas.png)
+
