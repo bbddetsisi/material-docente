@@ -548,7 +548,7 @@ Por último, también hay que registrar los ~~profesores~~ y las asignaturas que
 
 ## ¿Qué atributos observamos?
 
-En la ETSISI se imparten estudios que pueden ser de ~~tipo~~ grado o máster, para los que tenemos que guardar el ~~nombre, el número máximo ~~ de alumnos y las asignaturas que incluyen, que pueden ser compartidas entre títulos. También debemos indicar en qué ~~aula~~ concreta se imparte cada asignatura (~~que tendrán un aforo máximo según si hay que mantener distancia de seguridad o no~~).
+En la ETSISI se imparten estudios que pueden ser de ~~tipo~~ grado o máster, para los que tenemos que guardar el ~~nombre, el número máximo~~ de alumnos y las asignaturas que incluyen, que pueden ser compartidas entre títulos. También debemos indicar en qué ~~aula~~ concreta se imparte cada asignatura (~~que tendrán un aforo máximo según si hay que mantener distancia de seguridad o no~~).
 
 Por otro lado, tenemos alumnos que se identifican por su ~~Nombre, DNI y E-mail~~. Los alumnos se matriculan en una asignatura concreta y en un cuatrimestre concreto (una asignatura puede impartirse en varios cuatrimestres). Hay que saber la ~~fecha~~ en la que realizan la matrícula. También se lleva un registro de las ~~calificaciones~~ obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura (indicando ~~mes y año~~).
 
