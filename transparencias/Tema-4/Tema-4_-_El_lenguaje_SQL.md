@@ -1127,7 +1127,7 @@ SELECT COUNT(*), COUNT(tiempo), COUNT(DISTINCT tiempo) FROM trabajos;
 
 - Agrupa los resultados en base a una “clave”.
 - Se devuelve una única fila por grupo.
-- Todos los atributos que aparezcan en el `SELECT` deben aparecer en el `GROUP BY.
+- Todos los atributos que aparezcan en el `SELECT` deben aparecer en el `GROUP BY`.
 - Suele combinarse con funciones agregadas.
 
 > Obtener por cada conductor que haya trabajado, el código de éste y la cantidad total de tiempo empleado:
