@@ -9,7 +9,7 @@ auto-scaling:
 backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 paginate: true
-header: Bases de datos. Curso 2021-2022.
+header: Bases de datos. Curso 2022-2023.
 ---
 <!--
 _header: ''
@@ -18,7 +18,7 @@ _footer: ![Licencia de Creative Commons](https://i.creativecommons.org/l/by-nc-s
 
 # BASES DE DATOS
 
-Curso 2021-2022
+Curso 2022-2023
 
 ---
 
@@ -48,9 +48,12 @@ p { font-size: 0.9rem; }
 - Manuel Bollaín. manuel.bollain@upm.es. *Despacho 6108*.
 - Carlos Camacho. carlos.camacho@upm.es. *Despacho 4104*.
 - Alejandro Martín. alejandro.martin@upm.es. *Despacho 1215*.
-- Fernando Ortega (**Coordinador**). fernando.ortega@upm.es. *Despacho 1109*.
+- Fernando Ortega. fernando.ortega@upm.es. *Despacho 1109*.
 - José Luis Sánchez. joseluis.sanchez@upm.es. *Despacho 1116*.
 - Edgar Talavera. e.talavera@upm.es. *Despacho 1222*.
+- Santiago Alonso. santiago.alonso@upm.es. *Despacho 1125*.
+- Raúl Lara. raul.lara@upm.es. *Despacho *1230.
+- Félix Fuentes (**Coordinador**). felix.fuentes@upm.es. *Despacho 4305*.
 
 ---
 
@@ -124,30 +127,26 @@ li { font-size: 0.8rem; }
 p { font-size: 0.8rem; }
 </style>
 
-## Evaluación continua
-
-Cuestionarios telemáticos en moodle (20%)
-- Los viernes al finalizar cada tema
-- Sin nota mínima
-- Se realizan fuera del aula
+## Evaluación progresiva
 
 Prácticas (40%)
 - En grupos
-- Evaluación mediante hitos con calificación APTO / NO APTO
 - Evaluación en el aula
 
-Examen final (40%)
+Examen final (60%)
 - Nota mínima de 4
 - Todo el temario
-- Viernes 21 de enero de 2022 a las 15:00
+- Viernes 13 de enero de 2023 a las 15:00
+
+Será necesario alcanzar una nota total >= 5 para aprobar la asignatura.
 
 ---
 
-## Evaluación solo prueba final
+## Evaluación prueba global
 
-Prueba escrita el **viernes 21 de enero de 2022 a las 15:00** incluyendo preguntas teórico-prácticas de todo el temario de la asignatura.
+Prueba escrita el **viernes 13 de enero de 2023 a las 15:00** incluyendo preguntas teórico-prácticas de todo el temario de la asignatura.
 
-Es obligatorio alcanzar una nota mínima de 5 puntos sobre 10.
+Es obligatorio alcanzar una nota mínima de 4 puntos sobre 10.
 
 Los alumnos que deseen acogerse a la modalidad de evaluación solo prueba final deberán **comunicarlo al coordinador** de la asignatura mediante correo electrónico antes de las 23:55 del viernes de la 4ª semana de docencia.
 
@@ -155,7 +154,7 @@ Los alumnos que deseen acogerse a la modalidad de evaluación solo prueba final 
 
 ## Convocatoria extraordinaria
 
-Prueba escrita el **miécoles 29 de junio de 2022 a las 15:00** incluyendo preguntas teórico-prácticas de todo el temario de la asignatura.
+Prueba escrita el **martes 4 de julio de 2023 a las 15:00** incluyendo preguntas teórico-prácticas de todo el temario de la asignatura.
 
 Es obligatorio alcanzar una nota mínima de 5 puntos sobre 10.
 
