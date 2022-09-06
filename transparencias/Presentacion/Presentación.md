@@ -148,7 +148,7 @@ Prueba escrita el **viernes 13 de enero de 2023 a las 15:00** incluyendo pregunt
 
 Es obligatorio alcanzar una nota mínima de 4 puntos sobre 10.
 
-Los alumnos que deseen acogerse a la modalidad de evaluación solo prueba final deberán **comunicarlo al coordinador** de la asignatura mediante correo electrónico antes de las 23:55 del viernes de la 4ª semana de docencia.
+Los alumnos que deseen acogerse a la modalidad de evaluación solo prueba final deberán **comunicarlo al coordinador** de la asignatura mediante correo electrónico antes de las 23:59 del viernes de la 4ª semana de docencia.
 
 ---
 
