@@ -1,20 +1,51 @@
 name: build-pdfs
-
-
+concurrency: build-pdfs
 on:
   push:
     branches: [ master ]
-
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build & Deploy to GitHub Pages
-      env:
-        SUBFOLDER: transparencias
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
-        PUBLISH_TO_BRANCH: gh-pages
-        BASE_URL: https://bbddetsisi.github.io/material-docente/
-      uses: laracabrera/marp-action@master
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Imagenes para transparencias
+        run: mkdir build && mkdir build/transparencias && cp -R transparencias/img build/transparencias/img
+
+      - name: Transparencias a HTML
+        uses: docker://marpteam/marp-cli:v1.7.0
+        with:
+          args: -I transparencias/ -o build/transparencias/ --html --allow-local-files
+        env:
+          MARP_USER: root:root
+
+      - name: Transparencias a PDF
+        uses: docker://marpteam/marp-cli:v1.7.0
+        with:
+          args: -I transparencias/ -o build/transparencias/ --html --pdf --allow-local-files
+        env:
+          MARP_USER: root:root
+
+      - name: Deploy preview
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./build/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+
+      - name: Deploy production
+        if: ${{ github.event_name == 'push' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ./build/
+          clean-exclude: pr-preview/

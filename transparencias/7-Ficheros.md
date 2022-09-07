@@ -22,7 +22,7 @@ img[alt~="center"] {
 }
 </style>
 
-![bg left:40% 80%](img/files.png)
+![bg left:40% 80%](img/t7/files.png)
 
 # TEMA 7
 
@@ -56,7 +56,7 @@ Una estructura menos restrictiva serían los **datos semi-estructurados**:
 
 Una posible representación para los datos semi-estructurados sería un grafo dirigido:
 
-![bg right:45% 95%](img/tree.png)
+![bg right:45% 95%](img/t7/tree.png)
 
 ---
 
@@ -116,7 +116,7 @@ El formato **CSV** se utiliza principalmente en las siguientes situaciones:
 - Análisis de datos, donde se realizan operaciones sobre el conjunto de datos completo.
 
 ---
-![bg right:60% 99%](img/xml_logo.png)
+![bg right:60% 99%](img/t7/xml_logo.png)
 
 # XML
 
@@ -196,7 +196,7 @@ Debido al modelo de datos de **XML** podemos distinguir dos tipos de **elementos
 
 # Los documentos XML son árboles
 
-![bg left:40% 100%](img/tree.png)
+![bg left:40% 100%](img/t7/tree.png)
 
 ```xml
 <asignatura>
@@ -797,7 +797,7 @@ return $lib/titulo
 ```
 
 ---
-![bg right:40% 50%](img/JSON_vector_logo.svg)
+![bg right:40% 50%](img/t7/JSON_vector_logo.svg)
 
 # JSON
 

@@ -45,7 +45,7 @@ table {
 
 # Gestión de bases de datos
 
-![bg left:40% 60%](img/engranajes.svg)
+![bg left:40% 60%](img/t5/engranajes.svg)
 
 ---
 
@@ -71,7 +71,7 @@ table {
 - Por la experiencia con las prácticas, tendemos a pensar que los SGBD son aplicaciones mono-usuario.
 - Sin embargo, uno de las ventajas de los SGBD es el acceso concurrente a los datos por parte de multitud de usuarios.
 
-![center](img/cliente-servidor.png)
+![center](img/t5/cliente-servidor.png)
 
 ---
 
@@ -91,19 +91,19 @@ $$\{A,B,X,Y,\ldots\}$$
 
 ## Problema de la actualización perdida
 
-![center w:700](img/ap1.png)
+![center w:700](img/t5/ap1.png)
 
 ---
 
 ## Problema de la actualización perdida
 
-![center w:700](img/ap2.png)
+![center w:700](img/t5/ap2.png)
 
 ---
 
 ## Problema de la actualización perdida
 
-![center w:700](img/ap3.png)
+![center w:700](img/t5/ap3.png)
 
 El elemento X tiene un valor incorrecto porque su actualización se pierde (se sobrescribe).
 
@@ -111,13 +111,13 @@ El elemento X tiene un valor incorrecto porque su actualización se pierde (se s
 
 ## Problema de la lectura sucia
 
-![center w:700](img/ls1.png)
+![center w:700](img/t5/ls1.png)
 
 ---
 
 ## Problema de la lectura sucia
 
-![center w:700](img/ls2.png)
+![center w:700](img/t5/ls2.png)
 
 Se ha leído un valor de X que no es el correcto, pues se debería haber restaurado tras el error.
 
@@ -125,13 +125,13 @@ Se ha leído un valor de X que no es el correcto, pues se debería haber restaur
 
 ## Problema del resumen incorrecto
 
-![center w:700](img/ri1.png)
+![center w:700](img/t5/ri1.png)
 
 ---
 
 ## Problema del resumen incorrecto
 
-![center w:700](img/ri2.png)
+![center w:700](img/t5/ri2.png)
 
 Se ha leído un valor inconsistente de $Y$, ya que la lectura se ha adelantado a la actualización de su valor.
 
@@ -141,7 +141,7 @@ Se ha leído un valor inconsistente de $Y$, ya que la lectura se ha adelantado a
 
 Se podrían agrupar varias instrucciones de lecturas y escrituras de forma que se ejecuten de forma ~~atómica~~:
 
-![center w:450](img/atomica.png)
+![center w:450](img/t5/atomica.png)
 
 ---
 
@@ -149,7 +149,7 @@ Se podrían agrupar varias instrucciones de lecturas y escrituras de forma que s
 
 La ejecución de un conjunto de operaciones debe dejar la base de datos en un estado ~~consistente~~:
 
-![center w:450](img/consistente.png)
+![center w:450](img/t5/consistente.png)
 
 ---
 
@@ -157,7 +157,7 @@ La ejecución de un conjunto de operaciones debe dejar la base de datos en un es
 
 Las instrucciones agrupadas deberían ejecutarse de manera ~~aislada~~, de forma que dos conjuntos de instrucciones que no dependan entre sí, se ejecutarían simultáneamente:
 
-![center w:400](img/aislada.png)
+![center w:400](img/t5/aislada.png)
 
 ---
 
@@ -165,7 +165,7 @@ Las instrucciones agrupadas deberían ejecutarse de manera ~~aislada~~, de forma
 
 Los cambios realizados por las operaciones deben ser ~~duraderos~~, de forma que no les afecten los fallos:
 
-![center w:400](img/duraderos.png)
+![center w:400](img/t5/duraderos.png)
 
 ---
 
@@ -193,7 +193,7 @@ Estas propiedades deben cumplirse en un SGBD para evitar los errores relacionado
 
 ## Estados de una transacción
 
-![center](img/transaccion.png)
+![center](img/t5/transaccion.png)
 
 Imagen extraída de “*Fundamentals of Database Systems*”, Elmasri, Navathe.
 
@@ -304,13 +304,13 @@ SET autocommit = {0 | 1}
 
 ## Bloqueo para lectura
 
-![center](img/read_lock.png)
+![center](img/t5/read_lock.png)
 
 ---
 
 ## Bloqueo para escritura
 
-![center](img/write_lock.png)
+![center](img/t5/write_lock.png)
 
 - Si el objeto está desbloqueado, se bloquea el mismo para escritura.
 - Si el objeto está bloqueado, se espera a que quede libre antes de bloquearlo para escritura.
@@ -319,7 +319,7 @@ SET autocommit = {0 | 1}
 
 ## Desbloqueo
 
-![center](img/unlock.png)
+![center](img/t5/unlock.png)
 
 - Si el bloqueo era por **lectura**, se decrementa en 1 el número de lecturas.
 - Si el número de lecturas **llega a 0**, se establece que el objeto queda desbloqueado y se notifica a los bloqueos que esperan.
@@ -432,7 +432,7 @@ Es **importante** cambiar el carácter delimitador de final de línea que tiene 
 
 ## Procedimientos: ejemplo
 
-![center](img/proc_ejemplo.png)
+![center](img/t5/proc_ejemplo.png)
 
 ---
 
@@ -465,7 +465,7 @@ CALL sp_trabajos('C03')
 
 ## Ejemplo: parámetro de entrada
 
-![center](img/param_in.png)
+![center](img/t5/param_in.png)
 
 ---
 
@@ -491,7 +491,7 @@ SELECT @cuenta;
 
 ## Ejemplo: parámetro de salida
 
-![center](img/param_out.png)
+![center](img/t5/param_out.png)
 
 ---
 
@@ -517,7 +517,7 @@ SELECT @num;
 
 ## Ejemplo: parámetro de entrada/salida
 
-![center](img/param_inout.png)
+![center](img/t5/param_inout.png)
 
 ---
 
@@ -779,7 +779,7 @@ DELIMITER ;
 
 ## Ejemplo: función
 
-![center](img/funcion.png)
+![center](img/t5/funcion.png)
 
 ---
 
@@ -874,13 +874,13 @@ Se plantea programar una consulta que obtenga los salarios de empleados y superv
 
 ## Modelo basado en eventos
 
-![center](img/eventos.png)
+![center](img/t5/eventos.png)
 
 ---
 
 ## Composición de un Trigger
 
-![center](img/trigger.png)
+![center](img/t5/trigger.png)
 
 ---
 
@@ -1094,4 +1094,4 @@ CREATE [UNIQUE] INDEX index_name
 
 Los índices basan su funcionamiento en los árboles B:
 
-![center](img/arbol.png)
+![center](img/t5/arbol.png)

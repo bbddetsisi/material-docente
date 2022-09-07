@@ -45,7 +45,7 @@ table {
 
 # El lenguaje SQL
 
-![bg left:40% 60%](img/sql.svg)
+![bg left:40% 60%](img/t4/sql.svg)
 
 ---
 
@@ -67,7 +67,7 @@ table {
 
 ## Por qué necesitamos SQL
 
-![centered](img/por_que_SQL.png)
+![centered](img/t4/por_que_SQL.png)
 
 ---
 
@@ -176,7 +176,7 @@ Explicaremos las sentencias SQL mediante notación BNF:
 
 En *MySQL* un schema en una agrupación de lógica de tablas que constituyen un modelo datos:
 
-![center h:400](img/schema.png)
+![center h:400](img/t4/schema.png)
 
 ---
 
@@ -521,7 +521,7 @@ Supongamos que tenemos las siguientes tablas:
 
 ## Restricción referencial en SQL
 
-![center](img/rr.png)
+![center](img/t4/rr.png)
 
 ---
 <style scoped>
@@ -581,25 +581,25 @@ CREATE TABLE Corp.empleados (
 
 ## Estructura lineal
 
-![center](img/lineal.png)
+![center](img/t4/lineal.png)
 
 ---
 
 ## Estructura lineal
 
-![center](img/lineal_valida.png)
+![center](img/t4/lineal_valida.png)
 
 ---
 
 ## Estructura cíclica
 
-![center h:400](img/ciclica.png)
+![center h:400](img/t4/ciclica.png)
 
 ---
 
 ## Estructura cíclica
 
-![center h:400](img/ciclica_valida.png)
+![center h:400](img/t4/ciclica_valida.png)
 
 Eliminamos de T1 la fila con clave T1A. ¿Qué sucede?
 
@@ -607,7 +607,7 @@ Eliminamos de T1 la fila con clave T1A. ¿Qué sucede?
 
 ## Estructura cíclica
 
-![center h:400](img/ciclica_valida2.png)
+![center h:400](img/t4/ciclica_valida2.png)
 
 Eliminamos de T1 la fila con clave T1A. ¿Qué sucede?
 
@@ -615,7 +615,7 @@ Eliminamos de T1 la fila con clave T1A. ¿Qué sucede?
 
 ## Estructura cíclica autoreferencial
 
-![center](img/autoref.png)
+![center](img/t4/autoref.png)
 
 ---
 
@@ -668,7 +668,7 @@ SQL define los siguientes operadores para expresar condiciones de fila (`WHERE`)
 
 ## Base de datos de ejemplo
 
-![center](img/ejemplo.png)
+![center](img/t4/ejemplo.png)
 
 ---
 
@@ -698,7 +698,7 @@ SELECT DISTINCT codM
 
 Elimina los valores duplicados del resultado. Por ejemplo, para la consulta *Obtener las localidades de los conductores*
 
-![center](img/distinct.png)
+![center](img/t4/distinct.png)
 
 ---
 <style scoped>
@@ -1142,7 +1142,7 @@ SELECT codC, SUM(tiempo)
 
 ## Cláusula `GROUP BY`
 
-![center](img/group_by.png)
+![center](img/t4/group_by.png)
 
 ---
 <style scoped>
@@ -1207,7 +1207,7 @@ SELECT codC, codM, SUM(tiempo)
 
 ## Cláusula `HAVING`
 
-![center](img/having.png)
+![center](img/t4/having.png)
 
 ---
 

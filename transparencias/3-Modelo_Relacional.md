@@ -47,7 +47,7 @@ table {
 
 ### Modelado lógico de bases de datos
 
-![bg left:40% 60%](img/relational.svg)
+![bg left:40% 60%](img/t3/relational.svg)
 
 ---
 
@@ -113,7 +113,7 @@ Los diferentes conjuntos $D_1,D_2,\ldots,D_n$ sobre los que se define la relaci�
 
 Representación gráfica de una relación:
 
-![center w:650](img/relacion.png)
+![center w:650](img/t3/relacion.png)
 
 Representación textual:
 
@@ -290,7 +290,7 @@ Por la restricción de integridad referencial **es obligado** que en `PROVEEDORE
 2. Los atributos de la entidad se transforman en atributos de la relación.
 3. Los atributos de la clave de la entidad son los atributos de la clave de la relación.
 
-![center](img/rel_entidad.png)
+![center](img/t3/rel_entidad.png)
 
 ---
 
@@ -298,7 +298,7 @@ Por la restricción de integridad referencial **es obligado** que en `PROVEEDORE
 
 Siempre se transforman en una tabla, incluyendo tanto los atributos de la relación N:M como las claves de las entidades relacionadas.
 
-![center w:600](img/rel_nm.png)
+![center w:600](img/t3/rel_nm.png)
 
 ---
 
@@ -306,7 +306,7 @@ Siempre se transforman en una tabla, incluyendo tanto los atributos de la relaci
 
 Añadir la clave de la entidad de la parte "uno" de la relación a la relación de la entidad de la parte "muchos", además de los atributos que tenga la relación 1:N
 
-![center w:600](img/rel_1n.png)
+![center w:600](img/t3/rel_1n.png)
 
 ---
 
@@ -315,7 +315,7 @@ Añadir la clave de la entidad de la parte "uno" de la relación a la relación 
 - Si la cardinalidad mínima es **igual** en ambos extremos de la relación, se añade la clave de una de las entidades a la entidad restante, incluyendo los atributos de la relación si los hubiere.
 - Si la cardinalidad mínima es **diferente** en los extremos de la relación, se añade la clave de la entidad *"uno"* a la tabla de la entidad *"cero"*.
 
-![center w:550](img/rel_11.png)
+![center w:550](img/t3/rel_11.png)
 
 ---
 
@@ -323,7 +323,7 @@ Añadir la clave de la entidad de la parte "uno" de la relación a la relación 
 
 Estudiar las relaciones de dos en dos y aplicar las reglas de relaciones binarias. **OJO**, se puede mejorar el diseño estudiando redundancias.
 
-![center](img/rel_ternaria.png)
+![center](img/t3/rel_ternaria.png)
 
 ---
 
@@ -331,13 +331,13 @@ Estudiar las relaciones de dos en dos y aplicar las reglas de relaciones binaria
 
 Dado el siguiente modelo ER, transformarlo al modelo relacional:
 
-![center w:600](img/ejemplo_er.png)
+![center w:600](img/t3/ejemplo_er.png)
 
 ---
 
 ## Paso a tablas: Ejemplo completo (solución)
 
-![center](img/ejemplo_solucion.png)
+![center](img/t3/ejemplo_solucion.png)
 
 ---
 
@@ -381,7 +381,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
   - La unión de dos relaciones $R$ y $S$, es otra relación que contiene las tuplas que están en $R$, o en $S$, o en ambas, eliminándose las tuplas duplicadas.
   - $R$ y $S$ **deben ser unión-compatible**, es decir, definidas sobre el mismo conjunto de atributos.
 
-![center](img/union.png)
+![center](img/t3/union.png)
 
 ---
 
@@ -391,7 +391,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
   - La diferencia de dos relaciones $R$ y $S$, es otra relación que contiene las tuplas que están en la relación $R$, pero no están en $S$.
   - $R$ y $S$ **deben ser unión-compatible**.
 
-![center](img/diferencia.png)
+![center](img/t3/diferencia.png)
 
 ---
 
@@ -400,7 +400,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 - $R \times S$
   - Define una relación que es la concatenación de cada una de las filas de la relación $R$ con cada una de las filas de la relación $S$.
 
-![center](img/producto.png)
+![center](img/t3/producto.png)
 
 ---
 
@@ -410,7 +410,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
   - Es un operador unario.
   - Define una relación con los mismos atributos que $R$ y que contiene solo aquellas filas de $R$ que satisfacen la condición especificada (predicado).
 
-![center](img/seleccion.png)
+![center](img/t3/seleccion.png)
 
 ---
 
@@ -420,7 +420,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
   - Es un operador unario.
   - Define una relación que contiene un subconjunto vertical de $R$ con los valores de los atributos especificados, eliminando filas duplicadas en el resultado.
 
-![center](img/proyeccion.png)
+![center](img/t3/proyeccion.png)
 
 ---
 
@@ -432,7 +432,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
   - Equivalencia con operadores básicos:
   $R\cap S=R-(R-S)$
 
-![center](img/interseccion.png)
+![center](img/t3/interseccion.png)
 
 ---
 <style scoped>
@@ -456,7 +456,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 
 ## Ejemplo de división
 
-![center](img/division.png)
+![center](img/t3/division.png)
 
 ---
 <style scoped>
@@ -490,7 +490,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 
 ## Ejemplos de Join
 
-![center](img/join.png)
+![center](img/t3/join.png)
 
 ---
 
@@ -507,7 +507,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 
 ## Base de datos para los ejemplos
 
-![center](img/ejemplo.png)
+![center](img/t3/ejemplo.png)
 
 ---
 

@@ -1,4 +1,4 @@
-[![build-pdfs](https://github.com/bbddetsisi/material-docente/actions/workflows/build-pdfs.yml/badge.svg?branch=master)](https://github.com/bbddetsisi/material-docente/actions/workflows/build-pdfs.yml)
+[![build-pdfs](https://github.com/bbddetsisi/material-docente/actions/workflows/build-pdfs.yml/badge.svg?branch=main)](https://github.com/bbddetsisi/material-docente/actions/workflows/build-pdfs.yml)
 
 # Bases de datos
 
@@ -7,4 +7,3 @@ Repositorio con el material para la asignatura _**Bases de Datos**_ que se impar
 El repositorio se organiza de la siguiente forma:
 
 - El directorio `transparencias` contiene las transparencias del temario de la asignatura en formato Markdown.
-

@@ -27,7 +27,7 @@ li {
   text-align: justify;
 }
 </style>
-![bg left:40% 60%](img/diagrama-de-flujo.svg)
+![bg left:40% 60%](img/t2/logo-entidad.png)
 
 # TEMA 2
 
@@ -107,7 +107,7 @@ s {
 
 ~~Factura~~, ~~cliente~~, ~~combustible~~ son objetos o cosas del mundo real que tienen existencia por sí mismas.
 
-![bg right:50% 95%](img/entidad.png)
+![bg right:50% 95%](img/t2/entidad.png)
 
 ---
 
@@ -147,7 +147,7 @@ s {
 
 El ~~nombre~~, ~~CIF~~ y ~~correo electrónico~~ de los clientes definen las propiedades de la entidad `Cliente`
 
-![bg right:50% 80%](img/atributos.png)
+![bg right:50% 80%](img/t2/atributos.png)
 
 ---
 
@@ -162,7 +162,7 @@ Es **obligatorio** definir el dominio de todos los atributos
 
 ---
 
-![center](img/gasolinera_incompleta.png)
+![center](img/t2/gasolinera_incompleta.png)
 
 ¿Entonces la base de datos para la gasolinera queda definida por estas entidades y sus atributos?
 
@@ -172,7 +172,7 @@ Es **obligatorio** definir el dominio de todos los atributos
 
 Las _facturas_ **se emiten** para _clientes_.
 
-![](img/factura.png)
+![](img/t2/factura.png)
 
 ---
 
@@ -180,7 +180,7 @@ Las _facturas_ **se emiten** para _clientes_.
 
 Los _clientes_ **repostan** _combustible_.
 
-![](img/relaciones.png)
+![](img/t2/relaciones.png)
 
 ---
 
@@ -189,7 +189,7 @@ Los _clientes_ **repostan** _combustible_.
 - Las relaciones representan asociaciones entre ocurrencias de entidades
 - Pueden tener atributos propios:
 
-![center](img/relacion-atributo.png)
+![center](img/t2/relacion-atributo.png)
 
 ---
 
@@ -197,7 +197,7 @@ Los _clientes_ **repostan** _combustible_.
 
 - Es importante definir el rol que las entidades juegan en las relaciones:
 
-![center](img/roles.png)
+![center](img/t2/roles.png)
 
 ---
 
@@ -205,7 +205,7 @@ Los _clientes_ **repostan** _combustible_.
 
 - El grado de una relación nos indica el número de entidades implicadas en ella.
 
-![center](img/grado.png)
+![center](img/t2/grado.png)
 
 ---
 
@@ -214,7 +214,7 @@ Los _clientes_ **repostan** _combustible_.
 - Una relación reflexiva relaciona **ocurrencias de la misma entidad**.
 - En este caso, **es obligatorio** especificar el rol de la entidad en ambos sentidos de la relación.
 
-![center](img/reflexiva.png)
+![center](img/t2/reflexiva.png)
 
 ---
 
@@ -230,7 +230,7 @@ Los _clientes_ **repostan** _combustible_.
 
 ## Cardinalidad mínima y máxima
 
-![center](img/cardinalidad-reposta.png)
+![center](img/t2/cardinalidad-reposta.png)
 
 Veamos, paso a paso, cómo se calculan las cardinalidades de la relación `Reposta`.
 
@@ -242,7 +242,7 @@ Veamos, paso a paso, cómo se calculan las cardinalidades de la relación `Repos
 
 ## Cardinalidad mínima y máxima
 
-![center w:600](img/cardinalidad-reposta-cliente.png)
+![center w:600](img/t2/cardinalidad-reposta-cliente.png)
 
 - Para una ocurrencia de combustible:
   - ¿Cuántos clientes como mínimo lo repostarán? Ninguno, puede que una ocurrencia de combustible nunca sea repostada por algún cliente, luego cardinalidad mínima 0.
@@ -258,7 +258,7 @@ Recuerda las opciones posibles: cardinalidad mínima (0, 1), cardinalidad máxim
 
 ## Cardinalidad mínima y máxima
 
-![center w:600](img/cardinalidad-reposta-combustible.png)
+![center w:600](img/t2/cardinalidad-reposta-combustible.png)
 
 - Para una ocurrencia de cliente:
   - ¿Cuántos combustibles repostará como mínimo? Ninguno, puede que el cliente se registre y no vuelva nunca, luego cardinalidad mínima 0.
@@ -270,7 +270,7 @@ Recuerda las opciones posibles: cardinalidad mínima (0, 1), cardinalidad máxim
 
 ## Cardinalidad mínima y máxima
 
-![center](img/emitida.png)
+![center](img/t2/emitida.png)
 
 Veamos, paso a paso, cómo se calculan las cardinalidades de la relación `Emitida para`.
 
@@ -282,7 +282,7 @@ Veamos, paso a paso, cómo se calculan las cardinalidades de la relación `Emiti
 
 ## Cardinalidad mínima y máxima
 
-![center w:800](img/emitida-cliente.png)
+![center w:800](img/t2/emitida-cliente.png)
 
 - Para una ocurrencia de factura:
   - ¿Para cuántos clientes se emitirá como mínimo? Las facturas tienen que emitirse obligatoriamente para un cliente, luego cardinalidad mínima 1.
@@ -299,7 +299,7 @@ Recuerda las opciones posibles: cardinalidad mínima (0, 1), cardinalidad máxim
 
 ## Cardinalidad mínima y máxima
 
-![center w:800](img/emitida-factura.png)
+![center w:800](img/t2/emitida-factura.png)
 
 - Para una ocurrencia de cliente:
   - ¿Cuántas facturas se le emitirán como mínimo? En un momento dado, puede ocurrir que no se haya facturado todavía al cliente, luego cardinalidad mínima 0.
@@ -314,7 +314,7 @@ Recuerda las opciones posibles: cardinalidad mínima (0, 1), cardinalidad máxim
 - En el caso de las relaciones n-arias, la cardinalidad hay que definirla entre pares de las entidades que están relacionadas.
 - Por ejemplo, en una ternaria:
 
-![center](img/ternaria.png)
+![center](img/t2/ternaria.png)
 
 ---
 
@@ -324,7 +324,7 @@ Recuerda las opciones posibles: cardinalidad mínima (0, 1), cardinalidad máxim
 - Si una entidad no tiene clave, se le considera **entidad débil** y que tiene dependencia de **Identificación**.
 - Se subraya el nombre de los atributos que formen parte de la clave.
 
-![center](img/claves-de-entidad.png)
+![center](img/t2/claves-de-entidad.png)
 
 ---
 
@@ -336,7 +336,7 @@ Recuerda las opciones posibles: cardinalidad mínima (0, 1), cardinalidad máxim
   - Entidad débil con relación de existencia
 - La representación en el modelo ER tanto de la entidad débil como de la relación con la entidad fuerte es la siguiente:
 
-![center](img/entidad-debil.png)
+![center](img/t2/entidad-debil.png)
 
 ---
 <style scoped>
@@ -348,7 +348,7 @@ p {text-align: justify; font-size: 0.8rem}
 - La entidad débil no tiene clave
 - Necesita de la clave de otra entidad con la que se relaciona:
 
-![center](img/identificacion.png)
+![center](img/t2/identificacion.png)
 
 Dos surtidores de la base de datos pueden tener el mismo número si están en gasolineras distintas ➡️ El surtidor ‘adquiere’ la clave de `Gasolinera`. En algunas notaciones, el atributo discriminador se indica con subrayado discontinuo, como es el caso del número de surtidor.
 
@@ -362,7 +362,7 @@ p {text-align: justify}
 
 - La existencia de una ocurrencia está condicionada a la existencia de otra ocurrencia.
 
-![center](img/existencia.png)
+![center](img/t2/existencia.png)
 
 Aunque `Factura` tenga clave, si se da de baja un cliente hay que dar de baja todas sus facturas.
 
@@ -370,7 +370,7 @@ Aunque `Factura` tenga clave, si se da de baja un cliente hay que dar de baja to
 
 ## El modelo Entidad-Relación (ER)
 
-![bg right:40% 90%](img/chen.png)
+![bg right:40% 90%](img/t2/chen.png)
 
 - Formulado por P.P-S. Chen en 1976
 - Modelo de datos conceptual que representa un esquema de BBDD
@@ -381,7 +381,7 @@ Aunque `Factura` tenga clave, si se da de baja un cliente hay que dar de baja to
 
 ## El modelo Entidad-Relación (ER)
 
-![center](img/modelo-er.png)
+![center](img/t2/modelo-er.png)
 
 ---
 
@@ -390,7 +390,7 @@ Aunque `Factura` tenga clave, si se da de baja un cliente hay que dar de baja to
 - Se representan las cardinalidades mínimas y máximas en la línea de la relación.
 - Desaparece el rombo, se relacionan las entidades directamente, con el nombre de la relación.
 
-![center](img/martin1.png)
+![center](img/t2/martin1.png)
 
 ---
 
@@ -398,11 +398,11 @@ Aunque `Factura` tenga clave, si se da de baja un cliente hay que dar de baja to
 
 Reglas de transformación de Chen a Martin (relaciones):
 
-![center w:800](img/er-1n.png)
+![center w:800](img/t2/er-1n.png)
 
 se transforma en
 
-![center w:700](img/martin-1n.png)
+![center w:700](img/t2/martin-1n.png)
 
 ---
 
@@ -410,11 +410,11 @@ se transforma en
 
 Reglas de transformación de Chen a Martin (relación N:M):
 
-![center w:800](img/er-nm.png)
+![center w:800](img/t2/er-nm.png)
 
 se transforma en
 
-![center w:800](img/martin-nm.png)
+![center w:800](img/t2/martin-nm.png)
 
 ---
 
@@ -422,7 +422,7 @@ se transforma en
 
 Reglas de transformación de Chen a Martin (entidad débil):
 
-![center w:800](img/martin-debil.png)
+![center w:800](img/t2/martin-debil.png)
 
 `Empleado` es entidad débil, por eso la línea de la relación ahora es continua.
 
@@ -462,7 +462,7 @@ Un conocido foro de coches nos ha encargado el diseño conceptual de su BD:
 
 Una posible solución:
 
-![center](img/foro.png)
+![center](img/t2/foro.png)
 
 ---
 
@@ -477,7 +477,7 @@ Una posible solución:
 
 Una posible solución:
 
-![center](img/peliculas.png)
+![center](img/t2/peliculas.png)
 
 ---
 
@@ -535,7 +535,7 @@ Por último, también hay que registrar los ~~profesores~~ y las asignaturas que
 - "Calificación” cada ocurrencia de calificación necesitará de un estudiante y de una asignatura. No tendrá una clave primaria propia,  por lo que es una entidad débil 
 
 
-![center](img/ejercicio-paso-a-paso-entidades.png)
+![center](img/t2/ejercicio-paso-a-paso-entidades.png)
 
 ---
 <style scoped>
@@ -564,7 +564,7 @@ Por último, también hay que registrar los ~~profesores~~ y las asignaturas que
 
 - La "Fecha" de matriculación estará en la relación, puesto que no tenemos entidad Matrícula
 
-![center](img/ejercicio-paso-a-paso-atributos.png)
+![center](img/t2/ejercicio-paso-a-paso-atributos.png)
 
 ---
 <style scoped>
@@ -594,7 +594,7 @@ Por último, también hay que ~~registrar los profesores y las asignaturas que i
 - Las asignaturas que incluyen (los estudios)
 
 
-![center](img/ejercicio-paso-a-paso-relacion-asignatura-estudios.png)
+![center](img/t2/ejercicio-paso-a-paso-relacion-asignatura-estudios.png)
 
 ---
 ## Relaciones
@@ -606,7 +606,7 @@ Por último, también hay que ~~registrar los profesores y las asignaturas que i
 - Indicar en qué aula concreta se imparte cada asignatura
 
 
-![center](img/ejercicio-paso-a-paso-relacion-asignatura-aula.png)
+![center](img/t2/ejercicio-paso-a-paso-relacion-asignatura-aula.png)
 
 ---
 ## Relaciones
@@ -617,7 +617,7 @@ Por último, también hay que ~~registrar los profesores y las asignaturas que i
 
 - Los alumnos se matriculan en una asignatura concreta y en un cuatrimestre concreto
 
-![center](img/ejercicio-paso-a-paso-relacion-matricular.png)
+![center](img/t2/ejercicio-paso-a-paso-relacion-matricular.png)
 
 
 ---
@@ -630,7 +630,7 @@ Por último, también hay que ~~registrar los profesores y las asignaturas que i
 - Una asignatura puede impartirse en varios cuatrimestres
 
 
-![center](img/ejercicio-paso-a-paso-relacion-seimparte.png)
+![center](img/t2/ejercicio-paso-a-paso-relacion-seimparte.png)
 
 
 ---
@@ -642,7 +642,7 @@ Por último, también hay que ~~registrar los profesores y las asignaturas que i
 
 - Registro de las calificaciones obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura
 
-![center](img/ejercicio-paso-a-paso-relacion-calficaciones.png)
+![center](img/t2/ejercicio-paso-a-paso-relacion-calficaciones.png)
 
 ---
 ## Relaciones
@@ -653,7 +653,7 @@ Por último, también hay que ~~registrar los profesores y las asignaturas que i
 
 - Registrar los profesores y las asignaturas que imparten
 
-![center](img/ejercicio-paso-a-paso-relacion-imparte.png)
+![center](img/t2/ejercicio-paso-a-paso-relacion-imparte.png)
 
 ---
 ## Relaciones
@@ -664,7 +664,7 @@ Por último, también hay que ~~registrar los profesores y las asignaturas que i
 
 - Para cada profesor hay que indicar aquellos que pueden cubrirle
 
-![center](img/ejercicio-paso-a-paso-relacion-cubre.png)
+![center](img/t2/ejercicio-paso-a-paso-relacion-cubre.png)
 
 
 ---
@@ -672,5 +672,5 @@ Por último, también hay que ~~registrar los profesores y las asignaturas que i
 ## Relaciones Completo
 
 
-![center](img/ejercicio-paso-a-paso-relacion-todas.png)
+![center](img/t2/ejercicio-paso-a-paso-relacion-todas.png)
 

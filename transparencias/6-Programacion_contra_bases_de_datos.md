@@ -45,7 +45,7 @@ table {
 
 # Programación contra bases de datos
 
-![bg left:40% 60%](img/code.svg)
+![bg left:40% 60%](img/t6/code.svg)
 
 ---
 
@@ -90,7 +90,7 @@ Más información en [la documentación de MySQL](https://dev.mysql.com/doc/inte
 
 Esquema básico de la arquitectura:
 
-![center](img/cliente-servidor.png)
+![center](img/t6/cliente-servidor.png)
 
 ---
 
@@ -98,7 +98,7 @@ Esquema básico de la arquitectura:
 
 En las sesiones de prácticas de la asignatura, la arquitectura era la siguiente:
 
-![center](img/practicas.png)
+![center](img/t6/practicas.png)
 
 ---
 
@@ -106,7 +106,7 @@ En las sesiones de prácticas de la asignatura, la arquitectura era la siguiente
 
 Lo habitual es que un mismo servidor reciba conexiones de diferentes clientes:
 
-![center](img/multi.png)
+![center](img/t6/multi.png)
 
 ---
 
@@ -122,7 +122,7 @@ Lo habitual es que un mismo servidor reciba conexiones de diferentes clientes:
 
 La base de datos es común para todos los programas. Cada programa se comunica con la base de datos a través de su conector:
 
-![center w:600](img/clientes.png)
+![center w:600](img/t6/clientes.png)
 
 ---
 
@@ -141,7 +141,7 @@ El objetivo de ODBC es hacer posible el acceder a cualquier dato desde cualquier
 - Esta capa actúa de traductor entre ODBC y el SGBD.
 - Permite utilizar diferentes bases de datos sin cambiar la aplicación.
 
-![center](img/odbc.png)
+![center](img/t6/odbc.png)
 
 ---
 
@@ -174,7 +174,7 @@ JDBC ha evolucionado con 4 versiones:
 
 En la actualidad, se utiliza JDBC de Tipo 4 por ser el que mejor rendimiento reporta.
 
-![center h:400](img/jdbc4.png)
+![center h:400](img/t6/jdbc4.png)
 
 ---
 
@@ -541,7 +541,7 @@ Distinguimos **dos** tipos de aplicaciones:
 - Se encarga de traducir métodos de Java en consultas SQL
 - No es necesario conocer SQL para su utilización
 
-![bg right:40% 50%](img/hibernate.png)
+![bg right:40% 50%](img/t6/hibernate.png)
 
 ---
 
@@ -579,13 +579,13 @@ Vamos a estudiar el funcionamiento de *Hibernate* mediante el siguiente ejemplo:
 
 ## Hibernate: ejemplo de uso (modelo ER)
 
-![center w:700](img/hibernate-er.png)
+![center w:700](img/t6/hibernate-er.png)
 
 ---
 
 ## Hibernate: ejemplo de uso (modelo relacional)
 
-![center](img/hibernate-rel.png)
+![center](img/t6/hibernate-rel.png)
 
 ---
 <style scoped>
@@ -596,7 +596,7 @@ Vamos a estudiar el funcionamiento de *Hibernate* mediante el siguiente ejemplo:
 
 ## Hibernate: ejemplo de uso (clases Java)
 
-![center h:200](img/hibernate-rel.png)
+![center h:200](img/t6/hibernate-rel.png)
 
 Las relaciones entre las entidades se logran a través de los atributos de las clases:
 
@@ -621,7 +621,7 @@ public class Usuario {
 
 ## Hibernate: ejemplo de uso (clases Java)
 
-![center h:200](img/hibernate-rel.png)
+![center h:200](img/t6/hibernate-rel.png)
 
 En el caso de las series, incluiremos un conjunto de capítulos que pertenecen a ella.
 
@@ -644,7 +644,7 @@ public class Serie {
 
 ## Hibernate: ejemplo de uso (clases Java)
 
-![center h:200](img/hibernate-rel.png)
+![center h:200](img/t6/hibernate-rel.png)
 
 En el caso de los capítulos, incluiremos una referencia a la serie a la que pertenecen.
 
@@ -806,7 +806,7 @@ Las relaciones 1:N requieren dos anotaciones:
 
 ## Hibernate: relaciones 1:N
 
-![center](img/relacion-1n.png)
+![center](img/t6/relacion-1n.png)
 
 ---
 <style scoped>
@@ -849,7 +849,7 @@ session.getTransaction().commit();
 
 ## Hibernate: relaciones N:M
 
-![center](img/relacion-nm.png)
+![center](img/t6/relacion-nm.png)
 
 ---
 <style scoped>
@@ -864,7 +864,7 @@ session.getTransaction().commit();
 - Permite mantener la consistencia entre las clases y los datos almacenados en el SGBD.
 - Si no se define, las nuevas filas de la tabla de relación sólo se generan al guardar los cambios en la clase poseedora.
 
-![center](img/cascade-nm.png)
+![center](img/t6/cascade-nm.png)
 
 ---
 
@@ -1134,22 +1134,22 @@ session.getTransaction().commit();
 
 ## Hibernate: estado de la tabla `Serie`
 
-![center](img/serie.png)
+![center](img/t6/serie.png)
 
 ---
 
 ## Hibernate: estado de la tabla `Capitulo`
 
-![center](img/capitulo.png)
+![center](img/t6/capitulo.png)
 
 ---
 
 ## Hibernate: estado de la tabla `Usuario`
 
-![center](img/usuario.png)
+![center](img/t6/usuario.png)
 
 ---
 
 ## Hibernate: estado de la tabla `Visualizaciones`
 
-![center](img/visualizaciones.png)
+![center](img/t6/visualizaciones.png)

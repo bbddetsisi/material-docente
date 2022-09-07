@@ -27,7 +27,7 @@ li {
   text-align: justify;
 }
 </style>
-![bg left:40% 60%](img/diagrama-de-flujo.svg)
+![bg left:40% 60%](img/t1/nueva-base-de-datos.png)
 
 # TEMA 1
 
@@ -95,7 +95,7 @@ En los sistemas basados en ficheros cada programa utiliza sus propios datos. Est
 
 Además, existe dependencia física entre los programas y los datos:
 
-![](img/almacenamiento-en-ficheros.png)
+![](img/t1/almacenamiento-en-ficheros.png)
 
 
 ---
@@ -104,7 +104,7 @@ Además, existe dependencia física entre los programas y los datos:
 
 Cuando se utilizan bases de datos los programas "*comparten*" los datos:
 
-![](img/almacenamiento-en-bases-de-datos.png)
+![](img/t1/almacenamiento-en-bases-de-datos.png)
 
 ---
 
@@ -169,7 +169,7 @@ Modelos de datos **físicos**
 - Estructuras de datos de bajo nivel usadas para almacenar información
 - Dependientes del SGDB
 
-![bg left:8% 80%](img/abstraccion.png)
+![bg left:8% 80%](img/t1/abstraccion.png)
 
 ---
 
@@ -222,7 +222,7 @@ Facilitan la rápida recuperación y manipulación de los datos almacenados.
 
 ---
 
-![bg 95%](img/tipos-bases-de-datos.png)
+![bg 95%](img/t1/tipos-bases-de-datos.png)
 
 ---
 
@@ -242,9 +242,9 @@ Utilizan el lenguaje SQL (*Structured Query Languaje*) para consultar y manipula
 Los datos son almacenados en tablas:
 - Es posible "unir" diferentes tablas para recuperar información
 
-![bg vertical right:25% 75%](img/mysql.png)
-![bg 75%](img/oracle.png)
-![bg 75%](img/sql-server.png)
+![bg vertical right:25% 75%](img/t1/mysql.png)
+![bg 75%](img/t1/oracle.png)
+![bg 75%](img/t1/sql-server.png)
 
 ---
 
@@ -256,7 +256,7 @@ De "*reciente*" aparición.
 
 También llamadas `NoSQL`.
 
-![bg vertical right:50% 140%](img/no-sql.png)
+![bg vertical right:50% 140%](img/t1/no-sql.png)
 
 ---
 
@@ -281,7 +281,7 @@ Aconsejan duplicar información:
 
 Consultas muy limitadas.
 
-![bg vertical right:25% 90%](img/mongodb.png)
+![bg vertical right:25% 90%](img/t1/mongodb.png)
 
 ---
 
@@ -306,7 +306,7 @@ Escalabilidad horizontal
 
 Suelen almacenarse en memoria
 
-![bg vertical right:25% 85%](img/redis.png)
+![bg vertical right:25% 85%](img/t1/redis.png)
 
 ---
 
@@ -325,8 +325,8 @@ Orientadas a columnas:
 
 Pensadas para entornos con pocas escrituras.
 
-![bg vertical right:25% 75%](img/cassandra.png)
-![bg 75%](img/hbase.png)
+![bg vertical right:25% 75%](img/t1/cassandra.png)
+![bg 75%](img/t1/hbase.png)
 
 ---
 
@@ -351,7 +351,7 @@ Utilizan un lenguaje de consultas complejo.
 
 Computacionalmente costosas.
 
-![bg vertical right:25% 90%](img/neo4j.png)
+![bg vertical right:25% 90%](img/t1/neo4j.png)
 
 ---
 
@@ -389,7 +389,7 @@ Existe un protocolo de comunicación entre el cliente y el servidor.
 - ¿Cómo se responde?
 
 
-![bg right:40% 90%](img/cliente-servidor.png)
+![bg right:40% 90%](img/t1/cliente-servidor.png)
 
 ---
 

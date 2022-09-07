@@ -27,7 +27,7 @@ li {
   text-align: justify;
 }
 </style>
-![bg left:40% 60%](img/mysql-logo.png)
+![bg left:40% 60%](img/sql/mysql-logo.png)
 
 # TRABAJANDO CON MySQL
 
@@ -73,7 +73,7 @@ Busca la aplicación `Docker Desktop` en el menú de inicio y ejecutala.
 
 Cuando la aplicación arranque, deberíamos ver su interfaz:
 
-![center drop-shadow](img/docker-desktop.png)
+![center drop-shadow](img/sql/docker-desktop.png)
 
 ---
 
@@ -108,7 +108,7 @@ docker run --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 3306:3306 -d mysql:
 
 Cuando ejecutemos el comando deberíamos ver lo siguiente:
 
-![center drop-shadow](img/docker-run.png)
+![center drop-shadow](img/sql/docker-run.png)
 
 ---
 
@@ -116,7 +116,7 @@ Cuando ejecutemos el comando deberíamos ver lo siguiente:
 
 Y `Docker Desktop` debería estar en el siguiente estado:
 
-![center drop-shadow](img/docker-desktop-mysql.png)
+![center drop-shadow](img/sql/docker-desktop-mysql.png)
 
 ---
 
@@ -128,7 +128,7 @@ p { font-size: 0.8rem }
 
 Cuando se lanza el servidor de `MySQL` puede aparecer una advertencia del *firewall* para permitir conexión desde el exterior. Al no tener permisos de administrador, diremos que **Cancelar** y solo podremos trabajar en local.
 
-![center drop-shadow](img/firewall.png)
+![center drop-shadow](img/sql/firewall.png)
 
 ---
 
@@ -143,7 +143,7 @@ Con el servidor de `MySQL` ejecutándose, vamos a abrir el cliente de `MySQL Wor
 
 ## Ejecutando MySQL Workbench
 
-![w:700 center drop-shadow](img/mysql-workbench.png)
+![w:700 center drop-shadow](img/sql/mysql-workbench.png)
 
 ---
 
@@ -159,7 +159,7 @@ Vamos a crear una nueva conexión para que `MySQL Workbench` se conecte a nuestr
 1. Pulsa el icono **+** que hay junto a *MySQL Connections*.
 2. Rellena los campos de acuerdo con la siguiente imagen y pulsa **Ok**.
 
-![w:500 center drop-shadow](img/nueva-conexion.png)
+![w:500 center drop-shadow](img/sql/nueva-conexion.png)
 
 ---
 
@@ -177,7 +177,7 @@ Para finalizar, vamos a cargar la base de datos de Formula 1 que usaremos en los
 
 Ahora pulsa el icono del rayo.
 
-![w:600 center drop-shadow](img/carga-formula1.png)
+![w:600 center drop-shadow](img/sql/carga-formula1.png)
 
 ---
 
@@ -185,4 +185,4 @@ Ahora pulsa el icono del rayo.
 
 La base de datos se habrá cargado y podremos trabajar con ella.
 
-![w:600 center drop-shadow](img/funcionando.png)
+![w:600 center drop-shadow](img/sql/funcionando.png)
