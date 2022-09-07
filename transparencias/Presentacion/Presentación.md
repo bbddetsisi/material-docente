@@ -52,7 +52,7 @@ p { font-size: 0.9rem; }
 - José Luis Sánchez. joseluis.sanchez@upm.es. *Despacho 1116*.
 - Edgar Talavera. e.talavera@upm.es. *Despacho 1222*.
 - Santiago Alonso. santiago.alonso@upm.es. *Despacho 1125*.
-- Raúl Lara. raul.lara@upm.es. *Despacho *1230.
+- Raúl Lara. raul.lara@upm.es. *Despacho 1230*.
 - Félix Fuentes (**Coordinador**). felix.fuentes@upm.es. *Despacho 4305*.
 
 ---
@@ -148,7 +148,7 @@ Prueba escrita el **viernes 13 de enero de 2023 a las 15:00** incluyendo pregunt
 
 Es obligatorio alcanzar una nota mínima de 4 puntos sobre 10.
 
-Los alumnos que deseen acogerse a la modalidad de evaluación solo prueba final deberán **comunicarlo al coordinador** de la asignatura mediante correo electrónico antes de las 23:55 del viernes de la 4ª semana de docencia.
+Para aprobar sin haber seguido la evaluación progresiva será necesario obtener una nota total >= 5 (la prueba global cuenta un 60% del total de la nota, por lo que sacar un 5 en esta prueba no equivale a aprobar la asignatura).
 
 ---
 
