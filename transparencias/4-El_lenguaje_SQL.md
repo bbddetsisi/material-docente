@@ -240,7 +240,7 @@ Más tipos de datos: [documentación](https://dev.mysql.com/doc/refman/8.0/en/da
   s {text-decoration: underline; background-color: transparent}
 </style>
 
-# Creación de tablas: Ejemplo
+# Creación de tablas: ejemplo
 
 | ~~ID~~ | NOMBRE | APELLIDOS    | DNI        | FECHA DE NACIMIENTO |
 |--------|--------|--------------|------------|---------------------|
@@ -279,7 +279,7 @@ CREATE TABLE [schema.]nombre_tabla (
   s {text-decoration: underline; background-color: transparent}
 </style>
 
-## Claves primarias: Ejemplo
+## Claves primarias: ejemplo
 
 | ~~ID~~ | NOMBRE | APELLIDOS    | DNI        | FECHA DE NACIMIENTO |
 |--------|--------|--------------|------------|---------------------|
@@ -357,14 +357,14 @@ Inserción de una fila de datos:
 
 ```SQL
 INSERT INTO [schema.]tabla (atributo_1, …, atributo_n)
-  VALUES (valor 1, …, valor_n);
+  VALUES (valor_1, …, valor_n);
 ```
 
 La lista de atributos es opcional. En ese caso, se asume el orden definido en el `CREATE TABLE`:
 
 ```SQL
 INSERT INTO [schema.]tabla
-  VALUES (valor 1, …, valor_n);
+  VALUES (valor_1, …, valor_n);
 ```
 
 **Solo podrán omitirse columnas que no hayan sido definidas como** `NOT NULL`.
