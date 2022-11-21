@@ -577,9 +577,9 @@ SQL soporta varias sentencias para controlar el flujo de ejecución de los proce
 ## Sentencia `IF`
 
 ```SQL
-IF condition THEN statement
-[ELSEIF condition THEN statement(s)] ...
-[ELSE statement(s)]  
+IF condition THEN statement_list
+[ELSEIF condition THEN statement_list] ...
+[ELSE statement_list]  
 END IF
 ```
 
@@ -806,14 +806,14 @@ BEGIN
   DECLARE b, c INT;
   DECLARE cur1 CURSOR FOR SELECT id, data FROM t1; -- Creación
   DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-  OPEN cur1; -- Apertura
-  read_loop: LOOP
+   OPEN cur1; -- Apertura
+   read_loop: LOOP
     FETCH cur1 INTO b, c; -- Uso
     IF done THEN
       LEAVE read_loop;
     END IF;
   END LOOP;
-  CLOSE cur1; -- Cierre
+  CLOSE cur1; -- Cierre
 END;
 ```
 
@@ -896,7 +896,7 @@ BEGIN
     ELSEIF NEW.amount > 100 THEN
         SET NEW.amount = 100;
     END IF;
-END;//
+END//
 DELIMITER ;
 ```
 
@@ -939,7 +939,7 @@ BEGIN
     ELSEIF NEW.amount > 100 THEN
         SET NEW.amount = 100;
     END IF;
-END;//
+END//
 DELIMITER ;
 ```
 
@@ -999,7 +999,7 @@ BEFORE UPDATE ON usuario
 FOR EACH ROW
 BEGIN
   IF NEW.edad < 0 THEN
-   SET NEW.edad = 0
+   SET NEW.edad = 0;
   END IF;
 END$$
 DELIMITER ;
@@ -1018,7 +1018,7 @@ AFTER DELETE ON tabla
 FOR EACH ROW
 BEGIN
   INSERT INTO deletelog (usuario, idborrado, fecha)
-  VALUES (USER(), OLD.id, NOW())
+  VALUES (USER(), OLD.id, NOW());
 END$$
 DELIMITER ;
 ```
