@@ -45,19 +45,19 @@
 <h1>CSV: Comma-Separated Values</h1>
 <p>Los ficheros <em>CSV</em> almacenan <strong>información estructurada</strong>:</p>
 <ul>
-<li>Cada fila del fichero se corresponde con un registro de información</li>
-<li>Los elementos del registro se separan por un caracter delimitador, generalmente una coma</li>
-<li>El orden de dichos elementos se mantiene a lo largo del fichero</li>
+<li>Cada fila del fichero se corresponde con un registro de información.</li>
+<li>Los elementos del registro se separan por un caracter delimitador, generalmente una coma.</li>
+<li>El orden de dichos elementos se mantiene a lo largo del fichero.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 960 720"><foreignObject width="960" height="720"><section id="6" data-background-color="#fff" data-background-image="url('https://marp.app/assets/hero-background.jpg')" data-paginate="true" data-header="Almacenamiento basado en ficheros" data-marpit-pagination="6" data-marpit-pagination-total="70" style="--background-color:#fff;--background-image:url('https://marp.app/assets/hero-background.jpg');--paginate:true;--header:Almacenamiento basado en ficheros;background-color:#fff;background-image:url('https://marp.app/assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="4:3">
 <header>Almacenamiento basado en ficheros</header>
 <h1>CSV: Un ejemplo</h1>
-<pre><code class="language-csv"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>longitude,latitude,time,station,wmo_platform_code,T_25
-0.0,0.0,2015-05-23T12:00:00Z,0n0e,13010,27.89
-0.0,0.0,2015-05-24T12:00:00Z,0n0e,13010,27.5
-0.0,0.0,2015-05-25T12:00:00Z,0n0e,13010,27.44
-0.0,0.0,2015-05-26T12:00:00Z,0n0e,13010,27.4
+<pre><code class="language-csv"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>Login email,Identifier,First name,Last name
+laura@example.com,2070,Laura,Grey
+craig@example.com,4081,Craig,Johnson
+mary@example.com,9346,Mary,Jenkins
+jamie@example.com,5079,Jamie,Smith
 </span></span></foreignObject></svg></code></pre>
 <p>Se observa que el nombre de los campos se encuentra en la primera fila del fichero (opcional).</p>
 <p>También se comprueba que todos los campos de los registros siguen el mismo orden.</p>
@@ -108,11 +108,11 @@
 <h1>Orígenes de XML</h1>
 <p>El origen de XML es SGML:</p>
 <ul>
-<li>Generalized Standard Markup Lenguage (SGML)</li>
-<li>Definido como estándar en 1986 (ISO 8879)</li>
-<li>Metalenguaje creado para mantener almacenes de documentación estructurada en formato electrónico</li>
-<li>HTML y XML son aplicaciones de SGML</li>
-<li>Muy potente y versátil pero complejo de utilizar</li>
+<li>Standard Generalized Markup Lenguage (SGML).</li>
+<li>Definido como estándar en 1986 (ISO 8879).</li>
+<li>Metalenguaje creado para mantener almacenes de documentación estructurada en formato electrónico.</li>
+<li>HTML y XML son aplicaciones de SGML.</li>
+<li>Muy potente y versátil pero complejo de utilizar.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 960 720"><foreignObject width="960" height="720"><section id="12" data-background-color="#fff" data-background-image="url('https://marp.app/assets/hero-background.jpg')" data-paginate="true" data-header="Almacenamiento basado en ficheros" data-marpit-pagination="12" data-marpit-pagination-total="70" style="--background-color:#fff;--background-image:url('https://marp.app/assets/hero-background.jpg');--paginate:true;--header:Almacenamiento basado en ficheros;background-color:#fff;background-image:url('https://marp.app/assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="4:3">
@@ -120,7 +120,7 @@
 <h1>Definición y antecedentes</h1>
 <ul>
 <li><strong>XML</strong> viene de <em>eXtensible Markup Language</em>.</li>
-<li>La versión 1.0 de <strong>XML</strong> es una recomendación del W3C (World Wide Web Consortium) desde Febrero de 1998-</li>
+<li>La versión 1.0 de <strong>XML</strong> es una recomendación del W3C (World Wide Web Consortium) desde Febrero de 1998.</li>
 <li>Estándar de facto para definir, crear, validar, compartir y publicar documentos con información, mediante marcas con significado.</li>
 <li>Puede representar datos estructurados, siendo útil como formato para el intercambio de datos entre aplicaciones.</li>
 <li>También se puede considerar como datos semi-estructurados.</li>
@@ -151,13 +151,13 @@
 <h1>Elementos simples y complejos</h1>
 <p>Debido al modelo de datos de <strong>XML</strong> podemos distinguir dos tipos de <strong>elementos</strong>:</p>
 <ul>
-<li><strong>Elemento simple</strong>: Contiene únicamente valores</li>
+<li><strong>Elemento simple</strong>: Contiene únicamente valores.</li>
 </ul>
 <pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-tag">&lt;<span class="hljs-name">simple</span>&gt;</span>50.3<span class="hljs-tag">&lt;/<span class="hljs-name">simple</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">simple</span>&gt;</span>Hola Mundo<span class="hljs-tag">&lt;/<span class="hljs-name">simple</span>&gt;</span>
 </span></span></foreignObject></svg></code></pre>
 <ul>
-<li><strong>Elemento compuesto</strong>: contiene una jerarquía de otros elementos</li>
+<li><strong>Elemento compuesto</strong>: contiene una jerarquía de otros elementos.</li>
 </ul>
 <pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-tag">&lt;<span class="hljs-name">empleado</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nombre</span>&gt;</span>Pepe<span class="hljs-tag">&lt;/<span class="hljs-name">nombre</span>&gt;</span>
@@ -176,7 +176,7 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">alumno</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">nombre</span>&gt;</span>Pepe Pérez<span class="hljs-tag">&lt;/<span class="hljs-name">nombre</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>bz01<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>ppp@upm.es<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">alumno</span>&gt;</span>
         ...
     <span class="hljs-tag">&lt;/<span class="hljs-name">grupo</span>&gt;</span>
@@ -202,19 +202,19 @@ El formato es <code>nombre-atributo=&quot;valor&quot;</code>.</p>
 <header>Almacenamiento basado en ficheros</header>
 <h1>XML vs. HTML</h1>
 <ul>
-<li>Extensibilidad (etiquetas)
+<li>Extensibilidad (etiquetas):
 <ul>
 <li>HTML: las etiquetas y atributos están prefijados.</li>
 <li>XML: etiquetas y atributos <strong>extensibles</strong>.</li>
 </ul>
 </li>
-<li>Estructura
+<li>Estructura:
 <ul>
 <li>HTML se centra en presentación y es poco estructurado.</li>
 <li>XML se centra en datos y es fuertemente estructurado.</li>
 </ul>
 </li>
-<li>Validación
+<li>Validación:
 <ul>
 <li>HTML no comprueba tipo ni fin de las etiquetas.</li>
 <li>XML requiere que el documento esté bien formado.</li>
@@ -227,7 +227,7 @@ El formato es <code>nombre-atributo=&quot;valor&quot;</code>.</p>
 <h1>Puntos fuertes de XML (I)</h1>
 <ul>
 <li><strong>Metalenguaje</strong>: permite definir lenguajes para representar información.</li>
-<li><strong>Simplicidad</strong>: facilidad de procesamiento por software y de entendimiento por personas
+<li><strong>Simplicidad</strong>: facilidad de procesamiento por software y de entendimiento por personas.
 <ul>
 <li>Utilizable con cualquier lenguaje o alfabeto (representa el estándar unicode).</li>
 <li>Sensitivo a mayúsculas y minúsculas.</li>
@@ -249,8 +249,8 @@ El formato es <code>nombre-atributo=&quot;valor&quot;</code>.</p>
 </ul>
 </li>
 <li>Es un estándar para intercambio de datos en la Web y aplicaciones en general</li>
-<li>Poderosas técnicas para búsqueda de información: Xpath, Xquery</li>
-<li>APIs en programación: DOM y SAX</li>
+<li>Poderosas técnicas para búsqueda de información: Xpath y XQuery.</li>
+<li>APIs en programación: DOM y SAX.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 960 720"><foreignObject width="960" height="720"><section id="21" data-background-color="#fff" data-background-image="url('https://marp.app/assets/hero-background.jpg')" data-paginate="true" data-header="Almacenamiento basado en ficheros" data-marpit-pagination="21" data-marpit-pagination-total="70" style="--background-color:#fff;--background-image:url('https://marp.app/assets/hero-background.jpg');--paginate:true;--header:Almacenamiento basado en ficheros;background-color:#fff;background-image:url('https://marp.app/assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="4:3">
@@ -262,7 +262,7 @@ El formato es <code>nombre-atributo=&quot;valor&quot;</code>.</p>
 <li>Los elementos tienen una etiqueta final.</li>
 <li>Las etiquetas son <em>case sensitive</em>.</li>
 <li>Los elementos están anidados correctamente.</li>
-<li>Los valores de los atributos están entre comillas dobles <code>&quot;&quot;</code></li>
+<li>Los valores de los atributos están entre comillas dobles <code>&quot;&quot;</code>.</li>
 </ol>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 960 720"><foreignObject width="960" height="720"><section id="22" data-background-color="#fff" data-background-image="url('https://marp.app/assets/hero-background.jpg')" data-paginate="true" data-header="Almacenamiento basado en ficheros" data-marpit-pagination="22" data-marpit-pagination-total="70" style="--background-color:#fff;--background-image:url('https://marp.app/assets/hero-background.jpg');--paginate:true;--header:Almacenamiento basado en ficheros;background-color:#fff;background-image:url('https://marp.app/assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="4:3">
@@ -271,15 +271,15 @@ El formato es <code>nombre-atributo=&quot;valor&quot;</code>.</p>
 <pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; ?&gt;</span><span class="hljs-comment">&lt;!-- Nodo descriptivo --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">w3resource</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">design</span>&gt;</span>
-        html
-        xhtml
-        css
-        svg
-        xml
+        <span class="hljs-tag">&lt;<span class="hljs-name">language</span>&gt;</span>html<span class="hljs-tag">&lt;/<span class="hljs-name">language</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">language</span>&gt;</span>xhtml<span class="hljs-tag">&lt;/<span class="hljs-name">language</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">language</span>&gt;</span>css<span class="hljs-tag">&lt;/<span class="hljs-name">language</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">language</span>&gt;</span>svg<span class="hljs-tag">&lt;/<span class="hljs-name">language</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">language</span>&gt;</span>xml<span class="hljs-tag">&lt;/<span class="hljs-name">language</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">design</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">programming</span>&gt;</span>
-        php
-        mysql
+        <span class="hljs-tag">&lt;<span class="hljs-name">language</span>&gt;</span>php<span class="hljs-tag">&lt;/<span class="hljs-name">language</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">language</span>&gt;</span>mysql<span class="hljs-tag">&lt;/<span class="hljs-name">language</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">programming</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">w3resource</span>&gt;</span>
 </span></span></foreignObject></svg></code></pre>
@@ -332,8 +332,8 @@ El formato es <code>nombre-atributo=&quot;valor&quot;</code>.</p>
 <h1>Un ejemplo de DTD</h1>
 <pre><code class="language-hxml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>&lt;!DOCTYPE banco [
     &lt;!ELEMENT banco ((cuenta | cliente | impositor)+)&gt;
-    &lt;!ELEMENT cuenta (número-cuenta nombre_sucursal saldo)&gt;
-    &lt;!ELEMENT cliente (nombre-cliente calle_cliente ciudad-cliente)&gt;
+    &lt;!ELEMENT cuenta (número-cuenta nombre-sucursal saldo)&gt;
+    &lt;!ELEMENT cliente (nombre-cliente calle-cliente ciudad-cliente)&gt;
     &lt;!ELEMENT impositor (nombre-cliente número-cuenta)&gt;
     &lt;!ELEMENT número-cuenta (#PCDATA)&gt;
     &lt;!ELEMENT nombre-sucursal (#PCDATA)&gt;
@@ -454,7 +454,7 @@ El formato es <code>nombre-atributo=&quot;valor&quot;</code>.</p>
 </ul>
 <pre><code class="language-xsd"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-tag">&lt;<span class="hljs-name">xsd:schema</span> <span class="hljs-attr">xmlns:xsd</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>&gt;</span>
     ...
-<span class="hljs-tag">&lt;/<span class="hljs-name">schema</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">xsd:schema</span>&gt;</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 960 720"><foreignObject width="960" height="720"><section id="34" data-background-color="#fff" data-background-image="url('https://marp.app/assets/hero-background.jpg')" data-paginate="true" data-header="Almacenamiento basado en ficheros" data-marpit-pagination="34" data-marpit-pagination-total="70" style="--background-color:#fff;--background-image:url('https://marp.app/assets/hero-background.jpg');--paginate:true;--header:Almacenamiento basado en ficheros;background-color:#fff;background-image:url('https://marp.app/assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="4:3">
@@ -502,8 +502,8 @@ El formato es <code>nombre-atributo=&quot;valor&quot;</code>.</p>
 <pre><code class="language-xpath"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>/banco/cliente/nombre-cliente
 </span></span></foreignObject></svg></code></pre>
 <p>La consulta devolvería</p>
-<pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-tag">&lt;<span class="hljs-name">nombre-cliente</span>&gt;</span> Pedro <span class="hljs-tag">&lt;/<span class="hljs-name">nombre-cliente</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">nombre-cliente</span>&gt;</span> Ana <span class="hljs-tag">&lt;/<span class="hljs-name">nombre-cliente</span>&gt;</span>
+<pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-tag">&lt;<span class="hljs-name">nombre-cliente</span>&gt;</span>Pedro<span class="hljs-tag">&lt;/<span class="hljs-name">nombre-cliente</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nombre-cliente</span>&gt;</span>Ana<span class="hljs-tag">&lt;/<span class="hljs-name">nombre-cliente</span>&gt;</span>
 </span></span></foreignObject></svg></code></pre>
 <p>Podemos aplicar la función <code>text()</code> para quitar etiquetas y quedarnos solo con los valores:</p>
 <pre><code class="language-xpath"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>/banco/cliente/nombre-cliente/<span class="hljs-type">text</span>()
