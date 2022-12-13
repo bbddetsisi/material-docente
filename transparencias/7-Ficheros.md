@@ -64,20 +64,20 @@ Una posible representación para los datos semi-estructurados sería un grafo di
 
 Los ficheros _CSV_ almacenan **información estructurada**:
 
-- Cada fila del fichero se corresponde con un registro de información
-- Los elementos del registro se separan por un caracter delimitador, generalmente una coma
-- El orden de dichos elementos se mantiene a lo largo del fichero
+- Cada fila del fichero se corresponde con un registro de información.
+- Los elementos del registro se separan por un caracter delimitador, generalmente una coma.
+- El orden de dichos elementos se mantiene a lo largo del fichero.
 
 ---
 
 # CSV: Un ejemplo
 
 ```csv
-longitude,latitude,time,station,wmo_platform_code,T_25
-0.0,0.0,2015-05-23T12:00:00Z,0n0e,13010,27.89
-0.0,0.0,2015-05-24T12:00:00Z,0n0e,13010,27.5
-0.0,0.0,2015-05-25T12:00:00Z,0n0e,13010,27.44
-0.0,0.0,2015-05-26T12:00:00Z,0n0e,13010,27.4
+Login email,Identifier,First name,Last name
+laura@example.com,2070,Laura,Grey
+craig@example.com,4081,Craig,Johnson
+mary@example.com,9346,Mary,Jenkins
+jamie@example.com,5079,Jamie,Smith
 ```
 
 Se observa que el nombre de los campos se encuentra en la primera fila del fichero (opcional).
@@ -128,18 +128,18 @@ Extended Markup Language
 
 El origen de XML es SGML:
 
-- Generalized Standard Markup Lenguage (SGML)
-- Definido como estándar en 1986 (ISO 8879)
-- Metalenguaje creado para mantener almacenes de documentación estructurada en formato electrónico
-- HTML y XML son aplicaciones de SGML
-- Muy potente y versátil pero complejo de utilizar
+- Standard Generalized Markup Lenguage (SGML).
+- Definido como estándar en 1986 (ISO 8879).
+- Metalenguaje creado para mantener almacenes de documentación estructurada en formato electrónico.
+- HTML y XML son aplicaciones de SGML.
+- Muy potente y versátil pero complejo de utilizar.
 
 ---
 
 # Definición y antecedentes
 
 - **XML** viene de _eXtensible Markup Language_.
-- La versión 1.0 de **XML** es una recomendación del W3C (World Wide Web Consortium) desde Febrero de 1998-
+- La versión 1.0 de **XML** es una recomendación del W3C (World Wide Web Consortium) desde Febrero de 1998.
 - Estándar de facto para definir, crear, validar, compartir y publicar documentos con información, mediante marcas con significado.
 - Puede representar datos estructurados, siendo útil como formato para el intercambio de datos entre aplicaciones.
 - También se puede considerar como datos semi-estructurados.
@@ -176,14 +176,14 @@ Además, se añade `/` delante del nombre de la **etiqueta** para identificarla 
 
 Debido al modelo de datos de **XML** podemos distinguir dos tipos de **elementos**:
 
-- **Elemento simple**: Contiene únicamente valores
+- **Elemento simple**: Contiene únicamente valores.
 
 ```xml
 <simple>50.3</simple>
 <simple>Hola Mundo</simple>
 ```
 
-- **Elemento compuesto**: contiene una jerarquía de otros elementos
+- **Elemento compuesto**: contiene una jerarquía de otros elementos.
 
 ```xml
 <empleado>
@@ -207,7 +207,7 @@ Debido al modelo de datos de **XML** podemos distinguir dos tipos de **elementos
         <alumno>
             <nombre>Pepe Pérez</nombre>
             <id>bz01</id>
-            <email>...</email>
+            <email>ppp@upm.es</email>
         </alumno>
         ...
     </grupo>
@@ -237,13 +237,13 @@ El formato es `nombre-atributo="valor"`.
 
 # XML vs. HTML
 
-- Extensibilidad (etiquetas)
+- Extensibilidad (etiquetas):
   - HTML: las etiquetas y atributos están prefijados.
   - XML: etiquetas y atributos **extensibles**.
-- Estructura
+- Estructura:
   - HTML se centra en presentación y es poco estructurado.
   - XML se centra en datos y es fuertemente estructurado.
-- Validación
+- Validación:
   - HTML no comprueba tipo ni fin de las etiquetas.
   - XML requiere que el documento esté bien formado.
 
@@ -252,7 +252,7 @@ El formato es `nombre-atributo="valor"`.
 # Puntos fuertes de XML (I)
 
 - **Metalenguaje**: permite definir lenguajes para representar información.
-- **Simplicidad**: facilidad de procesamiento por software y de entendimiento por personas
+- **Simplicidad**: facilidad de procesamiento por software y de entendimiento por personas.
   - Utilizable con cualquier lenguaje o alfabeto (representa el estándar unicode).
   - Sensitivo a mayúsculas y minúsculas.
   - Gramática de obligado cumplimiento.
@@ -267,8 +267,8 @@ El formato es `nombre-atributo="valor"`.
   - Contenido (datos): documento xml
   - Apariencia (presentación): XSL, CSS
 - Es un estándar para intercambio de datos en la Web y aplicaciones en general
-- Poderosas técnicas para búsqueda de información: Xpath, Xquery
-- APIs en programación: DOM y SAX
+- Poderosas técnicas para búsqueda de información: Xpath y XQuery.
+- APIs en programación: DOM y SAX.
 
 ---
 
@@ -280,7 +280,7 @@ Se considera que un documento **XML** está bien formado si:
 2. Los elementos tienen una etiqueta final.
 3. Las etiquetas son _case sensitive_.
 4. Los elementos están anidados correctamente.
-5. Los valores de los atributos están entre comillas dobles `""`
+5. Los valores de los atributos están entre comillas dobles `""`.
 
 ---
 
@@ -290,15 +290,15 @@ Se considera que un documento **XML** está bien formado si:
 <?xml version="1.0" ?><!-- Nodo descriptivo -->
 <w3resource>
     <design>
-        html
-        xhtml
-        css
-        svg
-        xml
+        <language>html</language>
+        <language>xhtml</language>
+        <language>css</language>
+        <language>svg</language>
+        <language>xml</language>
     </design>
     <programming>
-        php
-        mysql
+        <language>php</language>
+        <language>mysql</language>
     </programming>
 </w3resource>
 ```
@@ -358,8 +358,8 @@ Podemos usar caracteres especiales en las reglas de una DTD:
 ```hxml
 <!DOCTYPE banco [
     <!ELEMENT banco ((cuenta | cliente | impositor)+)>
-    <!ELEMENT cuenta (número-cuenta nombre_sucursal saldo)>
-    <!ELEMENT cliente (nombre-cliente calle_cliente ciudad-cliente)>
+    <!ELEMENT cuenta (número-cuenta nombre-sucursal saldo)>
+    <!ELEMENT cliente (nombre-cliente calle-cliente ciudad-cliente)>
     <!ELEMENT impositor (nombre-cliente número-cuenta)>
     <!ELEMENT número-cuenta (#PCDATA)>
     <!ELEMENT nombre-sucursal (#PCDATA)>
@@ -476,7 +476,7 @@ Para definir los atributos de cierto elemento:
 ```xsd
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     ...
-</schema>
+</xsd:schema>
 ```
 
 ---
@@ -535,8 +535,8 @@ Podemos acceder a los elementos que hay en la ruta del documento:
 La consulta devolvería
 
 ```xml
-<nombre-cliente> Pedro </nombre-cliente>
-<nombre-cliente> Ana </nombre-cliente>
+<nombre-cliente>Pedro</nombre-cliente>
+<nombre-cliente>Ana</nombre-cliente>
 ```
 
 Podemos aplicar la función `text()` para quitar etiquetas y quedarnos solo con los valores:
