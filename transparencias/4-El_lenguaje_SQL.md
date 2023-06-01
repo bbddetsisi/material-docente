@@ -1463,7 +1463,7 @@ WHERE NOT EXISTS (SELECT *
                    FROM conductores C2
                    WHERE C1.nombre = C2.nombre
                      AND C1.localidad = C2.localidad
-                     AND C1.categoría <> C2.categoría);
+                     AND C1.codC <> C2.codC);
 ```
 
 ---
