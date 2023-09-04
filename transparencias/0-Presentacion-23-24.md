@@ -9,7 +9,7 @@ auto-scaling:
 backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 paginate: true
-header: Bases de datos. Curso 2022-2023.
+header: Bases de datos. Curso 2023-2024.
 ---
 <!--
 _header: ''
@@ -18,7 +18,7 @@ _footer: ![height:30](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0
 
 # BASES DE DATOS
 
-Curso 2022-2023
+Curso 2023-2024
 
 ---
 
