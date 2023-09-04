@@ -44,15 +44,15 @@ p { font-size: 0.9rem; }
 
 ## Profesorado
 
+- Santiago Alonso. santiago.alonso@upm.es. *Despacho 1125*.
 - Gema Bello. gema.borgaz@upm.es. *Despacho 1224*.
 - Manuel Bollaín. manuel.bollain@upm.es. *Despacho 6108*.
 - Carlos Camacho. carlos.camacho@upm.es. *Despacho 4104*.
+- Félix Fuentes. felix.fuentes@upm.es. *Despacho 4305*.
 - Alejandro Martín. alejandro.martin@upm.es. *Despacho 1215*.
 - Fernando Ortega (**Coordinador**). fernando.ortega@upm.es. *Despacho 1111*.
 - José Luis Sánchez. joseluis.sanchez@upm.es. *Despacho 1116*.
 - Edgar Talavera. e.talavera@upm.es. *Despacho 1222*.
-- Santiago Alonso. santiago.alonso@upm.es. *Despacho 1125*.
-- Félix Fuentes . felix.fuentes@upm.es. *Despacho 4305*.
 
 ---
 
