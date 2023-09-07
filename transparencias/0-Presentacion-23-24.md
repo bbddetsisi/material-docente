@@ -143,7 +143,7 @@ Examen final (60%)
 - Lunes 15 de enero de 2024 a las 15:00
 
 Prácticas (40%)
-- En grupos
+- En equipos (del mismo grupo de matrícula)
 - Dos últimas semanas de curso
 - Evaluación en el aula
 
