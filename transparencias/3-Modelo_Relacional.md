@@ -43,25 +43,24 @@ table {
 
 # TEMA 3
 
-# Modelo relacional
-
-### Modelado lógico de bases de datos
+## Modelo relacional
 
 ![bg left:40% 60%](img/t3/relational.svg)
 
 ---
 
-## MODELO RELACIONAL
+## Índice
 
 1. El modelo relacional.
-2. Transformación del modelo ER a modelo relacional (paso a tablas).
-3. Álgebra relacional.
+2. Transformación del modelo Entidad-Relación a modelo relacional (paso a tablas).
+3. Normalización.
+4. Álgebra relacional.
 
 ---
 
-# EL MODELO RELACIONAL
-
 ## Modelado lógico de bases de datos
+
+# EL MODELO RELACIONAL
 
 ---
 
@@ -97,6 +96,10 @@ Los diferentes conjuntos $D_1,D_2,\ldots,D_n$ sobre los que se define la relaci�
 
 ---
 
+<style>
+* { font-size: 0.9rem;}
+</style>
+
 ## Elementos del modelo (Parte Estructural)
 
 - Cada **atributo** de la relación está asociado a un único dominio:
@@ -113,9 +116,23 @@ Los diferentes conjuntos $D_1,D_2,\ldots,D_n$ sobre los que se define la relaci�
 
 Representación gráfica de una relación:
 
-![center w:650](img/t3/relacion.png)
+| $A_1$    | $A_2$    | $A_3$    | $\dots$  | $A_n$    | 
+| -------- | -------- | -------- | -------- | -------- |
+| $a_{11}$ | $a_{12}$ | $a_{13}$ | $\dots$  | $a_{1n}$ |
+| $a_{21}$ | $a_{22}$ | $a_{23}$ | $\dots$  | $a_{2n}$ |
+| $\vdots$ | $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$ |
+| $a_{m1}$ | $a_{m2}$ | $a_{m3}$ | $\dots$  | $a_{mn}$ |
 
-Representación textual:
+---
+
+## Elementos del modelo (Parte Estructural)
+
+Denominamos:
+- **Relación**: a la tabla.
+- **Grado**: al número de atributos (columnas) de la tabla. En este caso el grado es *n*.
+- **Tupla**: a cada una las filas de la tabla.
+
+La misma tabla puede respresentarse textualmente del siguiente modo:
 
 $$R \left ( A_1,A_2,\ldots,A_n \right )$$
 
@@ -212,9 +229,10 @@ Concepto de clave (definición **no** formal):
 
 > Descriptor mínimo cuyo valor determina de forma unívoca el valor del resto de los atributos de la relación.
 
+Se debe cumplir que:
+
 - Cada relación tiene **al menos una** clave.
-- Si hay varias claves, desde el punto de vista puramente teórico todas son iguales.
-  - En la práctica, es decir, cuando se define la BD relacional en un SGBD, cada clave se denomina *clave candidata*, y una de ellas se elegirá como **CLAVE PRINCIPAL O PRIMARIA**, quedando el resto como **claves alternativas**.
+- Si hay varias claves, desde el punto de vista puramente teórico todas son iguales. En la práctica, es decir, cuando se define la BD relacional en un SGBD, cada clave se denomina *clave candidata*, y una de ellas se elegirá como **CLAVE PRINCIPAL O PRIMARIA**, quedando el resto como **claves alternativas**.
 
 ---
 
@@ -237,12 +255,12 @@ Cada relación tendrá una combinación de atributos que, tomados en conjunto, *
 **Requisito obligatorio**:
 > Toda relación debe contar con **al menos una clave**.
 
-- Tipos de claves
-  - Principal o primaria
-  - Secundarias a alternas
-  - Foráneas o externas
-  - Simples (formadas por un único atributo)
-  - Compuestas (formadas por más de un atributo)
+Tipos de claves
+- Principal o primaria
+- Secundarias a alternas
+- Foráneas o externas
+- Simples (formadas por un único atributo)
+- Compuestas (formadas por más de un atributo)
 
 ---
 <style scoped>
@@ -259,11 +277,12 @@ Restricciones semánticas del modelo relacional:
 3. **Restricción de Integridad Referencial**: Cualquier atributo de una relación que sea declarado como clave foránea solo puede contener valores nulos o valores existentes que provienen, o bien de la clave primaria o bien de una clave candidata de la relación a la que referencia. En otras palabras, si un atributo que es clave foránea toma un determinado valor, dicho valor tiene que existir ya sea como clave primaria o candidata en la relación a la que referencia dicha clave foránea.
 
 ---
-<style scoped>
-blockquote {
-  font-size: 0.8rem;
+<style>
+blockquote, p {
+  font-size: 0.9rem;
 }
 </style>
+
 Ejemplo:
 
 >PROVEEDORES (~~COD_PROV~~, NOMBRE)
@@ -278,9 +297,9 @@ Por la restricción de integridad referencial **es obligado** que en `PROVEEDORE
 
 ---
 
-# PASO A TABLAS (ER $\rightarrow$ RELACIONAL)
-
 ## Modelado lógico de bases de datos
+
+# PASO A TABLAS 
 
 ---
 
@@ -294,11 +313,17 @@ Por la restricción de integridad referencial **es obligado** que en `PROVEEDORE
 
 ---
 
+<style scoped>
+p, p > * { font-size: 0.7rem;}
+</style>
+
 ## Paso a tablas: Relaciones N:M
 
 Siempre se transforman en una tabla, incluyendo tanto los atributos de la relación N:M como las claves de las entidades relacionadas.
 
 ![center w:600](img/t3/rel_nm.png)
+
+Generalmente, la clave de la nueva tabla suele ser la unión de las claves de las entidades relacionadas, aunque **no siempre es así** y debe estudiarse cada caso de forma particular.
 
 ---
 
@@ -321,7 +346,7 @@ Añadir la clave de la entidad de la parte "uno" de la relación a la relación 
 
 ## Paso a tablas: Relaciones n-arias
 
-Estudiar las relaciones de dos en dos y aplicar las reglas de relaciones binarias. **OJO**, se puede mejorar el diseño estudiando redundancias.
+Estudiar las relaciones de dos en dos y aplicar las reglas de relaciones binarias. **¡CUIDADO!**, se puede mejorar el diseño estudiando redundancias.
 
 ![center](img/t3/rel_ternaria.png)
 
@@ -341,9 +366,234 @@ Dado el siguiente modelo ER, transformarlo al modelo relacional:
 
 ---
 
-# ÁLGEBRA RELACIONAL
+## Modelado lógico de bases de datos
+
+# NORMALIZACIÓN
+
+---
+
+## ¿Qué son las formas normales?
+
+Las formas normales en bases de datos son una serie de reglas o directrices que se utilizan para diseñar esquemas de bases de datos relacionales de manera que se **minimicen las redundancias de datos** y se **asegure la integridad de la información almacenada**. 
+
+El objetivo principal de las formas normales es eliminar las anomalías en la inserción, borrado o actualización de datos, es decir, evitar introducir datos que la estrucutra de la base de datos no lo permita o perder información por una actualización o un borrado. Esto, además, garantiza *a posteriori* que una base de datos esté bien estructurada y optimizada para consultas.
+
+---
+
+<style scoped>
+p {
+  font-size: 0.85rem;
+}
+</style>
+
+## ¿Cuáles son las formas normales?
+
+Existen diferentes niveles de formas normales, desde la primera forma normal (1FN) hasta la quinta forma normal (5FN). Cada nivel se basa en reglas específicas para organizar los datos de manera más eficiente. 
+
+En general, una base de datos en **tercera forma normal (3FN)** ofrece un nivel óptimo de normalización para minimizar las redundancias y asegurar la integridad de los datos. Por ello, **no estudiaremos las formas normales por encima de la 3FN**.
+
+Para garantizar la correcta normalización de una base de datos es necesario conocer TODAS las claves de las relaciones que la compongan. Esto requiere de un proceso que no vamos a estudiar en este curso puesto que vamos a tratar las formas normales de forma práctica con el objetivo de enunciar sus características principales y conocer las ventajas que ofrecen.
+
+---
+
+## Primera Forma Normal (1FN)
+
+Una tabla estará en 1FN si:
+1. Todas las columnas contienen valores atómicos, es decir, valores indivisibles (no listas de valores).
+
+---
+
+<style scoped>
+table > * > * > * {
+  font-size: 0.75rem;
+}
+table th:nth-child(1) {
+  text-decoration: underline;
+}
+</style>
+
+## Primera Forma Normal (1FN)
+
+La siguiente tabla **NO** está en 1FN...
+
+| DNI        | Nonmbre | Apellidos    | Teléfonos             |
+| ---------- | ------- | ------------ | --------------------- |
+| 12345678-Z | Antonio | Pérez García | [64592341, 663231983] |
+| 42384109-P | Marta   | Picas López  | 634176823             |
+| 02932416-P | Sara    | Gómez Lucas  | 637923001             |
+
+... porque:
+- *Antonio* tiene dos teléfonos.
+
+---
+
+## Segunda Forma Normal (2FN)
+
+Una tabla está en 2FN si:
+1. Está en 1NF.
+2. Todos los atributos que no forman parte de ninguna clave (denominados atributos no principales) dependen por completo de toda la clave y no solo de una parte de ella.
+
+---
+
+<style scoped>
+table > * > * > * {
+  font-size: 0.75rem;
+}
+
+table th:nth-child(1), table th:nth-child(2) {
+  text-decoration: underline;
+}
+</style>
+
+## Segunda Forma Normal (2FN)
+
+La siguiente tabla **NO** está en 2FN...
+
+| Chef  | Plato             | Restaurante       |
+| ----- | ----------------- | ----------------- |
+| Ramón | Pasta carbonara   | La pequeña Italia |
+| Ramón | Pizza margarita   | La pequeña Italia |
+| Lucía | Costillas asadas  | El asador         |
+| Ana   | Patatas bravas    | El capricho       |
+| Ana   | Ceviche de lubina | El capricho       |
+
+
+... porque:
+- A pesar de estar en 1FN, la columna *Restaurante* es dependiente únicamente *Chef*.
+
+---
+
+<style scoped>
+table > * > * > * {
+  font-size: 0.6rem;
+}
+
+table th:nth-child(1), table:last-of-type th:nth-child(2) {
+  text-decoration: underline;
+}
+</style>
+
+## Segunda Forma Normal (2FN)
+
+Será necesario dividir la tabla anterior en:
+
+| Chef  | Restaurante       |
+| ----- | ----------------- |
+| Ramón | La pequeña Italia |
+| Lucía | El asador         |
+| Ana   | El capricho       |
+
+| Chef  | Plato             | 
+| ----- | ----------------- | 
+| Ramón | Pasta carbonara   | 
+| Ramón | Pizza margarita   | 
+| Lucía | Costillas asadas  | 
+| Ana   | Patatas bravas    | 
+| Ana   | Ceviche de lubina |
+
+---
+
+## Tercera Forma Normal (3FN)
+
+Una tabla estará en 3FN si:
+1. Está en 2NF.
+2. Ninguna columna no clave depende transitivamente de la clave primaria. Esto significa que no debe haber dependencias indirectas entre columnas no clave y la clave primaria. Dicho de otro modo, la 3FN busca evitar que los atributos no clave dependan de otros atributos no clave, garantizando así la integridad de los datos.
+
+---
+
+<style scoped>
+table > * > * > * {
+  font-size: 0.75rem;
+}
+
+table th:nth-child(1) {
+  text-decoration: underline;
+}
+</style>
+
+## Tercera Forma Normal (3FN)
+
+La siguiente tabla **NO** está en 3FN...
+
+| Id | Título                  | Autor             | Editorial |
+| -- | ----------------------- | ----------------- | --------- |
+| 1  | El marciano             | Andy Weir         | Alfaguara |
+| 2  | Hail Mary               | Andy Weir         | Alfaguara |
+| 3  | El imperio final        | Brandon Sanderson | SM        |
+| 4  | El pozo de la ascensión | Brandon Sanderson | SM        |
+| 5  | El héroe de las eras    | Brandon Sanderson | SM        |
+
+... porque:
+- A pesar de estar en 2FN, *Editorial* depende de *Autor* y no directamente de libro.
+
+---
+
+<style scoped>
+table > * > * > * {
+  font-size: 0.75rem;
+}
+
+table th:nth-child(1) {
+  text-decoration: underline;
+}
+</style>
+
+## Tercera Forma Normal (3FN)
+
+Será necesario dividir la tabla anterior en:
+
+| Id | Título                  | Autor             | 
+| -- | ----------------------- | ----------------- |
+| 1  | El marciano             | Andy Weir         |
+| 2  | Hail Mary               | Andy Weir         |
+| 3  | El imperio final        | Brandon Sanderson | 
+| 4  | El pozo de la ascensión | Brandon Sanderson |
+| 5  | El héroe de las eras    | Brandon Sanderson |
+
+| Autor             | Editorial |
+| ----------------- | --------- |
+| Andy Weir         | Alfaguara |
+| Brandon Sanderson | SM        |
+
+---
+
+<style scoped>
+table > * > * > * {
+  font-size: 0.8rem;
+}
+
+table th:nth-child(1) {
+  text-decoration: underline;
+}
+
+table tr:last-child td:last-child {
+  background-color: #FFA5A5;
+}
+</style>
+
+## Tercera Forma Normal (3FN)
+
+**¡CUIDADO!** Si los autores no siempre publican con la misma editorial la tabla **SI** estaría en 3FN:
+
+| Id | Título                  | Autor             | Editorial  |
+| -- | ----------------------- | ----------------- | ---------- |
+| 1  | El marciano             | Andy Weir         | Alfaguara  |
+| 2  | Hail Mary               | Andy Weir         | Alfaguara  |
+| 3  | El imperio final        | Brandon Sanderson | SM         |
+| 4  | El pozo de la ascensión | Brandon Sanderson | SM         |
+| 5  | El héroe de las eras    | Brandon Sanderson | Salamandra |
+
+---
+
+## Una cosa más...
+
+El diseño de bases de datos siguiendo las formas normales es una buena práctica para evitar problemas como la pérdida de datos, inconsistencias y dificultades en la gestión de la información. Sin embargo, es importante recordar que en algunos casos, desnormalizar una base de datos (romper las formas normales) puede ser necesario para optimizar el rendimiento en consultas específicas, pero debe hacerse de manera consciente y justificada.
+
+---
 
 ## Modelado lógico de bases de datos
+
+# ÁLGEBRA RELACIONAL
 
 ---
 
@@ -516,8 +766,7 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
 <style scoped>
   p {font-size: 0.7rem}
   li {font-size: 0.7rem}
-  td {font-size: 0.5rem}
-  thead {font-size: 0.5rem}
+  td, th {font-size: 0.5rem}
   blockquote {font-size: 0.7rem}
 </style>
 
@@ -542,8 +791,7 @@ $$\prod_{\textrm{nombre},\textrm{apellidos},\textrm{nota}}(\sigma_{\textrm{nombr
 <style scoped>
   p {font-size: 0.7rem}
   li {font-size: 0.7rem}
-  td {font-size: 0.5rem}
-  thead {font-size: 0.5rem}
+  td, th {font-size: 0.5rem}
   blockquote {font-size: 0.7rem}
 </style>
 
@@ -570,8 +818,7 @@ $$\prod_{\textrm{nombre},\textrm{apellidos}}(Alumnos\Join (\prod_{\textrm{Nmat},
 <style scoped>
   p {font-size: 0.7rem}
   li {font-size: 0.7rem}
-  td {font-size: 0.5rem}
-  thead {font-size: 0.5rem}
+  td, th {font-size: 0.5rem}
   blockquote {font-size: 0.7rem}
 </style>
 
