@@ -374,9 +374,38 @@ Dado el siguiente modelo ER, transformarlo al modelo relacional:
 
 ## ¿Qué son las formas normales?
 
-Las formas normales en bases de datos son una serie de reglas o directrices que se utilizan para diseñar esquemas de bases de datos relacionales de manera que se **minimicen las redundancias de datos** y se **asegure la integridad de la información almacenada**. 
+Las formas normales en bases de datos son una serie de reglas o directrices que se utilizan para diseñar esquemas de bases de datos relacionales de manera que se minimicen las redundancias de datos y se asegure la integridad de la información almacenada. 
 
-El objetivo principal de las formas normales es eliminar las anomalías en la inserción, borrado o actualización de datos, es decir, evitar introducir datos que la estrucutra de la base de datos no lo permita o perder información por una actualización o un borrado. Esto, además, garantiza *a posteriori* que una base de datos esté bien estructurada y optimizada para consultas.
+El objetivo principal de las formas normales es **eliminar las anomalías en la inserción, borrado o actualización de datos**, es decir, evitar introducir datos que la estrucutra de la base de datos no lo permita o perder información por una actualización o un borrado. Esto, además, garantiza *a posteriori* que una base de datos esté bien estructurada y optimizada para consultas.
+
+---
+
+<style scoped>
+h2 {font-size: 1.1rem;}
+
+p, li, li strong { font-size: 0.6rem; }
+
+td, th { font-size: 0.6rem; }
+
+table th:nth-child(1), table th:nth-child(4) {
+  text-decoration: underline;
+}
+</style>
+
+## Problemas de inserción, borrado y actualización
+
+| Num_mat | Nombre | Telefono  | Asignatura | Profesor | Nota |
+| ------- | ------ | --------- | ---------- | -------- | ---- |
+| cd2521  | Pepe   | 672842132 | BD         | Fernando | 9.0  |
+| cd0252  | Luisa  | 689252092 | BD         | Fernando | 5.5  |
+| ce2314  | Andrés | 600878423 | POO        | Agustín  | 7.0  |
+| cb0023  | Ana    | 689023492 | AL         | Soledad  | 8.5  |
+| cd2521  | Pepe   | 672842132 | AL         | Soledad  | 7.5  |
+
+
+- ¿Qué sucede si quiero añadir la asignatura IA? No puedo porque no conozco los datos de los alumnos (**problema de inserción**).
+- ¿Qué sucede si borro las notas de Andrés? Se pierde la información de la asignatura POO (**Problema de borrado**).
+- ¿Qué sucede si Pepe cambia su teléfono o las asignaturas de BD o AL cambian de profesor? Se debe cambiar la información en varios sitios para mantener la consistencia de la base de datos (**problema de actualización**).
 
 ---
 
@@ -393,6 +422,32 @@ Existen diferentes niveles de formas normales, desde la primera forma normal (1F
 En general, una base de datos en **tercera forma normal (3FN)** ofrece un nivel óptimo de normalización para minimizar las redundancias y asegurar la integridad de los datos. Por ello, **no estudiaremos las formas normales por encima de la 3FN**.
 
 Para garantizar la correcta normalización de una base de datos es necesario conocer TODAS las claves de las relaciones que la compongan. Esto requiere de un proceso que no vamos a estudiar en este curso puesto que vamos a tratar las formas normales de forma práctica con el objetivo de enunciar sus características principales y conocer las ventajas que ofrecen.
+
+---
+
+<style scoped>
+p, p strong { font-size: 0.7rem; }
+
+td, th { font-size: 0.6rem; }
+
+table th:nth-child(1) {
+  text-decoration: underline;
+}
+</style>
+
+## Dependencia funcionales
+
+Las formas normales fundamentan su definición en el concepto de **dependencias funcionales**. En bases de datos, una dependencia funcional se refiere a **una relación entre dos conjuntos de atributos (columnas) en una tabla, en la que el valor de un conjunto de atributos determina unívocamente el valor de otro conjunto de atributos**. En otras palabras, una dependencia funcional establece una regla o restricción que indica cómo los valores en ciertas columnas están relacionados entre sí.
+
+Por ejemplo, la siguiente tabla presenta una dependencia funcional entre el número de matrícula, el DNI y el nombre del alumno:
+
+| Num_mat | Nombre | DNI       | 
+| ------- | ------ | --------- | 
+| cd2521  | Pepe   | 66843526Y | 
+| cd0252  | Luisa  | 47645869N | 
+| ce2314  | Andrés | 44568145X | 
+| cb0023  | Ana    | 53057122D |
+
 
 ---
 
@@ -416,14 +471,44 @@ table th:nth-child(1) {
 
 La siguiente tabla **NO** está en 1FN...
 
-| DNI        | Nonmbre | Apellidos    | Teléfonos             |
-| ---------- | ------- | ------------ | --------------------- |
-| 12345678-Z | Antonio | Pérez García | [64592341, 663231983] |
-| 42384109-P | Marta   | Picas López  | 634176823             |
-| 02932416-P | Sara    | Gómez Lucas  | 637923001             |
+| DNI        | Nonmbre | Apellidos    | Teléfonos              |
+| ---------- | ------- | ------------ | ---------------------- |
+| 12345678-Z | Antonio | Pérez García | [645923412, 663231983] |
+| 42384109-P | Marta   | Picas López  | 634176823              |
+| 02932416-P | Sara    | Gómez Lucas  | 637923001              |
 
 ... porque:
 - *Antonio* tiene dos teléfonos.
+
+---
+
+<style scoped>
+table > * > * > * {
+  font-size: 0.65rem;
+}
+
+table th:nth-child(1), table:last-of-type th:nth-child(2) {
+  text-decoration: underline;
+}
+</style>
+
+## Primera Forma Normal (1FN)
+
+Este problema se podría solucionar dividiendo la tabla en:
+
+| DNI        | Nonmbre | Apellidos    |
+| ---------- | ------- | ------------ |
+| 12345678-Z | Antonio | Pérez García | 
+| 42384109-P | Marta   | Picas López  | 
+| 02932416-P | Sara    | Gómez Lucas  | 
+
+| DNI        | Teléfono  |
+| ---------- | --------- |
+| 12345678-Z | 645923412 |
+| 12345678-Z | 663231983 |
+| 42384109-P | 634176823 |
+| 02932416-P | 637923001 |
+
 
 ---
 
@@ -431,7 +516,7 @@ La siguiente tabla **NO** está en 1FN...
 
 Una tabla está en 2FN si:
 1. Está en 1NF.
-2. Todos los atributos que no forman parte de ninguna clave (denominados atributos no principales) dependen por completo de toda la clave y no solo de una parte de ella.
+2. Todos los atributos que no forman parte de ninguna clave (denominados atributos no principales) dependen funcionalmente por completo de toda la clave y no solo de una parte de ella.
 
 ---
 
@@ -497,7 +582,7 @@ Será necesario dividir la tabla anterior en:
 
 Una tabla estará en 3FN si:
 1. Está en 2NF.
-2. Ninguna columna no clave depende transitivamente de la clave primaria. Esto significa que no debe haber dependencias indirectas entre columnas no clave y la clave primaria. Dicho de otro modo, la 3FN busca evitar que los atributos no clave dependan de otros atributos no clave, garantizando así la integridad de los datos.
+2. Ninguna columna no clave depende transitivamente de la clave primaria. Esto significa que no debe haber dependencias funcionales indirectas entre columnas no clave y la clave primaria. Dicho de otro modo, la 3FN busca evitar que los atributos no clave dependan funcionalmente de otros atributos no clave, garantizando así la integridad de los datos.
 
 ---
 
@@ -594,6 +679,10 @@ El diseño de bases de datos siguiendo las formas normales es una buena práctic
 ## Modelado lógico de bases de datos
 
 # ÁLGEBRA RELACIONAL
+
+Esta sección a sido extraida de:
+
+> Pedro Pablo Alarcón (2012), *Álgebra relacional*. Aplicación de la Gestión de Información, Departamento de OEI, Escuela Universitaria de Informática, Universidad Politécnica de Madrid.
 
 ---
 
