@@ -404,7 +404,7 @@ table th:nth-child(1), table th:nth-child(4) {
 
 
 - ¿Qué sucede si quiero añadir la asignatura IA? No puedo porque no conozco los datos de los alumnos (**problema de inserción**).
-- ¿Qué sucede si borro las notas de Andrés? Se pierde la información de la asignatura POO (**Problema de borrado**).
+- ¿Qué sucede si borro las notas de Andrés? Se pierde la información de la asignatura POO (**problema de borrado**).
 - ¿Qué sucede si Pepe cambia su teléfono o las asignaturas de BD o AL cambian de profesor? Se debe cambiar la información en varios sitios para mantener la consistencia de la base de datos (**problema de actualización**).
 
 ---
