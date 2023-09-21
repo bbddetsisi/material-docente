@@ -1,0 +1,179 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish, activeacute]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=3.5cm]{geometry}
+\usepackage{lmodern,textcomp}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{scrextend}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={3.0},
+]{doclicense}
+
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0.6pt}
+
+\pagestyle{fancy}
+\setlength\headheight{50pt}
+\lhead{\includegraphics[height=1.5cm]{logos/upm_logo}}
+\chead{Bases de Datos\\\vspace{.5em} Ejercicios de álgebra relacional\\\vspace{-.1em}}
+\rhead{\includegraphics[height=1.5cm]{logos/etsisi_logo}}
+\lfoot{\textbf{Tema 3:} Modelo relacional}
+\cfoot{}
+\rfoot{\thepage}
+
+\parskip 1.1ex % paragraph spacing
+
+\begin{document}
+
+\section{Editoriales}
+
+Sean las relaciones siguientes:
+
+\begin{addmargin}[1.5em]{0em}
+    \texttt{EDITORIALES(\underline{E\#}, Nombre, Ciudad)}\\
+    \texttt{LIBROS(\underline{L\#}, Título, Autor, Año)}\\
+    \texttt{PAPELERÍAS(\underline{P\#}, Nombre, Ciudad)}\\
+    \texttt{ELP(\underline{E\#}, \underline{L\#}, \underline{P\#}, Cantidad)}
+\end{addmargin}
+
+
+Se pide escribir en álgebra relacional las respuestas a las preguntas siguientes:
+
+\begin{enumerate}
+    \item Obtener los nombres de las papelerías abastecidas por alguna editorial de `Madrid'.
+    \item Obtener los valores de \texttt{E\#} para las editoriales que suministran a las papelerías P1 y P3 libros publicados en el año 1978.
+    \item Obtener los valores de \texttt{P\#} de las papelerías abastecidas completamente por la editorial E1.
+    \item Obtener los valores de \texttt{L\#} para los libros suministrados por todas las papelerías que no sean de `Madrid'.
+\end{enumerate}
+
+\section{Programas}
+
+Dada la base de datos compuesta por las siguientes relaciones:
+
+\begin{addmargin}[1.5em]{0em}
+    \texttt{PROGRAMAS(\underline{P\#}, Memoria, SO, Distribuidor)}\\
+    \texttt{USUARIOS(\underline{U\#}, Edad, Sexo)}\\
+    \texttt{ORDENADORES(\underline{O\#}, Modelo, SO, Capacidad)}\\
+    \texttt{USOS(\underline{U\#}, \underline{P\#}, \underline{O\#}, Tiempo)}
+\end{addmargin}
+
+Se pide expresar en términos de álgebra relacional la secuencia de operaciones necesaria para efectuar las siguientes consultas a la base de datos:
+
+\begin{enumerate}
+    \item Obtener los usuarios (\texttt{U\#}) que usan al menos todos los programas del distribuidor `D1'.
+    \item Obtener los programas (\texttt{P\#}) que sólo son usados por el usuario `U5'.
+    \item Obtener distribuidores que venden los programas `P5' y `P8'.
+    \item Obtener los modelos de los ordenadores que son usados por personas mayores de 30 años durante más de 3 horas.
+\end{enumerate}
+
+\section{Videoteca}
+
+Sean las relaciones siguientes:
+
+\begin{addmargin}[1.5em]{0em}
+    \texttt{SOCIO(\underline{Aficionado}, \underline{Videoclub})}\\
+    \texttt{GUSTA(\underline{Aficionado}, \underline{Película})}\\
+    \texttt{VIDEOTECA(\underline{Videoclub}, \underline{Película})}
+\end{addmargin}
+
+Se pide escribir en álgebra relacional las sentencias necesarias para responder a las preguntas siguientes:
+
+\begin{enumerate}
+    \item Películas que le gustan al aficionado `José Pérez'.
+    \item Videoclubes que disponen de alguna película que le guste al aficionado `José Pérez'.
+    \item Aficionados que son socios de al menos de un videoclub que dispone de alguna película de su gusto.
+    \item Aficionados que no son socios de ningún videoclub donde tengan alguna película de su gusto.
+\end{enumerate}
+
+\section{Maquinaria}
+
+Dada la base de datos formada por las siguientes tablas:
+
+\begin{addmargin}[1.5em]{0em}
+    \texttt{MÁQUINAS(\underline{M\#}, Tipo, Matrícula, PrecioHora)}\\
+    \texttt{FINCAS(\underline{F\#}, Nombre, Extensión)}\\
+    \texttt{TRABAJADOR(\underline{T\#}, Nombre, Dirección)}\\
+    \texttt{PARTES(\underline{T\#}, \underline{M\#}, \underline{F\#}, \underline{Fecha}, TipoFaena, Tiempo)}
+\end{addmargin}
+
+Se pide dar soluciones algebraicas a las siguientes consultas:
+
+\begin{enumerate}
+    \item Obtener todos los \texttt{T\#} que usan todas las máquinas de tipo 1.
+    \item Obtener todos los \texttt{F\#} para aquellas fincas en las que han realizado trabajos las máquinas `M1' y `M3'.
+    \item Obtener el valor de \texttt{M\#} para aquellas máquinas que no han sido utilizadas nunca en ningún trabajo.
+    \item Obtener todos los nombres de fincas en las que se ha trabajado más de 5 horas con máquinas cuyo precio por hora sea superior a 25€.
+\end{enumerate}
+
+\section{Prácticas}
+
+Dada la base de datos compuesta por las siguientes tablas:
+
+\begin{addmargin}[1.5em]{0em}
+    \texttt{ALUMNOS(\underline{A\#}, Nombre, Grupo)}\\
+    \texttt{PRÁCTICAS(\underline{P\#}, Curso, Fecha)}\\
+    \texttt{ENTREGA(\underline{A\#}, \underline{P\#}, Nota)}
+\end{addmargin}
+
+Se pide dar solución en álgebra relacional a las consultas:
+
+\begin{enumerate}
+    \item Obtener los nombres de los alumnos que han aprobado todas las prácticas de tercer curso.
+    \item Obtener los nombres de los alumnos que han entregado todas las prácticas de tercer curso.
+    \item Obtener los alumnos que han entregado prácticas de segundo y tercer curso.
+    \item Obtener los alumnos que sólo han entregado prácticas de segundo curso.
+    \item Obtener los alumnos que han entregado prácticas de segundo curso y pertenecen al grupo `BD-11'.
+    \item Obtener el nombre de los alumnos que no han suspendido ninguna práctica de las que han entregado.
+\end{enumerate}
+
+\section{Ciclismo}
+
+La Federación Internacional de Ciclismo Profesional desea tener una Base de Datos Relacional (BDR) con las siguientes tablas:
+
+\begin{addmargin}[1.5em]{0em}
+    \texttt{EQUIPOS(\underline{E\#}, Nombre, País)}\\
+    \texttt{CICLISTAS(\underline{C\#}, Nombre, E\#)}\\
+    \texttt{COMPETICIONES(\underline{M\#}, Nombre, País, Duración)}\\
+    \texttt{CLASIFICACIÓN(\underline{M\#}, \underline{C\#}, Puesto)}
+\end{addmargin}
+
+Se pide escribir las sentencias necesarias en álgebra relacional para:
+
+\begin{enumerate}
+    \item Obtener los ciclistas que sólo han participado en competiciones de duración inferior a 15 días.
+    \item Obtener los ciclistas de equipos españoles que han competido en todas las competiciones de España.
+    \item Obtener los ciclistas que han obtenido un primer y un segundo puestos en competiciones con una duración inferior a 15 días.
+\end{enumerate}
+
+\section{Infracciones de tráfico}
+
+Dada las tablas siguientes:
+
+\begin{addmargin}[1.5em]{0em}
+    \texttt{CONDUCTOR(\underline{C\#}, DNI, Nombre)}\\
+    \texttt{AGENTE(\underline{A\#}, Nombre, Rango)}\\
+    \texttt{INFRACCIÓN(\underline{I\#}, Descripción, Importe)}\\
+    \texttt{DENUNCIA(\underline{C\#}, \underline{A\#}, \underline{I\#}, \underline{Fecha}, Pagada)}
+\end{addmargin}
+
+Se pide escribir en álgebra relacional las sentencias necesarias para:
+
+\begin{enumerate}
+    \item Obtener el nombre de aquellos conductores que hayan sido denunciados por todas las infracciones inferiores a 600€.
+    \item Obtener el código de aquellos agentes que sólo hayan denunciado infracciones de `Estacionamiento' (atributo \texttt{Descripción}).
+    \item Obtener el código de aquellos conductores que no tengan ninguna denuncia pendiente de pago (atributo \texttt{Pagada}).
+\end{enumerate}
+
+\vspace{1em}
+\hrule
+\doclicenseThis
+
+\end{document}
