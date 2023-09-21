@@ -437,16 +437,16 @@ table th:nth-child(1) {
 
 ## Dependencia funcionales
 
-Las formas normales fundamentan su definición en el concepto de **dependencias funcionales**. En bases de datos, una dependencia funcional se refiere a **una relación entre dos conjuntos de atributos (columnas) en una tabla, en la que el valor de un conjunto de atributos determina unívocamente el valor de otro conjunto de atributos**. En otras palabras, una dependencia funcional establece una regla o restricción que indica cómo los valores en ciertas columnas están relacionados entre sí.
+Las formas normales fundamentan su definición en el concepto de **dependencias funcionales**. En bases de datos, una dependencia funcional se refiere a **una relación entre dos conjuntos de atributos (columnas) en una tabla, en la que el valor de un conjunto de atributos determina unívocamente el valor de otro conjunto de atributos**. En otras palabras, una dependencia funcional establece una regla que indica cómo los valores en ciertas columnas están relacionados entre sí.
 
-Por ejemplo, la siguiente tabla presenta una dependencia funcional entre el número de matrícula, el DNI y el nombre del alumno:
+Por ejemplo, la siguiente tabla presenta una dependencias funcionales entre `Num_mat` &rarr; `Nombre` y `DNI` &rarr; `Nombre` pero no entre `Nombre` &rarr; `Num_mat` ni `Nombre` &rarr; `DNI`.
 
 | Num_mat | Nombre | DNI       | 
 | ------- | ------ | --------- | 
 | cd2521  | Pepe   | 66843526Y | 
 | cd0252  | Luisa  | 47645869N | 
 | ce2314  | Andrés | 44568145X | 
-| cb0023  | Ana    | 53057122D |
+| ca2511  | Andrés | 50311320Q |
 
 
 ---
