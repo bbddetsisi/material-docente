@@ -41,5 +41,7 @@ Temporary Items
 /ejercicios/**/*.synctex.gz
 /ejercicios/**/*.fdb_latexmk
 /ejercicios/**/*.pdf
+/ejercicios/**/*.pyg
+/ejercicios/**/*.out
 
 /transparencias/**/*.pdf
