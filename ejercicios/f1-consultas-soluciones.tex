@@ -1,0 +1,533 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=3.5cm]{geometry}
+
+
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[newfloat]{minted}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={3.0},
+]{doclicense}
+
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0.6pt}
+
+\pagestyle{fancy}
+\setlength\headheight{50pt}
+\lhead{\includegraphics[height=1.5cm]{logos/upm_logo}}
+\chead{Bases de Datos\\\vspace{.5em} Soluciones a ejercicios SQL\\\vspace{-.1em}}
+\rhead{\includegraphics[height=1.5cm]{logos/etsisi_logo}}
+\lfoot{\textbf{Tema 4:} El lenguaje SQL}
+\cfoot{}
+\rfoot{\thepage}
+
+\parskip 1.1ex % paragraph spacing
+
+\begin{document}
+
+\section*{Carreras de Formula 1}
+
+Soluciones a las consultas SQL:
+
+\begin{enumerate}
+    \item % Obtener el nombre de los pilotos que han participado en al menos 1 carrera del año 2016.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT DISTINCT drivers.surname, drivers.forename
+FROM drivers 
+	INNER JOIN results ON drivers.driverId = results.driverId
+	INNER JOIN races ON results.raceId = races.raceId
+WHERE year = 2016
+    \end{minted}
+    
+    \item % Nombre de los constructores con los que han disputado carreras más de 50 pilotos diferentes.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT name
+FROM constructors
+WHERE constructorId IN (SELECT constructorId
+                        FROM results
+                        GROUP BY constructorId
+                        HAVING COUNT(DISTINCT driverId) > 50)
+    \end{minted}
+    
+    \item % Nombre y apellidos de los pilotos que nunca han ganado una carrera.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT forename, surname
+FROM drivers
+WHERE driverId NOT IN (SELECT driverId
+               FROM results
+               WHERE positionOrder = 1)
+    \end{minted}            
+    
+    \item % Obtener el nombre y apellidos de los pilotos que durante el año 2017 han participado en todas las carreras.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+-- Solución con HAVING COUNT
+SELECT drivers.surname, drivers.forename
+FROM drivers
+WHERE driverId IN (SELECT driverId
+                   FROM results
+                   WHERE raceId IN (SELECT raceId FROM races WHERE year=2017)
+                   GROUP BY results.driverId
+                   HAVING COUNT(distinct results.raceId) = (SELECT COUNT(*)
+                                                            FROM races
+                                                            WHERE year=2017))
+                                
+-- Solución con NOT EXISTS                                     
+SELECT drivers.surname, drivers.forename
+FROM drivers
+WHERE NOT EXISTS (SELECT *
+            FROM races
+            WHERE year = 2017 
+              AND NOT EXISTS (SELECT *
+                              FROM results
+                              WHERE results.driverId = drivers.driverId 
+                                AND races.raceId = results.raceId))
+    \end{minted}
+    
+    \item % Obtener el nombre, localización, país y año para cada circuito de las carreras que se han disputado entre 2015 y 2017, ordenado por el id del circuito.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT circuits.circuitId, circuits.name, circuits.location, circuits.country, year
+FROM races 
+    INNER JOIN circuits ON races.circuitId = circuits.circuitId
+WHERE year BETWEEN 2015 AND 2017
+ORDER BY circuits.circuitId
+    \end{minted}
+    
+    \item % Obtener los constructores que no han participado en alguna clasificación.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}           
+SELECT *
+FROM constructors
+WHERE constructors.constructorId NOT IN (SELECT qualifying.constructorId 
+                                         FROM qualifying)  
+    \end{minted}            
+    
+    \item % Obtener nombres, apellidos de los pilotos que han ganado más de 30 grandes premios así como el número de grandes premios que han ganado.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT drivers.surname, drivers.forename , tabla1.Ganado
+FROM (SELECT .driverId , COUNT(*) Ganado
+FROM `results`
+WHERE positionOrder = 1
+GROUP BY driverId
+HAVING COUNT(*) > 30 ) tabla1 JOIN drivers ON tabla1.driverId=drivers.driverId 
+    \end{minted}    
+    
+    \item % Nombre y apellidos del piloto que obtuvo la vuelta con velocidad media más alta así como el circuito y el año en el que se obtuvo.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT drivers.forename, drivers.surname, circuits.name, races.year, results.fastestLapSpeed
+FROM drivers
+    INNER JOIN results ON drivers.driverId = results.driverId
+    INNER JOIN races ON races.raceId = results.raceId
+    INNER JOIN circuits ON circuits.circuitId = races.circuitId
+WHERE fastestLapSpeed >= ALL (SELECT fastestLapSpeed
+                              FROM results)
+    \end{minted}
+    
+    \item % Obtener el nombre, apellidos y la velocidad media del piloto que obtuvo la vuelta con velocidad media más alta en el gran premio de Japón de 2009.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}                
+SELECT drivers.forename, drivers.surname, results.fastestLapSpeed
+FROM drivers
+	INNER JOIN results ON results.driverId = drivers.driverId
+    INNER JOIN races ON races.raceId = results.raceId
+WHERE races.year = 2009
+  AND races.name = 'Japanese Grand Prix'
+  AND results.fastestLapSpeed >= ALL (SELECT fastestLapSpeed
+									  FROM results
+										INNER JOIN races ON races.raceId = results.raceId
+									  WHERE year = 2009
+                                        AND name = 'Japanese Grand Prix')
+    \end{minted}             
+
+    \item % Obtener el nombre de los pilotos que durante el año 2017 consiguieron puntos en todas las carreras.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+-- Solución con HAVING COUNT        
+SELECT drivers.forename, drivers.surname
+FROM results
+	INNER JOIN races ON races.raceId = results.raceId
+    INNER JOIN drivers ON drivers.driverId = results.driverId
+WHERE points > 0
+  AND year = 2017
+GROUP BY drivers.driverId, drivers.forename, drivers.surname
+HAVING COUNT(*) = (SELECT COUNT(*)
+				   FROM races
+                   WHERE year = 2017)
+
+                             
+-- Solución con NOT EXISTS 
+SELECT drivers.surname, drivers.forename
+FROM drivers
+WHERE NOT EXISTS ( SELECT *
+            FROM races
+            WHERE year = 2017 AND NOT EXISTS (SELECT *
+                                              FROM results
+                                              WHERE results.points > 0 
+                                                AND drivers.driverId = results.driverId 
+                                                AND results.raceId = races.raceId ))
+    \end{minted}  
+    
+    \item % Obtener el nombre de los pilotos, el circuito y el total de paradas, para aquellos pilotos que entre todos los grandes premios disputados han realizado en alguno de ellos el mayor número de paradas y también los que han realizado el menor número de ellas.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}   
+-- Solución con GROUP BY
+SELECT drivers.forename, drivers.surname, circuits.name, races.year, COUNT(*)
+FROM drivers
+	INNER JOIN pitstops ON pitstops.driverId = drivers.driverId
+    INNER JOIN races ON races.raceId = pitstops.raceId
+    INNER JOIN circuits ON circuits.circuitId = races.circuitId
+GROUP BY drivers.driverId, drivers.forename, drivers.surname, races.raceId, races.year, circuits.name
+HAVING COUNT(*) >= ALL(SELECT COUNT(*)
+					   FROM pitstops
+					   GROUP BY driverId, raceId)
+
+UNION
+
+SELECT drivers.forename, drivers.surname, circuits.name, races.year, COUNT(*)
+FROM drivers
+	INNER JOIN pitstops ON pitstops.driverId = drivers.driverId
+    INNER JOIN races ON races.raceId = pitstops.raceId
+    INNER JOIN circuits ON circuits.circuitId = races.circuitId
+GROUP BY drivers.driverId, drivers.forename, drivers.surname, races.raceId, races.year, circuits.name
+HAVING COUNT(*) <= ALL(SELECT COUNT(*)
+					   FROM pitstops
+					   GROUP BY driverId, raceId)
+
+-- Solución con el atributo stop
+SELECT d.forename, d.surname, c.name, r.year, p.stop
+FROM drivers d
+	INNER JOIN pitstops p ON p.driverId = d.driverId
+    INNER JOIN races r ON r.raceId = p.raceId
+    INNER JOIN circuits c ON c.circuitId = r.circuitId
+WHERE p.stop = (SELECT MAX(stop)
+				FROM pitstops)
+   OR p.stop = (SELECT MIN(stop)
+				FROM pitstops)
+    \end{minted}            
+    
+    \item % De entre todos los pilotos que han participado en todas las rondas de clasificación (Q1, Q2 y Q3) del gran premio de Abu Dhabi de 2017 (\texttt{qualifying.q1 <> '' AND qualifying.q2 <> '' AND qualifying.q3 <> ''}), obtener el nombre de los pilotos y el id de los equipos, para aquellos equipos que tienen a sus dos pilotos en esa situación.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}             
+SELECT drivers.forename, drivers.surname, constructors.name
+FROM drivers
+	INNER JOIN qualifying ON qualifying.driverId = drivers.driverId
+    INNER JOIN constructors ON qualifying.constructorId = constructors.constructorId
+    INNER JOIN races ON races.raceId = qualifying.raceId
+WHERE races.year = 2017
+  AND races.name = 'Abu Dhabi Grand Prix'
+  AND constructors.constructorId IN (SELECT qualifying.constructorId
+									 FROM qualifying
+								 		 INNER JOIN races ON races.raceId = qualifying.raceId
+									 WHERE races.year = 2017
+									   AND races.name = 'Abu Dhabi Grand Prix'
+									   AND qualifying.q1 <> ''
+                                       AND qualifying.q2 <> ''
+                                       AND qualifying.q3 <> ''
+									 GROUP BY qualifying.constructorId
+									 HAVING COUNT(DISTINCT qualifying.driverId) = 2)
+ORDER BY constructors.name ASC
+    \end{minted}
+    
+    \item % Obtener el nombre y apellido de los pilotos y el nombre de aquellas carreras en las que han participado pilotos rusos y polacos.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT drivers.forename, drivers.surname, races.name, races.year
+FROM drivers
+	INNER JOIN results ON results.driverId = drivers.driverId
+    INNER JOIN races ON races.raceId = results.raceId
+WHERE races.raceId IN (SELECT raceId
+					   FROM results 
+                           INNER JOIN drivers ON drivers.driverId = results.driverId
+					   WHERE drivers.nationality = "Russian")
+  AND races.raceId IN (SELECT raceId
+					   FROM results 
+                           INNER JOIN drivers ON drivers.driverId = results.driverId
+					   WHERE drivers.nationality = "Polish")
+    \end{minted}
+    
+    \item % Obtener el nombre y apellidos de los pilotos y el número de vueltas totales recorridas en el año 2011 siempre y cuando sea mayor que la media del número de vueltas totales recorridas el año anterior por todos los pilotos.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT drivers.forename, drivers.surname, SUM(results.laps)
+FROM drivers
+	INNER JOIN results ON results.driverId = drivers.driverId
+    INNER JOIN races ON races.raceId = results.raceId
+WHERE races.year = 2011
+GROUP BY drivers.driverId, drivers.forename, drivers.surname
+HAVING SUM(results.laps) > (SELECT AVG(nLaps)
+							FROM (SELECT SUM(laps) AS nLaps
+								  FROM results
+									  INNER JOIN races ON races.raceId = results.raceId
+								  WHERE year = 2010
+								  GROUP BY driverId) t)
+    \end{minted}
+    
+    \item % Obtener el nombre y año de las carreras en las que se disputó una clasificación (\texttt{qualifying}) pero no se realizaron pitstops.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT name, year
+FROM races
+WHERE raceId IN (SELECT raceId FROM qualifying)
+  AND raceId NOT IN (SELECT raceId FROM pitstops)
+    \end{minted}
+    
+    \item % Obtener la nacionalidad de los pilotos que han disputado todas las ediciones del gran premio `Australian Grand Prix'.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+-- Solución con NOT EXITS
+SELECT DISTINCT nationality
+FROM drivers
+WHERE NOT EXISTS (SELECT *
+                  FROM races
+                  WHERE name = "Australian Grand Prix"
+                    AND NOT EXISTS (SELECT *
+                                    FROM results
+                                    WHERE results.driverId = drivers.driverId
+                                      AND results.raceId = races.raceId))
+                                      
+-- Solución con COUNT
+SELECT drivers.nationality
+FROM drivers
+	INNER JOIN results ON results.driverId = drivers.driverId
+    INNER JOIN races ON races.raceId = results.raceId
+WHERE races.name = "Australian Grand Prix"
+GROUP BY drivers.driverId, drivers.nationality
+HAVING COUNT(*) = (SELECT COUNT(*)
+                  FROM races
+                  WHERE name = "Australian Grand Prix")
+    \end{minted}
+       
+    \item % Eliminar de la tabla \texttt{qualifying} aquellas tuplas donde un piloto no haya participado en la clasificación.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+DELETE FROM qualifying
+WHERE q1 = '' AND q2 = '' AND q3 = ''
+    \end{minted}
+            
+    \item % Obtener aquellos constructores que habiendo ganado más de 5 carreras entre 2003 y 2010, no hayan participado en ninguna carrera desde el siguiente año.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT *
+FROM constructors
+WHERE constructorId IN (SELECT results.constructorId
+						FROM results
+							INNER JOIN races ON races.raceId = results.raceId
+						WHERE races.year BETWEEN 2003 AND 2010
+						  AND results.positionOrder = 1
+						GROUP BY results.constructorId
+						HAVING COUNT(*) > 5)
+  AND constructorId NOT IN (SELECT results.constructorId
+							FROM results
+								INNER JOIN races ON races.raceId = results.raceId
+							WHERE races.year > 2010)
+    \end{minted}
+        
+    \item % Obtener el nombre de la carrera y el año en la que tuvo lugar todos los tipos de incidentes que se enumeran a continuación: descalificación, accidente, colisión, fallo de motor, caja de cambios y transmisión (statusId de 2 a 7).
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+-- Solución con NOT EXISTS
+SELECT name, year
+FROM races
+WHERE NOT EXISTS(SELECT *
+                 FROM status
+                 WHERE statusId BETWEEN 2 AND 7
+                   AND NOT EXISTS(SELECT *
+                                  FROM results
+                                  WHERE results.raceId = races.raceId
+                                    AND results.statusId = status.statusId))
+                                    
+-- Solución con COUNT
+SELECT races.raceId, races.name, races.year, COUNT(DISTINCT results.statusId)
+FROM races
+	INNER JOIN results ON results.raceId = races.raceId
+WHERE results.statusId BETWEEN 2 AND 7
+GROUP BY races.raceId, races.name, races.year
+HAVING COUNT(DISTINCT results.statusId) = (SELECT COUNT(*)
+										   FROM status
+                                           WHERE statusId BETWEEN 2 AND 7)
+    \end{minted}
+
+    \item % Obtener nombre y apellidos del piloto, el nombre del circuito, el año de la carrera donde un piloto español obtuvo el tiempo de parada más pequeño (atributo \texttt{miliseconds}). Incluya este atributo en la salida de la consulta.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT forename, surname, circuits.name, races.year, miliseconds
+FROM drivers, pitstops, races, circuits
+WHERE drivers.driverId=pitstops.driverId 
+  AND pitstops.raceId=races.raceId
+  AND races.circuitId=circuits.circuitId
+  AND drivers.nationality='Spanish'
+  AND miliseconds = (SELECT MIN(miliseconds)
+                     FROM pitstops JOIN drivers ON pitstops.driverId=drivers.driverId
+                     WHERE drivers.nationality='Spanish');
+    \end{minted}
+     
+    \item % Codifique una consulta que obtenga el nombre de los constructores italianos (\texttt{nationality = `Italian'}) con los que hayan disputado carreras al menos un piloto italiano:
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT DISTINCT name
+FROM constructors
+    INNER JOIN results ON results.constructorId = constructors.constructorId
+    INNER JOIN drivers ON drivers.driverId = results.resultId
+WHERE constructors.nationality LIKE 'Italian'
+  AND drivers.nationality LIKE 'Italian'
+    \end{minted}
+            
+    \item % Codifique una consulta que obtenga el nombre y apellidos del piloto que más accidentes (\texttt{status.status = `Accident'}) ha tenido. Mostrar también el número de accidentes.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT drivers.forename, drivers.forename, COUNT(*)
+FROM drivers
+	INNER JOIN results ON results.driverId = drivers.driverId
+    INNER JOIN status ON status.statusId = results.statusId
+WHERE status.status LIKE 'Accident'
+GROUP BY drivers.driverId, drivers.forename, drivers.surname
+HAVING COUNT(*) >= ALL (SELECT COUNT(*)
+                        FROM results
+                        	INNER JOIN status ON status.statusId = results.statusId
+                        WHERE status.status LIKE 'Accident'
+                        GROUP BY results.driverId) 
+    \end{minted}
+            
+    \item % Codifique una consulta que obtenga el nombre y apellidos de los pilotos que hayan calificado entre los 10 primeros puestos (\texttt{position <= 10}) de todas las carreras del año 2015.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT drivers.forename, drivers.surname
+FROM drivers
+WHERE NOT EXISTS (SELECT *
+                  FROM races
+                  WHERE year = 2015
+                    AND NOT EXISTS (SELECT *
+                                    FROM qualifying
+                                    WHERE position <= 10
+                                      AND qualifying.driverId = drivers.driverId
+                                      AND qualifying.raceId = races.raceId))
+    \end{minted}
+            
+    \item % Obtener una lista con los nombres de aquellos constructores italianos (‘Italian’ en inglés) que nunca han competido con pilotos italianos.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT name
+FROM constructors
+WHERE constructorId NOT IN (SELECT constructorId
+                            FROM results JOIN drivers ON results.driverId=drivers.driverId
+                            WHERE nationality='Italian')
+AND nationality='Italian';
+
+    \end{minted}
+            
+    \item % Obtener toda la información de los constructores que en todas las carreras del año 2006, consiguieron que alguno de sus pilotos quedara entre los diez primeros de la clasificación.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT *
+FROM constructors C
+WHERE NOT EXISTS (SELECT *
+                  FROM races R
+                  WHERE year=2006
+                  AND NOT EXISTS (SELECT *
+                                  FROM qualifying
+                                  WHERE qualifying.raceId=R.raceId
+                                  AND qualifying.constructorId=C.constructorId
+                                  AND position <= 10))  
+
+    \end{minted}
+
+    \item % Obtener nombre y apellidos del piloto que acabó la competición con más puntos entre los años 1990 y 2000, así como dicha suma de puntos.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT forename, surname, suma
+FROM(SELECT driverId, year, SUM(points) as suma
+     FROM results JOIN races ON results.raceId=races.raceId
+     WHERE year BETWEEN 1990 AND 2000
+     GROUP BY driverId, year
+     HAVING SUM(points)>0) AS puntuaciones
+JOIN drivers ON puntuaciones.driverId=drivers.driverId
+WHERE suma >= ALL (SELECT SUM(points)
+                   FROM results JOIN races ON results.raceId=races.raceId
+                   WHERE year BETWEEN 1990 AND 2000
+                   GROUP BY driverId, year
+                   HAVING SUM(points)>0)
+
+    \end{minted}
+    
+    \item % Codifique una consulta que obtenga el nombre y apellidos de los pilotos que ganaron una carrera (\texttt{results.positionOrder = 1}) sin haber estado clasificados entre los 10 primeros pilotos (\texttt{qualifying.position > 10}). Mostrar además el nombre de la carrera y el año en la que lo consiguieron.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT DISTINCT d.forename, d.surname, r.name, r.year
+FROM drivers d
+	INNER JOIN results ON results.driverId = d.driverId
+    INNER JOIN races r ON r.raceId = results.raceId
+WHERE results.positionOrder = 1
+  AND EXISTS (SELECT *
+              FROM qualifying
+              WHERE qualifying.raceId = r.raceId
+                AND qualifying.driverId = d.driverId
+                AND position > 10)
+    \end{minted}
+            
+            
+    \item % Codifique una consulta que obtenga el nombre y apellidos del piloto que realizó más \emph{pitstops} en una carrera del año 2013. Mostrar también el número de \emph{pitstops}.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT drivers.forename, drivers.surname, COUNT(*)
+FROM drivers
+	INNER JOIN pitstops ON pitstops.driverId = drivers.driverId
+    INNER JOIN races ON races.raceId = pitstops.raceId
+WHERE races.year = 2013
+GROUP BY pitstops.driverId, pitstops.raceId, drivers.forename, drivers.surname
+HAVING COUNT(*) >= ALL (SELECT COUNT(*)
+                        FROM pitstops
+                       	GROUP BY pitstops.driverId, pitstops.raceId)  
+    \end{minted}
+            
+            
+    \item % Codifique una consulta que obtenga el nombre y apellidos de los pilotos que hayan quedado entre los 10 primeros puestos (\texttt{positionOrder <= 10}) de todas las carreras del año 2017.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT drivers.forename, drivers.surname
+FROM drivers
+WHERE NOT EXISTS (SELECT *
+                  FROM races
+                  WHERE year = 2017
+                    AND NOT EXISTS (SELECT *
+                                    FROM results
+                                    WHERE positionOrder <= 10
+                                      AND results.driverId = drivers.driverId
+                                      AND results.raceId = races.raceId))
+    \end{minted}
+    
+    \item % Obtener toda la información de los constructores que en todas las carreras del año 2006, consiguieron que alguno de sus pilotos quedara entre los diez primeros de la clasificación.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}  
+SELECT *
+FROM constructors C
+WHERE NOT EXISTS (SELECT *
+                  FROM races R
+                  WHERE year=2006
+                  AND NOT EXISTS (SELECT *
+                                  FROM qualifying
+                                  WHERE qualifying.raceId=R.raceId
+                                  AND qualifying.constructorId=C.constructorId
+                                  AND position <= 10))  
+
+    \end{minted}
+
+    \item % Obtener nombre y apellidos del piloto que acabó la competición con más puntos entre los años 1990 y 2000, así como dicha suma de puntos.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}
+SELECT forename, surname, suma
+FROM(SELECT driverId, year, SUM(points) as suma
+     FROM results JOIN races ON results.raceId=races.raceId
+     WHERE year BETWEEN 1990 AND 2000
+     GROUP BY driverId, year
+     HAVING SUM(points)>0) AS puntuaciones
+JOIN drivers ON puntuaciones.driverId=drivers.driverId
+WHERE suma >= ALL (SELECT SUM(points)
+                   FROM results JOIN races ON results.raceId=races.raceId
+                   WHERE year BETWEEN 1990 AND 2000
+                   GROUP BY driverId, year
+                   HAVING SUM(points)>0)
+
+    \end{minted}
+
+    \item % Nombre y apellidos del piloto que realizó más pitstops en una carrera del año 2013. Mostrar también el número de pitstops.
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}    
+    SELECT drivers.forename, drivers.surname, COUNT(*)
+FROM drivers
+	INNER JOIN pitstops ON pitstops.driverId = drivers.driverId
+    INNER JOIN races ON races.raceId = pitstops.raceId
+WHERE races.year = 2013
+GROUP BY pitstops.driverId, pitstops.raceId, drivers.forename, drivers.surname
+HAVING COUNT(*) >= ALL (SELECT COUNT(*)
+                        FROM pitstops
+                       	GROUP BY pitstops.driverId, pitstops.raceId)  
+    \end{minted}
+\end{enumerate}
+
+
+\vspace{2em}
+\hrule
+\doclicenseThis
+
+\end{document}

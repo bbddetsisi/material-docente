@@ -1,0 +1,131 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=3.5cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[nolist]{acronym}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={3.0},
+]{doclicense}
+
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0.6pt}
+
+\pagestyle{fancy}
+\setlength\headheight{50pt}
+\lhead{\includegraphics[height=1.5cm]{logos/upm_logo}}
+\chead{Bases de Datos\\\vspace{.5em} Ejercicios SQL\\\vspace{-.1em}}
+\rhead{\includegraphics[height=1.5cm]{logos/etsisi_logo}}
+\lfoot{\textbf{Tema 4:} El lenguaje SQL}
+\cfoot{}
+\rfoot{\thepage}
+
+\parskip 1.1ex % paragraph spacing
+
+\begin{acronym}
+    \acro{FIA}{Federación Internacional de Automovilismo}
+\end{acronym}
+
+\begin{document}
+
+\section*{Carreras de Formula 1}
+
+La \ac{FIA} está tratando de recopilar toda la información que han recogido en los últimos años durante las carreras de Fórmula 1. Con todos los datos que han conseguido recabar quieren realizar diversos estudios con el fin de mejorar el espectáculo. No obstante, antes de poder realizar ningún estudio se necesita crear una base de datos donde se pueda almacenar la información. 
+
+Para ello, la compañía nos ha suministrado el Modelo Relacional que se muestra en la figura~\ref{fig:relacional}, con el fin de facilitar las pautas necesarias a tener en cuenta para poder crear la base de datos.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figs/modelo-relacional}
+  \caption{Modelo relacional de la Fórmula 1.}
+  \label{fig:relacional}
+\end{figure}
+
+Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes restricciones:
+\begin{itemize}
+    \item Todos los identificadores se presentan de forma numérica.
+    \item Los nombres, apellidos, nacionalidades y localizaciones no podrán exceder en ningún caso los 250 caracteres.
+    \item Los campos que indican número de vuelta, puntos y velocidades tendrán que adaptarse como valores \texttt{INT}, \texttt{FLOAT} o \texttt{DOUBLE} según corresponda.
+    \item Existen tres tipos adicionales de valores con formato temporal como son \textit{time} de tipo \texttt{TIME}, \textit{date} y \textit{birthday} de tipo \texttt{DATE} y \textit{year} de tipo \texttt{YEAR}.
+\end{itemize}
+
+La consultas que maneja la \ac{FIA} y que deben resolverse dentro de este ejecicio haciendo uso del lenguaje SQL son:
+
+\begin{enumerate}
+    \item Obtener el nombre de los pilotos que han participado en al menos 1 carrera del año 2016.
+
+    \item Nombre de los constructores con los que han disputado carreras más de 50 pilotos diferentes.
+    
+    \item Nombre y apellidos de los pilotos que nunca han ganado una carrera.
+              
+    \item Obtener el nombre y apellidos de los pilotos que durante el año 2017 han participado en todas las carreras.
+    
+    \item Obtener el nombre, localización, país y año para cada circuito de las carreras que se han disputado entre 2015 y 2017, ordenado por el id del circuito.
+    
+    \item Obtener los constructores que no han participado en alguna clasificación.
+              
+    \item Obtener nombres, apellidos de los pilotos que han ganado más de 30 grandes premios así como el número de grandes premios que han ganado.
+       
+    \item Nombre y apellidos del piloto que obtuvo la vuelta con velocidad media más alta así como el circuito y el año en el que se obtuvo.
+    
+    \item Obtener el nombre, apellidos y la velocidad media del piloto que obtuvo la vuelta con velocidad media más alta en el gran premio de Japón de 2009.
+             
+    \item Obtener el nombre de los pilotos que durante el año 2017 consiguieron puntos en todas las carreras.
+    
+    \item Obtener el nombre de los pilotos, el circuito y el total de paradas, para aquellos pilotos que entre todos los grandes premios disputados han realizado en alguno de ellos el mayor número de paradas y también los que han realizado el menor número de ellas.
+      
+    \item De entre todos los pilotos que han participado en todas las rondas de clasificación (Q1, Q2 y Q3) del gran premio de Abu Dhabi de 2017 (\texttt{qualifying.q1 <> '' AND qualifying.q2 <> '' AND qualifying.q3 <> ''}), obtener el nombre de los pilotos y el id de los equipos, para aquellos equipos que tienen a sus dos pilotos en esa situación.
+    
+    \item Obtener el nombre y apellido de los pilotos y el nombre de aquellas carreras en las que han participado pilotos rusos y polacos.
+            
+    \item Obtener el nombre y apellidos de los pilotos y el número de vueltas totales recorridas en el año 2011 siempre y cuando sea mayor que la media del número de vueltas totales recorridas el año anterior por todos los pilotos.
+
+    \item Obtener el nombre y año de las carreras en las que se disputó una clasificación (\texttt{qualifying}) pero no se realizaron pitstops.
+    
+    \item Obtener la nacionalidad de los pilotos que han disputado todas las ediciones del gran premio `Australian Grand Prix'.
+    
+    \item Eliminar de la tabla \texttt{qualifying} aquellas tuplas donde un piloto no haya participado en la clasificación.
+            
+    \item Obtener aquellos constructores que habiendo ganado más de 5 carreras entre 2003 y 2010, no hayan participado en ninguna carrera desde el siguiente año.
+    
+    \item Obtener el nombre de la carrera y el año en la que tuvo lugar todos los tipos de incidentes que se enumeran a continuación: descalificación, accidente, colisión, fallo de motor, caja de cambios y transmisión (statusId de 2 a 7).
+    
+    \item Obtener nombre y apellidos del piloto, el nombre del circuito, el año de la carrera donde un piloto español obtuvo el tiempo de parada más pequeño (atributo \texttt{miliseconds}). Incluya este atributo en la salida de la consulta.
+
+    \item Codifique una consulta que obtenga el nombre de los constructores italianos (\texttt{nationality = `Italian'}) con los que hayan disputado carreras al menos un piloto italiano:
+            
+    \item Codifique una consulta que obtenga el nombre y apellidos del piloto que más accidentes (\texttt{status.status = `Accident'}) ha tenido. Mostrar también el número de accidentes.
+            
+    \item Codifique una consulta que obtenga el nombre y apellidos de los pilotos que hayan calificado entre los 10 primeros puestos (\texttt{position <= 10}) de todas las carreras del año 2015.
+    
+    \item Obtener una lista con los nombres de aquellos constructores italianos (‘Italian’ en inglés) que nunca han competido con pilotos italianos.
+    
+    \item Obtener toda la información de los constructores que en todas las carreras del año 2006, consiguieron que alguno de sus pilotos quedara entre los diez primeros de la clasificación.
+    
+    \item Obtener nombre y apellidos del piloto que acabó la competición con más puntos entre los años 1990 y 2000, así como dicha suma de puntos.
+
+    \item Codifique una consulta que obtenga el nombre y apellidos de los pilotos que ganaron una carrera (\texttt{results.positionOrder = 1}) sin haber estado clasificados entre los 10 primeros pilotos (\texttt{qualifying.position > 10}). Mostrar además el nombre de la carrera y el año en la que lo consiguieron.
+
+    \item Codifique una consulta que obtenga el nombre y apellidos del piloto que realizó más \emph{pitstops} en una carrera del año 2013. Mostrar también el número de \emph{pitstops}.
+    
+    \item Codifique una consulta que obtenga el nombre y apellidos de los pilotos que hayan quedado entre los 10 primeros puestos (\texttt{positionOrder <= 10}) de todas las carreras del año 2017.
+            
+    \item Obtener toda la información de los constructores que en todas las carreras del año 2006, consiguieron que alguno de sus pilotos quedara entre los diez primeros de la clasificación.
+    
+    \item Obtener nombre y apellidos del piloto que acabó la competición con más puntos entre los años 1990 y 2000, así como dicha suma de puntos.
+    
+    \item Nombre y apellidos del piloto que realizó más pitstops en una carrera del año 2013. Mostrar también el número de pitstops.
+\end{enumerate}
+
+\vspace{2em}
+\hrule
+\doclicenseThis
+
+\end{document}
