@@ -39,6 +39,8 @@ jobs:
         with:
           root_file: "*.tex"
           working_directory: ejercicios
+          continue_on_error: true
+          latexmk_shell_escape: true
 
       - name: Copy pdf files
         run: mkdir -p build/ejercicios  && cp ejercicios/*.pdf build/ejercicios

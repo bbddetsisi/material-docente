@@ -7,3 +7,4 @@ Repositorio con el material para la asignatura _**Bases de Datos**_ que se impar
 El repositorio se organiza de la siguiente forma:
 
 - El directorio `transparencias` contiene las transparencias del temario de la asignatura en formato Markdown.
+- El directorio `ejercicios` contiene los ejercicios en formato LaTeX.
