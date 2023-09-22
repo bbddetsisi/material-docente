@@ -16,7 +16,7 @@ jobs:
           working_directory: ejercicios
 
       - name: Copy pdf files
-        run: mkdir -p build/ejercicios  && cp *.pdf build
+        run: mkdir -p build/ejercicios  && cp ejercicios/*.pdf build/ejercicios
       
       - name: Deploy production
         uses: JamesIves/github-pages-deploy-action@v4

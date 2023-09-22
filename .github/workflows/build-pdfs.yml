@@ -15,25 +15,34 @@ jobs:
     steps:
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Imagenes para transparencias
-        run: mkdir build && mkdir build/transparencias && cp -R transparencias/img build/transparencias/img
+      - name: Images for slides
+        run: mkdir -p build/transparencias && cp -R transparencias/img build/transparencias/img
 
-      - name: Transparencias a HTML
+      - name: Slides in HTML
         uses: docker://marpteam/marp-cli:v1.7.0
         with:
           args: -I transparencias/ -o build/transparencias/ --html --allow-local-files
         env:
           MARP_USER: root:root
 
-      - name: Transparencias a PDF
+      - name: Slides in PDF
         uses: docker://marpteam/marp-cli:v1.7.0
         with:
           args: -I transparencias/ -o build/transparencias/ --html --pdf --allow-local-files
         env:
           MARP_USER: root:root
 
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: "*.tex"
+          working_directory: ejercicios
+
+      - name: Copy pdf files
+        run: mkdir -p build/ejercicios  && cp ejercicios/*.pdf build/ejercicios
+        
       - name: Deploy preview
         if: ${{ github.event_name == 'pull_request' }}
         uses: rossjrw/pr-preview-action@v1
