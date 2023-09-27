@@ -26,14 +26,6 @@ img {
 li {
   text-align: justify;
 }
-s {
-  text-decoration: underline;
-  font-weight: bold;
-}
-p {
-  text-align: justify;
-}
-/*Tablas centradas*/
 table {
   width: auto;
   margin-left: auto;
@@ -41,11 +33,11 @@ table {
 }
 </style>
 
+![bg left:40% 60%](img/t3/relational.svg)
+
 # TEMA 3
 
 ## Modelo relacional
-
-![bg left:40% 60%](img/t3/relational.svg)
 
 ---
 
@@ -96,7 +88,7 @@ Los diferentes conjuntos $D_1,D_2,\ldots,D_n$ sobre los que se define la relaci�
 
 ---
 
-<style>
+<style scoped>
 * { font-size: 0.9rem;}
 </style>
 
@@ -138,7 +130,7 @@ $$R \left ( A_1,A_2,\ldots,A_n \right )$$
 
 ---
 <style scoped>
-blockquote {
+blockquote, p, li {
   font-size: 0.8rem;
 }
 </style>
@@ -223,6 +215,10 @@ En el Modelo Relacional se distingue entre dos tipos de relaciones:
 
 ---
 
+<style scoped>
+ p, li, blockquote { font-size: 0.9rem; }
+</style>
+
 ## Elementos del modelo (Parte Semántica)
 
 Concepto de clave (definición **no** formal):
@@ -277,7 +273,7 @@ Restricciones semánticas del modelo relacional:
 3. **Restricción de Integridad Referencial**: Cualquier atributo de una relación que sea declarado como clave foránea solo puede contener valores nulos o valores existentes que provienen, o bien de la clave primaria o bien de una clave candidata de la relación a la que referencia. En otras palabras, si un atributo que es clave foránea toma un determinado valor, dicho valor tiene que existir ya sea como clave primaria o candidata en la relación a la que referencia dicha clave foránea.
 
 ---
-<style>
+<style scoped>
 blockquote, p {
   font-size: 0.9rem;
 }
@@ -815,6 +811,10 @@ El **Álgebra Relacional** es un conjunto cerrado de operaciones que:
   - Equivalencia con operadores básicos: $R\Join_F S=\sigma_F(R\times S)$.
 
 ---
+
+<style scoped>
+  li { font-size: 0.9rem; }
+</style>
 
 ## Outer Join
 
