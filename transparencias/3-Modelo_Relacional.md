@@ -422,7 +422,7 @@ Para garantizar la correcta normalización de una base de datos es necesario con
 ---
 
 <style scoped>
-p, p strong { font-size: 0.7rem; }
+p, p strong { font-size: 0.65rem; }
 
 td, th { font-size: 0.6rem; }
 
@@ -435,7 +435,7 @@ table th:nth-child(1) {
 
 Las formas normales fundamentan su definición en el concepto de **dependencias funcionales**. En bases de datos, una dependencia funcional se refiere a **una relación entre dos conjuntos de atributos (columnas) en una tabla, en la que el valor de un conjunto de atributos determina unívocamente el valor de otro conjunto de atributos**. En otras palabras, una dependencia funcional establece una regla que indica cómo los valores en ciertas columnas están relacionados entre sí.
 
-Por ejemplo, la siguiente tabla presenta una dependencias funcionales entre `Num_mat` &rarr; `Nombre` y `DNI` &rarr; `Nombre` pero no entre `Nombre` &rarr; `Num_mat` ni `Nombre` &rarr; `DNI`.
+Por ejemplo, la siguiente tabla presenta una dependencias funcionales entre `Num_mat` &rarr; `Nombre`, `DNI` &rarr; `Nombre`, `Num_mat` &rarr; `DNI` y `DNI` &rarr; `Num_mat` pero no entre `Nombre` &rarr; `Num_mat` ni `Nombre` &rarr; `DNI`.
 
 | Num_mat | Nombre | DNI       | 
 | ------- | ------ | --------- | 
@@ -518,7 +518,7 @@ Una tabla está en 2FN si:
 
 <style scoped>
 table > * > * > * {
-  font-size: 0.75rem;
+  font-size: 0.70rem;
 }
 
 table th:nth-child(1), table th:nth-child(2) {
@@ -536,7 +536,7 @@ La siguiente tabla **NO** está en 2FN...
 | Ramón | Pizza margarita   | La pequeña Italia |
 | Lucía | Costillas asadas  | El asador         |
 | Ana   | Patatas bravas    | El capricho       |
-| Ana   | Ceviche de lubina | El capricho       |
+| Ana   | Pizza margarita   | El capricho       |
 
 
 ... porque:
@@ -570,7 +570,7 @@ Será necesario dividir la tabla anterior en:
 | Ramón | Pizza margarita   | 
 | Lucía | Costillas asadas  | 
 | Ana   | Patatas bravas    | 
-| Ana   | Ceviche de lubina |
+| Ana   | Pizza margarita   |
 
 ---
 
