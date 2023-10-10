@@ -9,7 +9,7 @@ auto-scaling:
 backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 paginate: true
-header: Modelo relacional
+header: El lenguaje SQL
 ---
 <!--
 _header: ''
