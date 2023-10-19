@@ -677,7 +677,7 @@ SQL define los siguientes operadores para expresar condiciones de fila (`WHERE`)
 > Obtener todos los datos de todos los proyectos:
 
 ```SQL
-SELECT codP, descripcion, localidad, cliente, teléfono
+SELECT codP, descripcion, localidad, cliente, telefono
   FROM proyectos;
 SELECT * -- equivale a todas las columnas de la tabla
   FROM proyectos;
@@ -739,8 +739,8 @@ SELECT codC
 ```SQL
 SELECT codC
   FROM conductores
-  WHERE localidad = ‘Arganda’
-    AND categoría < 18;
+  WHERE localidad = 'Arganda'
+    AND categoria < 18;
 ```
 
 | CodC |
@@ -797,7 +797,7 @@ Establece una comparación entre cadenas de caracteres con la inclusión de como
 ```SQL
 SELECT nombre
   FROM conductores
-  WHERE nombre LIKE ’%Pérez%’;
+  WHERE nombre LIKE '%Pérez%';
 ```
 
 | Nombre       |
@@ -824,7 +824,7 @@ Comprueba la pertenencia de un valor a un conjunto dado.
 ```SQL
 SELECT nombre
   FROM conductores
-  WHERE localidad IN (’Arganda’, ‘Rivas’);
+  WHERE localidad IN ('Arganda', 'Rivas');
 ```
 
 | Nombre       |
@@ -854,7 +854,7 @@ También se puede utilizar con el modificador `NOT`.
 ```SQL
 SELECT nombre
   FROM conductores
-  WHERE localidad NOT IN (’Arganda’);
+  WHERE localidad NOT IN ('Arganda');
 ```
 
 | Nombre        |
@@ -949,7 +949,7 @@ SELECT nombre
   WHERE EXISTS (SELECT *
                 FROM trabajos
                 WHERE trabajos.codM = maquinas.codM
-                  AND codP = ‘P03’);
+                  AND codP = 'P03');
 ```
 
 ---
@@ -980,13 +980,13 @@ Las consultas a unir tienen que estar definidas sobre los mismos dominios.
 ```SQL
 SELECT codC
   FROM conductores
-  WHERE localidad = ‘Rivas’
+  WHERE localidad = 'Rivas'
 
 UNION
 
 SELECT codC
   FROM conductores
-  WHERE categoría < 18;
+  WHERE categoria < 18;
 ```
 
 ---
@@ -1003,15 +1003,15 @@ Pueden concatenarse varios `UNION`.
 ```SQL
 SELECT codC
   FROM conductores
-  WHERE localidad = ‘Rivas’
+  WHERE localidad = 'Rivas'
 UNION ALL
 SELECT codC
   FROM conductores
-  WHERE categoría < 18
+  WHERE categoria < 18
 UNION ALL
 SELECT codC
   FROM trabajos
-  WHERE codM = ‘M01’;
+  WHERE codM = 'M01';
 ```
 
 ---
@@ -1025,7 +1025,7 @@ Elimina las filas del primer operando que se encuentren en el segundo. **MySQL n
 ```SQL
 SELECT codC
   FROM conductores
-  WHERE categoría < 18 AND codC NOT IN (
+  WHERE categoria < 18 AND codC NOT IN (
     SELECT codC
     FROM trabajos
     WHERE codM = 'M03'
@@ -1043,10 +1043,10 @@ Obtiene las filas comunes al resultado de dos subconsultas. **MySQL no soporta e
 ```SQL
 SELECT codC
   FROM trabajos
-  WHERE codM = ‘M01’ AND codC IN (
+  WHERE codM = 'M01' AND codC IN (
     SELECT codC
     FROM trabajos
-    WHERE codM = ‘M03’;
+    WHERE codM = 'M03';
   )
 ```
 
@@ -1082,7 +1082,7 @@ SELECT COUNT(*)
 ```SQL
 SELECT COUNT(DISTINCT codM)
   FROM trabajos
-  WHERE codP = ‘P02’; -- Devuelve 3
+  WHERE codP = 'P02'; -- Devuelve 3
 ```
 
 > Obtener el precio medio por hora de las máquinas:
@@ -1146,8 +1146,8 @@ SELECT codC, SUM(tiempo)
 
 ---
 <style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
+  td {font-size: 0.6rem}
+  thead {font-size: 0.6rem}
   blockquote {font-size: 0.8rem}
   li {font-size: 0.7rem}
   pre {font-size:0.6rem}
@@ -1193,7 +1193,7 @@ SELECT codC, SUM(tiempo)
 ```SQL
 SELECT codC, codM, SUM(tiempo)
   FROM trabajos
-  WHERE fecha BETWEEN ‘12/09/11’ AND ‘18/09/11’
+  WHERE fecha BETWEEN '12/09/11' AND '18/09/11'
   GROUP BY codC, codM
   HAVING COUNT(*) > 1;
 ```
@@ -1240,7 +1240,7 @@ ORDER BY atributo_1 [DESC] [,...]
 ```SQL
 SELECT CodC, CodM, CodP
   FROM trabajos
-  WHERE codP = ‘P04’
+  WHERE codP = 'P04'
   ORDER BY codC, codM;
 ```
 
@@ -1274,7 +1274,7 @@ SELECT atributo_1 [[AS] alias_1] [,...]
 ```SQL
 SELECT codC AS `cod conductor`, nombre
   FROM conductores
-  WHERE localidad = ‘Rivas’;
+  WHERE localidad = 'Rivas';
 ```
 
 | cod conductor | nombre       |
@@ -1310,7 +1310,7 @@ td {font-size: 0.8rem}
 - Deben definirse junto a los atributos a devolver por el `SELECT`.
 
 ```SQL
-SELECT nombre, ‘coste final:’ AS texto, (precioHora*1.15) AS nuevoPrecio
+SELECT nombre, 'coste final:' AS texto, (precioHora*1.15) AS nuevoPrecio
   FROM maquinas
   WHERE precioHora < 110;
 ```
@@ -1347,7 +1347,7 @@ SELECT nombre
   FROM conductores
   WHERE codC IN (SELECT codC
                  FROM trabajos
-                 WHERE codM = ‘M02’);
+                 WHERE codM = 'M02');
 ```
 
 ```SQL
@@ -1355,7 +1355,7 @@ SELECT nombre
 SELECT nombre
   FROM conductores, trabajos
   WHERE conductores.codC = trabajos.codC
-    AND codM = ‘M02’;
+    AND codM = 'M02';
 ```
 
 ```SQL
@@ -1363,7 +1363,7 @@ SELECT nombre
 SELECT nombre
   FROM conductores INNER JOIN trabajos
          ON conductores.codC = trabajos.codC
-  WHERE codM = ‘M02’;
+  WHERE codM = 'M02';
 ```
 
 ---
@@ -1387,7 +1387,7 @@ Operador `IN`
 > Obtener la descripción y cliente de aquellos proyectos en los que hayan trabajado máquinas con un precio hora superior a 75 conducidas por conductores de Rivas:
 
 ```SQL
-SELECT descripción, cliente
+SELECT descripcion, cliente
 FROM proyectos
 WHERE codP IN (SELECT codP
                FROM trabajos
@@ -1396,7 +1396,7 @@ WHERE codP IN (SELECT codP
                               WHERE precioHora > 75)
                  AND codC IN (SELECT codC
                               FROM conductores
-                              WHERE localidad = ‘Rivas’);  
+                              WHERE localidad = ‘Rivas’));  
 ```
 
 ---
@@ -1412,7 +1412,7 @@ SELECT nombre
 FROM conductores
 WHERE categoria < ANY (SELECT categoria
                        FROM conductores
-                       WHERE localidad = ‘Arganda’);
+                       WHERE localidad = 'Arganda');
 ```
 
 ---
@@ -1428,7 +1428,7 @@ SELECT nombre
 FROM conductores
 WHERE codC <> ALL (SELECT codC
                    FROM trabajos
-                   WHERE codP = ‘P01’);
+                   WHERE codP = 'P01');
 ```
 
 ---
@@ -1442,10 +1442,10 @@ Operador de comparación
 ```SQL
 SELECT nombre
 FROM conductores
-WHERE categoria = (SELECT MAX(categoría)
+WHERE categoria = (SELECT MAX(categoria)
                    FROM conductores
-                   WHERE localidad = ‘Arganda’)
-  AND localidad = ‘Arganda’;
+                   WHERE localidad = 'Arganda')
+  AND localidad = 'Arganda';
 ```
 
 ---
@@ -1477,7 +1477,7 @@ SELECT *
 FROM conductores
 WHERE codC IN (SELECT codC
                FROM trabajos T1
-               WHERE codM = ‘M02’)
+               WHERE codM = 'M02')
    OR codC IN (SELECT codC
                FROM trabajos T2
                WHERE T2.fecha = T1.fecha);
@@ -1543,7 +1543,7 @@ td {font-size: 0.7rem}
 SELECT nombre, tiempo
 FROM conductores INNER JOIN trabajos
        ON conductores.codC = trabajos.codC
-WHERE fecha = ’10/09/11’;
+WHERE fecha = '10/09/11';
 ```
 
 | Nombre        | tiempo |
@@ -1565,7 +1565,7 @@ WHERE fecha = ’10/09/11’;
 ```SQL
 SELECT nombre, tiempo
 FROM conductores NATURAL JOIN trabajos
-WHERE fecha = ’10/09/11’;
+WHERE fecha = '10/09/11';
 ```
 
 ---
@@ -1578,7 +1578,7 @@ WHERE fecha = ’10/09/11’;
 SELECT nombre, codM, codP, tiempo
 FROM conductores INNER JOIN trabajos
        ON conductores.codC = trabajos.codC
-WHERE localidad = ’Rivas’;
+WHERE localidad = 'Rivas';
 ```
 
 | nombre     | codM | codP | tiempo |
@@ -1596,7 +1596,7 @@ WHERE localidad = ’Rivas’;
 SELECT nombre, codM, codP, tiempo
 FROM conductores LEFT JOIN trabajos
        ON conductores.codC = trabajos.codC
-WHERE localidad = ’Rivas’;
+WHERE localidad = 'Rivas';
 ```
 
 | nombre       | codM   | codP   | tiempo |
@@ -1615,7 +1615,7 @@ WHERE localidad = ’Rivas’;
 SELECT nombre, codM, codP, tiempo
 FROM trabajos RIGHT JOIN conductores
        ON conductores.codC = trabajos.codC
-WHERE localidad = ’Rivas’;
+WHERE localidad = 'Rivas';
 ```
 
 | nombre       | codM   | codP   | tiempo |
@@ -1627,8 +1627,8 @@ WHERE localidad = ’Rivas’;
 ---
 <style scoped>
 pre {font-size: 0.5rem}
-thead {font-size: 0.5rem}
-td {font-size: 0.5rem}
+thead {font-size: 0.4rem}
+td {font-size: 0.4rem}
 p {font-size: 0.7rem}
 h2{font-size: 1rem}
 </style>
@@ -1642,8 +1642,8 @@ SELECT nombre, codM, descripcion, tiempo
 FROM conductores
   FULL JOIN trabajos ON conductores.codC = trabajos.codC
   FULL JOIN proyectos ON trabajos.codP = proyectos.codP
-WHERE conductores.localidad = ’Rivas’
-   OR proyectos.localidad = ’Rivas’;
+WHERE conductores.localidad = 'Rivas'
+   OR proyectos.localidad = 'Rivas';
 ```
 
 | nombre        | codM   | codP       | tiempo |
