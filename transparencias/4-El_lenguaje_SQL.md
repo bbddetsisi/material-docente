@@ -1706,7 +1706,7 @@ UPDATE [schema.]tabla
 ```SQL
 UPDATE conductores
   SET categoria = categoría * 1.15
-  WHERE localidad = ‘Rivas’;
+  WHERE localidad = 'Rivas';
 ```
 
 > Establecer la categoría por defecto a todos los conductores de Loeches:
@@ -1714,10 +1714,14 @@ UPDATE conductores
 ```SQL
 UPDATE conductores
   SET categoria = DEFAULT
-  WHERE localidad = ‘Loeches’;
+  WHERE localidad = 'Loeches';
 ```
 
 ---
+
+<style scoped>
+  li {font-size: 0.9rem;}
+</style>
 
 ## Eliminación de filas
 
@@ -1734,7 +1738,7 @@ DELETE FROM [schema.]tabla
 
 ```SQL
 DELETE FROM proyectos
-  WHERE cliente = ‘Felipe Sol’;
+  WHERE cliente = 'Felipe Sol';
 ```
 
 ---
