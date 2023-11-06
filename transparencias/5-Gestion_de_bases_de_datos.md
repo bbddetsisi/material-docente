@@ -57,6 +57,7 @@ table {
 4. Cursores
 5. Triggers
 6. Índices
+7. Gestión de usuarios
 
 ---
 
@@ -1095,3 +1096,116 @@ CREATE [UNIQUE] INDEX index_name
 Los índices basan su funcionamiento en los árboles B:
 
 ![center](img/t5/arbol.png)
+
+---
+
+# GESTIÓN DE USUARIOS
+
+## Gestión de bases de datos
+
+---
+
+# Creación de usuarios
+
+La creación de un usuario en SQL se refiere al proceso de establecer una cuenta de usuario en un sistema de gestión de bases de datos. 
+
+La creación de un usuario permite a una persona o una aplicación acceder a la base de datos y realizar diversas operaciones, como consultar datos, insertar registros, actualizar información o eliminar información, dependiendo de los permisos otorgados al usuario.
+
+---
+
+# Creación de usuarios
+
+Para crear un usuario debemos estar conectados a la base de datos con un usuario que disponga de permisos suficientes para llevar a cabo tal acción. La sentencia para crear usuarios es:
+
+```SQL
+CREATE USER 'nombre_de_usuario' IDENTIFIED BY 'contraseña';
+```
+
+Donde:
+
+- `nombre_de_usuario`: es el nombre que se dará al nuevo usuario (debe ser único).
+- `contraseña`: es la contraseña que se utilizará para acceder.
+
+---
+
+<style scoped>
+  li, p {font-size: 0.65rem;}
+  h1 {font-size: 1rem;}
+</style>
+
+# Asignación de permisos
+
+Una vez creado el usuario, debemos asignarle los permisos que consideremos necesarios con:
+
+
+```SQL
+GRANT PRIVILEGE ON base_de_datos.tabla TO 'nombre_de_usuario' WITH GRANT OPTION;
+```
+
+Donde:
+
+- `PRIVILEGE` serán los privilegios elegidos de la lista de `CREATE`, `ALTER`, `DROP`, `INSERT`, `UPDATE`, `DELETE`, `SELECT`. Estos permisos habilitan poder correr las sentencias que comienzan por su nombre (por ejemplo: `ALTER` permite modificar la estructura de las tablas).
+- `base_de_datos.tabla` determina el/los `schema` y la/las tabla(s) sobre las que se aplican los permisos. Se permite el carácter `*` para aplicar los permisos a más de un `schema` o tabla. Por ejmplo: `mbBD.*` aplica permisos a todas las tablas del esquema `miBD` y `*.*` aplica permisos a todas las tablas de todos los `schema`.
+- `WITH GRANT OPTION`, que puede omitirse, otorga al usuario la posibilidad de asignatar permisos iguales o inferiores a los suyos a otros usuarios.
+
+En alguos SGBD se recomienda ejecutar `FLUSH PRIVILEGES` tras asignar permisos para que estos se apliquen.
+
+---
+
+# Asignación de permisos sobre vistas
+
+Las vistas toman un papel crucial en la privacidad de las bases datos cuando se combinan con una gestión de permisos adecuada. 
+
+Por ejemplo, ante una vista creada como:
+
+```SQL
+CREATE VIEW miBD.miVista AS SELECT ...
+```
+
+Es posible establecer un permiso tal que:
+
+```SQL
+GRANT SELECT ON miBD.miVista TO 'nombre_de_usuario';
+```
+
+De tal forma que `nombre_de_usuario` solo pueda consultar la información proporcionada por `miVista` del `miBD`.
+
+---
+
+# Revocación de permisos
+
+Al igual que podemos crear permisos, podemos revocarlos. Para ello empleamos:
+
+```SQL
+REVOKE PRIVILEGE ON base_de_datos.tabla FROM 'nombre_de_usuario';
+```
+
+Que funciona de forma análoga a `GRANT`.
+
+---
+
+# Consultar los permisos de un usuario
+
+Podemos consultar los permisos de un usuario con:
+
+```SQL
+SHOW GRANTS FOR 'nombre_de_usuario';
+```
+
+---
+
+# Eliminar usuario
+
+Para eliminar un usuario usaremos la siguiente sentencia:
+
+```SQL
+DROP USER 'nombre_de_usuario';
+```
+
+---
+
+# Recomendaciones generales
+
+Es fundamental tener en cuenta la seguridad al crear usuarios en una base de datos. Esto implica asignar permisos mínimos necesarios para evitar el acceso no autorizado y utilizar contraseñas seguras. Además, debes administrar y mantener adecuadamente las cuentas de usuario a lo largo del tiempo, revocando permisos si ya no son necesarios y cambiando contraseñas periódicamente.
+
+Ten en cuenta que los detalles exactos y la sintaxis pueden variar según el SGBD que utilices, por lo que es importante consultar la documentación específica de tu sistema de gestión de bases de datos para obtener instrucciones precisas.
