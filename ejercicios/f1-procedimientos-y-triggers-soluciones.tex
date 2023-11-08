@@ -66,7 +66,7 @@ BEGIN
     WHEN 'E02' THEN SET msg = 'Pinchazo';
     WHEN 'E03' THEN SET msg = 'Temperatura alta en el motor';
     WHEN 'E04' THEN SET msg = 'Frenos sobre-calentados';
-    WHEN 'E54' THEN SET msg = 'Error presión del aceite';
+    WHEN 'E05' THEN SET msg = 'Error presión del aceite';
     ELSE SET msg = 'Error de comando';
     END CASE;
 END$$
@@ -76,11 +76,11 @@ DELIMITER ;
     \item
     \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}
 DELIMITER $$
-CREATE PROCEDURE getDriversByCountry (IN country VARCHAR(250))
+CREATE PROCEDURE getDriversByNationality (IN nat VARCHAR(250))
 BEGIN
     SELECT *
     FROM drivers
-    WHERE nationality = country;
+    WHERE nationality = nat;
 END$$
 DELIMITER ;
     \end{minted}

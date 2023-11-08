@@ -400,16 +400,16 @@ Niveles:
 ## Creación de un procedimiento
 
 ```SQL
-CREATE PROCEDURE nombre ([parámetro[,...]])
+CREATE PROCEDURE nombre_procedimiento ([param [,...]])
 BEGIN
-  cuerpo
+  cuerpo_procedimiento
 END
 ```
 
-Los parámetros tienen la siguiente sintaxis:
+Los parámetros `param`` tienen la siguiente sintaxis:
 
 ```SQL
-[ IN | OUT | INOUT ] param_name type
+[ IN | OUT | INOUT ] nombre_parametro tipo_parametro
 ```
 
 El cuerpo del procedimiento estará formado por **sentencias SQL válidas**.
@@ -420,7 +420,7 @@ El cuerpo del procedimiento estará formado por **sentencias SQL válidas**.
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE sp_conductores()
+CREATE PROCEDURE sp_conductores ()
 BEGIN
     SELECT * FROM conductores;
 END$$
@@ -451,7 +451,7 @@ Los parámetros de un procedimiento pueden ser de entrada, salida o entrada/sali
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE sp_trabajos(IN conductor varchar(3))
+CREATE PROCEDURE sp_trabajos (IN conductor VARCHAR(3))
 BEGIN
     SELECT *
     FROM trabajos
@@ -474,8 +474,8 @@ CALL sp_trabajos('C03')
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE sp_cuenta(IN conductor varchar(3),
-                           OUT num_trabajos integer)
+CREATE PROCEDURE sp_cuenta (IN conductor VARCHAR(3),
+                            OUT num_trabajos INTEGER)
 BEGIN
     SELECT count(*) INTO num_trabajos
     FROM trabajos
@@ -500,17 +500,15 @@ SELECT @cuenta;
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE sp_suma(INOUT inicial integer,
-                         IN cantidad integer)
+CREATE PROCEDURE sp_suma (INOUT inicial INTEGER,
+                          IN cantidad INTEGER)
 BEGIN
     SET inicial = inicial + cantidad;
 END$$
 DELIMITER ;
 
 SET @num = 10;
-
 CALL sp_suma(@num, 3);
-
 SELECT @num;
 ```
 
@@ -527,14 +525,14 @@ SELECT @num;
 Ya hemos visto cómo se declaran variables de usuario: anteponiendo una `@` delante del nombre:
 
 ```SQL
-SET @mi_var = 10; -- Asignar valor
-SELECT @mi_var;   -- Consultar valor
+SET @miVar = 10; -- Asignar valor
+SELECT @miVar;   -- Consultar valor
 ```
 
 Se pueden declarar variables locales en los procedimientos usando `DECLARE`:
 
 ```SQL
-DECLARE var_name [, var2, ...] tipo [DEFAULT valor]
+DECLARE nombre_variable [,...] tipo [DEFAULT valor]
 ```
 
 ---
@@ -543,7 +541,7 @@ DECLARE var_name [, var2, ...] tipo [DEFAULT valor]
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE sp_division()
+CREATE PROCEDURE sp_division ()
 BEGIN
     DECLARE num_maquinas INTEGER;
     SELECT COUNT(codM) INTO num_maquinas
@@ -552,7 +550,7 @@ BEGIN
     SELECT codP
     FROM trabajos
     GROUP BY codP
-    HAVING count(distinct codM) = num_maquinas;
+    HAVING COUNT(distinct codM) = num_maquinas;
 END$$
 DELIMITER ;
 ```
@@ -578,9 +576,9 @@ SQL soporta varias sentencias para controlar el flujo de ejecución de los proce
 ## Sentencia `IF`
 
 ```SQL
-IF condition THEN statement_list
-[ELSEIF condition THEN statement_list] ...
-[ELSE statement_list]  
+IF condicion THEN sentencias
+[[ELSEIF condicion THEN sentencias] ...]
+[ELSE sentencias]  
 END IF
 ```
 
@@ -595,10 +593,11 @@ Evalúa condición y ejecuta las sentencias correspondientes. Se pueden encadena
 ## Sentencia `CASE`
 
 ```SQL
-CASE case_value
-WHEN when_value THEN statement_list
-...
-[ELSE statement_list]
+CASE variable_a_evaluar
+WHEN valor1 THEN sentencias
+[...]
+WHEN valorN THEN sentencias
+[ELSE setencias]
 END CASE
 ```
 
@@ -608,9 +607,9 @@ Sintaxis alternativa:
 
 ```SQL
 CASE
-WHEN search_condition THEN statement_list
-..
-[ELSE statement_list]
+WHEN condicion THEN sentencias
+[...]
+[ELSE sentencias]
 END CASE
 ```
 
@@ -621,14 +620,13 @@ Se va evaluando cada condición de búsqueda hasta que una es cierta. En caso co
 ## Bucle `LOOP`
 
 ```SQL
-begin_label:
-LOOP
-statement_list
+etiqueta_inicio_loop: LOOP
+sentencias
 IF condicion THEN
-  LEAVE begin_label;
+  LEAVE etiqueta_inicio_loop;
 END IF;
 END LOOP;
-[end_label]
+[etiqueta_fin_loop]
 ```
 
 Se ejecutan las sentencias **hasta que se abandone el bucle con `LEAVE`**.
@@ -639,7 +637,7 @@ Se ejecutan las sentencias **hasta que se abandone el bucle con `LEAVE`**.
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE `my_proc_LOOP` (IN num INT)
+CREATE PROCEDURE my_proc_LOOP (IN num INTEGER)
 BEGIN
     DECLARE x INT;
     SET x = 0;
@@ -659,12 +657,11 @@ DELIMITER ;
 ## Bucle `REPEAT`
 
 ```SQL
-[begin_label:]
-REPEAT
-    statement_list
-UNTIL search_condition
+[etiqueta_inicio:]REPEAT
+    sentecias
+UNTIL condicion
 END REPEAT
-[end_label]
+[etiqueta_fin]
 ```
 
 Las sentencias se repiten hasta que la condición se cumpla. Ambas etiquetas son opcionales en este tipo de bucle.
@@ -675,7 +672,7 @@ Las sentencias se repiten hasta que la condición se cumpla. Ambas etiquetas son
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE my_proc_REPEAT (IN n INT)
+CREATE PROCEDURE my_proc_REPEAT (IN n INTEGER)
 BEGIN
     SET @sum = 0;
     SET @x = 1;  
@@ -695,11 +692,10 @@ DELIMITER ;
 ## Bucle `WHILE`
 
 ```SQL
-[begin_label:]
-WHILE search_condition DO
-    statement_list
+[etiqueta_inicio:]WHILE condicion DO
+    setencias
 END WHILE
-[end_label]
+[etiqueta_fin]
 ```
 
 Se ejecutan las instrucciones mientras se cumple la condición. Similar al `REPEAT` pero con la condición de parada invertida.
@@ -710,7 +706,7 @@ Se ejecutan las instrucciones mientras se cumple la condición. Similar al `REPE
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE my_proc_WHILE(IN n INT)
+CREATE PROCEDURE my_proc_WHILE (IN n INTEGER)
 BEGIN
     SET @sum = 0;
     SET @x = 1;
