@@ -43,7 +43,7 @@ Soluciones a los procedimientos, funciones y triggers:
 
 \begin{enumerate}
     \item 
-    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{sql}
 DELIMITER $$
 CREATE PROCEDURE `getRacesInAYear`(IN `year` INT)
 BEGIN
@@ -249,7 +249,7 @@ CREATE TRIGGER resgistrarAccidentes
 AFTER INSERT ON results
 FOR EACH ROW
 BEGIN
-    IF NEW.statusId = 1 OR NEW.statusId = 2 OR NEW.statusId = 3 THEN
+    IF NEW.statusId = 3 OR NEW.statusId = 4 THEN
     	INSERT INTO crashes (driverId, description) VALUES (NEW.driverId, 'blah blah blah');
     END IF;
 END$$
@@ -257,8 +257,59 @@ DELIMITER ;
             
     \end{minted}
     
-    \item TODO: Crea un trigger para impedir que en un mismo año un piloto esté en dos equipos de constructores diferentes.
-    
+    \item 
+    \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}
+-- Para la solución se asume que "estar" en un equipo es participar en una carrera (tabla results)
+
+DELIMITER $$
+CREATE TRIGGER no_more_than_two_teams_in_a_year
+BEFORE INSERT ON results
+FOR EACH ROW
+BEGIN
+    DECLARE y YEAR;
+    DELCARE num_teams INTEGER;
+
+    SELECT year INTO y FROM races WHERE raceId = NEW.raceId;
+
+    SELECT COUNT(DISTINCT constructorId) INTO num_teams
+    FROM results
+        INNER JOIN races ON races.raceId = results.raceId
+    WHERE races.year = y
+      AND driverId = NEW.driverId;
+
+    IF num_teams >= 2 THEN 
+        SIGNAL SQLSTATE '03000'
+        SET MESSAGE_TEXT = 'Error: no se puede competir con más de dos equipos en un año';
+    END IF;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER no_more_than_two_teams_in_a_year
+BEFORE UPDATE ON results
+FOR EACH ROW
+BEGIN
+    DECLARE y YEAR;
+    DELCARE num_teams INTEGER;
+
+    IF NEW.driverId <> OLD.driverId OR NEW.constructorId <> OLD.constructorId THEN
+        SELECT year INTO y FROM races WHERE raceId = NEW.raceId;
+
+        SELECT COUNT(DISTINCT constructorId) INTO num_teams
+        FROM results
+            INNER JOIN races ON races.raceId = results.raceId
+        WHERE races.year = y
+        AND driverId = NEW.driverId;
+
+        IF num_teams >= 2 THEN 
+            SIGNAL SQLSTATE '03000'
+            SET MESSAGE_TEXT = 'Error: no se puede competir con más de dos equipos en un año';
+        END IF;
+    END IF;
+END$$
+DELIMITER ;
+    \end{minted}
+
     \item 
     \begin{minted}[fontsize=\scriptsize, frame=lines, xleftmargin=\parindent, breaklines, framesep=2mm]{SQL}
 DROP PROCEDURE pilots_win_home_constructor_year;
