@@ -43,5 +43,6 @@ Temporary Items
 /ejercicios/*.pdf
 /ejercicios/**/*.pyg
 /ejercicios/**/*.out
+/ejercicios/_minted-*
 
 /transparencias/**/*.pdf
