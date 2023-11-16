@@ -277,7 +277,7 @@ BEGIN
     WHERE races.year = y
       AND driverId = NEW.driverId;
 
-    IF num_teams >= 2 THEN 
+    IF num_teams >= 1 THEN 
         SIGNAL SQLSTATE '03000'
         SET MESSAGE_TEXT = 'Error: no se puede competir con más de dos equipos en un año';
     END IF;
@@ -301,7 +301,7 @@ BEGIN
         WHERE races.year = y
         AND driverId = NEW.driverId;
 
-        IF num_teams >= 2 THEN 
+        IF num_teams >= 1 THEN 
             SIGNAL SQLSTATE '03000'
             SET MESSAGE_TEXT = 'Error: no se puede competir con más de dos equipos en un año';
         END IF;
