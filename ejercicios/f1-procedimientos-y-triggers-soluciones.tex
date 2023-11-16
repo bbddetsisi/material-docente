@@ -262,24 +262,25 @@ DELIMITER ;
 -- Para la solución se asume que "estar" en un equipo es participar en una carrera (tabla results)
 
 DELIMITER $$
-CREATE TRIGGER no_more_than_two_teams_in_a_year
+CREATE TRIGGER no_more_than_one_teams_in_a_year
 BEFORE INSERT ON results
 FOR EACH ROW
 BEGIN
     DECLARE y YEAR;
-    DELCARE num_teams INTEGER;
+    DELCARE num_races INTEGER;
+    DELCARE num_races_with_constructor INTEGER;
 
     SELECT year INTO y FROM races WHERE raceId = NEW.raceId;
 
-    SELECT COUNT(DISTINCT constructorId) INTO num_teams
+    SELECT COUNT(*), COUNT(constructorId = NEW.constructorId) INTO num_races, num_races_with_constructor
     FROM results
         INNER JOIN races ON races.raceId = results.raceId
     WHERE races.year = y
       AND driverId = NEW.driverId;
 
-    IF num_teams >= 1 THEN 
+    IF num_races > 0 AND num_races_with_constructor = 0 THEN 
         SIGNAL SQLSTATE '03000'
-        SET MESSAGE_TEXT = 'Error: no se puede competir con más de dos equipos en un año';
+        SET MESSAGE_TEXT = 'Error: no se puede competir con un equipo con el que no hayas competido en ese año';
     END IF;
 END$$
 DELIMITER ;
@@ -290,20 +291,21 @@ BEFORE UPDATE ON results
 FOR EACH ROW
 BEGIN
     DECLARE y YEAR;
-    DELCARE num_teams INTEGER;
+    DELCARE num_races INTEGER;
+    DELCARE num_races_with_constructor INTEGER;
 
-    IF NEW.driverId <> OLD.driverId OR NEW.constructorId <> OLD.constructorId THEN
+    IF NEW.raceId <> OLD.raceId OR NEW.driverId <> OLD.driverId OR NEW.constructorId <> OLD.constructorId THEN
         SELECT year INTO y FROM races WHERE raceId = NEW.raceId;
 
-        SELECT COUNT(DISTINCT constructorId) INTO num_teams
+        SELECT COUNT(*), COUNT(constructorId = NEW.constructorId) INTO num_races, num_races_with_constructor
         FROM results
             INNER JOIN races ON races.raceId = results.raceId
         WHERE races.year = y
         AND driverId = NEW.driverId;
 
-        IF num_teams >= 1 THEN 
+        IF num_races > 0 AND num_races_with_constructor = 0 THEN 
             SIGNAL SQLSTATE '03000'
-            SET MESSAGE_TEXT = 'Error: no se puede competir con más de dos equipos en un año';
+            SET MESSAGE_TEXT = 'Error: no se puede competir con un equipo con el que no hayas competido en ese año';
         END IF;
     END IF;
 END$$
