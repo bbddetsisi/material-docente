@@ -581,7 +581,7 @@ Podemos buscar también por nodos enlazados por ID:
 /banco/cuenta/id(@titulares)
 ```
 
-devuelve todos los clientes referenciados desde el atributo titulares de los elementos “cuenta”.
+devuelve todos los clientes referenciados desde el atributo titulares de los elementos "cuenta".
 
 ---
 
@@ -673,12 +673,12 @@ Un ejemplo de consulta con **XQuery**:
 > Obtener el titulo de los libros con valor 2 en el identificador
 
 ```xquery
-for $b in doc(“libros.xml”)//libro
+for $b in doc("libros.xml")//libro
 where $b/@id = 2
 return $b/titulo
 ```
 
-- Indicamos el documento XML mediante: `doc(“libros.xml”)`.
+- Indicamos el documento XML mediante: `doc("libros.xml")`.
 - La doble barra `//` indica la parte del árbol xml a considerar.
 - Como id es un atributo y no un elemento se antepone `@`.
 
@@ -696,7 +696,7 @@ order by $x/autor
 return <titulo-libro>{$tit}</titulo-libro>
 ```
 
-- El uso de llaves `{}` permite ser tratado como expresiones a evaluar. Si no aparecieran, se trataría como una cadena “$tit”.
+- El uso de llaves `{}` permite ser tratado como expresiones a evaluar. Si no aparecieran, se trataría como una cadena `$tit`.
 
 ---
 
@@ -757,7 +757,7 @@ Esta consulta nos devolvería los sub-elementos incluidos en cada `cliente`, per
 | Numéricas | `floor(), ceiling(), round()` |
 | De cadena | `concat(), string(),upper-case(), ...` |
 | Genéricas | `distinct-values(), empty(), exists()` |
-| De conjunto | `union (|), intersect, except` |
+| De conjunto | `union (\|), intersect, except` |
 | Agregadas | `count(), sum(), avg(), min(), max()` |
 | De contexto | `position(), text(), last()` |
 
@@ -768,7 +768,7 @@ Esta consulta nos devolvería los sub-elementos incluidos en cada `cliente`, per
 Podemos usar sentencias condicionales en **XQuery**, muy similares a las de otros lenguajes de programación:
 
 ```xquery
-for $lib in doc(“libros.xml”)//libro
+for $lib in doc("libros.xml")//libro
 return
     <libro>
         {$lib/titulo}
