@@ -74,7 +74,7 @@ table {
 
 ## MySQL Client/Server Protocol
 
-Para comunicarse, el servidor y los clientes necesitan “hablar” el mismo idioma.
+Para comunicarse, el servidor y los clientes necesitan "hablar" el mismo idioma.
 
 MySQL dispone de un protocolo que implementan tanto el servidor como los clientes para establecer la comunicación:
 
@@ -185,9 +185,13 @@ En la actualidad, se utiliza JDBC de Tipo 4 por ser el que mejor rendimiento rep
 - Funciona con MySQL 5.6, 5.7 y 8.0.
 - Implementa JDBC 4.2.
 - Incluido en el JDK de Java.
-- Puedes encontrar toda la documentación en el siguiente [enlace](https://dev.mysql.com/doc/connector-j/8.0/en/).
+- Puedes encontrar toda la documentación en el siguiente [enlace](https://dev.mysql.com/doc/connector-j/en/).
 
 ---
+
+<style scoped>
+  li  {font-size: 0.9rem;}
+</style>
 
 ## Instalación
 
@@ -195,7 +199,15 @@ En la actualidad, se utiliza JDBC de Tipo 4 por ser el que mejor rendimiento rep
 - Depende de la plataforma (Windows/Linux/macOS).
 - Consiste en un `.jar` que debemos añadir al `CLASSPATH` de nuestro proyecto.
 - Contiene todas las clases e interfaces necesarias para operar con el servidor de MySQL.
-- Está disponible en Maven.
+- Está disponible en Maven:
+
+```xml
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <version>8.0.18</version>
+</dependency>
+```
 
 ---
 
@@ -213,17 +225,17 @@ Toda aplicación que haga uso de MySQL Connector/J8.0 debe seguir los siguientes
 ## Paso 1: definir la base de datos a utilizar
 
 ```java
+// se importan las clases de JDK
 import java.sql.Connection;
-// Se importan las clases de JDK
 import java.sql.DriverManager;
 import java.sql.SQLException;
 public class LoadDriver {
   public static void main(String[] args) {
     try {
-      // Usamos el driver JDBC de MySQL
+      // Uuamos el driver JDBC de MySQL
       Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
     } catch (Exception ex) {
-      // manejar el error
+      // manejar el error ...
     }
   }
 }
@@ -244,16 +256,16 @@ try {
   conn = DriverManager.getConnection(
     "jdbc:mysql://localhost/test?" + "user=minty&password=greatsqldb"
     );
-// Trabajar con la BBDD
+  // trabajar con la BBDD ...
 } catch (SQLException ex) {
-  // manejar los errores
+  // manejar los errores ...
 }
 ```
 
 La conexión con la base de datos se define mediante una **cadena de conexión**. Una alternativa para especificarla es:
 
 ```java
-conn = DriverManager.getConnection("jdbc:mysql://localhost/test", ”user", ”pass");
+conn = DriverManager.getConnection("jdbc:mysql://localhost/test", "user", "pass");
 ```
 
 ---
@@ -377,10 +389,10 @@ import java.sql.CallableStatement;
 import java.sql.Types;
 
 CallableStatement cStmt = conn.prepareCall("{call demoSp(?, ?)}");
-cStmt.setString(1, "abc"); // alternativa: cStmt.setString(“inputParam”, “abc”);
+cStmt.setString(1, "abc"); // alternativa: cStmt.setString("inputParam", "abc );
 
 cStmt.registerOutParameter(2, Types.INTEGER);
-cStmt.setInt(2, 1); // alternativa: cStmt.setInt(“inOutParam”, 1);
+cStmt.setInt(2, 1); // alternativa: cStmt.setInt("inOutParam", 1);
 
 cStmt.execute();
 
@@ -423,7 +435,7 @@ String name = "Alice";
 int age = 27;
 
 Statement stmt = conn.createStatement();
-stmt.executeUpdate("INSERT INTO people (name, age) VALUES ('" + name + ”'," + age + ")");
+stmt.executeUpdate("INSERT INTO people (name, age) VALUES ('" + name + "'," + age + ")");
 ```
 
 Esto favorece los ataques de tipo *SQL Injection*.
@@ -444,7 +456,7 @@ int age = 27;
 
 PreparedStatement stmt = conn.prepareStatement("INSERT INTO people (name, age) VALUES (?, ?)");
 
-// OJO: los índices empiezan en 1
+// CUIDADO: los índices empiezan en 1
 stmt.setString(1, name);
 stmt.setInt(2, age);
 
@@ -483,7 +495,7 @@ stmt = conn.prepareStatement("SELECT name, age FROM people WHERE age > ?");
 
 stmt.setInt(1, 30);
 
-// OJO: solo executeQuery devuelve una instancia de ResultSet
+// CUIDADO: solo executeQuery devuelve una instancia de ResultSet
 ResultSet rs = stmt.executeQuery();
 
 while (rs.next()) {
@@ -493,7 +505,7 @@ while (rs.next()) {
   System.out.println("name = " + name + "; age = " + age);
 }
 
-rs.close(); // Estamos obligados a cerrar el objeto
+rs.close(); // estamos obligados a cerrar el objeto
 ```
 
 ---
@@ -695,7 +707,7 @@ public class Usuario {
   @Column(name = "alias", nullable = false)
   private String alias;
 
-  // …
+  // ...
 }
 ```
 
@@ -726,7 +738,8 @@ public class Capitulo {
 ## Hibernate: ejemplo (anotaciones básicas)
 
 ```java
-@Entity@Table(name = "serie")
+@Entity
+@Table(name = "serie")
 public class Serie {
   @Id
   @Column(name = "id")
@@ -773,7 +786,8 @@ Admite los siguiente parámetros:
 Permite crear identificadores únicos de forma automática. Los atributos de las clases se instancian **cuando el objeto es creado** en la base de datos.
 
 ```java
-@Entity@Table(name = "serie")
+@Entity
+@Table(name = "serie")
 public class Serie {
   @Id
   @GeneratedValue
@@ -830,7 +844,7 @@ lost.getCapitulos().add(lost1x01);
 lost.getCapitulos().add(lost1x02);
 
 session.beginTransaction();
-// Si CascadeType.ALL se insertarán en la BD tanto la serie como los capítulos
+// si CascadeType.ALL se insertarán en la BD tanto la serie como los capítulos
 session.saveOrUpdate(lost);
 session.getTransaction().commit();
 ```
@@ -894,12 +908,12 @@ StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
     .configure()
     .build();
 
-// Creación de la factoría
+// creación de la factoría
 SessionFactory sessionFactory = new MetadataSources(registry)
     .buildMetadata()
     .buildSessionFactory();
 
-// Apertura, uso y cierre de sesión
+// apertura, uso y cierre de sesión
 Session session = sessionFactory.openSession();
 // uso...
 session.close();
@@ -1059,18 +1073,18 @@ List <Serie> list = query.getResultList();
 ## Hibernate: secuencia de comandos (I)
 
 ```java
-// Creación de la serie lost
+// creación de la serie lost
 Serie lost = new Serie("Lost", "SciFi");
 
-// Creación de dos capítulos
+// creación de dos capítulos
 Capitulo lost1x01 = new Capitulo("Pilot, Part1", 42, lost);
 Capitulo lost1x02 = new Capitulo("Pilot, Part2", 41, lost);
 
-// Vinculación de los capítulos a su serie
+// vinculación de los capítulos a su serie
 lost.getCapitulos().add(lost1x01);
 lost.getCapitulos().add(lost1x02);
 
-// Los cambios se almacenan en la base de datos
+// los cambios se almacenan en la base de datos
 session.beginTransaction();
 session.saveOrUpdate(lost);
 session.getTransaction().commit();
@@ -1081,10 +1095,10 @@ session.getTransaction().commit();
 ## Hibernate: secuencia de comandos (II)
 
 ```java
-// Actualización de la serie Lost
+// actualización de la serie Lost
 lost.setGenero("Sci-Fi");
 
-// Cambios a la base de datos
+// cambios a la base de datos
 session.beginTransaction();
 session.saveOrUpdate(lost);
 session.getTransaction().commit();
@@ -1095,14 +1109,14 @@ session.getTransaction().commit();
 ## Hibernate: secuencia de comandos (III)
 
 ```java
-// Creación de la serie Friends
+// creación de la serie Friends
 Serie friends = new Serie ("Friends", "Comedia");
 
-// Creación de un capítulo y vinculación con la serie
+// creación de un capítulo y vinculación con la serie
 Capitulo friends1x01 = new Capitulo("The Pilot", 21, friends);
 friends.getCapitulos().add(friends1x01);
 
-// Cambios a la base de datos
+// cambios a la base de datos
 session.beginTransaction();
 session.saveOrUpdate(friends);
 session.getTransaction().commit();
@@ -1113,7 +1127,7 @@ session.getTransaction().commit();
 ## Hibernate: secuencia de comandos (IV)
 
 ```java
-// Creación de dos usuarios
+// creación de dos usuarios
 Usuario alice = new Usuario("Alice");
 alice.getCapitulos().add(lost1x01);
 lost1x01.getUsuarios().add(alice);
