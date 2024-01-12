@@ -40,7 +40,7 @@ Solución:
 
 \begin{enumerate}
     \item $\Pi_{Nombre} \left( PAPELERIA \bowtie ELP \bowtie \sigma_{Ciudad='Madrid'} \left( EDITORIALES \right) \right)$
-    \item $\Pi_{E\#} \left( \sigma_{A\tilde{n}o=1978} \left( LIBRO \right) \bowtie \sigma_{P\#='P1'} \left( ELP \right) \right) \cup \Pi_{E\#} \left( \sigma_{A\tilde{n}o=1978} \left( LIBRO \right) \bowtie \sigma_{P\#='P3'} \left( ELP \right) \right)$
+    \item $\Pi_{E\#} \left( \sigma_{A\tilde{n}o=1978} \left( LIBRO \right) \bowtie \sigma_{P\#='P1'} \left( ELP \right) \right) \cap \Pi_{E\#} \left( \sigma_{A\tilde{n}o=1978} \left( LIBRO \right) \bowtie \sigma_{P\#='P3'} \left( ELP \right) \right)$
     \item $\Pi_{P\#} \left( \sigma_{E\#='E1'} \left( ELP \right) \right) - \Pi_{P\#} \left( \sigma_{E\# \neq 'E1'} \left( ELP \right) \right)$
     \item $\Pi_{L\#,P\#} \left( ELP \right) \div \Pi_{P\#} \left( \sigma_{Ciudad \neq 'Madrid'} \left( PAPELERIAS \right) \right)$
 \end{enumerate}
