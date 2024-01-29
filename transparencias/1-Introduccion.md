@@ -120,7 +120,7 @@ Definición 1:
 
 Definición 2:
 
-> Conjunto exhaustivo, con redundancia controlada de **datos estructurados**, fiables y homogéneos, organizados con **independencia** de su utilización y de su implementación en máquina, accesibles en tiempo útil, **compartibles** por usuarios concurrentes que tienen necesidades de información diferentes y no predecibles en el tiempo.
+> Conjunto **exhaustivo**, con redundancia controlada de **datos estructurados**, fiables y homogéneos, organizados con **independencia** de su utilización y de su implementación en máquina, accesibles en tiempo útil, **compartibles** por usuarios concurrentes que tienen necesidades de información diferentes y no predecibles en el tiempo.
 
 ---
 
@@ -136,7 +136,7 @@ Las bases de datos se definen y manipulan mediante un **Sistema de Gestión de B
 
 ---
 
-## ¿Qué es una modelo de datos?
+## ¿Qué es un modelo de datos?
 
 Un modelo de datos permite describir las propiedades de la información almacenada en una base de datos:
 

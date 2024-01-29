@@ -11,7 +11,6 @@ description : >
 keywords    : >
   Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
   Presentación
-
 ---
 
 <!-- _class: titlepage -->
