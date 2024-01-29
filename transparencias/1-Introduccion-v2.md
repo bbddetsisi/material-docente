@@ -381,40 +381,47 @@ Existe un protocolo de comunicación entre el cliente y el servidor
 
 ---
 
-# Ventajas
+# Lo bueno y lo malo
 
-Se centraliza el acceso a los datos evitando inconsistencias.
+<div class="columns">
+<div class="column">
 
-Facilita la escalabilidad
+## Ventajas
 
-- Se puede aumentar la capacidad de clientes y servidores por separado.
+- Se centraliza el acceso a datos evitando inconsistencias
+- Facilita la escalabilidad
+  - Se puede aumentar la capacidad de clientes y servidores por separado
+- Mejora el mantenimiento del sistema
+  - El mantenimiento de la base de datos depende exclusivamente de la propia base de datos
+- Facilita el desarrollo de aplicaciones al abstraerse de la gestión de los datos.
 
-Mejora el mantenimiento del sistema:
-
-- El mantenimiento de la base de datos depende exclusivamente de la propia base de datos.
-
-Facilita el desarrollo de aplicaciones al abstraerse de la gestión de los datos.
-
----
+</div>
+<div class="column">
 
 ## Desventajas
 
-Se puede congestionar el acceso a los datos si el ratio cliente/servidor no es adecuado.
+- Se puede congestionar el acceso a los datos si el ratio cliente/servidor no es adecuado
+- No hay robustez frente a caídas o ataques al servidor
+  - Este riesgo se minimiza si se replica el servidor
+- Existe dependencia de la conexión a la base de datos para el funcionamiento de la aplicación
 
-No hay robustez frente a caídas o ataques al servidor:
-
-- Este riesgo se minimiza si se replica el servidor
-
-Existe dependencia de la conexión a la base de datos para el funcionamiento de la aplicación.
+</div>
 
 ---
 
-## Conexión con la base de datos
+# Conexión con la base de datos
 
-La conexión a base de datos se realiza a partir de un URL (*Universal Resource Location*).
-
-Ejemplo:
+La conexión se realiza a partir de un URL (*Universal Resource Location*)
 
 ```bash
 jdbc:mysql://mydb.com:3306/dbname
 ```
+
+Prácticamente todo lenguaje de programación dispone de bibliotecas para conectarse a bases de datos:
+
+- Java: JDBC
+- Python: SQLAlchemy
+- C#: ADO.NET
+- ...
+
+Más adelante en la asignatura trabajaremos la conesión desde aplicaciones
