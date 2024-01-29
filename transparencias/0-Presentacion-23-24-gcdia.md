@@ -1,13 +1,16 @@
 ---
-marp     : true
-title    : Presentación de la asignatura
-paginate : true
-theme    : bbdd
-header: Bases de datos. Curso 2023-2024.
+marp        : true
+title       : Presentación de la asignatura
+paginate    : true
+theme       : bbdd
+header      : Presentación
+footer      : Bases de datos. Curso 2023-2024.
 description : >
-  Presentación de la asignatura Robótica. Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
-keywords: >
-  Robótica, Presentación
+  Presentación de la asignatura de bases de datos. Curso 2023-2024.
+  E.T.S.I. Sistemas Informáticos (UPM)
+keywords    : >
+  Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
+  Presentación
 
 ---
 
@@ -23,7 +26,7 @@ keywords: >
 
 ##### 29 de enero de 2024
 
-[![height:30](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-informational.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
 
@@ -121,4 +124,3 @@ Prueba escrita el **miércoles 3 de julio de 2024 a las 12:00**
 2. Elmasri, R. A., & Navathe, S. B. (2007). *Fundamentos de sistemas de bases de datos* (No. 004.65). Addison Wesley.
 3. Silberschatz, A., Korth, H. F., Sudarshan, S., Pérez, F. S., Santiago, A. I., & Sánchez, A. V. (2002). *Fundamentos de bases de datos*.
 4. Date, C. J. (2001). *Introducción a los sistemas de bases de datos*. Pearson Educación.
-
