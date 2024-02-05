@@ -52,6 +52,12 @@ section p {
   line-height: 1.3em;
   font-size: 100%;
 }
+
+section img {
+  display: block;
+  margin: auto;
+}
+
 section sup {
   font-size: 0.4rem;
   display: inline-block;
@@ -75,6 +81,11 @@ section li>ul>li {
 section i {
   color: var(--color-error);
   font-style: normal;
+}
+
+s {
+  text-decoration: none;
+  background-color: var(--color-warning)
 }
 
 section strong {

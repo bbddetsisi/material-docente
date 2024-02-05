@@ -6,7 +6,7 @@ theme       : bbdd
 header      : Introducción
 footer      : Bases de datos. Curso 2023-2024.
 description : >
-  Presentación de la asignatura de bases de datos. Curso 2023-2024.
+  Introducción a las bases de datos. Curso 2023-2024.
   E.T.S.I. Sistemas Informáticos (UPM)
 keywords    : >
   Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
