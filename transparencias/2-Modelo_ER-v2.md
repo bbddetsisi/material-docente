@@ -523,15 +523,14 @@ posteriormente crear una base de datos de la información relativa a los alumnos
 # Nuestro modelo
 
 En la ETSISI se imparten estudios de grado o de máster. Hay que guardar su
-nombre, el máximo de alumnos y las asignaturas que incluyen, que se pueden
-compartir entre títulos. Hay que indicar en qué aula concreta se imparte cada
-asignatura y su aforo, según haya o no que mantener distancia de seguridad o no.
+nombre, máximo de alumnos y asignaturas que incluyen, que se pueden compartir
+entre títulos. Hay que indicar en qué aula concreta se imparte cada asignatura y
+su aforo, según haya o no que mantener distancia de seguridad o no.
 
-Tenemos también alumnos identificados por su Nombre, DNI y E-mail. Se matriculan
-en una asignatura y cuatrimestre concretos (una asignatura se puede impartir en
-varios cuatrimestres). Hay que saber la fecha en la que realizan la matrícula.
-También se lleva un registro de las calificaciones obtenidas por cada alumno en
-las convocatorias de exámenes de cada asignatura (mes y año).
+Hay también alumnos identificados por Nombre, DNI y E-mail. Se matriculan en una
+fecha, asignatura y cuatrimestre concretos (una asignatura se puede impartir en
+varios cuatrimestres). También se lleva un registro de las calificaciones
+obtenidas por cada alumno en las convocatorias de cada asignatura (mes y año).
 
 Por último, hay que registrar profesores y las asignaturas que imparten. Un
 profesor tiene los mismos datos que un alumno más número de cuenta y número de
@@ -543,17 +542,16 @@ profesor hay que indicar aquellos que pueden cubrirle.
 # ¿Qué entidades observamos?
 
 En la ETSISI se imparten ~~estudios~~ de grado o de máster. Hay que guardar su
-nombre, el máximo de alumnos y las ~~asignaturas~~ que incluyen, que se pueden
+nombre, máximo de alumnos y ~~asignaturas~~ que incluyen, que se pueden
 compartir entre ~~títulos~~. Hay que indicar en qué aula concreta se imparte
 cada asignatura y su aforo, según haya o no que mantener distancia de seguridad
 o no.
 
-Tenemos también ~~alumnos~~ identificados por su Nombre, DNI y E-mail. Se
-matriculan en una asignatura y ~~cuatrimestre~~ concretos (una asignatura se
-puede impartir en varios cuatrimestres). Hay que saber la fecha en la que
-realizan la matrícula. También se lleva un registro de las ~~calificaciones~~
-obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura
-(mes y año).
+Hay también  ~~alumnos~~ identificados por Nombre, DNI y E-mail. Se matriculan
+en una fecha, asignatura y ~~cuatrimestre~~ concretos (una asignatura se puede
+impartir en varios cuatrimestres). También se lleva un registro de las
+~~calificaciones~~ obtenidas por cada alumno en las convocatorias de cada
+asignatura (mes y año).
 
 Por último, hay que registrar ~~profesores~~ y las asignaturas que imparten. Un
 profesor tiene los mismos datos que un alumno más número de cuenta y número de
@@ -574,16 +572,15 @@ estudiantes y asignaturas
 # ¿Qué atributos observamos?
 
 En la ETSISI se imparten estudios ~~de grado o de máster~~. Hay que guardar su
-~~nombre~~, el ~~máximo de alumnos~~ y las asignaturas que incluyen, que se
-pueden compartir entre títulos. Hay que indicar en qué aula concreta se
-imparte cada asignatura y su ~~aforo, según haya o no que mantener distancia de
-seguridad o no~~.
+~~nombre~~, ~~máximo de alumnos~~ y asignaturas que incluyen, que se pueden
+compartir entre títulos. Hay que indicar en qué aula concreta se imparte cada
+asignatura y su ~~aforo, según haya o no que mantener distancia de seguridad o
+no~~.
 
-Tenemos también alumnos identificados por su ~~Nombre~~, ~~DNI~~ y ~~E-mail~~.
-Se matriculan en una asignatura y cuatrimestre concretos (una asignatura se
-puede impartir en varios cuatrimestres). Hay que saber la ~~fecha~~ en la que
-realizan la matrícula. También se lleva un registro de las ~~calificaciones~~
-obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura
+Hay también alumnos identificados por ~~Nombre~~, ~~DNI~~ y ~~E-mail~~. Se
+matriculan en una fecha, asignatura y cuatrimestre concretos (una asignatura se
+puede impartir en varios cuatrimestres). También se lleva un registro de las
+calificaciones obtenidas por cada alumno en las convocatorias de cada asignatura
 (~~mes y año~~).
 
 Por último, hay que registrar profesores y las asignaturas que imparten. Un
@@ -604,16 +601,16 @@ para cada profesor hay que indicar aquellos que pueden cubrirle.
 # ¿Qué relaciones observamos?
 
 En la ETSISI se imparten estudios de grado o de máster. Hay que guardar su
-nombre, el máximo de alumnos y las ~~asignaturas que incluyen~~, que se pueden
+nombre, máximo de alumnos y ~~asignaturas que incluyen~~, que se pueden
 compartir entre títulos. Hay que indicar ~~en qué aula concreta se imparte cada
 asignatura~~ y su aforo, según haya o no que mantener distancia de seguridad o
 no.
 
-Tenemos también alumnos identificados por su Nombre, DNI y E-mail. ~~Se
-matriculan en una asignatura y cuatrimestre concretos~~ (una asignatura se puede
-impartir en varios cuatrimestres). Hay que saber la fecha en la que realizan la
-matrícula. También se lleva un ~~registro de las calificaciones obtenidas por
-cada alumno en las convocatorias de exámenes de cada asignatura~~ (mes y año).
+Hay también alumnos identificados por Nombre, DNI y E-mail. ~~Se matriculan en
+una fecha, asignatura y cuatrimestre concretos~~ (una asignatura se puede
+impartir en varios cuatrimestres). También se lleva un ~~registro de las
+calificaciones obtenidas por cada alumno en las convocatorias de cada
+asignatura~~ (mes y año).
 
 Por último, hay que registrar profesores y las ~~asignaturas que imparten~~. Un
 profesor tiene los mismos datos que un alumno más número de cuenta y número de
