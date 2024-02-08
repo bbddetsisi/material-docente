@@ -2,7 +2,7 @@
 marp        : true
 title       : Presentación de la asignatura
 paginate    : true
-theme       : bbdd
+theme       : etsisi
 header      : Introducción
 footer      : Bases de datos. Curso 2023-2024.
 description : >
