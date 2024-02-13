@@ -6,12 +6,12 @@ theme       : etsisi
 header      : Modelado de datos
 footer      : Bases de datos. Curso 2023-2024.
 description : >
-  Cómo estructurar y organizar los datos para facilitar su almacenamiento,
-  recuperación y manipulación en sistemas de bases de datos. Curso 2023-2024.
-  E.T.S.I. Sistemas Informáticos (UPM)
+  Cómo estructurar y organizar los datos para facilitar su
+  almacenamiento, recuperación y manipulación en sistemas de bases de
+  datos. Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
 keywords    : >
   Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
-  Modelado de datos, Modelo Entidad-Relación, Modelo Relacional
+  Modelado de datos, Modelo Entidad-Relación
 math        : mathjax
 ---
 

@@ -1,13 +1,13 @@
 ---
 marp        : true
-title       : Modelado de datos
+title       : Modelo relacional
 paginate    : true
 theme       : etsisi
-header      : Modelado de datos
+header      : Modelo relacional
 footer      : Bases de datos. Curso 2023-2024.
 description : >
-  Cómo estructurar y organizar los datos para facilitar su almacenamiento,
-  recuperación y manipulación en sistemas de bases de datos. Curso 2023-2024.
+  Una visión general del sistema de gestión de bases de datos basado en
+  la lógica de tablas, claves y relaciones entre datos. Curso 2023-2024.
   E.T.S.I. Sistemas Informáticos (UPM)
 keywords    : >
   Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
