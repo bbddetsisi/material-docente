@@ -2,7 +2,7 @@
 marp        : true
 title       : Modelado de datos
 paginate    : true
-theme       : etsisi
+theme       : bbdd
 header      : Modelado de datos
 footer      : Bases de datos. Curso 2023-2024.
 description : >

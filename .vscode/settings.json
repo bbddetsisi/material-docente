@@ -1,5 +1,5 @@
 {
     "cSpell.ignoreWords": ["marp"],
-    "markdown.marp.themes": ["https://etsisi.github.io/Styles/marp-slides.css"],
+    "markdown.marp.themes": ["transparencias/styles/bbdd.css"],
     "markdown.marp.enableHtml": true,
 }

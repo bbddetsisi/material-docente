@@ -1,0 +1,548 @@
+/* @theme bbdd */
+
+/*****************
+ @author: Alberto Díaz-Álvarez
+ @version: 1.0
+ @update: 2022-01-27
+ Based on the work of Paulo Cunha (https://github.com/cunhapaulo/marpstyle)
+*****************/
+
+@import "default";
+
+/**********************************************************************/
+/* MAIN STYLES */
+/**/
+:root {
+  --letter-spacing: 0.125px;
+
+  /* Reducir todos los colores de la plantilla a los indicados aquí: */
+  --color-primary: #002b36;
+  --color-secondary: #1b998b;
+  --color-tertiary: #f5f5f5;
+  --color-success: #12685e;
+  --color-warning: #d1d646;
+  --color-error: #df2935;
+  --color-neutral: #adadad;
+}
+
+/***************** COMMON STRUCTURE **********************/
+
+h1 {
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+code {
+  font-size: 100%;
+  font-family: "Fira Code", monospace;
+  line-height: 1.2em;
+  padding: 0em;
+}
+
+section {
+  background-image: url(https://www.upm.es/sfs/Rectorado/Gabinete%20del%20Rector/Logos/EU_Informatica/ETSI%20SIST_INFORM_COLOR.png);
+  background-size: auto 60px;
+  background-repeat: no-repeat;
+  background-position: right 1em top 1em;
+}
+
+section p {
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+  line-height: 1.3em;
+  font-size: 100%;
+}
+
+section img {
+  display: block;
+  margin: auto;
+}
+
+section sup {
+  font-size: 0.4rem;
+  display: inline-block;
+  vertical-align:super;
+}
+
+section li {
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+  line-height: 1.25em;
+  font-size: 95%;
+}
+
+section li>ul>li {
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+  line-height: 1em;
+  font-size: 85%;
+}
+
+section i {
+  color: var(--color-error);
+  font-style: normal;
+}
+
+s {
+  text-decoration: none;
+  background-color: var(--color-warning)
+}
+
+section strong {
+  font-weight: 600;
+}
+
+section figcaption {
+  font-size: 0.7em;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+section figcaption>b{
+  text-align: center;
+  font-weight: 600;
+}
+
+section::after {
+  color: var(--color-neutral);
+  font-size: 0.7em;
+  content: " " attr(data-marpit-pagination) " / "
+    attr(data-marpit-pagination-total) " ";
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.small {
+  font-size: 24px;
+}
+
+section table {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  width: auto;
+  border: 0;
+}
+
+section table th {
+  background-color: var(--color-secondary);
+  color: white;
+  border: 0;
+  border-top: rgb(253, 74, 3) solid 2px;
+  border-top: rgb(255, 0, 0) solid 2px;
+}
+
+section table td {
+  border: 0;
+}
+
+section table tr:nth-child(2) {
+  background-color: #dedede;
+}
+
+section table tr:last-child {
+  border-bottom: rgb(253, 74, 3) solid 2px;
+}
+
+section tr:nth-child(even) {
+  background-color: #e8edf1 !important;
+}
+
+section tr:hover {
+  color: rgb(36, 34, 34);
+  background-color: rgb(255, 204, 0);
+  font-weight: bold;
+}
+
+section td, section th {
+  font-size: 0.7rem;
+}
+
+section blockquote {
+  color: var(--color-primary);
+  font-size: unset;
+  border-top: 0.1em dashed var(--color-secondary);
+  border-left: 0.1em dashed var(--color-secondary);
+  padding-top: 0.1em;
+  padding-left: 0.5em;
+  margin-top: auto;
+}
+
+section blockquote strong {
+  color: rgb(56, 32, 32);
+  font-weight: bold;
+  font-size: 1.0em;
+}
+
+section blockquote p {
+  font-size: 0.6em;
+}
+
+section blockquote sup {
+  vertical-align: sub;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  /* justify-content: center !important; */
+}
+
+.columns-center {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.columns-third {
+  display: grid;
+  grid-template-columns: 75fr 25fr;
+  gap: 1rem;
+}
+/* Estilos para la transparencia de título::after
+
+  <!-- _class: titlepage -->
+  # Título
+  ## Subtítulo
+  ### Autor
+  #### Fecha
+  ##### Institución
+*/
+section.titlepage {
+  background-color: var(--color-tertiary);
+    /* fonts sizes */
+  --title-size: 150%;
+  --subtitle-size: 110%;
+  --author-size: 110%;
+  --date-size: 90%;
+  --institute-size: 90%;
+
+  --letter-spacing: var(--letter-spacing);
+
+  /* font weights */
+  --title-font-weight: 600;
+  --subtitle-font-weight: 600;
+
+  --subtitle-color: #586e75;
+  --subtitle-color: #93a1a1;
+
+  --titlepage-color: #242d31;
+}
+
+section.titlepage h1 {
+  font-size: var(--title-size);
+  font-weight: var(--title-font-weight);
+  text-align: left;
+  line-height: 1.25;
+  padding-right: 20%;
+}
+
+section.titlepage h2 {
+  font-size: var(--subtitle-size);
+  font-weight: var(--subtitle-font-weight);
+  text-align: left;
+  color: var(--subtitle-color);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.2;
+  margin-top: -0.2em;
+  padding-bottom: 95px;
+}
+
+section.titlepage h3,
+section.titlepage h4,
+section.titlepage h5 {
+  font-weight: 400;
+  color: var(--titlepage-color);
+  line-height: 0;
+  letter-spacing: var(--letter-spacing);
+}
+
+section.titlepage h3 {
+  font-size: var(--author-size);
+}
+
+section.titlepage h4 {
+  font-size: var(--date-size);
+}
+
+section.titlepage h5 {
+  font-size: var(--institute-size);
+}
+
+section.titlepage img {
+  background-color: var(--background-color);
+  border-top: 1px solid var(--color-primary);
+  padding-top: 0.5em;
+  text-align: left;
+}
+
+/* Omits page number in Title Page Slide */
+section.titlepage footer,
+section.titlepage header,
+section.titlepage:after {
+  /* hide header, footer and pagination */
+  display: none;
+}
+
+/* Última página de las transparencias */
+
+section.endpage {
+  background-color: var(--color-tertiary);
+  background-image: none;
+  text-align: center !important;
+  font-weight: bold !important;
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+section.endpage h1,
+section.endpage h2,
+section.endpage p,
+section.endpage a {
+  font-size: 200%;
+  border-bottom: none;
+}
+
+section.endpage footer,
+section.endpage header,
+section.endpage:after {
+  display: none;
+}
+
+/* Separador de secciones */
+section.section {
+  background-image: none;
+  background-color: var(--color-secondary);
+  text-align: center !important;
+  font-weight: bold !important;
+  color: white;
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+section.section h1,
+section.section h2,
+section.section p,
+section.section a {
+  color: white;
+  font-size: 200%;
+  border-bottom: none;
+}
+
+section.section footer,
+section.section header,
+section.section:after {
+  display: none;
+}
+
+/* Pausa para ejemplo, ejercicio o algo así */
+section.accent {
+  background-image: none;
+  background-color: var(--color-warning);
+  color: var(--color-primary);
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+section.accent h1,
+section.accent h2,
+section.accent p,
+section.accent a {
+  text-align: center;
+  border-bottom: none;
+  font-weight: bold !important;
+}
+
+section.accent h1 {
+  font-size: 200%;
+}
+
+section.accent h2 {
+  font-size: 100%;
+}
+
+section.accent ol {
+  padding-left: 6em;
+}
+section.accent footer,
+section.accent header,
+section.accent:after {
+  display: none;
+}
+
+/* Cita de alguien famoso */
+section.cite {
+  background-color: var(--color-tertiary);
+  --strong-color: rgb(182, 112, 27);
+  background-image: none;
+}
+
+section.cite p {
+  color: black;
+  letter-spacing: var(--letter-spacing);
+  font-size: 150%;
+  text-align: center;
+  line-height: 1.25em;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding-top: auto;
+  padding-bottom: auto;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+section.cite strong {
+  color: var(--strong-color);
+}
+
+/* Omits page number in Title Page Slide */
+section.cite footer,
+section.cite header,
+section.cite:after {
+  /* hide header, footer and pagination */
+  display: none;
+}
+
+.cite-author {
+  text-align: right;
+}
+
+.cite-author:after {
+  color: #083d77;
+  font-size: 125%;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  padding-right: 130px;
+}
+
+.cite-author[data-text]:after {
+  content: " - " attr(data-text) " - ";
+}
+
+.cite-author p {
+  padding-bottom: 40px
+}
+
+
+/******************* cool-list *****************************/
+section.cool-list ol {
+  counter-reset: li;
+  list-style: none;
+  padding: 0;
+}
+
+section.cool-list li {
+  margin-bottom: 0.1em !important;
+  margin-top: 0.1em !important;
+}
+
+section.cool-list ol>li>em,
+section.cool-list>ol>li>a {
+  position: relative;
+  display: block;
+  padding: 0.4em 0.4em 0.4em 2em;
+  margin: 0.5em 0.5em 0.5em 1em;
+  background: #ddd;
+  color: #444;
+  text-decoration: none;
+  border-radius: 0.3em;
+  transition: all 0.3s ease-out;
+  font-style: normal;
+}
+
+section.cool-list ol>li>em:before,
+section.cool-list>ol>li>a:before {
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  background: var(--color-secondary);
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: 0.3em solid #fff;
+  text-align: center;
+  font-weight: normal;
+  border-radius: 2em;
+  transition: all 0.3s ease-out;
+  color: white;
+}
+
+section.cool-list>ol>li>em:hover,
+section.cool-list>ol>li>a:hover {
+  background: #eee;
+  font-weight: bolder;
+}
+
+/* Lists inside lists */
+section.cool-list>ol ol {
+  margin: 0 0 0 2em;
+  /* Add some left margin for inner lists */
+  font-size: 75%;
+  counter-reset: li2;
+  /* Initiate a counter */
+}
+
+section.cool-list>ol ol>li>em:before,
+section.cool-list>ol ol>li>a:before {
+  content: counter(li2);
+  counter-increment: li2;
+}
+
+section.cool-list>ol>li>ul {
+  list-style-type: disc;
+  margin: 0 0 0 1em;
+  font-size: 75%;
+}
+
+section.cool-list>ol ol>li>em {
+  background: #efefef;
+}
+
+
+/************************* BIBLIO *****************************/
+section.biblio {
+  background-color: var(--color-tertiary);
+  background-image: none;
+}
+
+section.biblio p {
+  color: var(--color-primary);
+  font-size: 90%;
+}
+
+section.biblio h1 {
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+}
+
+section.biblio strong {
+  color: var(--color-primary);
+}
+
+section.biblio a {
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+section.biblio li {
+  color: var(--color-primary);
+}
+
+section.biblio footer,
+section.biblio header,
+section.biblio:after {
+  display: none;
+}
+

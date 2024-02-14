@@ -2,7 +2,7 @@
 marp        : true
 title       : Modelo relacional
 paginate    : true
-theme       : etsisi
+theme       : bbdd
 header      : Modelo relacional
 footer      : Bases de datos. Curso 2023-2024.
 description : >

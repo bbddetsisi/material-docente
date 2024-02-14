@@ -30,7 +30,7 @@ jobs:
       - name: Slides in PDF
         uses: docker://marpteam/marp-cli:v1.7.0
         with:
-          args: -I transparencias/ -o build/transparencias/ --html --pdf --allow-local-files --theme-set https://etsisi.github.io/Styles/marp-slides.css
+          args: -I transparencias/ -o build/transparencias/ --html --pdf --allow-local-files --theme-set styles/styles.css
         env:
           MARP_USER: root:root
 
