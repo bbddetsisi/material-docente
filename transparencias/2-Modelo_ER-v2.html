@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en-US"><head><title>Modelado de datos</title><meta property="og:title" content="Modelado de datos"><meta name="description" content="Cómo estructurar y organizar los datos para facilitar su almacenamiento, recuperación y manipulación en sistemas de bases de datos. Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
-"><meta property="og:description" content="Cómo estructurar y organizar los datos para facilitar su almacenamiento, recuperación y manipulación en sistemas de bases de datos. Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
-"><meta name="keywords" content="Bases de datos,Grado en Ciencia de Datos e Inteligencia artificial. Modelado de datos,Modelo Entidad-Relación"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{-webkit-tap-highlight-color:transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwIDcwSDIwVjUwbTIwIDBMMjAgNzBtNDAtNDBoMjB2MjBtLTIwIDAgMjAtMjAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIwIDUwaDIwdjIwbS0yMCAwIDIwLTIwbTQwIDBINjBWMzBtMjAgMEw2MCA1MCIvPjwvc3ZnPg==")}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-bigger{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODBNNTIgOTBWMTAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-smaller{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{-webkit-animation-name:__bespoke_marp__!important;animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}[data-bespoke-marp-fragment=inactive]{visibility:hidden}body[data-bespoke-view=""] .bespoke-marp-parent,body[data-bespoke-view=next] .bespoke-marp-parent{bottom:0;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc{background:rgba(0,0,0,.65);border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;will-change:transform;z-index:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>*,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>:first-child,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}body[data-bespoke-view=""] svg.bespoke-marp-slide,body[data-bespoke-view=next] svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+.bespoke-marp-parent{top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:transparent}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current dragbar next" minmax(140px,1fr) "current dragbar note" 2fr "info    dragbar note" 3em;grid-template-columns:minmax(3px,var(--bespoke-marp-presenter-split-ratio,66%)) 0 minmax(3px,1fr);height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent{grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide{height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container{background:#0288d1;cursor:col-resize;grid-area:dragbar;margin-left:-3px;opacity:0;position:relative;transition:opacity .4s linear .1s;width:6px;z-index:10}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container:hover{opacity:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container.active{opacity:1;transition-delay:0s}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:transparent;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note;position:relative;z-index:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper{bottom:0;display:block;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons{background:rgba(0,0,0,.65);border-radius:4px;bottom:0;display:flex;gap:4px;margin:12px;opacity:0;padding:6px;pointer-events:none;position:absolute;right:0;transition:opacity .2s linear}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons:focus-within,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper:focus-within+.bespoke-marp-presenter-note-buttons,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container:hover .bespoke-marp-presenter-note-buttons{opacity:1;pointer-events:auto}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{word-wrap:break-word;box-sizing:border-box;font-size:calc(1.1em*var(--bespoke-marp-note-font-scale, 1));height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;scrollbar-color:hsla(0,0%,93%,.5) transparent;scrollbar-width:thin;white-space:pre-wrap;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:transparent}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:hsla(0,0%,93%,.5);border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;overflow:hidden;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page .bespoke-marp-presenter-info-page-text{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer:hover{cursor:pointer}}@media print{.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>div#p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#p>svg>foreignObject>section h1{font-size:2em;margin:0.67em 0}div#p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#p>svg>foreignObject>section{page-break-before:always;break-before:page}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;transition:none!important}div#p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}
+<!DOCTYPE html><html lang="en-US"><head><title>Modelado de datos</title><meta property="og:title" content="Modelado de datos"><meta name="description" content="Cómo estructurar y organizar los datos para facilitar su almacenamiento, recuperación y manipulación en sistemas de bases de datos. Sistemas Informáticos (UPM)
+"><meta property="og:description" content="Cómo estructurar y organizar los datos para facilitar su almacenamiento, recuperación y manipulación en sistemas de bases de datos. Sistemas Informáticos (UPM)
+"><meta name="keywords" content="Bases de datos,Modelo Entidad-Relación,Modelo ER,Modelado de datos"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{-webkit-tap-highlight-color:transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwIDcwSDIwVjUwbTIwIDBMMjAgNzBtNDAtNDBoMjB2MjBtLTIwIDAgMjAtMjAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIwIDUwaDIwdjIwbS0yMCAwIDIwLTIwbTQwIDBINjBWMzBtMjAgMEw2MCA1MCIvPjwvc3ZnPg==")}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-bigger{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODBNNTIgOTBWMTAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-smaller{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{-webkit-animation-name:__bespoke_marp__!important;animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}[data-bespoke-marp-fragment=inactive]{visibility:hidden}body[data-bespoke-view=""] .bespoke-marp-parent,body[data-bespoke-view=next] .bespoke-marp-parent{bottom:0;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc{background:rgba(0,0,0,.65);border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;will-change:transform;z-index:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>*,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>:first-child,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}body[data-bespoke-view=""] svg.bespoke-marp-slide,body[data-bespoke-view=next] svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+.bespoke-marp-parent{top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:transparent}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current dragbar next" minmax(140px,1fr) "current dragbar note" 2fr "info    dragbar note" 3em;grid-template-columns:minmax(3px,var(--bespoke-marp-presenter-split-ratio,66%)) 0 minmax(3px,1fr);height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent{grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide{height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container{background:#0288d1;cursor:col-resize;grid-area:dragbar;margin-left:-3px;opacity:0;position:relative;transition:opacity .4s linear .1s;width:6px;z-index:10}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container:hover{opacity:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container.active{opacity:1;transition-delay:0s}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:transparent;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note;position:relative;z-index:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper{bottom:0;display:block;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons{background:rgba(0,0,0,.65);border-radius:4px;bottom:0;display:flex;gap:4px;margin:12px;opacity:0;padding:6px;pointer-events:none;position:absolute;right:0;transition:opacity .2s linear}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons:focus-within,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper:focus-within+.bespoke-marp-presenter-note-buttons,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container:hover .bespoke-marp-presenter-note-buttons{opacity:1;pointer-events:auto}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{word-wrap:break-word;box-sizing:border-box;font-size:calc(1.1em*var(--bespoke-marp-note-font-scale, 1));height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;scrollbar-color:hsla(0,0%,93%,.5) transparent;scrollbar-width:thin;white-space:pre-wrap;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:transparent}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:hsla(0,0%,93%,.5);border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;overflow:hidden;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page .bespoke-marp-presenter-info-page-text{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer:hover{cursor:pointer}}@media print{.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>div#p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#p>svg>foreignObject>section h1{font-size:2em;margin:0.67em 0}div#p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#p>svg>foreignObject>section{page-break-before:always;break-before:page}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;transition:none!important}div#p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}
 /*!
  * Marp default theme.
  *
@@ -41,7 +41,7 @@
 */div#p>svg>foreignObject>section.titlepage{background-color:var(--color-tertiary);
     /* fonts sizes */--title-size:150%;--subtitle-size:110%;--author-size:110%;--date-size:90%;--institute-size:90%;--letter-spacing:var(--letter-spacing);
 
-  /* font weights */--title-font-weight:600;--subtitle-font-weight:600;--subtitle-color:#586e75;--subtitle-color:#93a1a1;--titlepage-color:#242d31}div#p>svg>foreignObject>section.titlepage h1{font-size:var(--title-size);font-weight:var(--title-font-weight);text-align:left;line-height:1.25;padding-right:20%}div#p>svg>foreignObject>section.titlepage h2{font-size:var(--subtitle-size);font-weight:var(--subtitle-font-weight);text-align:left;color:var(--subtitle-color);letter-spacing:var(--letter-spacing);line-height:1.2;margin-top:-0.2em;padding-bottom:95px}div#p>svg>foreignObject>section.titlepage h3,div#p>svg>foreignObject>section.titlepage h4,div#p>svg>foreignObject>section.titlepage h5{font-weight:400;color:var(--titlepage-color);line-height:0;letter-spacing:var(--letter-spacing)}div#p>svg>foreignObject>section.titlepage h3{font-size:var(--author-size)}div#p>svg>foreignObject>section.titlepage h4{font-size:var(--date-size)}div#p>svg>foreignObject>section.titlepage h5{font-size:var(--institute-size)}div#p>svg>foreignObject>section.titlepage img{background-color:var(--background-color);border-top:1px solid var(--color-primary);padding-top:0.5em;text-align:left}
+  /* font weights */--title-font-weight:600;--subtitle-font-weight:600;--subtitle-color:#586e75;--subtitle-color:#93a1a1;--titlepage-color:#242d31}div#p>svg>foreignObject>section.titlepage h1{font-size:var(--title-size);font-weight:var(--title-font-weight);text-align:left;line-height:1.25;padding-right:20%}div#p>svg>foreignObject>section.titlepage h2{font-size:var(--subtitle-size);font-weight:var(--subtitle-font-weight);text-align:left;color:var(--subtitle-color);letter-spacing:var(--letter-spacing);line-height:1.2;margin-top:-0.2em;padding-bottom:95px}div#p>svg>foreignObject>section.titlepage h3,div#p>svg>foreignObject>section.titlepage h4,div#p>svg>foreignObject>section.titlepage h5{font-weight:400;color:var(--titlepage-color);line-height:0;letter-spacing:var(--letter-spacing)}div#p>svg>foreignObject>section.titlepage h3{font-size:var(--author-size)}div#p>svg>foreignObject>section.titlepage h4{font-size:var(--date-size)}div#p>svg>foreignObject>section.titlepage h5{font-size:var(--institute-size)}div#p>svg>foreignObject>section.titlepage img{background-color:var(--background-color);border-top:1px solid var(--color-primary);padding-top:0.5em;text-align:left;margin:0}
 
 /* Omits page number in Title Page Slide */div#p>svg>foreignObject>section.titlepage footer,div#p>svg>foreignObject>section.titlepage header,div#p>svg>foreignObject>section.titlepage:after{
   /* hide header, footer and pagination */display:none}
@@ -65,24 +65,24 @@
   /* Initiate a counter */}div#p>svg>foreignObject>section.cool-list>ol ol>li>a:before,div#p>svg>foreignObject>section.cool-list>ol ol>li>em:before{content:counter(li2);counter-increment:li2}div#p>svg>foreignObject>section.cool-list>ol>li>ul{list-style-type:disc;margin:0 0 0 1em;font-size:75%}div#p>svg>foreignObject>section.cool-list>ol ol>li>em{background:#efefef}
 
 
-/************************* BIBLIO *****************************/div#p>svg>foreignObject>section.biblio{background-color:var(--color-tertiary);background-image:none}div#p>svg>foreignObject>section.biblio p{color:var(--color-primary);font-size:90%}div#p>svg>foreignObject>section.biblio h1{color:var(--color-primary);border-bottom:1px solid var(--color-primary)}div#p>svg>foreignObject>section.biblio strong{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio a{font-weight:bold;color:var(--color-primary)}div#p>svg>foreignObject>section.biblio li{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio footer,div#p>svg>foreignObject>section.biblio header,div#p>svg>foreignObject>section.biblio:after{display:none}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-class="titlepage" data-theme="bbdd" class="titlepage" data-marpit-pagination="1" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--class:titlepage;--theme:bbdd;">
+/************************* BIBLIO *****************************/div#p>svg>foreignObject>section.biblio{background-color:var(--color-tertiary);background-image:none}div#p>svg>foreignObject>section.biblio p{color:var(--color-primary);font-size:90%}div#p>svg>foreignObject>section.biblio h1{color:var(--color-primary);border-bottom:1px solid var(--color-primary)}div#p>svg>foreignObject>section.biblio strong{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio a{font-weight:bold;color:var(--color-primary)}div#p>svg>foreignObject>section.biblio li{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio footer,div#p>svg>foreignObject>section.biblio header,div#p>svg>foreignObject>section.biblio:after{display:none}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-class="titlepage" data-theme="bbdd" class="titlepage" data-marpit-pagination="1" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--class:titlepage;--theme:bbdd;">
 <header>Modelado de datos</header>
 
-<h1>Tema 2. Modelado de datos</h1>
-<h2>Bases de datos - Curso 2023-2024</h2>
+<h1>Modelado de datos</h1>
+<h2>Bases de datos</h2>
 <h3>Departamento de Sistemas Informáticos</h3>
 <h4>E.T.S.I. de Sistemas Informáticos - UPM</h4>
 <h5>29 de enero de 2024</h5>
 <p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg" alt="" style="height:30px;" /></a></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="2" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--class:section;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="2" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--class:section;--theme:bbdd;">
 <header>Modelado de datos</header>
 
 <h1>EL MODELO ENTIDAD-RELACIÓN</h1>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="3" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="3" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Modelado conceptual: ¿Por qué?</h1>
 <p>El ser humano suele tener problemas para transmitir información concreta</p>
@@ -95,9 +95,9 @@
 <li>Diagramas</li>
 <li>Esquemas</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="4" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="4" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Cuál prefieres? (I)</h1>
 <p><cite>Pues como le iba diciendo, necesito que me construya una aplicación para<br />
@@ -113,9 +113,9 @@ además de cuándo se realizó.</cite></p>
 <li>Guardar la información de los clientes</li>
 <li>Tipos de combustible</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="5" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="5" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Cuál prefieres? (y II)</h1>
 <p><cite>Pues como le iba diciendo, necesito que me construya una aplicación para<br />
@@ -132,9 +132,9 @@ además de cuándo se realizó.</cite></p>
 <li>Tipos de <s>combustible</s></li>
 </ul>
 <p><strong>¿Qué tienen en común facturas, clientes, combustibles?</strong></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="6" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="6" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Entidad (I)</h1>
 <div class="columns">
@@ -146,9 +146,9 @@ mundo real que tienen existencia por sí mismas</p>
 <img src="img/t2/entidad.png" alt="Entidad" />
 </div>
 </div>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="7" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="7" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Entidad (II)</h1>
 <p>Las entidades agrupan una serie de ocurrencias de objetos/cosas en una base de datos</p>
@@ -161,9 +161,9 @@ mundo real que tienen existencia por sí mismas</p>
 </ul>
 </li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="8" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="8" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Entidad (y III)</h1>
 <p>Las entidades agrupan una serie de ocurrencias de objetos/cosas en una base de datos</p>
@@ -177,9 +177,9 @@ mundo real que tienen existencia por sí mismas</p>
 </li>
 </ul>
 <p>¿Qué tienen en común los fragmentos subrayados?</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="9" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="9" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Atributos</h1>
 <div class="columns">
@@ -191,9 +191,9 @@ propiedades de la entidad <code>Cliente</code></p>
 <img src="img/t2/atributos.png" alt="Atributos de una entidad" />
 </div>
 </div>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="10" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="10" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Dominios</h1>
 <p>Cada atributo tiene un conjunto de valores permitidos:</p>
@@ -203,30 +203,30 @@ propiedades de la entidad <code>Cliente</code></p>
 <li><strong>Correo electrónico</strong>: direcciones de correo válidas, de la forma usuario@dominio</li>
 </ul>
 <p>Es <strong>obligatorio</strong> definir el dominio de todos los atributos</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="11" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="11" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <p>Entonces... ¿la base de datos para la gasolinera queda definida por estas<br />
 <strong>entidades</strong> y sus <strong>atributos</strong>?</p>
 <p><img src="img/t2/gasolinera_incompleta.png" alt="" style="width:800px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="12" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="12" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Relaciones (I)</h1>
 <p>Las <em>facturas</em> <strong>se emiten</strong> para <em>clientes</em></p>
 <p><img src="img/t2/factura.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="13" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="13" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Relaciones (II)</h1>
 <p>Los <em>clientes</em> <strong>repostan</strong> <em>combustible</em>.</p>
 <p><img src="img/t2/relaciones.png" alt="" style="width:800px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="14" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="14" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Relaciones (III)</h1>
 <p>Las relaciones representan asociaciones entre ocurrencias de entidades</p>
@@ -234,23 +234,23 @@ propiedades de la entidad <code>Cliente</code></p>
 <li>Pueden tener atributos propios:</li>
 </ul>
 <p><img src="img/t2/relacion-atributo.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="15" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="15" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Relaciones (IV)</h1>
 <p>Es importante definir el <strong>rol</strong> que las entidades juegan en las relaciones:</p>
 <p><img src="img/t2/roles.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="16" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="16" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Relaciones (y V)</h1>
 <p>El <strong>grado</strong> de una relación nos indica el número de entidades implicadas en ella.</p>
 <p><img src="img/t2/grado.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="17" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="17" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Relaciones reflexivas</h1>
 <p>Una relación reflexiva relaciona <strong>ocurrencias de la misma entidad</strong></p>
@@ -259,9 +259,9 @@ propiedades de la entidad <code>Cliente</code></p>
 sentidos de la relación.</li>
 </ul>
 <p><img src="img/t2/reflexiva.png" alt="center" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="18" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="18" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad</h1>
 <p>Número de ocurrencias de entidad que se pueden asociar como máximo/mínimo a otra<br />
@@ -276,16 +276,16 @@ del cliente al modelo de datos</li>
 </ul>
 </li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="19" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="19" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad mínima y máxima</h1>
 <p><img src="img/t2/cardinalidad-reposta.png" alt="" /></p>
 <p>Veamos, paso a paso, cómo se calculan las cardinalidades de la relación <code>Reposta</code>.</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="20" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="20" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad mínima y máxima (I)</h1>
 <p><img src="img/t2/cardinalidad-reposta-cliente.png" alt="" style="width:500px;" /></p>
@@ -298,9 +298,9 @@ mínima 0</li>
 cardinalidad N</li>
 </ul>
 <p><strong>Opciones posibles</strong>: cardinalidad mínima (0, 1), cardinalidad máxima (1, N)</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="21" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="21" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad mínima y máxima (II)</h1>
 <p><img src="img/t2/cardinalidad-reposta-cliente.png" alt="" style="width:500px;" /></p>
@@ -313,16 +313,16 @@ tenga varios vehículos <mjx-container class="MathJax" jax="SVG"><svg style="ver
 N)</li>
 </ul>
 <p><strong>Opciones posibles</strong>: cardinalidad mínima (0, 1), cardinalidad máxima (1, N)</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="22" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="22" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad mínima y máxima (III)</h1>
 <p><img src="img/t2/emitida.png" alt="" /></p>
 <p>Veamos cómo se calculan las cardinalidades de la relación <i>Emitida para</i></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="23" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="23" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad mínima y máxima (IV)</h1>
 <p><img src="img/t2/emitida-cliente.png" alt="" style="width:550px;" /></p>
@@ -335,9 +335,9 @@ factura se emita a más de un cliente (de hecho es ilegal) <mjx-container class=
 cardinalidad máxima 1</li>
 </ul>
 <p><strong>Opciones posibles</strong>: cardinalidad mínima (0, 1), cardinalidad máxima (1, N)</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="24" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="24" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad mínima y máxima (y V)</h1>
 <p><img src="img/t2/emitida-factura.png" alt="center" style="width:550px;" /></p>
@@ -350,9 +350,9 @@ mínima 0</li>
 <li>facturas a un cliente <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad máxima N</li>
 </ul>
 <p><strong>Opciones posibles</strong>: cardinalidad mínima (0, 1), cardinalidad máxima (1, N)</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="25" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="25" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad en relaciones <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container>-arias</h1>
 <p>En el caso de las relaciones <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container>-arias, la cardinalidad hay que definirla entre<br />
@@ -361,9 +361,9 @@ pares de entidades relacionadas</p>
 <li>Por ejemplo, en una ternaria:</li>
 </ul>
 <p><img src="img/t2/ternaria.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="26" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="26" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Clave de entidad</h1>
 <p>Atributo o conjunto de atributos que <strong>identifican unívocamente</strong> cada<br />
@@ -374,9 +374,9 @@ dependencia de <strong>Identificación</strong>.</li>
 <li>Se subraya el nombre de los atributos que formen parte de la clave</li>
 </ul>
 <p><img src="img/t2/claves-de-entidad.png" alt="center" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="27" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="27" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Entidad débil</h1>
 <p>Una entidad débil es aquella cuya existencia está supeditada a la existencia de<br />
@@ -392,9 +392,9 @@ otra entidad</p>
 relación con la entidad fuerte es la siguiente:</li>
 </ul>
 <p><img src="img/t2/entidad-debil.png" alt="center" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="28" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="28" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Entidad débil (identificación)</h1>
 <p>La entidad débil no tiene clave</p>
@@ -409,9 +409,9 @@ gasolineras distintas</p>
 <li>En algunas notaciones, el atributo discriminador se indica con subrayado<br />
 discontinuo, como es el caso del número de surtidor</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="29" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="29" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Entidad débil (existencia)</h1>
 <p>La existencia de una ocurrencia está condicionada a la existencia de otra<br />
@@ -419,9 +419,9 @@ ocurrencia</p>
 <p><img src="img/t2/existencia.png" alt="" style="width:700px;" /></p>
 <p>Aunque <code>Factura</code> tenga clave, si se da de baja un cliente hay que dar de baja<br />
 todas sus facturas</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="30" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/t2/chen.png&quot;);background-size:90%;"></figure></div></section></foreignObject><foreignObject width="70%" height="720"><section id="30" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="30" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="30" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/t2/chen.png&quot;);background-size:90%;"></figure></div></section></foreignObject><foreignObject width="70%" height="720"><section id="30" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="30" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
 <header>Modelado de datos</header>
 <h1>El modelo Entidad-Relación (ER)</h1>
 
@@ -432,15 +432,15 @@ todas sus facturas</p>
 <li>Se construye a partir de los requisitos de datos</li>
 </ul>
 <p><strong>Estándar más utilizado</strong> para el modelado conceptual</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="30" data-marpit-pagination-total="58"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="31" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="30" data-marpit-pagination-total="58"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="31" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>El modelo Entidad-Relación (ER)</h1>
 <p><img src="img/t2/modelo-er.png" alt="" style="width:700px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="32" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="32" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Notación alternativa: Martin (I)</h1>
 <ol>
@@ -452,35 +452,35 @@ todas sus facturas</p>
 </li>
 </ol>
 <p><img src="img/t2/martin1.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="33" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="33" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Notación alternativa: Martin (II)</h1>
 <p>Reglas de transformación de Chen a Martin (relaciones):</p>
 <p><img src="img/t2/er-1n.png" alt="" style="width:600px;" /></p>
 <p>se transforma en</p>
 <p><img src="img/t2/martin-1n.png" alt="" style="width:600px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="34" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="34" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Notación alternativa: Martin (III)</h1>
 <p>Reglas de transformación de Chen a Martin (relación N:M):</p>
 <p><img src="img/t2/er-nm.png" alt="" style="width:600px;" /></p>
 <p>se transforma en</p>
 <p><img src="img/t2/martin-nm.png" alt="" style="width:600px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="35" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="35" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Notación alternativa: Martin ( y IV)</h1>
 <p>Reglas de transformación de Chen a Martin (entidad débil):</p>
 <p><img src="img/t2/martin-debil.png" alt="" /></p>
 <p><code>Empleado</code> es entidad débil, por eso la línea de la relación ahora es continua</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="36" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="36" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Conclusiones</h1>
 <p>¿Por qué?</p>
@@ -496,15 +496,15 @@ fácilmente entendible y sin ambigüedades</li>
 <ul>
 <li>Modelo Entidad-Relación</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="37" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--class:section;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="37" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--class:section;--theme:bbdd;">
 <header>Modelado de datos</header>
 
 <h1>EJEMPLOS</h1>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="38" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="38" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Foro</h1>
 <p>Un conocido foro de coches nos ha encargado el diseño conceptual de su BBDD:</p>
@@ -520,15 +520,15 @@ la fecha y hora en la que se realizó, así como su posición relativa en el hil
 <li>En una respuesta se puede citar el texto de otra, situación que conviene<br />
 registrar en la base de datos</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="39" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="39" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Foro (solución)</h1>
 <p><img src="img/t2/foro.png" alt="" style="width:800px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="40" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="40" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Base de datos de películas</h1>
 <ul>
@@ -542,29 +542,29 @@ Además de dirigir, pueden también actuar en películas</li>
 <li>Las productoras se identifican por su nombre y dirección. Producen al menos<br />
 una película</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="41" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="41" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Películas (solución)</h1>
 <p><img src="img/t2/peliculas.png" alt="" style="width:800px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="42" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--class:section;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="42" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--class:section;--theme:bbdd;">
 <header>Modelado de datos</header>
 
 <h1>EJEMPLO PASO A PASO</h1>
 <h2>«La ETSISI»</h2>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="43" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="43" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>La ETSISI</h1>
 <p>En la ETSISI nos han pedido que diseñemos el diagrama entidad relación para<br />
 posteriormente crear una base de datos de la información relativa a los alumnos</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="44" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="44" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Nuestro modelo</h1>
 <p>En la ETSISI se imparten estudios de grado o de máster. Hay que guardar su<br />
@@ -579,9 +579,9 @@ obtenidas por cada alumno en las convocatorias de cada asignatura (mes y año).<
 profesor tiene los mismos datos que un alumno más número de cuenta y número de<br />
 empleado. Además, para facilitar que se cubran posibles bajas, para cada<br />
 profesor hay que indicar aquellos que pueden cubrirle.</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="45" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="45" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué entidades observamos?</h1>
 <p>En la ETSISI se imparten <s>estudios</s> de grado o de máster. Hay que guardar su<br />
@@ -598,17 +598,17 @@ asignatura (mes y año).</p>
 profesor tiene los mismos datos que un alumno más número de cuenta y número de<br />
 empleado. Además, para facilitar que se cubran posibles bajas, para cada<br />
 profesor hay que indicar aquellos que pueden cubrirle.</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="46" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="46" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué entidades observamos? Solución</h1>
 <p><code>Calificación</code> es una entidad débil, ya que no tiene clave propia y depende de<br />
 estudiantes y asignaturas</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-entidades.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="47" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="47" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué atributos observamos?</h1>
 <p>En la ETSISI se imparten estudios <s>de grado o de máster</s>. Hay que guardar su<br />
@@ -625,16 +625,16 @@ calificaciones obtenidas por cada alumno en las convocatorias de cada asignatura
 profesor tiene los mismos datos que un alumno más <s>número de cuenta</s> y<br />
 <s>número de empleado</s>. Además, para facilitar que se cubran posibles bajas,<br />
 para cada profesor hay que indicar aquellos que pueden cubrirle.</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="48" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="48" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué atributos observamos? Solución</h1>
 <p><img src="img/t2/ejercicio-paso-a-paso-atributos.png" alt="" style="width:850px;" /></p>
 <p>¿Dónde metemos <code>Fecha</code> de matriculación? No existe la entidad <code>Matrícula</code>...</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="49" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="49" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos?</h1>
 <p>En la ETSISI se imparten estudios de grado o de máster. Hay que guardar su<br />
@@ -651,9 +651,9 @@ asignatura</s> (mes y año).</p>
 profesor tiene los mismos datos que un alumno más número de cuenta y número de<br />
 empleado. Además, para facilitar que se cubran posibles bajas, para cada<br />
 profesor hay que indicar <s>aquellos que pueden cubrirle</s>.</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="50" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="50" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos? Solución (I)</h1>
 <p>Las asignaturas que incluyen los estudios</p>
@@ -661,62 +661,61 @@ profesor hay que indicar <s>aquellos que pueden cubrirle</s>.</p>
 <li>Recordemos que las asignaturas se pueden compartir entre títulos</li>
 </ul>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-asignatura-estudios.png" alt="" style="width:850px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="51" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="51" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos? Solución (II)</h1>
 <p>En qué aula concreta se imparte cada asignatura</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-asignatura-aula.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="52" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="52" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos? Solución (III)</h1>
 <p>Los alumnos se matriculan en una asignatura y cuatrimestre concretos</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-matricular.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="53" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="53" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos? Solución (IV)</h1>
 <p>Una asignatura puede impartirse en varios cuatrimestres</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-seimparte.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="54" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="54" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos? Solución (V)</h1>
 <p>Calificaciones obtenidas por cada alumno en las convocatorias de exámenes de<br />
 cada asignatura</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-calficaciones.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="55" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="55" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos? Solución (VI)</h1>
 <p>Profesores y las asignaturas que imparten</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-imparte.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="56" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="56" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos? Solución (y VII)</h1>
 <p>Para cada profesor hay que indicar aquellos que pueden cubrirle</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-cubre.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="57" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="57" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h2>Diagrama completo</h2>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-todas.png" alt="" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos. Curso 2023-2024." data-class="endpage" data-theme="bbdd" class="endpage" data-marpit-pagination="58" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos. Curso 2023-2024.;--class:endpage;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-class="endpage" data-theme="bbdd" class="endpage" data-marpit-pagination="58" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--class:endpage;--theme:bbdd;">
 <header>Modelado de datos</header>
-
-<h1>Muchas gracias</h1>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<h1>Gracias</h1>
+<footer>Bases de datos</footer>
 </section>
 <script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let r,o;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(o=r)}}catch(t){console.error(t)}})));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||o||t.currentScale||1;r!==c&&(r=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let r=0;r<u;r+=1){const o=t.children[r],a=o.getScreenCTM();if(a){const t=null!==(n=null===(e=o.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,r=null!==(s=null===(i=o.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=o.firstElementChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-r}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}})),!1!==l&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)}))}r=1,o=void 0;const i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function a({once:t=!1,target:e=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[n]:[];let o=!t;const a=()=>{for(const t of r)t({target:e});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),(t=>{var e;const r=t.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:a}=o;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(r,"width",`${c}`),i(r,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")}))}(e),o&&window.requestAnimationFrame(a)};return a(),()=>{o=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),r=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:r})})(s?s.getRootNode():document)}();
 </script></foreignObject></svg></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@1.7.0/lib/bespoke.js.LICENSE.txt */

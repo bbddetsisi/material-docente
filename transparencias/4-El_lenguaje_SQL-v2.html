@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en-US"><head><title>El lenguaje SQL</title><meta property="og:title" content="El lenguaje SQL"><meta name="description" content="Una visión general del sistema de gestión de bases de datos basado en la lógica de tablas, claves y relaciones entre datos. Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
-"><meta property="og:description" content="Una visión general del sistema de gestión de bases de datos basado en la lógica de tablas, claves y relaciones entre datos. Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
-"><meta name="keywords" content="Bases de datos,Grado en Ciencia de Datos e Inteligencia artificial. Modelado de datos,Modelo Entidad-Relación,Modelo Relacional"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{-webkit-tap-highlight-color:transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwIDcwSDIwVjUwbTIwIDBMMjAgNzBtNDAtNDBoMjB2MjBtLTIwIDAgMjAtMjAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIwIDUwaDIwdjIwbS0yMCAwIDIwLTIwbTQwIDBINjBWMzBtMjAgMEw2MCA1MCIvPjwvc3ZnPg==")}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-bigger{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODBNNTIgOTBWMTAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-smaller{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{-webkit-animation-name:__bespoke_marp__!important;animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}[data-bespoke-marp-fragment=inactive]{visibility:hidden}body[data-bespoke-view=""] .bespoke-marp-parent,body[data-bespoke-view=next] .bespoke-marp-parent{bottom:0;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc{background:rgba(0,0,0,.65);border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;will-change:transform;z-index:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>*,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>:first-child,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}body[data-bespoke-view=""] svg.bespoke-marp-slide,body[data-bespoke-view=next] svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+.bespoke-marp-parent{top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:transparent}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current dragbar next" minmax(140px,1fr) "current dragbar note" 2fr "info    dragbar note" 3em;grid-template-columns:minmax(3px,var(--bespoke-marp-presenter-split-ratio,66%)) 0 minmax(3px,1fr);height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent{grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide{height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container{background:#0288d1;cursor:col-resize;grid-area:dragbar;margin-left:-3px;opacity:0;position:relative;transition:opacity .4s linear .1s;width:6px;z-index:10}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container:hover{opacity:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container.active{opacity:1;transition-delay:0s}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:transparent;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note;position:relative;z-index:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper{bottom:0;display:block;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons{background:rgba(0,0,0,.65);border-radius:4px;bottom:0;display:flex;gap:4px;margin:12px;opacity:0;padding:6px;pointer-events:none;position:absolute;right:0;transition:opacity .2s linear}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons:focus-within,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper:focus-within+.bespoke-marp-presenter-note-buttons,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container:hover .bespoke-marp-presenter-note-buttons{opacity:1;pointer-events:auto}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{word-wrap:break-word;box-sizing:border-box;font-size:calc(1.1em*var(--bespoke-marp-note-font-scale, 1));height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;scrollbar-color:hsla(0,0%,93%,.5) transparent;scrollbar-width:thin;white-space:pre-wrap;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:transparent}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:hsla(0,0%,93%,.5);border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;overflow:hidden;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page .bespoke-marp-presenter-info-page-text{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer:hover{cursor:pointer}}@media print{.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>div#p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#p>svg>foreignObject>section h1{font-size:2em;margin:0.67em 0}div#p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#p>svg>foreignObject>section{page-break-before:always;break-before:page}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;transition:none!important}div#p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}
+<!DOCTYPE html><html lang="en-US"><head><title>El lenguaje SQL</title><meta property="og:title" content="El lenguaje SQL"><meta name="description" content="Estándar utilizado para la gestión y manipulación de bases de datos relacionales, el cual permite consultar, actualizar, insertar y borrar registros, entre otras operaciones, mediante una sintaxis declarativa. E.T.S.I. Sistemas Informáticos (UPM)
+"><meta property="og:description" content="Estándar utilizado para la gestión y manipulación de bases de datos relacionales, el cual permite consultar, actualizar, insertar y borrar registros, entre otras operaciones, mediante una sintaxis declarativa. E.T.S.I. Sistemas Informáticos (UPM)
+"><meta name="keywords" content="Bases de datos,SQL,DDL,DML,CREATE,ALTER,DROP,INSERT,DELETE,SELECT,UPDATE,JOIN,GROUP BY,HAVING,ORDER BY,WHERE,LIKE,IN,BETWEEN,UNION,INTERSECT,MINUS,EXISTS,NOT EXISTS,ALL,ANY,SOME,COUNT,AVG,SUM,MAX,MIN,DISTINCT,NULL,NOT NULL,PRIMARY KEY,FOREIGN KEY,UNIQUE,AUTO_INCREMENT,COLLATE,CHARACTER SET"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{-webkit-tap-highlight-color:transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwIDcwSDIwVjUwbTIwIDBMMjAgNzBtNDAtNDBoMjB2MjBtLTIwIDAgMjAtMjAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIwIDUwaDIwdjIwbS0yMCAwIDIwLTIwbTQwIDBINjBWMzBtMjAgMEw2MCA1MCIvPjwvc3ZnPg==")}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-bigger{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODBNNTIgOTBWMTAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-smaller{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{-webkit-animation-name:__bespoke_marp__!important;animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}[data-bespoke-marp-fragment=inactive]{visibility:hidden}body[data-bespoke-view=""] .bespoke-marp-parent,body[data-bespoke-view=next] .bespoke-marp-parent{bottom:0;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc{background:rgba(0,0,0,.65);border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;will-change:transform;z-index:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>*,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>:first-child,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}body[data-bespoke-view=""] svg.bespoke-marp-slide,body[data-bespoke-view=next] svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+.bespoke-marp-parent{top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:transparent}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current dragbar next" minmax(140px,1fr) "current dragbar note" 2fr "info    dragbar note" 3em;grid-template-columns:minmax(3px,var(--bespoke-marp-presenter-split-ratio,66%)) 0 minmax(3px,1fr);height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent{grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide{height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container{background:#0288d1;cursor:col-resize;grid-area:dragbar;margin-left:-3px;opacity:0;position:relative;transition:opacity .4s linear .1s;width:6px;z-index:10}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container:hover{opacity:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container.active{opacity:1;transition-delay:0s}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:transparent;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note;position:relative;z-index:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper{bottom:0;display:block;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons{background:rgba(0,0,0,.65);border-radius:4px;bottom:0;display:flex;gap:4px;margin:12px;opacity:0;padding:6px;pointer-events:none;position:absolute;right:0;transition:opacity .2s linear}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons:focus-within,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper:focus-within+.bespoke-marp-presenter-note-buttons,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container:hover .bespoke-marp-presenter-note-buttons{opacity:1;pointer-events:auto}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{word-wrap:break-word;box-sizing:border-box;font-size:calc(1.1em*var(--bespoke-marp-note-font-scale, 1));height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;scrollbar-color:hsla(0,0%,93%,.5) transparent;scrollbar-width:thin;white-space:pre-wrap;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:transparent}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:hsla(0,0%,93%,.5);border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;overflow:hidden;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page .bespoke-marp-presenter-info-page-text{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer:hover{cursor:pointer}}@media print{.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>div#p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#p>svg>foreignObject>section h1{font-size:2em;margin:0.67em 0}div#p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#p>svg>foreignObject>section{page-break-before:always;break-before:page}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;transition:none!important}div#p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}
 /*!
  * Marp default theme.
  *
@@ -41,7 +41,7 @@
 */div#p>svg>foreignObject>section.titlepage{background-color:var(--color-tertiary);
     /* fonts sizes */--title-size:150%;--subtitle-size:110%;--author-size:110%;--date-size:90%;--institute-size:90%;--letter-spacing:var(--letter-spacing);
 
-  /* font weights */--title-font-weight:600;--subtitle-font-weight:600;--subtitle-color:#586e75;--subtitle-color:#93a1a1;--titlepage-color:#242d31}div#p>svg>foreignObject>section.titlepage h1{font-size:var(--title-size);font-weight:var(--title-font-weight);text-align:left;line-height:1.25;padding-right:20%}div#p>svg>foreignObject>section.titlepage h2{font-size:var(--subtitle-size);font-weight:var(--subtitle-font-weight);text-align:left;color:var(--subtitle-color);letter-spacing:var(--letter-spacing);line-height:1.2;margin-top:-0.2em;padding-bottom:95px}div#p>svg>foreignObject>section.titlepage h3,div#p>svg>foreignObject>section.titlepage h4,div#p>svg>foreignObject>section.titlepage h5{font-weight:400;color:var(--titlepage-color);line-height:0;letter-spacing:var(--letter-spacing)}div#p>svg>foreignObject>section.titlepage h3{font-size:var(--author-size)}div#p>svg>foreignObject>section.titlepage h4{font-size:var(--date-size)}div#p>svg>foreignObject>section.titlepage h5{font-size:var(--institute-size)}div#p>svg>foreignObject>section.titlepage img{background-color:var(--background-color);border-top:1px solid var(--color-primary);padding-top:0.5em;text-align:left}
+  /* font weights */--title-font-weight:600;--subtitle-font-weight:600;--subtitle-color:#586e75;--subtitle-color:#93a1a1;--titlepage-color:#242d31}div#p>svg>foreignObject>section.titlepage h1{font-size:var(--title-size);font-weight:var(--title-font-weight);text-align:left;line-height:1.25;padding-right:20%}div#p>svg>foreignObject>section.titlepage h2{font-size:var(--subtitle-size);font-weight:var(--subtitle-font-weight);text-align:left;color:var(--subtitle-color);letter-spacing:var(--letter-spacing);line-height:1.2;margin-top:-0.2em;padding-bottom:95px}div#p>svg>foreignObject>section.titlepage h3,div#p>svg>foreignObject>section.titlepage h4,div#p>svg>foreignObject>section.titlepage h5{font-weight:400;color:var(--titlepage-color);line-height:0;letter-spacing:var(--letter-spacing)}div#p>svg>foreignObject>section.titlepage h3{font-size:var(--author-size)}div#p>svg>foreignObject>section.titlepage h4{font-size:var(--date-size)}div#p>svg>foreignObject>section.titlepage h5{font-size:var(--institute-size)}div#p>svg>foreignObject>section.titlepage img{background-color:var(--background-color);border-top:1px solid var(--color-primary);padding-top:0.5em;text-align:left;margin:0}
 
 /* Omits page number in Title Page Slide */div#p>svg>foreignObject>section.titlepage footer,div#p>svg>foreignObject>section.titlepage header,div#p>svg>foreignObject>section.titlepage:after{
   /* hide header, footer and pagination */display:none}
@@ -65,30 +65,30 @@
   /* Initiate a counter */}div#p>svg>foreignObject>section.cool-list>ol ol>li>a:before,div#p>svg>foreignObject>section.cool-list>ol ol>li>em:before{content:counter(li2);counter-increment:li2}div#p>svg>foreignObject>section.cool-list>ol>li>ul{list-style-type:disc;margin:0 0 0 1em;font-size:75%}div#p>svg>foreignObject>section.cool-list>ol ol>li>em{background:#efefef}
 
 
-/************************* BIBLIO *****************************/div#p>svg>foreignObject>section.biblio{background-color:var(--color-tertiary);background-image:none}div#p>svg>foreignObject>section.biblio p{color:var(--color-primary);font-size:90%}div#p>svg>foreignObject>section.biblio h1{color:var(--color-primary);border-bottom:1px solid var(--color-primary)}div#p>svg>foreignObject>section.biblio strong{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio a{font-weight:bold;color:var(--color-primary)}div#p>svg>foreignObject>section.biblio li{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio footer,div#p>svg>foreignObject>section.biblio header,div#p>svg>foreignObject>section.biblio:after{display:none}div#p>svg>foreignObject>section[data-marpit-scope-0HyHicxk] td{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.6)}div#p>svg>foreignObject>section[data-marpit-scope-0HyHicxk] thead{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.7)}div#p>svg>foreignObject>section[data-marpit-scope-0HyHicxk] s{text-decoration:underline;background-color:transparent}div#p>svg>foreignObject>section[data-marpit-scope-3RrQpV0S] pre{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.7)}div#p>svg>foreignObject>section[data-marpit-scope-aSfco8CR] li{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.9)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-class="titlepage" data-theme="bbdd" class="titlepage" data-marpit-pagination="1" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--class:titlepage;--theme:bbdd;">
+/************************* BIBLIO *****************************/div#p>svg>foreignObject>section.biblio{background-color:var(--color-tertiary);background-image:none}div#p>svg>foreignObject>section.biblio p{color:var(--color-primary);font-size:90%}div#p>svg>foreignObject>section.biblio h1{color:var(--color-primary);border-bottom:1px solid var(--color-primary)}div#p>svg>foreignObject>section.biblio strong{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio a{font-weight:bold;color:var(--color-primary)}div#p>svg>foreignObject>section.biblio li{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio footer,div#p>svg>foreignObject>section.biblio header,div#p>svg>foreignObject>section.biblio:after{display:none}div#p>svg>foreignObject>section[data-marpit-scope-B4iM415p] td{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.6)}div#p>svg>foreignObject>section[data-marpit-scope-B4iM415p] thead{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.7)}div#p>svg>foreignObject>section[data-marpit-scope-B4iM415p] s{text-decoration:underline;background-color:transparent}div#p>svg>foreignObject>section[data-marpit-scope-B8ZnTLlc] pre{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.7)}div#p>svg>foreignObject>section[data-marpit-scope-5najBjHl] li{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.9)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="titlepage" data-theme="bbdd" class="titlepage" data-marpit-pagination="1" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:titlepage;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
-<h1>Tema 4. El lenguaje SQL</h1>
-<h2>Bases de datos - Curso 2023-2024</h2>
+<h1>El lenguaje SQL</h1>
+<h2>Bases de datos</h2>
 <h3>Departamento de Sistemas Informáticos</h3>
 <h4>E.T.S.I. de Sistemas Informáticos - UPM</h4>
-<h5>13 de febrero de 2024</h5>
+<h5>15 de febrero de 2024</h5>
 <p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg" alt="" style="height:30px;" /></a></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="2" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--class:section;--theme:bbdd;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/t4/sql.svg&quot;);background-size:60%;"></figure></div></section></foreignObject><foreignObject width="60%" height="720" x="40%"><section id="2" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="2" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--class:section;--theme:bbdd;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="2" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:section;--theme:bbdd;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/t4/sql.svg&quot;);background-size:60%;"></figure></div></section></foreignObject><foreignObject width="60%" height="720" x="40%"><section id="2" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="2" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:section;--theme:bbdd;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
 <header>El lenguaje SQL</header>
 
 <h1>EL LENGUAJE SQL</h1>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="section" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="2" data-marpit-pagination-total="97"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="3" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="section" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="2" data-marpit-pagination-total="98"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="3" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Por qué necesitamos SQL</h1>
 <p><img src="img/t4/por_que_SQL.png" alt="centered" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="4" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="4" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>SQL: <em>Structured Query Language</em></h1>
 <ul>
@@ -100,9 +100,9 @@ funciones de definición y control de datos</li>
 bases de SQL estándar y suelen incluir aportaciones propias</li>
 <li>Utilizado masivamente en la industria</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="5" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="5" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Evolución de SQL</h1>
 <table>
@@ -161,9 +161,9 @@ bases de SQL estándar y suelen incluir aportaciones propias</li>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="6" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="6" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h2>Soporte CRUD</h2>
 <ul>
@@ -191,9 +191,9 @@ bases de SQL estándar y suelen incluir aportaciones propias</li>
 </ul>
 </li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="7" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="7" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h2>Características de SQL</h2>
 <ul>
@@ -214,9 +214,9 @@ almacenamiento de datos.</li>
 </ul>
 </li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="8" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="8" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Sentencias SQL (I)</h1>
 <ul>
@@ -238,9 +238,9 @@ mayúsculas o minúsculas</li>
 </ul>
 </li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="9" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="9" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Sentencias SQL (y II)</h1>
 <p>Explicaremos las sentencias SQL mediante notación BNF:</p>
@@ -252,22 +252,22 @@ mayúsculas o minúsculas</li>
 <li>Los corchetes <code>[]</code> representan elementos opcionales</li>
 <li>Los <code>...</code> indican repetición opcional (0 ó más)</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="10" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--class:section;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="10" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:section;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>LENGUAJE DE DEFINICIÓN DE DATOS</h1>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="11" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="11" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Schemas (I)</h1>
 <p>En <em>MySQL</em> un schema en una agrupación de lógica de tablas que constituyen un modelo datos:</p>
 <p><img src="img/t4/schema.png" alt="center" style="height:400px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="12" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="12" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Schemas (y II)</h1>
 <p>Sintaxis:</p>
@@ -283,9 +283,9 @@ mayúsculas o minúsculas</li>
   <span class="hljs-keyword">COLLATE</span> utf8_spanish2_ci;
 </span></span></foreignObject></svg></code></pre>
 <p>Más información sobre <code>COLLATE</code>: <a href="https://dev.mysql.com/doc/refman/8.0/en/charset.html">documentación</a></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="13" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="13" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Creación de tablas</h1>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> [schema.]nombre_tabla (
@@ -300,9 +300,9 @@ mayúsculas o minúsculas</li>
 <li><code>UNIQUE</code>: No se permiten valores duplicados.</li>
 <li><code>NOT NULL</code>: No se permiten valores nulos.</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="14" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="14" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Tipos de datos en SQL</h1>
 <table>
@@ -332,9 +332,9 @@ mayúsculas o minúsculas</li>
 </tbody>
 </table>
 <p>Más tipos en <a href="https://dev.mysql.com/doc/refman/8.0/en/data-types.html">https://dev.mysql.com/doc/refman/8.0/en/data-types.html</a></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="15" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="15" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Creación de tablas: ejemplo</h1>
 <table>
@@ -372,9 +372,9 @@ mayúsculas o minúsculas</li>
   fecha_nac DATETIME
 );
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="16" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="16" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Claves primarias</h1>
 <p>Toda definición de una tabla debe indicar una clave primaria</p>
@@ -388,9 +388,9 @@ cada fila</li>
   <span class="hljs-keyword">PRIMARY</span> KEY (atributo_1[, …, atributo_n])
 );
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="17" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="17" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Claves primarias: ejemplo</h1>
 <table>
@@ -429,9 +429,9 @@ cada fila</li>
   <span class="hljs-keyword">PRIMARY</span> KEY (id)
 );
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="18" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="18" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Modificación de tablas</h1>
 <p>Añadir un nuevo atributo:</p>
@@ -446,9 +446,9 @@ MODIFY definición_de_atributo;
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> [schema.]nombre_tabla
 <span class="hljs-keyword">DROP</span> nombre_de_atributo;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="19" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="19" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Eliminación de tablas</h1>
 <p>Vaciar una tabla (eliminar todas sus filas pero mantener la estructura):</p>
@@ -457,9 +457,9 @@ MODIFY definición_de_atributo;
 <p>Eliminar una tabla (todas sus filas <strong>y también la estructura</strong>):</p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> [schema.]nombre_tabla;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="20" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="20" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Inserción de datos (I)</h1>
 <ul>
@@ -473,9 +473,9 @@ MODIFY definición_de_atributo;
 </ul>
 </li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="21" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="21" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Inserción de datos (y II)</h1>
 <p>Inserción de una fila de datos:</p>
@@ -487,9 +487,9 @@ MODIFY definición_de_atributo;
   <span class="hljs-keyword">VALUES</span> (valor_1, …, valor_n);
 </span></span></foreignObject></svg></code></pre>
 <p><strong>Solo podrán omitirse columnas que no hayan sido definidas como</strong> <code>NOT NULL</code>.</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="22" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="22" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Inserción de datos: ejemplos (I)</h1>
 <table>
@@ -531,9 +531,9 @@ MODIFY definición_de_atributo;
 <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> corporacion.personas (nombre, fecha_nac, dni, id)
   <span class="hljs-keyword">VALUES</span> (“Diana Álvarez”, “<span class="hljs-number">2000</span><span class="hljs-number">-12</span><span class="hljs-number">-09</span>”, “<span class="hljs-number">12345678</span><span class="hljs-operator">-</span>Z”, <span class="hljs-number">101</span>);
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="23" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="23" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Inserción de datos: ejemplos (y II)</h1>
 <p>Es posible insertar varias filas con una única sentencia <code>INSERT INTO</code></p>
@@ -572,9 +572,9 @@ MODIFY definición_de_atributo;
   (<span class="hljs-number">67</span>,  “Lucía Duque”,   “<span class="hljs-number">99999999</span><span class="hljs-operator">-</span>R”, “<span class="hljs-number">1995</span><span class="hljs-number">-07</span><span class="hljs-number">-07</span>”),
   (<span class="hljs-number">101</span>, “Diana Álvarez”, “<span class="hljs-number">12345678</span><span class="hljs-operator">-</span>Z”, “<span class="hljs-number">2000</span><span class="hljs-number">-12</span><span class="hljs-number">-09</span>”);
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="24" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="24" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Valores por defecto</h1>
 <p>Es posible definir valores por defecto a los atributos.</p>
@@ -589,9 +589,9 @@ valor por defecto.</li>
   …
 );
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="25" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="25" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Generación automática de claves</h1>
 <ul>
@@ -615,15 +615,15 @@ nueva fila.
 <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> corporacion.personas (nombre, apellidos, fecha_nac)
   <span class="hljs-keyword">VALUES</span> (“Juan”, “Gómez”, “<span class="hljs-number">1983</span><span class="hljs-number">-05</span><span class="hljs-number">-03</span>”);
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="26" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--class:section;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="26" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:section;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>INTEGRIDAD REFERENCIAL</h1>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="27" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="27" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Qué es la integridad referencial</h1>
 <p>Restricciones referenciales de acuerdo con un conjunto predefinido de<br />
@@ -634,9 +634,9 @@ mediante claves primarias y claves ajenas</p>
 <li>Se encarga de conservar y garantizar automáticamente la integridad de<br />
 todos los datos almacenados</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="28" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="28" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Integridad referencial: ejemplo</h1>
 <p>Supongamos que tenemos las siguientes tablas:</p>
@@ -692,9 +692,9 @@ todos los datos almacenados</li>
 </div>
 <p>¿Puedo borrar el departamento 2 sin que afecte a Fernando?<br />
 ¿Puedo actualizar el departamento 4 sin que afecte a Raúl?</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="29" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="29" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Restricción referencial</h1>
 <p>Para mantener la <strong>integridad referencial</strong> debemos añadir<br />
@@ -709,15 +709,15 @@ tabla con la clave primaria de otra tabla (o la misma)</li>
 </ul>
 </li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="30" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="30" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Restricción referencial en SQL</h1>
 <p><img src="img/t4/rr.png" alt="center" style="height:500px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="31" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="31" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Reglas de integridad referencial</h1>
 <ul>
@@ -740,9 +740,9 @@ comprobaciones inmediatamente, mientras que <code>NO ACTION</code> las aplaza. E
 el caso concreto de MySQL, como no implementa comprobaciones<br />
 diferidas, no hay diferencia entre ambas.</p>
 </blockquote>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="32" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="32" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Restricción referencial: ejemplo</h1>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> corp.departamentos (
@@ -764,9 +764,9 @@ diferidas, no hay diferencia entre ambas.</p>
     <span class="hljs-keyword">ON</span> UPDATE CASCADE
 );
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="33" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="33" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Estructura referencial</h1>
 <p>Conjunto de tablas y restricciones entre ellas de modo que cada tabla<br />
@@ -780,53 +780,53 @@ del conjunto es padre o dependiente de otra u otras del mismo conjunto</p>
 <li>Cíclica.</li>
 <li>Cíclica-autoreferencial.</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="34" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="34" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Estructura lineal (I)</h1>
 <p><img src="img/t4/lineal.png" alt="center" style="height:500px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="35" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="35" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Estructura lineal (y II)</h1>
 <p><img src="img/t4/lineal_valida.png" alt="center" style="height:500px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="36" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="36" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Estructura cíclica (I)</h1>
 <p><img src="img/t4/ciclica.png" alt="center" style="height:500px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="37" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="37" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Estructura cíclica (II)</h1>
 <p><img src="img/t4/ciclica_valida.png" alt="center" style="height:450px;" /></p>
 <p>Eliminamos de T1 la fila con clave T1A. ¿Qué sucede?</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="38" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="38" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Estructura cíclica (y III)</h1>
 <p><img src="img/t4/ciclica_valida2.png" alt="center" style="height:450px;" /></p>
 <p>Eliminamos de T1 la fila con clave T1A. ¿Qué sucede?</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="39" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="39" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Estructura cíclica autoreferencial</h1>
 <p><img src="img/t4/autoref.png" alt="center" style="height:500px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="40" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--class:section;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="40" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:section;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>CONSULTAS</h1>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="41" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="41" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas con SQL (I)</h1>
 <p>La sintaxis para realizar consultas con SQL es la siguiente:</p>
@@ -837,9 +837,9 @@ del conjunto es padre o dependiente de otra u otras del mismo conjunto</p>
   [<span class="hljs-keyword">HAVING</span> condición_de_grupo]]
   [<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> lista_de_atributos [<span class="hljs-keyword">ASC</span><span class="hljs-operator">|</span><span class="hljs-keyword">DESC</span>]];
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="42" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="42" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas con SQL (y II)</h1>
 <ul>
@@ -852,9 +852,9 @@ atributos implicados en la consulta</li>
 <code>GROUP BY</code>)</li>
 <li><code>ORDER BY</code>: ordena los resultados</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="43" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="43" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operadores</h1>
 <p>SQL define los siguientes operadores para expresar condiciones de fila<br />
@@ -869,15 +869,15 @@ atributos implicados en la consulta</li>
 <li>Cuantificadores: <code>ANY</code>, <code>SOME</code>, <code>ALL</code></li>
 <li>Existenciales: <code>EXISTS</code></li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="44" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="44" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Base de datos de ejemplo</h1>
 <p><img src="img/t4/ejemplo.png" alt="center" style="height:500px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="45" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="45" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Recuperación simple</h1>
 <p><cite>Obtener todos los datos de todos los proyectos</cite></p>
@@ -893,16 +893,16 @@ utilizadas</cite></p>
 <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> codM
   <span class="hljs-keyword">FROM</span> trabajos;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="46" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="46" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>DISTINCT</code></h1>
 <p>Elimina los valores duplicados del resultado. Por ejemplo, para la consulta <em>Obtener las localidades de los conductores</em></p>
 <p><img src="img/t4/distinct.png" alt="center" style="height:350px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-marpit-scope-0HyHicxk="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="47" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-marpit-scope-B4iM415p="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="47" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>Cláusula <code>WHERE</code> (I)</h1>
@@ -930,9 +930,9 @@ utilizadas</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="48" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="48" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>WHERE</code> (y II)</h1>
 <p><cite>Obtener los códigos de los conductores de Arganda que tengan<br />
@@ -954,9 +954,9 @@ categoría inferior a 18</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="49" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="49" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>BETWEEN</code></h1>
 <ul>
@@ -988,9 +988,9 @@ comprendido entre 70 y 90 euros</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="50" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="50" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>LIKE</code></h1>
 <p>Establece una comparación entre cadenas de caracteres con la inclusión de comodines:</p>
@@ -1018,9 +1018,9 @@ comprendido entre 70 y 90 euros</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="51" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="51" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>IN</code> (I)</h1>
 <p>Comprueba la pertenencia de un valor a un conjunto dado.</p>
@@ -1052,9 +1052,9 @@ Rivas</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="52" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="52" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>IN</code> (y II)</h1>
 <p>También se puede utilizar con el modificador <code>NOT</code>.</p>
@@ -1079,9 +1079,9 @@ Rivas</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="53" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="53" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>IS NULL</code></h1>
 <p>Comprueba si un valor es nulo ( no nulo con <code>IS NOT NULL</code>)</p>
@@ -1123,9 +1123,9 @@ empleado</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="54" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="54" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operadores <code>ALL</code> y <code>ANY</code></h1>
 <p>Permiten comparar valores con respecto de un conjunto</p>
@@ -1158,9 +1158,9 @@ aquellos conductores con categoría superior a 17:</p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="55" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="55" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>EXISTS</code></h1>
 <p>Indica la existencia o no de un conjunto</p>
@@ -1175,9 +1175,9 @@ resultado o no, respectivamente</li>
               <span class="hljs-keyword">WHERE</span> trabajos.codM <span class="hljs-operator">=</span> maquinas.codM
               <span class="hljs-keyword">AND</span> codP <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;P03&#x27;</span>);
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="56" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="56" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operadores <code>UNION</code>, <code>MINUS</code> e <code>INTERSECT</code></h1>
 <p>Unión, diferencia e intersección respectivamente entre conjuntos de<br />
@@ -1189,9 +1189,9 @@ de datos compatibles)</li>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>SelectSQL {<span class="hljs-keyword">UNION</span> <span class="hljs-operator">|</span> MINUS <span class="hljs-operator">|</span> <span class="hljs-keyword">INTERSECT</span>} [<span class="hljs-keyword">ALL</span>] SelectSQL
 </span></span></foreignObject></svg></code></pre>
 <p>La opción <code>ALL</code> <strong>no</strong> elimina duplicados</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="57" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="57" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>UNION</code> (I)</h1>
 <p>Las consultas a unir tienen que estar definidas sobre los mismos dominios.</p>
@@ -1207,9 +1207,9 @@ tengan categoría inferior a 18</cite></p>
   <span class="hljs-keyword">FROM</span> conductores
   <span class="hljs-keyword">WHERE</span> categoria <span class="hljs-operator">&lt;</span> <span class="hljs-number">18</span>;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-marpit-scope-3RrQpV0S="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="58" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-marpit-scope-B8ZnTLlc="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="58" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>Operador <code>UNION</code> (y II)</h1>
@@ -1228,9 +1228,9 @@ tengan categoría inferior a 18 o hayan manejado la máquina M01</cite></p>
   <span class="hljs-keyword">FROM</span> trabajos
   <span class="hljs-keyword">WHERE</span> codM <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;M01&#x27;</span>;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="59" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="59" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="59" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="59" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>MINUS</code></h1>
 <p>Elimina las filas del primer operando que se encuentren en el segundo</p>
@@ -1248,9 +1248,9 @@ inferior a 18 y no hayan trabajado con la máquina M03</cite></p>
     <span class="hljs-keyword">WHERE</span> codM <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;M03&#x27;</span>
   );
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="60" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="60" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="60" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="60" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>INTERSECT</code></h1>
 <p>Obtiene las filas comunes al resultado de dos subconsultas. <strong>MySQL no<br />
@@ -1265,9 +1265,9 @@ máquinas M01 y M03</cite></p>
   <span class="hljs-keyword">WHERE</span> codM <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;M03&#x27;</span>
 );
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="61" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="61" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="61" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="61" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Funciones agregadas</h1>
 <p>Cinco funciones que permiten combinar los resultados de varias filas</p>
@@ -1279,9 +1279,9 @@ nulos</li>
 <li><code>MAX</code>: valor máximo de una atributo</li>
 <li><code>MIN</code>: valor mínimo de un atributo</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="62" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="62" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="62" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="62" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Funciones agregadas: ejemplos (I)</h1>
 <p><cite>Obtener el número total de proyectos en los se está<br />
@@ -1295,9 +1295,9 @@ trabajando</cite></p>
 <p><cite>Obtener el precio medio por hora de las máquinas</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(precioHora) <span class="hljs-keyword">FROM</span> maquinas;  <span class="hljs-comment">-- Devuelve 84</span>
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="63" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="63" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Funciones agregadas: ejemplos (y II)</h1>
 <p><cite>Obtener el máximo para el nombre y el precioHora de las<br />
@@ -1315,9 +1315,9 @@ columna</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>), <span class="hljs-built_in">COUNT</span>(tiempo), <span class="hljs-built_in">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> tiempo)
 <span class="hljs-keyword">FROM</span> trabajos;<span class="hljs-comment">-- Devuelve (12, 9, 8)</span>
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="64" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="64" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="64" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="64" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>GROUP BY</code> (I)</h1>
 <p>Agrupa los resultados en base a una <strong>clave</strong>, devolviendo una única fila por grupo</p>
@@ -1332,15 +1332,15 @@ la cantidad total de tiempo empleado</cite></p>
   <span class="hljs-keyword">FROM</span> trabajos
   <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> codC;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="65" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="65" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="65" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="65" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>GROUP BY</code> (y II)</h1>
 <p><img src="img/t4/group_by.png" alt="center" style="height:500px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="66" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="66" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="66" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="66" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>HAVING</code> (I)</h1>
 <p>Condición aplicada a los grupos generados por la cláusula <code>GROUP BY</code></p>
@@ -1377,9 +1377,9 @@ realizado, la suma de tiempos trabajados</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="67" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="67" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="67" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="67" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>HAVING</code> (II)</h1>
 <p><cite>Obtener para los conductores que hayan utilizado la misma máquina<br />
@@ -1410,15 +1410,15 @@ el código de máquina y el tiempo total empleado</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="68" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="68" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="68" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="68" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>HAVING</code> (y III)</h1>
 <p><img src="img/t4/having.png" alt="center" style="height:500px;" /></p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="69" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="69" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="69" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="69" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>ORDER BY</code> (I)</h1>
 <ul>
@@ -1429,9 +1429,9 @@ el código de máquina y el tiempo total empleado</cite></p>
 <p>Sintaxis:</p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> atributo_1 [<span class="hljs-keyword">DESC</span>] [,...]
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="70" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="70" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="70" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="70" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>ORDER BY</code> (y II)</h1>
 <p><cite>Obtener los partes de trabajo correspondientes al proyecto P04<br />
@@ -1470,9 +1470,9 @@ ordenados ascendentemente por conductor y máquina</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="71" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="71" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="71" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="71" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Alias de columnas</h1>
 <p>Es posible modificar el nombre de una columna como resultado de una<br />
@@ -1485,9 +1485,9 @@ caracteres especiales</li>
 <p>Sintaxis:</p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> atributo_1 [[<span class="hljs-keyword">AS</span>] alias_1] [,...]
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="72" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="72" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="72" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="72" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Alias de columnas: ejemplo</h1>
 <p><cite>Obtener el código (como 'cod conductor') y el nombre de aquellos<br />
@@ -1514,9 +1514,9 @@ conductores de Rivas</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="73" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="73" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="73" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="73" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Alias de tablas</h1>
 <p>Es posible modificar el nombre de una tabla para su uso dentro de una<br />
@@ -1529,9 +1529,9 @@ consulta</p>
 <span class="hljs-keyword">FROM</span> tabla_1 [[<span class="hljs-keyword">AS</span>] alias_1] [,...]
 ...
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="74" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="74" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="74" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="74" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Expresiones en la cláusula <code>SELECT</code></h1>
 <p>Se permite añadir expresiones en las que aparezcan atributos y/o<br />
@@ -1568,9 +1568,9 @@ constantes y operadores aritméticos</p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="75" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="75" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="75" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="75" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas con más de una tabla</h1>
 <p>Se permite seleccionar dos tablas para obtener información común</p>
@@ -1588,9 +1588,9 @@ foráneas</li>
 </ul>
 </li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="76" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="76" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="76" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="76" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas con más de una tabla: ejemplos</h1>
 <p><cite>Obtener nombres de conductores que han utilizado la máquina<br />
@@ -1609,9 +1609,9 @@ foráneas</li>
                 <span class="hljs-keyword">ON</span> conductores.codC <span class="hljs-operator">=</span> trabajos.codC
 <span class="hljs-keyword">WHERE</span> codM <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;M02&#x27;</span>;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="77" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="77" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="77" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="77" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas</h1>
 <p>Las consultas anidadas establecen una comparación entre dos operandos</p>
@@ -1622,9 +1622,9 @@ foráneas</li>
 <li>Operador de comparación (<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>&lt;&gt;</code>).</li>
 <li>Operador <code>EXISTS</code>.</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="78" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="78" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="78" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="78" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (I)</h1>
 <p>Operador <code>IN</code></p>
@@ -1638,9 +1638,9 @@ conductores de Rivas</cite></p>
                  <span class="hljs-keyword">AND</span> codC <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> codC <span class="hljs-keyword">FROM</span> conductores
                               <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> ‘Rivas’));  
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="79" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="79" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="79" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="79" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (II)</h1>
 <p>Operador <code>ANY</code></p>
@@ -1650,9 +1650,9 @@ trabajador de Arganda</cite></p>
 <span class="hljs-keyword">WHERE</span> categoria <span class="hljs-operator">&lt;</span> <span class="hljs-keyword">ANY</span> (<span class="hljs-keyword">SELECT</span> categoria <span class="hljs-keyword">FROM</span> conductores
                        <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Arganda&#x27;</span>);
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="80" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="80" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="80" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="80" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (III)</h1>
 <p>Operador <code>ALL</code></p>
@@ -1662,9 +1662,9 @@ trabajador de Arganda</cite></p>
 <span class="hljs-keyword">WHERE</span> codC <span class="hljs-operator">&lt;&gt;</span> <span class="hljs-keyword">ALL</span> (<span class="hljs-keyword">SELECT</span> codC <span class="hljs-keyword">FROM</span> trabajos
                    <span class="hljs-keyword">WHERE</span> codP <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;P01&#x27;</span>);
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="81" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="81" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="81" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="81" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (IV)</h1>
 <p>Operador de comparación</p>
@@ -1675,9 +1675,9 @@ entre los que sean de Arganda</cite></p>
                    <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Arganda&#x27;</span>)
   <span class="hljs-keyword">AND</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Arganda&#x27;</span>;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="82" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="82" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="82" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="82" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (y V)</h1>
 <p>Operador <code>EXISTS</code></p>
@@ -1689,9 +1689,9 @@ misma localidad</cite></p>
                      <span class="hljs-keyword">AND</span> C1.localidad <span class="hljs-operator">=</span> C2.localidad
                      <span class="hljs-keyword">AND</span> C1.codC <span class="hljs-operator">&lt;&gt;</span> C2.codC);
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="83" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="83" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="83" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="83" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas</h1>
 <p>El alcance (scope) de las «variables» de una subconsulta se limita a la<br />
@@ -1705,9 +1705,9 @@ subconsulta y sus descendientes</p>
                <span class="hljs-keyword">WHERE</span> T2.fecha <span class="hljs-operator">=</span> T1.fecha);
 </span></span></foreignObject></svg></code></pre>
 <p>La consulta <strong>es incorrecta</strong>, porque T1 no es visible desde la segunda subconsulta.</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="84" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="84" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="84" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="84" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Join implícito</h1>
 <p>Se debe poner una condición de unión en el <code>WHERE</code> por cada atributo<br />
@@ -1722,9 +1722,9 @@ máquina</cite></p>
   <span class="hljs-keyword">AND</span> t.codM <span class="hljs-operator">=</span> m.codM
   <span class="hljs-keyword">AND</span> precioHora <span class="hljs-operator">&gt;</span> <span class="hljs-number">80</span>;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="85" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="85" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="85" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="85" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>JOIN</code> (explícito)</h1>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">FROM</span> tabla_1 [tipo_join] <span class="hljs-keyword">JOIN</span> tabla_2 <span class="hljs-keyword">ON</span> condicion_join
@@ -1741,9 +1741,9 @@ segundo operando (derecha)</li>
 <p>Condición:</p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>tabla_1.atributo_común <span class="hljs-operator">=</span> tabla_2.atributo_comun
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="86" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="86" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="86" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="86" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>INNER JOIN</code></h1>
 <p><cite>Obtener el nombre del conductor y tiempo empleado para aquellos<br />
@@ -1778,9 +1778,9 @@ trabajos realizados el 10/09/11</cite></p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="87" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="87" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="87" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="87" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>NATURAL JOIN</code></h1>
 <p>Si los atributos comunes tienen el mismo nombre (y dominio), puede<br />
@@ -1795,9 +1795,9 @@ trabajos realizados el 10/09/11</cite></p>
 <p><strong>CUIDADO</strong>: unirá todas las columnas comunes que dispongan del mismo<br />
 nombre y dominio, sin importar si estas representan la misma<br />
 información</p>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="88" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="88" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="88" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="88" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1><code>INNER JOIN</code> vs <code>LEFT</code>, <code>RIGHT</code> y <code>FULL</code> (I)</h1>
 <p><code>INNER JOIN</code>:</p>
@@ -1830,9 +1830,9 @@ información</p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="89" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="89" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="89" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="89" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1><code>INNER JOIN</code> vs <code>LEFT</code>, <code>RIGHT</code> y <code>FULL</code> (II)</h1>
 <p><code>LEFT JOIN</code>:</p>
@@ -1871,9 +1871,9 @@ información</p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="90" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="90" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="90" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="90" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1><code>INNER JOIN</code> vs <code>LEFT</code>, <code>RIGHT</code> y <code>FULL</code> (III)</h1>
 <p><code>RIGHT JOIN</code>:</p>
@@ -1912,9 +1912,9 @@ información</p>
 </tr>
 </tbody>
 </table>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="91" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="91" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="91" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="91" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1><code>INNER JOIN</code> vs <code>LEFT</code>, <code>RIGHT</code> y <code>FULL</code> (y IV)</h1>
 <div class="columns">
@@ -1991,9 +1991,9 @@ información</p>
 </table>
 </div>
 </div>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="92" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="92" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="92" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="92" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Vistas</h1>
 <p>Tabla virtual cuyo contenido está definido por una consulta</p>
@@ -2011,15 +2011,15 @@ el <code>SELECT SQL</code></p>
 de datos que se ejecuten en la vista sigan los criterios establecidos<br />
 en el <code>SELECT SQL</code>.</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="93" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="93" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--class:section;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="93" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="93" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:section;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>ACTUALIZACIÓN Y BORRADO DE DATOS</h1>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="94" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="94" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="94" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="94" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Modificación de filas</h1>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>UPDATE [schema.]tabla
@@ -2031,9 +2031,9 @@ en el <code>SELECT SQL</code>.</li>
 <li>El valor que se asigne a un atributo puede ser una expresión, el resultado de una subconsulta (que deberá ir entre paréntesis), el valor <code>NULL</code> o el valor por defecto del atributo.</li>
 <li>La modificación afectará a todas las filas que cumplan la condición. Si no se indica, afecta a todas la filas.</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="95" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="95" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="95" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="95" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Modificación de filas: ejemplo</h1>
 <p><cite>Incrementar un 15% el valor de la categoría de los conductores de<br />
@@ -2048,9 +2048,9 @@ Loeches</cite></p>
   <span class="hljs-keyword">SET</span> categoria <span class="hljs-operator">=</span> <span class="hljs-keyword">DEFAULT</span>
   <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Loeches&#x27;</span>;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="96" data-marpit-scope-aSfco8CR="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="96" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="96" data-marpit-scope-5najBjHl="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="96" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>Eliminación de filas</h1>
@@ -2070,9 +2070,9 @@ Sol</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> proyectos
   <span class="hljs-keyword">WHERE</span> cliente <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Felipe Sol&#x27;</span>;
 </span></span></foreignObject></svg></code></pre>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="97" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos. Curso 2023-2024." data-theme="bbdd" data-marpit-pagination="97" data-marpit-pagination-total="97" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos. Curso 2023-2024.;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="97" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="97" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Estas diapositivas está basadas en el siguiente material</h1>
 <ul>
@@ -2083,7 +2083,12 @@ Informática, Universidad Politécnica de Madrid</li>
 Gestión de Información, Departamento de OEI, Escuela Universitaria de<br />
 Informática, Universidad Politécnica de Madrid</li>
 </ul>
-<footer>Bases de datos. Curso 2023-2024.</footer>
+<footer>Bases de datos</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="98" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="endpage" data-theme="bbdd" class="endpage" data-marpit-pagination="98" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:endpage;--theme:bbdd;">
+<header>El lenguaje SQL</header>
+<h1>Gracias</h1>
+<footer>Bases de datos</footer>
 </section>
 <script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let r,o;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(o=r)}}catch(t){console.error(t)}})));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||o||t.currentScale||1;r!==c&&(r=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let r=0;r<u;r+=1){const o=t.children[r],a=o.getScreenCTM();if(a){const t=null!==(n=null===(e=o.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,r=null!==(s=null===(i=o.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=o.firstElementChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-r}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}})),!1!==l&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)}))}r=1,o=void 0;const i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function a({once:t=!1,target:e=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[n]:[];let o=!t;const a=()=>{for(const t of r)t({target:e});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),(t=>{var e;const r=t.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:a}=o;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(r,"width",`${c}`),i(r,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")}))}(e),o&&window.requestAnimationFrame(a)};return a(),()=>{o=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),r=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:r})})(s?s.getRootNode():document)}();
 </script></foreignObject></svg></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@1.7.0/lib/bespoke.js.LICENSE.txt */
