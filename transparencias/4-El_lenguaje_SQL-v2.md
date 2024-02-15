@@ -6,12 +6,16 @@ theme       : bbdd
 header      : El lenguaje SQL
 footer      : Bases de datos. Curso 2023-2024.
 description : >
-  Una visión general del sistema de gestión de bases de datos basado en
-  la lógica de tablas, claves y relaciones entre datos. Curso 2023-2024.
-  E.T.S.I. Sistemas Informáticos (UPM)
+  Estándar utilizado para la gestión y manipulación de bases de datos
+  relacionales, el cual permite consultar, actualizar, insertar y borrar
+  registros, entre otras operaciones, mediante una sintaxis declarativa.
+  Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
 keywords    : >
-  Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
-  Modelado de datos, Modelo Entidad-Relación, Modelo Relacional
+  Bases de datos, SQL, DDL, DML, CREATE, ALTER, DROP, INSERT, DELETE,
+  SELECT, UPDATE, JOIN, GROUP BY, HAVING, ORDER BY, WHERE, LIKE, IN,
+  BETWEEN, UNION, INTERSECT, MINUS, EXISTS, NOT EXISTS, ALL, ANY, SOME,
+  COUNT, AVG, SUM, MAX, MIN, DISTINCT, NULL, NOT NULL, PRIMARY KEY,
+  FOREIGN KEY, UNIQUE, AUTO_INCREMENT, COLLATE, CHARACTER SET
 math        : mathjax
 ---
 

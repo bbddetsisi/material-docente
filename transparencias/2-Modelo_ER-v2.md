@@ -10,8 +10,7 @@ description : >
   almacenamiento, recuperación y manipulación en sistemas de bases de
   datos. Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
 keywords    : >
-  Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
-  Modelado de datos, Modelo Entidad-Relación
+  Bases de datos, Modelo Entidad-Relación, Modelo ER, Modelado de datos
 math        : mathjax
 ---
 

@@ -10,8 +10,8 @@ description : >
   la lógica de tablas, claves y relaciones entre datos. Curso 2023-2024.
   E.T.S.I. Sistemas Informáticos (UPM)
 keywords    : >
-  Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
-  Modelado de datos, Modelo Entidad-Relación, Modelo Relacional
+  Bases de datos, Modelo Relacional, Álgebra Relacional, Normalización,
+  Claves, Relaciones, Tablas
 math        : mathjax
 ---
 
