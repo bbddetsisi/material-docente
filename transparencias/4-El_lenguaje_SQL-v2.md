@@ -4,12 +4,12 @@ title       : El lenguaje SQL
 paginate    : true
 theme       : bbdd
 header      : El lenguaje SQL
-footer      : Bases de datos. Curso 2023-2024.
+footer      : Bases de datos
 description : >
   Estándar utilizado para la gestión y manipulación de bases de datos
   relacionales, el cual permite consultar, actualizar, insertar y borrar
   registros, entre otras operaciones, mediante una sintaxis declarativa.
-  Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
+  E.T.S.I. Sistemas Informáticos (UPM)
 keywords    : >
   Bases de datos, SQL, DDL, DML, CREATE, ALTER, DROP, INSERT, DELETE,
   SELECT, UPDATE, JOIN, GROUP BY, HAVING, ORDER BY, WHERE, LIKE, IN,
@@ -21,15 +21,15 @@ math        : mathjax
 
 <!-- _class: titlepage -->
 
-# Tema 4. El lenguaje SQL
+# El lenguaje SQL
 
-## Bases de datos - Curso 2023-2024
+## Bases de datos
 
 ### Departamento de Sistemas Informáticos
 
 #### E.T.S.I. de Sistemas Informáticos - UPM
 
-##### 13 de febrero de 2024
+##### 15 de febrero de 2024
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -1630,3 +1630,7 @@ DELETE FROM proyectos
 - Eugenio Santos (2006), *Integridad Referencial*. Aplicación de la
   Gestión de Información, Departamento de OEI, Escuela Universitaria de
   Informática, Universidad Politécnica de Madrid
+
+---
+
+# Gracias<!--class: endpage-->

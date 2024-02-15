@@ -4,11 +4,11 @@ title       : Modelado de datos
 paginate    : true
 theme       : bbdd
 header      : Modelado de datos
-footer      : Bases de datos. Curso 2023-2024.
+footer      : Bases de datos
 description : >
   Cómo estructurar y organizar los datos para facilitar su
   almacenamiento, recuperación y manipulación en sistemas de bases de
-  datos. Curso 2023-2024. E.T.S.I. Sistemas Informáticos (UPM)
+  datos. Sistemas Informáticos (UPM)
 keywords    : >
   Bases de datos, Modelo Entidad-Relación, Modelo ER, Modelado de datos
 math        : mathjax
@@ -16,9 +16,9 @@ math        : mathjax
 
 <!-- _class: titlepage -->
 
-# Tema 2. Modelado de datos
+# Modelado de datos
 
-## Bases de datos - Curso 2023-2024
+## Bases de datos
 
 ### Departamento de Sistemas Informáticos
 
@@ -684,6 +684,4 @@ Para cada profesor hay que indicar aquellos que pueden cubrirle
 
 ---
 
-<!-- _class: endpage -->
-
-# Muchas gracias
+# Gracias<!--class: endpage-->

@@ -2,15 +2,14 @@
 marp        : true
 title       : Presentación de la asignatura
 paginate    : true
-theme       : etsisi
+theme       : bbdd
 header      : Presentación
-footer      : Bases de datos. Curso 2023-2024.
+footer      : Bases de datos
 description : >
-  Presentación de la asignatura de bases de datos. Curso 2023-2024.
-  E.T.S.I. Sistemas Informáticos (UPM)
+  Presentación de la asignatura de bases de datos. E.T.S.I. Sistemas
+  Informáticos (UPM)
 keywords    : >
-  Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
-  Presentación
+  Bases de datos, Presentación
 ---
 
 <!-- _class: titlepage -->
@@ -123,3 +122,7 @@ Prueba escrita el **miércoles 3 de julio de 2024 a las 12:00**
 2. Elmasri, R. A., & Navathe, S. B. (2007). *Fundamentos de sistemas de bases de datos* (No. 004.65). Addison Wesley.
 3. Silberschatz, A., Korth, H. F., Sudarshan, S., Pérez, F. S., Santiago, A. I., & Sánchez, A. V. (2002). *Fundamentos de bases de datos*.
 4. Date, C. J. (2001). *Introducción a los sistemas de bases de datos*. Pearson Educación.
+
+---
+
+# Gracias<!--class: endpage-->

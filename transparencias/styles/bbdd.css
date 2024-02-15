@@ -284,6 +284,7 @@ section.titlepage img {
   border-top: 1px solid var(--color-primary);
   padding-top: 0.5em;
   text-align: left;
+  margin: 0;
 }
 
 /* Omits page number in Title Page Slide */

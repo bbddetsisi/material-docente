@@ -425,3 +425,7 @@ Prácticamente todo lenguaje de programación dispone de bibliotecas para conect
 - ...
 
 Más adelante en la asignatura trabajaremos la conesión desde aplicaciones
+
+---
+
+# Gracias<!--class: endpage-->

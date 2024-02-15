@@ -4,11 +4,11 @@ title       : Modelo relacional
 paginate    : true
 theme       : bbdd
 header      : Modelo relacional
-footer      : Bases de datos. Curso 2023-2024.
+footer      : Bases de datos
 description : >
   Una visión general del sistema de gestión de bases de datos basado en
-  la lógica de tablas, claves y relaciones entre datos. Curso 2023-2024.
-  E.T.S.I. Sistemas Informáticos (UPM)
+  la lógica de tablas, claves y relaciones entre datos. E.T.S.I.
+  Sistemas Informáticos (UPM)
 keywords    : >
   Bases de datos, Modelo Relacional, Álgebra Relacional, Normalización,
   Claves, Relaciones, Tablas
@@ -17,9 +17,9 @@ math        : mathjax
 
 <!-- _class: titlepage -->
 
-# Tema 3. Modelo relacional
+# Modelo relacional
 
-## Bases de datos - Curso 2023-2024
+## Bases de datos
 
 ### Departamento de Sistemas Informáticos
 
@@ -1010,5 +1010,4 @@ $$\prod_{\textrm{Nmat}}(\sigma_{\textrm{nota}\geq 5}(Notas))-\prod_{\textrm{Nmat
 
 ---
 
-<!--class: endpage-->
-# Gracias
+# Gracias<!--class: endpage-->
