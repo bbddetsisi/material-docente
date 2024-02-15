@@ -527,7 +527,7 @@ Una tabla está 1FN si todas sus columnas contienen valores atómicos
 Por ejemplo, la siguiente tabla **NO** está en 1FN porque _Antonio_
 tiene dos teléfonos
 
-| DNI        | Nonmbre | Apellidos    | Teléfonos              |
+| DNI        | Nombre  | Apellidos    | Teléfonos              |
 | ---------- | ------- | ------------ | ---------------------- |
 | 12345678-Z | Antonio | Pérez García | [645923412, 663231983] |
 | 42384109-P | Marta   | Picas López  | 634176823              |
@@ -536,7 +536,7 @@ tiene dos teléfonos
 ---
 
 <style scoped>
-table th:nth-child(1), table:last-of-type th:nth-child(2) {
+table th:nth-child(1) {
   text-decoration: underline;
 }
 </style>
@@ -548,7 +548,7 @@ Este problema se podría solucionar dividiendo la tabla en:
 <div class="columns">
 <div class="column">
 
-| DNI        | Nonmbre | Apellidos    |
+| DNI        | Nombre  | Apellidos    |
 | ---------- | ------- | ------------ |
 | 12345678-Z | Antonio | Pérez García |
 | 42384109-P | Marta   | Picas López  |
@@ -580,11 +580,7 @@ Una tabla está en 2FN si:
 ---
 
 <style scoped>
-table > * > * > * {
-  font-size: 0.70rem;
-}
-
-table th:nth-child(1), table th:nth-child(2) {
+table th:nth-child(1) {
   text-decoration: underline;
 }
 </style>
@@ -607,7 +603,7 @@ A pesar de estar en 1FN, la columna *Restaurante* es dependiente
 ---
 
 <style scoped>
-table th:nth-child(1), table:last-of-type th:nth-child(2) {
+table th:nth-child(1) {
   text-decoration: underline;
 }
 </style>
