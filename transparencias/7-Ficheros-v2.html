@@ -17,7 +17,7 @@
 
 /*****************
  @author: Alberto Díaz-Álvarez
- @version: 1.0
+ @version: 1.1
  @update: 2022-01-27
  Based on the work of Paulo Cunha (https://github.com/cunhapaulo/marpstyle)
 *****************/
@@ -38,7 +38,8 @@
   ### Autor
   #### Fecha
   ##### Institución
-*/div#p>svg>foreignObject>section.titlepage{background-color:var(--color-tertiary);
+*/div#p>svg>foreignObject>section.titlepage{
+  /*background-color: var(--color-tertiary);*/background-image:linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0.8),rgba(255,255,255,0.6)),url(https://etsisi.github.io/Styles/images/front-slide-background.png);background-size:auto;background-position:0;background-blend-mode:normal;
     /* fonts sizes */--title-size:150%;--subtitle-size:110%;--author-size:110%;--date-size:90%;--institute-size:90%;--letter-spacing:var(--letter-spacing);
 
   /* font weights */--title-font-weight:600;--subtitle-font-weight:600;--subtitle-color:#586e75;--subtitle-color:#93a1a1;--titlepage-color:#242d31}div#p>svg>foreignObject>section.titlepage h1{font-size:var(--title-size);font-weight:var(--title-font-weight);text-align:left;line-height:1.25;padding-right:20%}div#p>svg>foreignObject>section.titlepage h2{font-size:var(--subtitle-size);font-weight:var(--subtitle-font-weight);text-align:left;color:var(--subtitle-color);letter-spacing:var(--letter-spacing);line-height:1.2;margin-top:-0.2em;padding-bottom:95px}div#p>svg>foreignObject>section.titlepage h3,div#p>svg>foreignObject>section.titlepage h4,div#p>svg>foreignObject>section.titlepage h5{font-weight:400;color:var(--titlepage-color);line-height:0;letter-spacing:var(--letter-spacing)}div#p>svg>foreignObject>section.titlepage h3{font-size:var(--author-size)}div#p>svg>foreignObject>section.titlepage h4{font-size:var(--date-size)}div#p>svg>foreignObject>section.titlepage h5{font-size:var(--institute-size)}div#p>svg>foreignObject>section.titlepage img{background-color:var(--background-color);border-top:1px solid var(--color-primary);padding-top:0.5em;text-align:left;margin:0}
@@ -46,7 +47,7 @@
 /* Omits page number in Title Page Slide */div#p>svg>foreignObject>section.titlepage footer,div#p>svg>foreignObject>section.titlepage header,div#p>svg>foreignObject>section.titlepage:after{
   /* hide header, footer and pagination */display:none}
 
-/* Última página de las transparencias */div#p>svg>foreignObject>section.endpage{background-color:var(--color-tertiary);background-image:none;text-align:center!important;font-weight:bold!important;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.endpage a,div#p>svg>foreignObject>section.endpage h1,div#p>svg>foreignObject>section.endpage h2,div#p>svg>foreignObject>section.endpage p{font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.endpage footer,div#p>svg>foreignObject>section.endpage header,div#p>svg>foreignObject>section.endpage:after{display:none}
+/* Última página de las transparencias */div#p>svg>foreignObject>section.endpage{background-color:var(--color-tertiary);background-image:none;text-align:center!important;font-weight:bold!important;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.endpage a,div#p>svg>foreignObject>section.endpage h1,div#p>svg>foreignObject>section.endpage h2,div#p>svg>foreignObject>section.endpage p{font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.endpage footer,div#p>svg>foreignObject>section.endpage header,div#p>svg>foreignObject>section.endpage:after{display:none}div#p>svg>foreignObject>section.license{background-image:url(https://etsisi.github.io/Styles/images/end-slide-background.png);background-size:auto;background-position:0;background-blend-mode:luminosity;text-align:center!important;font-weight:bold}div#p>svg>foreignObject>section.license footer,div#p>svg>foreignObject>section.license header,div#p>svg>foreignObject>section.license:after{display:none}div#p>svg>foreignObject>section.license h1{font-size:200%;border-bottom:none;color:var(--color-primary)}div#p>svg>foreignObject>section.license p{font-size:120%;color:var(--color-primary)}div#p>svg>foreignObject>section.license a{border-bottom:none;color:var(--color-error)}
 
 /* Separador de secciones */div#p>svg>foreignObject>section.section{background-image:none;background-color:var(--color-secondary);text-align:center!important;font-weight:bold!important;color:white;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.section a,div#p>svg>foreignObject>section.section h1,div#p>svg>foreignObject>section.section h2,div#p>svg>foreignObject>section.section p{color:white;font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.section footer,div#p>svg>foreignObject>section.section header,div#p>svg>foreignObject>section.section:after{display:none}
 
@@ -79,8 +80,7 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="2" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Estructura de la información (I)</h1>
-<p>La información almacenada en una base de datos relacional se considera<br />
-<strong>datos estructurados</strong></p>
+<p>La información almacenada en una base de datos relacional se considera <strong>datos estructurados</strong></p>
 <ul>
 <li>Se representan en un formato estricto</li>
 <li>Todas las filas de una tabla tienen el mismo formato</li>
@@ -94,10 +94,8 @@
 <h1>Estructura de la información (y II)</h1>
 <p>Una estructura menos restrictiva serían los <strong>datos semi-estructurados</strong></p>
 <ul>
-<li>La información del esquema está mezclada con los valores de los<br />
-atributos</li>
-<li>Cada objeto de datos puede tener diferentes atributos que no se<br />
-conocen a priori</li>
+<li>La información del esquema está mezclada con los valores de los atributos</li>
+<li>Cada objeto de datos puede tener diferentes atributos que no se conocen a priori</li>
 <li>Se les conoce como datos auto-descriptivos</li>
 </ul>
 <footer>Bases de datos</footer>
@@ -107,8 +105,7 @@ conocen a priori</li>
 <h1>Datos semi-estructurados</h1>
 <div class="columns">
 <div class="column">
-<p>Una posible representación para los datos semi-estructurados sería un<br />
-grafo dirigido</p>
+<p>Una posible representación para los datos semi-estructurados sería un grafo dirigido</p>
 <ul>
 <li>Los nodos representan los objetos de datos</li>
 <li>Los arcos representan las relaciones entre los objetos</li>
@@ -173,8 +170,7 @@ livi@ex.com,20,Livi,Smith
 <div class="column">
 <h2>Ventajas</h2>
 <ol>
-<li>Información estructurada <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> Lectura y escritura es rápida<br />
-y sencilla</li>
+<li>Información estructurada <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> Lectura y escritura es rápida y sencilla</li>
 <li>No añade información supérflua a los datos (salvo separador y delimitador)</li>
 <li>Facil de entender, editar y generar</li>
 <li>Se considera formato estándar<sup>1</sup></li>
@@ -184,8 +180,7 @@ y sencilla</li>
 <div class="column">
 <h2>Inconvenientes</h2>
 <ol>
-<li>Información estructurada <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> Todos registro tienen que<br />
-tener el mismo número de campos</li>
+<li>Información estructurada <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> Todos registro tienen que tener el mismo número de campos</li>
 <li>Solo permite tipos de datos simples</li>
 <li>El separador no debe aperecer en los datos</li>
 <li>Caracteres de escape para texto con símbolos especiales</li>
@@ -201,15 +196,11 @@ tener el mismo número de campos</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="8" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Casos de uso</h1>
-<p>El formato <strong>CSV</strong> se utiliza principalmente en las siguientes<br />
-situaciones</p>
+<p>El formato <strong>CSV</strong> se utiliza principalmente en las siguientes situaciones</p>
 <ul>
-<li>Almacén de datos de procesos temporales (p.e. sensores, logs del<br />
-sistema), ya que es facil escribir al final de los ficheros</li>
-<li>Análisis de datos, donde se realizan operaciones sobre el conjunto de<br />
-datos completo</li>
-<li>Integración de sistemas y aplicaciones (bases de datos, hojas de<br />
-cálculo)</li>
+<li>Almacén de datos de procesos temporales (p.e. sensores, logs del sistema), ya que es facil escribir al final de los ficheros</li>
+<li>Análisis de datos, donde se realizan operaciones sobre el conjunto de datos completo</li>
+<li>Integración de sistemas y aplicaciones (bases de datos, hojas de cálculo)</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
@@ -235,8 +226,7 @@ cálculo)</li>
 <p><strong>XML</strong> viene de <em>eXtensible Markup Language</em>.</p>
 <ul>
 <li>Recomendación del W3C (<em>World Wide Web Consortium</em>) desde 1998 (v1.0)</li>
-<li>Estándar de facto para definir, crear, validar, compartir y publicar<br />
-documentos con información, mediante marcas con significado</li>
+<li>Estándar de facto para definir, crear, validar, compartir y publicar documentos con información, mediante marcas con significado</li>
 <li>Puede representar tanto datos estructurados como semi-estructurados</li>
 </ul>
 <blockquote>
@@ -248,25 +238,21 @@ documentos con información, mediante marcas con significado</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="11" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>El modelo de datos jerárquico de XML</h1>
-<p>El objeto básico de <strong>XML</strong> es el <strong>documento</strong>, y se construye a partir<br />
-de</p>
+<p>El objeto básico de <strong>XML</strong> es el <strong>documento</strong>, y se construye a partir de</p>
 <ul>
 <li><strong>Elementos</strong>: Nodos que contienen información</li>
 <li><strong>Atributos</strong>: Metadatos que describen los elementos</li>
 </ul>
-<p><strong>¡OJO!</strong> El concepto de <em>atributo</em> en <strong>XML</strong> no se corresponde al de<br />
-las bases de datos visto hasta ahora. En <strong>XML</strong> los <em>atributos</em><br />
+<p><strong>¡OJO!</strong> El concepto de <em>atributo</em> en <strong>XML</strong> no se corresponde al de las bases de datos visto hasta ahora. En <strong>XML</strong> los <em>atributos</em><br />
 <strong>añaden</strong> información a los <em>elementos</em></p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="12" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Elementos</h1>
-<p>Se identifican por su <strong>etiqueta de inicio</strong> y su <strong>etiqueta final</strong><br />
-(con <code>/</code> al comienzo)</p>
+<p>Se identifican por su <strong>etiqueta de inicio</strong> y su <strong>etiqueta final</strong> (con <code>/</code> al comienzo)</p>
 <ul>
-<li>El nombre de la etiqueta inicial y final se incluye entre los<br />
-caracteres <code>&lt;</code>y <code>&gt;</code>.</li>
+<li>El nombre de la etiqueta inicial y final se incluye entre los caracteres <code>&lt;</code>y <code>&gt;</code>.</li>
 </ul>
 <pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-tag">&lt;<span class="hljs-name">etiqueta</span>&gt;</span>Elemento 1<span class="hljs-tag">&lt;/<span class="hljs-name">etiqueta</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">cosa</span>&gt;</span>Otro elemento<span class="hljs-tag">&lt;/<span class="hljs-name">cosa</span>&gt;</span>
@@ -293,8 +279,7 @@ caracteres <code>&lt;</code>y <code>&gt;</code>.</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="13" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Los documentos XML son árboles</h1>
-<p>Los <strong>elementos</strong> de un documento <strong>XML</strong> se organizan en una estructura<br />
-de <strong>árbol</strong></p>
+<p>Los <strong>elementos</strong> de un documento <strong>XML</strong> se organizan en una estructura de <strong>árbol</strong></p>
 <div class="columns">
 <div class="column">
 <p><img src="img/t7/tree.png" alt="" /></p>
@@ -365,19 +350,15 @@ de <strong>árbol</strong></p>
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Puntos fuertes de XML</h1>
 <ul>
-<li><strong>Metalenguaje</strong>: Permite definir lenguajes para representar<br />
-información</li>
-<li><strong>Simplicidad</strong>: Facilidad de procesar por software y de entender por<br />
-personas
+<li><strong>Metalenguaje</strong>: Permite definir lenguajes para representar información</li>
+<li><strong>Simplicidad</strong>: Facilidad de procesar por software y de entender por personas
 <ul>
-<li>Utilizable con cualquier lenguaje o alfabeto (representa el estándar<br />
-unicode)</li>
+<li>Utilizable con cualquier lenguaje o alfabeto (representa el estándar unicode)</li>
 <li>Sensible a mayúsculas y minúsculas</li>
 <li>Gramática de obligado cumplimiento</li>
 </ul>
 </li>
-<li><strong>Auto-descriptivo</strong>: Datos como texto, metadatos como etiquetas y<br />
-atributos</li>
+<li><strong>Auto-descriptivo</strong>: Datos como texto, metadatos como etiquetas y atributos</li>
 <li>Separa:
 <ul>
 <li>Estructura (metadatos): DTD, Xml-Schema</li>
@@ -427,11 +408,8 @@ atributos</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="19" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Documentos XML válidos</h1>
-<p>Además de estar bien formados, podemos comprobar la <strong>validez</strong> de un<br />
-documento con respecto a un esquema determinado</p>
-<p><cite>Se dice que un documento XML es válido con respecto a un esquema<br />
-si tanto su estructura como sus elementos cumplen con la especificación<br />
-de dicho esquema</cite></p>
+<p>Además de estar bien formados, podemos comprobar la <strong>validez</strong> de un documento con respecto a un esquema determinado</p>
+<p><cite>Se dice que un documento XML es válido con respecto a un esquema si tanto su estructura como sus elementos cumplen con la especificación de dicho esquema</cite></p>
 <p>Para especificar equemas se usa:</p>
 <ul>
 <li><em>Document Type Definition</em> (DTD)</li>
@@ -442,12 +420,10 @@ de dicho esquema</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="20" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1><em>Document Type Definition</em></h1>
-<p>Conjunto de reglas a cumplir por un<br />
-documento <strong>XML</strong> para considerarse <strong>válido</strong></p>
+<p>Conjunto de reglas a cumplir por un documento <strong>XML</strong> para considerarse <strong>válido</strong></p>
 <ul>
 <li>Puede incrustarse en el propio documento <strong>XML</strong> o almacenarse externamente</li>
-<li>Si se almacena externamente, hay que referenciarlo desde el documento<br />
-a validar</li>
+<li>Si se almacena externamente, hay que referenciarlo desde el documento a validar</li>
 </ul>
 <p>Ejemplo de regla:</p>
 <pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">&lt;!ELEMENT <span class="hljs-meta-keyword">grupo</span> (<span class="hljs-meta-keyword">turno</span> <span class="hljs-meta-keyword">id</span> <span class="hljs-meta-keyword">alumno</span>+)&gt;</span>
@@ -456,25 +432,19 @@ a validar</li>
 <ul>
 <li><code>+</code>: <strong>Uno o más</strong> elementos de ese tipo dentro del elemento padre</li>
 <li><code>*</code>: <strong>Cero o más</strong> elementos de ese tipo dentro del elemento padre</li>
-<li><code>?</code>: <strong>Cero o una</strong> ocurrencias de elementos de ese tipo dentro del<br />
-padre</li>
-<li><code>|</code>: Junto con los paréntesis, opcionalidad de elementos permitidos<br />
-(<em>OR</em>)</li>
+<li><code>?</code>: <strong>Cero o una</strong> ocurrencias de elementos de ese tipo dentro del padre</li>
+<li><code>|</code>: Junto con los paréntesis, opcionalidad de elementos permitidos (<em>OR</em>)</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="21" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Document Type Definition (III)</h1>
-<p><strong>DTD</strong> te permite el uso de palabras reservadas para definir los<br />
-elementos:</p>
+<p><strong>DTD</strong> te permite el uso de palabras reservadas para definir los elementos:</p>
 <ul>
-<li><code>#PCDATA</code>: indica que el elemento será un nodo hoja, pues requiere que<br />
-tenga un valor</li>
+<li><code>#PCDATA</code>: indica que el elemento será un nodo hoja, pues requiere que tenga un valor</li>
 <li><code>EMPTY</code>: indica que el elemento no tiene ningún contenido</li>
-<li><code>ALL</code>: sin restricción sobre los sub-elementos de un elemento.<br />
-Cualquier elemento incluso los no mencionados en la DTD pueden ser<br />
-sub-elementos</li>
+<li><code>ALL</code>: sin restricción sobre los sub-elementos de un elemento. Cualquier elemento incluso los no mencionados en la DTD pueden ser sub-elementos</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
@@ -523,8 +493,7 @@ sub-elementos</li>
 <pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">&lt;!ATTLIST <span class="hljs-meta-keyword">element</span> <span class="hljs-meta-keyword">name</span> <span class="hljs-meta-keyword">type</span> <span class="hljs-meta-keyword">enum</span> <span class="hljs-meta-keyword">default</span> <span class="hljs-meta-keyword">mods</span>&gt;</span>
 </span></span></foreignObject></svg></code></pre>
 <ul>
-<li><code>enum</code>: (opcional) enumera los posibles valores que puede tomar el<br />
-atributo (ej: <code>(a|b|c)</code>)</li>
+<li><code>enum</code>: (opcional) enumera los posibles valores que puede tomar el atributo (ej: <code>(a|b|c)</code>)</li>
 <li><code>default</code>: (opcional) valor por defecto del atributo</li>
 <li><code>mods</code>: (opcional) modificadores que aplican al atributo
 <ul>
@@ -582,22 +551,16 @@ atributo (ej: <code>(a|b|c)</code>)</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="27" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Limitaciones de la DTD</h1>
-<p><strong>DTD</strong> como mecanismo de definición de esquema tiene las siguientes<br />
-limitaciones:</p>
+<p><strong>DTD</strong> como mecanismo de definición de esquema tiene las siguientes limitaciones:</p>
 <ul>
-<li>No se puede declarar el <strong>tipo de cada elemento</strong> y de cada atributo<br />
-de texto
+<li>No se puede declarar el <strong>tipo de cada elemento</strong> y de cada atributo de texto
 <ul>
-<li>El elemento <code>saldo</code> no se puede restringir para que sea un número<br />
-positivo</li>
+<li>El elemento <code>saldo</code> no se puede restringir para que sea un número positivo</li>
 </ul>
 </li>
-<li>No hay forma de especificar el <strong>tipo de elemento</strong> al que se debería<br />
-<strong>referir</strong> un atributo <code>IDREF</code>
+<li>No hay forma de especificar el <strong>tipo de elemento</strong> al que se debería <strong>referir</strong> un atributo <code>IDREF</code>
 <ul>
-<li>No se evita, por ejemplo, que el atributo <code>titulares</code> de un elemento<br />
-<code>cuenta</code> se refiera a otros números de cuentas (aunque no tenga<br />
-sentido)</li>
+<li>No se evita, por ejemplo, que el atributo <code>titulares</code> de un elemento <code>cuenta</code> se refiera a otros números de cuentas (aunque no tenga sentido)</li>
 </ul>
 </li>
 </ul>
@@ -608,8 +571,7 @@ sentido)</li>
 <h1><em>XML Schema</em> (XSD)</h1>
 <ul>
 <li>Surge como un intento para mejorar las deficiencias de las DTDs</li>
-<li>Define varios tipos predefinidos: string, integer, decimal, date y<br />
-boolean</li>
+<li>Define varios tipos predefinidos: string, integer, decimal, date y boolean</li>
 <li>Permite tipos definidos por el usuario</li>
 <li>Se especifica en <strong>XML</strong></li>
 <li>El esquema se encierra en un elemento global</li>
@@ -650,12 +612,9 @@ boolean</li>
 <p>Es un lenguaje de consulta sobre documentos <strong>XML</strong>:</p>
 <ul>
 <li>Basa su funcionamiento en expresiones de ruta</li>
-<li>Estas expresiones representan una navegación por los nodos del árbol<br />
-del documento XML</li>
-<li>Visto de otra forma, representan la ruta a un determinado punto del<br />
-documento</li>
-<li>Una expresión <strong>XPath</strong> devuelve una colección de elementos que<br />
-cumplen el patrón de la consulta (expresión)</li>
+<li>Estas expresiones representan una navegación por los nodos del árbol del documento XML</li>
+<li>Visto de otra forma, representan la ruta a un determinado punto del documento</li>
+<li>Una expresión <strong>XPath</strong> devuelve una colección de elementos que cumplen el patrón de la consulta (expresión)</li>
 </ul>
 <pre><code class="language-xpath"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>/elem1/elem2/elemento
 </span></span></foreignObject></svg></code></pre>
@@ -671,8 +630,7 @@ cumplen el patrón de la consulta (expresión)</li>
 <pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-tag">&lt;<span class="hljs-name">nombre-cliente</span>&gt;</span>Pedro<span class="hljs-tag">&lt;/<span class="hljs-name">nombre-cliente</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nombre-cliente</span>&gt;</span>Ana<span class="hljs-tag">&lt;/<span class="hljs-name">nombre-cliente</span>&gt;</span>
 </span></span></foreignObject></svg></code></pre>
-<p>Podemos aplicar la función <code>text()</code> para quitar etiquetas y quedarnos<br />
-solo con los valores:</p>
+<p>Podemos aplicar la función <code>text()</code> para quitar etiquetas y quedarnos solo con los valores:</p>
 <pre><code class="language-xpath"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>/banco/cliente/nombre-cliente/<span class="hljs-type">text</span>()
 </span></span></foreignObject></svg></code></pre>
 <footer>Bases de datos</footer>
@@ -680,8 +638,7 @@ solo con los valores:</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="33" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>XPath: más opciones de consulta (I)</h1>
-<p>Es posible consultar los atributos de un elemento utilizando el<br />
-prefijo <code>@</code>:</p>
+<p>Es posible consultar los atributos de un elemento utilizando el prefijo <code>@</code>:</p>
 <pre><code class="language-xpath"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>/banco/cuenta/@numero-cuenta
 </span></span></foreignObject></svg></code></pre>
 <p>Incluso podemos indicar en la expresión algún predicado de selección:</p>
@@ -700,8 +657,7 @@ prefijo <code>@</code>:</p>
 <p>Podemos buscar también por nodos enlazados por ID:</p>
 <pre><code class="language-xpath"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>/banco/cuenta/id(@titulares)
 </span></span></foreignObject></svg></code></pre>
-<p>devuelve todos los clientes referenciados desde el atributo titulares de<br />
-los elementos &quot;cuenta&quot;</p>
+<p>devuelve todos los clientes referenciados desde el atributo titulares de los elementos &quot;cuenta&quot;</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="35" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
@@ -710,12 +666,10 @@ los elementos &quot;cuenta&quot;</p>
 <p>El operador <code>|</code> permite unir resultados de expresiones:</p>
 <pre><code class="language-xpath"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>/banco/cuenta/id(@titulares) | /banco/préstamo/id(@prestatario)
 </span></span></foreignObject></svg></code></pre>
-<p>Otra opción interesante es usar <code>//</code> que realiza la búsqueda a cualquier<br />
-nivel del documento:</p>
+<p>Otra opción interesante es usar <code>//</code> que realiza la búsqueda a cualquier nivel del documento:</p>
 <pre><code class="language-xpath"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>//curso
 </span></span></foreignObject></svg></code></pre>
-<p>devolvería <strong>todos</strong> los elementos <code>curso</code> con independencia de su<br />
-ubicación en el documento.</p>
+<p>devolvería <strong>todos</strong> los elementos <code>curso</code> con independencia de su ubicación en el documento.</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="36" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
@@ -763,8 +717,7 @@ ubicación en el documento.</p>
 <li>Es una recomendación del W3C</li>
 <li>Integrado con XPath</li>
 <li>Mantiene cierta analogía con SQL</li>
-<li>La entrada y la salida de una consulta XQuery corresponde a un<br />
-documento o fragmento de documento XML</li>
+<li>La entrada y la salida de una consulta XQuery corresponde a un documento o fragmento de documento XML</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
@@ -772,9 +725,7 @@ documento o fragmento de documento XML</li>
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>FLWOR: for, let, where, order by, return</h1>
 <ul>
-<li><strong>FOR</strong>: similar al <code>FROM</code> de SQL. Asigna resultados de consultas<br />
-<em>XPath</em> a variables. Si pones varias variables, se realiza el producto<br />
-cartesiano</li>
+<li><strong>FOR</strong>: similar al <code>FROM</code> de SQL. Asigna resultados de consultas <em>XPath</em> a variables. Si pones varias variables, se realiza el producto cartesiano</li>
 <li><strong>LET</strong>: asigna resultados parciales a variables temporales</li>
 <li><strong>WHERE</strong>: aplica filtrados a las tuplas resultantes del <code>FOR</code></li>
 <li><strong>ORDER BY</strong>: permite la ordenación de las salidas</li>
@@ -808,8 +759,7 @@ cartesiano</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="41" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>XQuery: Ejemplo (I)</h1>
-<p><cite>Obtener el titulo de los libros con valor 2 en el<br />
-identificador</cite></p>
+<p><cite>Obtener el titulo de los libros con valor 2 en el identificador</cite></p>
 <pre><code class="language-xquery"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">for</span> <span class="hljs-variable">$b</span> <span class="hljs-keyword">in</span><span class="hljs-built_in"> doc</span>(<span class="hljs-string">&quot;libros.xml&quot;</span>)//libro
 <span class="hljs-keyword">where</span> <span class="hljs-variable">$b</span>/<span class="hljs-built_in">@id</span> = <span class="hljs-number">2</span>
 <span class="hljs-keyword">return</span> <span class="hljs-variable">$b</span>/titulo
@@ -824,8 +774,7 @@ identificador</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="42" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>XQuery: Ejemplo (y II)</h1>
-<p><cite>Titulo de los libros con precio superior a 20€ ordenados por<br />
-autor</cite></p>
+<p><cite>Titulo de los libros con precio superior a 20€ ordenados por autor</cite></p>
 <pre><code class="language-xquery"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">for</span> <span class="hljs-variable">$x</span> <span class="hljs-keyword">in</span> /libros/libro
 <span class="hljs-keyword">let</span> <span class="hljs-variable">$tit</span> :=<span class="hljs-variable">$x</span>/titulo/<span class="hljs-type">text</span>()
 <span class="hljs-keyword">where</span> <span class="hljs-variable">$x</span>/precio&gt;<span class="hljs-number">20</span>
@@ -850,8 +799,7 @@ autor</cite></p>
       <span class="hljs-variable">$c</span>/nombre-cliente=<span class="hljs-variable">$i</span>/nombre-cliente
 <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">cuenta-cliente</span>&gt;</span></span><span class="xquery">{<span class="hljs-variable">$ccc</span>}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">cuenta-cliente</span>&gt;</span></span>
 </span></span></foreignObject></svg></code></pre>
-<p>que devolvería los códigos de cuenta de la unión natural entre cuentas,<br />
-clientes e impositores</p>
+<p>que devolvería los códigos de cuenta de la unión natural entre cuentas, clientes e impositores</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="44" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
@@ -866,22 +814,18 @@ clientes e impositores</p>
          <span class="hljs-keyword">return</span> <span class="hljs-variable">$a</span>}</span><span class="xml">
        <span class="hljs-tag">&lt;/<span class="hljs-name">cliente</span>&gt;</span></span>
 </span></span></foreignObject></svg></code></pre>
-<p>Ya que, como hemos dicho antes, cualquier cosa que pongamos entre llaves<br />
-se va a evaluar.</p>
+<p>Ya que, como hemos dicho antes, cualquier cosa que pongamos entre llaves se va a evaluar.</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="45" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>XQuery: Ordenación de resultados</h1>
-<p>Para ordenar los resultados según el valor de un elemento hay que<br />
-especificarlo en la parte <code>order by</code> de la consulta <strong>XQuery</strong>:</p>
+<p>Para ordenar los resultados según el valor de un elemento hay que especificarlo en la parte <code>order by</code> de la consulta <strong>XQuery</strong>:</p>
 <pre><code class="language-xquery"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">for</span> <span class="hljs-variable">$c</span> <span class="hljs-keyword">in</span> /banco/cliente
 <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-variable">$c</span>/nombre-cliente <span class="hljs-keyword">descending</span>
 <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">cliente</span>&gt;</span></span><span class="xquery">{<span class="hljs-variable">$c</span>/*}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">cliente</span>&gt;</span></span>
 </span></span></foreignObject></svg></code></pre>
-<p>Esta consulta nos devolvería los sub-elementos incluidos en cada<br />
-<code>cliente</code>, pero ordenados de manera descendente según el nombre de los<br />
-mismos</p>
+<p>Esta consulta nos devolvería los sub-elementos incluidos en cada <code>cliente</code>, pero ordenados de manera descendente según el nombre de los mismos</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="46" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
@@ -926,8 +870,7 @@ mismos</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="47" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>XQuery: Sentencias condicionales</h1>
-<p>Podemos usar sentencias condicionales en <strong>XQuery</strong>, muy similares a las<br />
-de otros lenguajes de programación:</p>
+<p>Podemos usar sentencias condicionales en <strong>XQuery</strong>, muy similares a las de otros lenguajes de programación:</p>
 <pre><code class="language-xquery"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">for</span> <span class="hljs-variable">$lib</span> <span class="hljs-keyword">in</span><span class="hljs-built_in"> doc</span>(<span class="hljs-string">&quot;libros.xml&quot;</span>)//libro
 <span class="hljs-keyword">return</span>
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">libro</span>&gt;</span>
@@ -944,9 +887,7 @@ de otros lenguajes de programación:</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="48" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>XQuery: Cuantificadores</h1>
-<p>En principio las consultas devuelven aquellos nodos que cumplen las<br />
-condiciones. Podemos usar cuantificadores para restringir qué nodos se<br />
-devuelven:</p>
+<p>En principio las consultas devuelven aquellos nodos que cumplen las condiciones. Podemos usar cuantificadores para restringir qué nodos se devuelven:</p>
 <ul>
 <li><code>some</code>: recupera aquellas tuplas en las que algún nodo cumpla la condición</li>
 <li><code>every</code>: tuplas para las que todos sus nodos cumplen la condición</li>
@@ -994,8 +935,7 @@ return $lib/titulo
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="52" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Ventajas (y II)</h1>
-<p>Es más compacto que <strong>XML</strong> ya que no hay etiquetas. Por ejemplo, el<br />
-JSON anterior en XML sería:</p>
+<p>Es más compacto que <strong>XML</strong> ya que no hay etiquetas. Por ejemplo, el JSON anterior en XML sería:</p>
 <pre><code class="language-xml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-tag">&lt;<span class="hljs-name">employees</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">employee</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">firstName</span>&gt;</span>John<span class="hljs-tag">&lt;/<span class="hljs-name">firstName</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">lastName</span>&gt;</span>Doe<span class="hljs-tag">&lt;/<span class="hljs-name">lastName</span>&gt;</span>
@@ -1053,10 +993,8 @@ JSON anterior en XML sería:</p>
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Documentos embebidos/integrados</h1>
 <ul>
-<li>Los datos relacionados se almacenan en una sola estructura de<br />
-documento</li>
-<li>Recuperación  y manipulación datos relacionados con una sola operación<br />
-(un solo documento)</li>
+<li>Los datos relacionados se almacenan en una sola estructura de documento</li>
+<li>Recuperación  y manipulación datos relacionados con una sola operación (un solo documento)</li>
 </ul>
 <pre><code class="language-json"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>{
     <span class="hljs-attr">&quot;_id&quot;</span>: <span class="hljs-string">&quot;emple2&quot;</span>,
@@ -1074,10 +1012,8 @@ documento</li>
 <h1>Documentos referenciados</h1>
 <p>Se les llama modelos normalizados</p>
 <ul>
-<li>Los datos se almacenan con más de un documento y se referencian entre<br />
-sí</li>
-<li>Requieren más accesos al servidor pero permite evitar duplicación de<br />
-datos</li>
+<li>Los datos se almacenan con más de un documento y se referencian entre sí</li>
+<li>Requieren más accesos al servidor pero permite evitar duplicación de datos</li>
 </ul>
 <p>Documento <strong>empleado</strong>:</p>
 <pre><code class="language-json"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>{
@@ -1121,8 +1057,7 @@ datos</li>
     }
 }
 </span></span></foreignObject></svg></code></pre>
-<p>Añadimos uno de los extremos de la relación (coche) como documento del<br />
-otro extremo (empleado)</p>
+<p>Añadimos uno de los extremos de la relación (coche) como documento del otro extremo (empleado)</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="59" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="59" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
@@ -1155,8 +1090,7 @@ otro extremo (empleado)</p>
     ]
 }
 </span></span></foreignObject></svg></code></pre>
-<p>Añadimos una lista de objetos a la parte 1 de la relación<br />
-(departamento), y añadimos los documentos de la parte N (empleados)</p>
+<p>Añadimos una lista de objetos a la parte 1 de la relación (departamento), y añadimos los documentos de la parte N (empleados)</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="61" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="61" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
@@ -1177,15 +1111,13 @@ otro extremo (empleado)</p>
     <span class="hljs-attr">&quot;apellidos&quot;</span>: <span class="hljs-string">&quot;López&quot;</span>
 }
 </span></span></foreignObject></svg></code></pre>
-<p>Se disocian departamento y empleados en varios documentos, y se vinculan<br />
-los últimos con los primeros</p>
+<p>Se disocian departamento y empleados en varios documentos, y se vinculan los últimos con los primeros</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="62" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="62" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Relaciones N:M (I)</h1>
-<p>Dos documentos, cada uno de ellos incluyendo un array de referencias al<br />
-otro:</p>
+<p>Dos documentos, cada uno de ellos incluyendo un array de referencias al otro:</p>
 <pre><code class="language-json"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-string">&quot;empleados&quot;</span>: [
 {
     <span class="hljs-attr">&quot;codE&quot;</span>: <span class="hljs-string">&quot;E001&quot;</span>,
@@ -1205,8 +1137,7 @@ otro:</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="63" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
 <h1>Relaciones N:M (II)</h1>
-<p>Tres documentos, uno para cada Entidad relacionada y otro para reflejar<br />
-referencias entre los dos anteriores:</p>
+<p>Tres documentos, uno para cada Entidad relacionada y otro para reflejar referencias entre los dos anteriores:</p>
 <pre><code class="language-json"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-string">&quot;empleados&quot;</span>: [
 {
     <span class="hljs-attr">&quot;codE&quot;</span>: <span class="hljs-string">&quot;E001&quot;</span>,
@@ -1231,11 +1162,9 @@ referencias entre los dos anteriores:</p>
 <ul>
 <li>Relaciones complejas entre documentos de diferentes colecciones</li>
 <li>Si se realizan actualizaciones frecuentemente sobre los documentos</li>
-<li>Cuando la duplicación de datos no aporta ventajas suficientes que<br />
-compensen el aumento de espacio en disco utilizado para ello</li>
+<li>Cuando la duplicación de datos no aporta ventajas suficientes que compensen el aumento de espacio en disco utilizado para ello</li>
 <li>El modelo de datos se rige por una jerarquía compleja</li>
-<li>Realizar varias consultas para obtener los datos no tiene un coste<br />
-importante</li>
+<li>Realizar varias consultas para obtener los datos no tiene un coste importante</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
@@ -1244,20 +1173,19 @@ importante</li>
 <h1>Recomendaciones de diseño (II)</h1>
 <p>Recomendable diseño embebido:</p>
 <ul>
-<li>Sin jerarquía compleja ni relaciones con otras colecciones de<br />
-documentos</li>
+<li>Sin jerarquía compleja ni relaciones con otras colecciones de documentos</li>
 <li>Se quieren obtener los datos con las mínimas peticiones al servidor</li>
-<li>En el modelo de datos se tienen relaciones 1:N, donde el lado N<br />
-siempre será consumidos en el contexto del elemento principal</li>
-<li>Optimizar la lectura de los datos, por encima de la escritura o<br />
-actualización</li>
+<li>En el modelo de datos se tienen relaciones 1:N, donde el lado N siempre será consumidos en el contexto del elemento principal</li>
+<li>Optimizar la lectura de los datos, por encima de la escritura o actualización</li>
 <li>Actualizaciones atómicas a nivel de documento</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="66" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-class="endpage" data-theme="bbdd" class="endpage" data-marpit-pagination="66" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--class:endpage;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="66" data-paginate="true" data-header="Almacenamiento de información basada en ficheros" data-footer="Bases de datos" data-class="license" data-theme="bbdd" class="license" data-marpit-pagination="66" data-marpit-pagination-total="66" style="--paginate:true;--header:Almacenamiento de información basada en ficheros;--footer:Bases de datos;--class:license;--theme:bbdd;">
 <header>Almacenamiento de información basada en ficheros</header>
-<h1>Gracias</h1>
+<h1>Licencia</h1>
+<p>Esta obra está licenciada bajo una licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.</p>
+<p>Puede encontrar su código en el siguiente enlace: <a href="https://github.com/etsisi/Aprendizaje-profundo">https://github.com/etsisi/Aprendizaje-profundo</a></p>
 <footer>Bases de datos</footer>
 </section>
 <script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let r,o;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(o=r)}}catch(t){console.error(t)}})));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||o||t.currentScale||1;r!==c&&(r=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let r=0;r<u;r+=1){const o=t.children[r],a=o.getScreenCTM();if(a){const t=null!==(n=null===(e=o.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,r=null!==(s=null===(i=o.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=o.firstElementChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-r}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}})),!1!==l&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)}))}r=1,o=void 0;const i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function a({once:t=!1,target:e=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[n]:[];let o=!t;const a=()=>{for(const t of r)t({target:e});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),(t=>{var e;const r=t.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:a}=o;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(r,"width",`${c}`),i(r,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")}))}(e),o&&window.requestAnimationFrame(a)};return a(),()=>{o=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),r=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:r})})(s?s.getRootNode():document)}();

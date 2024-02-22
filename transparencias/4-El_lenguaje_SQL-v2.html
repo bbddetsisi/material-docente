@@ -17,7 +17,7 @@
 
 /*****************
  @author: Alberto Díaz-Álvarez
- @version: 1.0
+ @version: 1.1
  @update: 2022-01-27
  Based on the work of Paulo Cunha (https://github.com/cunhapaulo/marpstyle)
 *****************/
@@ -38,7 +38,8 @@
   ### Autor
   #### Fecha
   ##### Institución
-*/div#p>svg>foreignObject>section.titlepage{background-color:var(--color-tertiary);
+*/div#p>svg>foreignObject>section.titlepage{
+  /*background-color: var(--color-tertiary);*/background-image:linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0.8),rgba(255,255,255,0.6)),url(https://etsisi.github.io/Styles/images/front-slide-background.png);background-size:auto;background-position:0;background-blend-mode:normal;
     /* fonts sizes */--title-size:150%;--subtitle-size:110%;--author-size:110%;--date-size:90%;--institute-size:90%;--letter-spacing:var(--letter-spacing);
 
   /* font weights */--title-font-weight:600;--subtitle-font-weight:600;--subtitle-color:#586e75;--subtitle-color:#93a1a1;--titlepage-color:#242d31}div#p>svg>foreignObject>section.titlepage h1{font-size:var(--title-size);font-weight:var(--title-font-weight);text-align:left;line-height:1.25;padding-right:20%}div#p>svg>foreignObject>section.titlepage h2{font-size:var(--subtitle-size);font-weight:var(--subtitle-font-weight);text-align:left;color:var(--subtitle-color);letter-spacing:var(--letter-spacing);line-height:1.2;margin-top:-0.2em;padding-bottom:95px}div#p>svg>foreignObject>section.titlepage h3,div#p>svg>foreignObject>section.titlepage h4,div#p>svg>foreignObject>section.titlepage h5{font-weight:400;color:var(--titlepage-color);line-height:0;letter-spacing:var(--letter-spacing)}div#p>svg>foreignObject>section.titlepage h3{font-size:var(--author-size)}div#p>svg>foreignObject>section.titlepage h4{font-size:var(--date-size)}div#p>svg>foreignObject>section.titlepage h5{font-size:var(--institute-size)}div#p>svg>foreignObject>section.titlepage img{background-color:var(--background-color);border-top:1px solid var(--color-primary);padding-top:0.5em;text-align:left;margin:0}
@@ -46,7 +47,7 @@
 /* Omits page number in Title Page Slide */div#p>svg>foreignObject>section.titlepage footer,div#p>svg>foreignObject>section.titlepage header,div#p>svg>foreignObject>section.titlepage:after{
   /* hide header, footer and pagination */display:none}
 
-/* Última página de las transparencias */div#p>svg>foreignObject>section.endpage{background-color:var(--color-tertiary);background-image:none;text-align:center!important;font-weight:bold!important;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.endpage a,div#p>svg>foreignObject>section.endpage h1,div#p>svg>foreignObject>section.endpage h2,div#p>svg>foreignObject>section.endpage p{font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.endpage footer,div#p>svg>foreignObject>section.endpage header,div#p>svg>foreignObject>section.endpage:after{display:none}
+/* Última página de las transparencias */div#p>svg>foreignObject>section.endpage{background-color:var(--color-tertiary);background-image:none;text-align:center!important;font-weight:bold!important;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.endpage a,div#p>svg>foreignObject>section.endpage h1,div#p>svg>foreignObject>section.endpage h2,div#p>svg>foreignObject>section.endpage p{font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.endpage footer,div#p>svg>foreignObject>section.endpage header,div#p>svg>foreignObject>section.endpage:after{display:none}div#p>svg>foreignObject>section.license{background-image:url(https://etsisi.github.io/Styles/images/end-slide-background.png);background-size:auto;background-position:0;background-blend-mode:luminosity;text-align:center!important;font-weight:bold}div#p>svg>foreignObject>section.license footer,div#p>svg>foreignObject>section.license header,div#p>svg>foreignObject>section.license:after{display:none}div#p>svg>foreignObject>section.license h1{font-size:200%;border-bottom:none;color:var(--color-primary)}div#p>svg>foreignObject>section.license p{font-size:120%;color:var(--color-primary)}div#p>svg>foreignObject>section.license a{border-bottom:none;color:var(--color-error)}
 
 /* Separador de secciones */div#p>svg>foreignObject>section.section{background-image:none;background-color:var(--color-secondary);text-align:center!important;font-weight:bold!important;color:white;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.section a,div#p>svg>foreignObject>section.section h1,div#p>svg>foreignObject>section.section h2,div#p>svg>foreignObject>section.section p{color:white;font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.section footer,div#p>svg>foreignObject>section.section header,div#p>svg>foreignObject>section.section:after{display:none}
 
@@ -65,7 +66,7 @@
   /* Initiate a counter */}div#p>svg>foreignObject>section.cool-list>ol ol>li>a:before,div#p>svg>foreignObject>section.cool-list>ol ol>li>em:before{content:counter(li2);counter-increment:li2}div#p>svg>foreignObject>section.cool-list>ol>li>ul{list-style-type:disc;margin:0 0 0 1em;font-size:75%}div#p>svg>foreignObject>section.cool-list>ol ol>li>em{background:#efefef}
 
 
-/************************* BIBLIO *****************************/div#p>svg>foreignObject>section.biblio{background-color:var(--color-tertiary);background-image:none}div#p>svg>foreignObject>section.biblio p{color:var(--color-primary);font-size:90%}div#p>svg>foreignObject>section.biblio h1{color:var(--color-primary);border-bottom:1px solid var(--color-primary)}div#p>svg>foreignObject>section.biblio strong{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio a{font-weight:bold;color:var(--color-primary)}div#p>svg>foreignObject>section.biblio li{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio footer,div#p>svg>foreignObject>section.biblio header,div#p>svg>foreignObject>section.biblio:after{display:none}div#p>svg>foreignObject>section[data-marpit-scope-B4iM415p] td{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.6)}div#p>svg>foreignObject>section[data-marpit-scope-B4iM415p] thead{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.7)}div#p>svg>foreignObject>section[data-marpit-scope-B4iM415p] s{text-decoration:underline;background-color:transparent}div#p>svg>foreignObject>section[data-marpit-scope-B8ZnTLlc] pre{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.7)}div#p>svg>foreignObject>section[data-marpit-scope-5najBjHl] li{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.9)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="titlepage" data-theme="bbdd" class="titlepage" data-marpit-pagination="1" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:titlepage;--theme:bbdd;">
+/************************* BIBLIO *****************************/div#p>svg>foreignObject>section.biblio{background-color:var(--color-tertiary);background-image:none}div#p>svg>foreignObject>section.biblio p{color:var(--color-primary);font-size:90%}div#p>svg>foreignObject>section.biblio h1{color:var(--color-primary);border-bottom:1px solid var(--color-primary)}div#p>svg>foreignObject>section.biblio strong{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio a{font-weight:bold;color:var(--color-primary)}div#p>svg>foreignObject>section.biblio li{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio footer,div#p>svg>foreignObject>section.biblio header,div#p>svg>foreignObject>section.biblio:after{display:none}div#p>svg>foreignObject>section[data-marpit-scope-5SKWR544] td{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.6)}div#p>svg>foreignObject>section[data-marpit-scope-5SKWR544] thead{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.7)}div#p>svg>foreignObject>section[data-marpit-scope-5SKWR544] s{text-decoration:underline;background-color:transparent}div#p>svg>foreignObject>section[data-marpit-scope-kf08gheb] pre{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.7)}div#p>svg>foreignObject>section[data-marpit-scope-TsEb7bnz] li{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.9)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="titlepage" data-theme="bbdd" class="titlepage" data-marpit-pagination="1" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:titlepage;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>El lenguaje SQL</h1>
@@ -93,11 +94,9 @@
 <h1>SQL: <em>Structured Query Language</em></h1>
 <ul>
 <li>Lenguaje de consulta estructurado para bases de datos relacionales</li>
-<li>Es mucho más que un lenguaje de consulta, puesto que permite además<br />
-funciones de definición y control de datos</li>
+<li>Es mucho más que un lenguaje de consulta, puesto que permite además funciones de definición y control de datos</li>
 <li>La estandarización ha sido crucial para su difusión</li>
-<li>Prácticamente la mayoría de los sistemas relacionales soportan las<br />
-bases de SQL estándar y suelen incluir aportaciones propias</li>
+<li>Prácticamente la mayoría de los sistemas relacionales soportan las bases de SQL estándar y suelen incluir aportaciones propias</li>
 <li>Utilizado masivamente en la industria</li>
 </ul>
 <footer>Bases de datos</footer>
@@ -199,8 +198,7 @@ bases de SQL estándar y suelen incluir aportaciones propias</li>
 <ul>
 <li>Lenguaje de <strong>definición</strong> de datos (<em>DDL</em>):
 <ul>
-<li>Permite diseñar, definir, modificar y borrar las estructuras de<br />
-almacenamiento de datos.</li>
+<li>Permite diseñar, definir, modificar y borrar las estructuras de almacenamiento de datos.</li>
 </ul>
 </li>
 <li>Lenguaje de <strong>manipulación</strong> de datos (<em>DML</em>):
@@ -223,18 +221,15 @@ almacenamiento de datos.</li>
 <li>Las sentencias SQL están formadas por:
 <ul>
 <li>Palabras reservadas</li>
-<li>Palabras definidas por el usuario (nombres de tablas, atributos,<br />
-etc).</li>
+<li>Palabras definidas por el usuario (nombres de tablas, atributos, etc).</li>
 </ul>
 </li>
 <li>Características de las sentencias:
 <ul>
-<li><em>Case insensitive</em>: es indiferente escribir las palabras en<br />
-mayúsculas o minúsculas</li>
+<li><em>Case insensitive</em>: es indiferente escribir las palabras en mayúsculas o minúsculas</li>
 <li>Cada cláusula o palabra puede aparecer en líneas diferentes</li>
 <li>Se puede utilizar la indentación que se quiera</li>
-<li>Una sentencia o comando SQL finaliza con la aparición del símbolo<br />
-<code>;</code>, aunque es opcional si el comando es único</li>
+<li>Una sentencia o comando SQL finaliza con la aparición del símbolo <code>;</code>, aunque es opcional si el comando es único</li>
 </ul>
 </li>
 </ul>
@@ -379,8 +374,7 @@ mayúsculas o minúsculas</li>
 <h1>Claves primarias</h1>
 <p>Toda definición de una tabla debe indicar una clave primaria</p>
 <ul>
-<li>Debe referenciar a uno o más atributos que identifiquen unívocamente<br />
-cada fila</li>
+<li>Debe referenciar a uno o más atributos que identifiquen unívocamente cada fila</li>
 <li>El/los atributo/s deben declararse de la forma habitual</li>
 </ul>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> [schema.]nombre_tabla (
@@ -580,8 +574,7 @@ MODIFY definición_de_atributo;
 <p>Es posible definir valores por defecto a los atributos.</p>
 <ul>
 <li>Se definen en la sentencia CREATE TABLE:</li>
-<li>Si no se especifica el valor al realizar el <code>INSERT INTO</code>, se pone el<br />
-valor por defecto.</li>
+<li>Si no se especifica el valor al realizar el <code>INSERT INTO</code>, se pone el valor por defecto.</li>
 </ul>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> [schema.]tabla (
   …
@@ -597,8 +590,7 @@ valor por defecto.</li>
 <ul>
 <li>Es posible generar claves únicas de forma automática</li>
 <li>Se debe definir un atributo numérico como <code>AUTO_INCREMENT</code></li>
-<li>El atributo tomará un valor incremental cada vez que se inserte una<br />
-nueva fila.
+<li>El atributo tomará un valor incremental cada vez que se inserte una nueva fila.
 <ul>
 <li>No debe especificarse su valor cuando se realiza el <code>INSERT INTO</code></li>
 </ul>
@@ -626,13 +618,9 @@ nueva fila.
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="27" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Qué es la integridad referencial</h1>
-<p>Restricciones referenciales de acuerdo con un conjunto predefinido de<br />
-reglas para <code>INSERT</code>, <code>UPDATE</code> Y <code>DELETE</code> que gobiernan las operaciones<br />
-de inserción, borrado, actualización y carga sobre tablas relacionadas<br />
-mediante claves primarias y claves ajenas</p>
+<p>Restricciones referenciales de acuerdo con un conjunto predefinido de reglas para <code>INSERT</code>, <code>UPDATE</code> Y <code>DELETE</code> que gobiernan las operaciones de inserción, borrado, actualización y carga sobre tablas relacionadas mediante claves primarias y claves ajenas</p>
 <ul>
-<li>Se encarga de conservar y garantizar automáticamente la integridad de<br />
-todos los datos almacenados</li>
+<li>Se encarga de conservar y garantizar automáticamente la integridad de todos los datos almacenados</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
@@ -690,18 +678,15 @@ todos los datos almacenados</li>
 </table>
 </div>
 </div>
-<p>¿Puedo borrar el departamento 2 sin que afecte a Fernando?<br />
-¿Puedo actualizar el departamento 4 sin que afecte a Raúl?</p>
+<p>¿Puedo borrar el departamento 2 sin que afecte a Fernando? ¿Puedo actualizar el departamento 4 sin que afecte a Raúl?</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="29" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
-<h1>Restricción referencial</h1>
-<p>Para mantener la <strong>integridad referencial</strong> debemos añadir<br />
-<strong>restricciones referenciales</strong> cuando definimos las tablas</p>
+<h1>Restricción referencia</h1>
+<p>Para mantener la <strong>integridad referencial</strong> debemos añadir <strong>restricciones referenciales</strong> cuando definimos las tablas</p>
 <ul>
-<li>Una restricción referencial permite “vincular” la clave foránea de una<br />
-tabla con la clave primaria de otra tabla (o la misma)</li>
+<li>Una restricción referencial permite “vincular” la clave foránea de una tabla con la clave primaria de otra tabla (o la misma)</li>
 <li>Se deben definir las opciones de integridad referencial:
 <ul>
 <li>Política de actualización.</li>
@@ -721,10 +706,8 @@ tabla con la clave primaria de otra tabla (o la misma)</li>
 <header>El lenguaje SQL</header>
 <h1>Reglas de integridad referencial</h1>
 <ul>
-<li><code>ON DELETE</code> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> ¿qué sucede con la clave foránea al eliminar<br />
-la clave primaria?</li>
-<li><code>ON UPDATE</code> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> ¿qué sucede con la clave foránea al<br />
-actualizar la clave primaria?</li>
+<li><code>ON DELETE</code> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> ¿qué sucede con la clave foránea al eliminar la clave primaria?</li>
+<li><code>ON UPDATE</code> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> ¿qué sucede con la clave foránea al actualizar la clave primaria?</li>
 <li>Cuatro opciones:
 <ul>
 <li><code>RESTRICT</code> (o <code>NO ACTION</code>)<sup>1</sup>: impide la propagación de la operación. <strong>Opción por defecto</strong>.</li>
@@ -735,10 +718,7 @@ actualizar la clave primaria?</li>
 </li>
 </ul>
 <blockquote>
-<p><sup>1</sup> La diferencia entre ambas es que <code>RESTRICT</code> realiza las<br />
-comprobaciones inmediatamente, mientras que <code>NO ACTION</code> las aplaza. En<br />
-el caso concreto de MySQL, como no implementa comprobaciones<br />
-diferidas, no hay diferencia entre ambas.</p>
+<p><sup>1</sup> La diferencia entre ambas es que <code>RESTRICT</code> realiza las comprobaciones inmediatamente, mientras que <code>NO ACTION</code> las aplaza. En el caso concreto de MySQL, como no implementa comprobaciones diferidas, no hay diferencia entre ambas.</p>
 </blockquote>
 <footer>Bases de datos</footer>
 </section>
@@ -769,8 +749,7 @@ diferidas, no hay diferencia entre ambas.</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="33" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Estructura referencial</h1>
-<p>Conjunto de tablas y restricciones entre ellas de modo que cada tabla<br />
-del conjunto es padre o dependiente de otra u otras del mismo conjunto</p>
+<p>Conjunto de tablas y restricciones entre ellas de modo que cada tabla del conjunto es padre o dependiente de otra u otras del mismo conjunto</p>
 <ul>
 <li>Gráficamente se indica una flecha desde la clave foránea a la clave primaria.</li>
 </ul>
@@ -844,12 +823,10 @@ del conjunto es padre o dependiente de otra u otras del mismo conjunto</p>
 <h1>Consultas con SQL (y II)</h1>
 <ul>
 <li><code>SELECT</code>: indica la información que se desea obtener</li>
-<li><code>FROM</code>: especifica la tabla (o tablas) en las que se encuentra los<br />
-atributos implicados en la consulta</li>
+<li><code>FROM</code>: especifica la tabla (o tablas) en las que se encuentra los atributos implicados en la consulta</li>
 <li><code>WHERE</code>: define la condición de búsqueda</li>
 <li><code>GROUP BY</code>: permite agrupar los resultados</li>
-<li><code>HAVING</code>: especifica condiciones de grupo (sólo se se emplea<br />
-<code>GROUP BY</code>)</li>
+<li><code>HAVING</code>: especifica condiciones de grupo (sólo se se emplea <code>GROUP BY</code>)</li>
 <li><code>ORDER BY</code>: ordena los resultados</li>
 </ul>
 <footer>Bases de datos</footer>
@@ -857,8 +834,7 @@ atributos implicados en la consulta</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="43" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operadores</h1>
-<p>SQL define los siguientes operadores para expresar condiciones de fila<br />
-(<code>WHERE</code>) o grupo (<code>HAVING</code>).</p>
+<p>SQL define los siguientes operadores para expresar condiciones de fila (<code>WHERE</code>) o grupo (<code>HAVING</code>).</p>
 <ul>
 <li>De comparación: <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;&gt;</code>, <code>=</code></li>
 <li>Lógicos: <code>AND</code>, <code>OR</code>, <code>NOT</code></li>
@@ -902,7 +878,7 @@ utilizadas</cite></p>
 <p><img src="img/t4/distinct.png" alt="center" style="height:350px;" /></p>
 <footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-marpit-scope-B4iM415p="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="47" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-marpit-scope-5SKWR544="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="47" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>Cláusula <code>WHERE</code> (I)</h1>
@@ -935,8 +911,7 @@ utilizadas</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="48" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>WHERE</code> (y II)</h1>
-<p><cite>Obtener los códigos de los conductores de Arganda que tengan<br />
-categoría inferior a 18</cite></p>
+<p><cite>Obtener los códigos de los conductores de Arganda que tengan categoría inferior a 18</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC
   <span class="hljs-keyword">FROM</span> conductores
   <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Arganda&#x27;</span>
@@ -964,8 +939,7 @@ categoría inferior a 18</cite></p>
 <li>Se utiliza con valores numéricos o de fecha.</li>
 <li>También se puede utilizar <code>NOT BETWEEN</code>.</li>
 </ul>
-<p><cite>Obtener el nombre de las máquinas cuyo precio por hora esté<br />
-comprendido entre 70 y 90 euros</cite></p>
+<p><cite>Obtener el nombre de las máquinas cuyo precio por hora esté comprendido entre 70 y 90 euros</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> nombre, precioHora
   <span class="hljs-keyword">FROM</span> maquinas
   <span class="hljs-keyword">WHERE</span> precioHora <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">70</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">90</span>;
@@ -1024,8 +998,7 @@ comprendido entre 70 y 90 euros</cite></p>
 <header>El lenguaje SQL</header>
 <h1>Operador <code>IN</code> (I)</h1>
 <p>Comprueba la pertenencia de un valor a un conjunto dado.</p>
-<p><cite>Obtener el nombre de los conductores que residan en Arganda o<br />
-Rivas</cite></p>
+<p><cite>Obtener el nombre de los conductores que residan en Arganda o Rivas</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> nombre <span class="hljs-keyword">FROM</span> conductores <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;Arganda&#x27;</span>, <span class="hljs-string">&#x27;Rivas&#x27;</span>);
 </span></span></foreignObject></svg></code></pre>
 <table>
@@ -1086,11 +1059,9 @@ Rivas</cite></p>
 <h1>Operador <code>IS NULL</code></h1>
 <p>Comprueba si un valor es nulo ( no nulo con <code>IS NOT NULL</code>)</p>
 <ul>
-<li>No se puede conseguir con los operadores de igualdad <code>=</code> o<br />
-diferencia <code>&lt;&gt;</code>.</li>
+<li>No se puede conseguir con los operadores de igualdad <code>=</code> o diferencia <code>&lt;&gt;</code>.</li>
 </ul>
-<p><cite>Obtener los partes de trabajo que no figuren con el tiempo<br />
-empleado</cite></p>
+<p><cite>Obtener los partes de trabajo que no figuren con el tiempo empleado</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC, codM, codP, fecha <span class="hljs-keyword">FROM</span> trabajos <span class="hljs-keyword">WHERE</span> tiempo <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>;
 </span></span></foreignObject></svg></code></pre>
 <table>
@@ -1131,15 +1102,11 @@ empleado</cite></p>
 <p>Permiten comparar valores con respecto de un conjunto</p>
 <ul>
 <li>El segundo operando <strong>debe</strong> ser una subconsulta.</li>
-<li>Van acompañados de un operador de comparación (<code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>,<br />
-<code>=</code>, <code>&lt;&gt;</code>):</li>
-<li>Comprueba que la condición se cumple para todos (<code>ALL</code>) o al menos<br />
-para uno (<code>ANY</code>)</li>
-<li><code>ANY</code> implica que la condición se cumpla respecto de, al menos, un<br />
-elemento del conjunto.</li>
+<li>Van acompañados de un operador de comparación (<code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>=</code>, <code>&lt;&gt;</code>):</li>
+<li>Comprueba que la condición se cumple para todos (<code>ALL</code>) o al menos para uno (<code>ANY</code>)</li>
+<li><code>ANY</code> implica que la condición se cumpla respecto de, al menos, un elemento del conjunto.</li>
 </ul>
-<p><cite>Obtener proyectos que no sean ninguna de las localidades de<br />
-aquellos conductores con categoría superior a 17:</p>
+<p><cite>Obtener proyectos que no sean ninguna de las localidades de aquellos conductores con categoría superior a 17:</p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> descripcion, localidad <span class="hljs-keyword">FROM</span> proyectos
 <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">&lt;&gt;</span> <span class="hljs-keyword">ALL</span> (<span class="hljs-keyword">SELECT</span> localidad <span class="hljs-keyword">FROM</span> conductores
                         <span class="hljs-keyword">WHERE</span> categoria <span class="hljs-operator">&gt;</span> <span class="hljs-number">17</span>);
@@ -1166,8 +1133,7 @@ aquellos conductores con categoría superior a 17:</p>
 <p>Indica la existencia o no de un conjunto</p>
 <ul>
 <li>El operando suele ser una subconsulta</li>
-<li>Devuelve <code>TRUE</code> o <code>FALSE</code> dependiendo si la subconsulta devuelve<br />
-resultado o no, respectivamente</li>
+<li>Devuelve <code>TRUE</code> o <code>FALSE</code> dependiendo si la subconsulta devuelve resultado o no, respectivamente</li>
 </ul>
 <p><cite>Obtener nombres de las máquinas que se han utilizado en el proyecto P03</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> nombre <span class="hljs-keyword">FROM</span> maquinas
@@ -1180,11 +1146,9 @@ resultado o no, respectivamente</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="56" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operadores <code>UNION</code>, <code>MINUS</code> e <code>INTERSECT</code></h1>
-<p>Unión, diferencia e intersección respectivamente entre conjuntos de<br />
-resultados</p>
+<p>Unión, diferencia e intersección respectivamente entre conjuntos de resultados</p>
 <ul>
-<li>Los conjuntos deben ser <strong>unión-compatibles</strong> (en esencia, mismas columnas<br />
-de datos compatibles)</li>
+<li>Los conjuntos deben ser <strong>unión-compatibles</strong> (en esencia, mismas columnas de datos compatibles)</li>
 </ul>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>SelectSQL {<span class="hljs-keyword">UNION</span> <span class="hljs-operator">|</span> MINUS <span class="hljs-operator">|</span> <span class="hljs-keyword">INTERSECT</span>} [<span class="hljs-keyword">ALL</span>] SelectSQL
 </span></span></foreignObject></svg></code></pre>
@@ -1195,8 +1159,7 @@ de datos compatibles)</li>
 <header>El lenguaje SQL</header>
 <h1>Operador <code>UNION</code> (I)</h1>
 <p>Las consultas a unir tienen que estar definidas sobre los mismos dominios.</p>
-<p><cite>Obtener los códigos de aquellos conductores que residan en Rivas o<br />
-tengan categoría inferior a 18</cite></p>
+<p><cite>Obtener los códigos de aquellos conductores que residan en Rivas o tengan categoría inferior a 18</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC
   <span class="hljs-keyword">FROM</span> conductores
   <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Rivas&#x27;</span>
@@ -1209,13 +1172,12 @@ tengan categoría inferior a 18</cite></p>
 </span></span></foreignObject></svg></code></pre>
 <footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-marpit-scope-B8ZnTLlc="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="58" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-marpit-scope-kf08gheb="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="58" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>Operador <code>UNION</code> (y II)</h1>
 <p>Pueden concatenarse varios <code>UNION</code>.</p>
-<p><cite>Obtener los códigos de aquellos conductores que residan en Rivas o<br />
-tengan categoría inferior a 18 o hayan manejado la máquina M01</cite></p>
+<p><cite>Obtener los códigos de aquellos conductores que residan en Rivas o tengan categoría inferior a 18 o hayan manejado la máquina M01</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC
   <span class="hljs-keyword">FROM</span> conductores
   <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Rivas&#x27;</span>
@@ -1235,11 +1197,9 @@ tengan categoría inferior a 18 o hayan manejado la máquina M01</cite></p>
 <h1>Operador <code>MINUS</code></h1>
 <p>Elimina las filas del primer operando que se encuentren en el segundo</p>
 <ul>
-<li><strong>MySQL no soporta este operador</strong>, por lo que hay que usar <code>NOT IN</code><br />
-en su lugar.</li>
+<li><strong>MySQL no soporta este operador</strong>, por lo que hay que usar <code>NOT IN</code> en su lugar.</li>
 </ul>
-<p><cite>Obtener los códigos de aquellos conductores que tengan categoría<br />
-inferior a 18 y no hayan trabajado con la máquina M03</cite></p>
+<p><cite>Obtener los códigos de aquellos conductores que tengan categoría inferior a 18 y no hayan trabajado con la máquina M03</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC
   <span class="hljs-keyword">FROM</span> conductores
   <span class="hljs-keyword">WHERE</span> categoria <span class="hljs-operator">&lt;</span> <span class="hljs-number">18</span> <span class="hljs-keyword">AND</span> codC <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
@@ -1253,10 +1213,8 @@ inferior a 18 y no hayan trabajado con la máquina M03</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="60" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="60" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Operador <code>INTERSECT</code></h1>
-<p>Obtiene las filas comunes al resultado de dos subconsultas. <strong>MySQL no<br />
-soporta este operador</strong>, por lo que hay que usar <code>IN</code> en su lugar</p>
-<p><cite>Obtener los códigos de los conductores que hayan utilizado las<br />
-máquinas M01 y M03</cite></p>
+<p>Obtiene las filas comunes al resultado de dos subconsultas. <strong>MySQL no soporta este operador</strong>, por lo que hay que usar <code>IN</code> en su lugar</p>
+<p><cite>Obtener los códigos de los conductores que hayan utilizado las máquinas M01 y M03</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC
 <span class="hljs-keyword">FROM</span> trabajos
 <span class="hljs-keyword">WHERE</span> codM <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;M01&#x27;</span> <span class="hljs-keyword">AND</span> codC <span class="hljs-keyword">IN</span> (
@@ -1272,8 +1230,7 @@ máquinas M01 y M03</cite></p>
 <h1>Funciones agregadas</h1>
 <p>Cinco funciones que permiten combinar los resultados de varias filas</p>
 <ul>
-<li><code>COUNT</code>: cuenta el número de filas considerando valores duplicados y<br />
-nulos</li>
+<li><code>COUNT</code>: cuenta el número de filas considerando valores duplicados y nulos</li>
 <li><code>AVG</code>: media aritmética de un atributo o expresión numérica</li>
 <li><code>SUM</code>: suma de atributos o expresiones numéricas</li>
 <li><code>MAX</code>: valor máximo de una atributo</li>
@@ -1284,12 +1241,10 @@ nulos</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="62" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="62" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Funciones agregadas: ejemplos (I)</h1>
-<p><cite>Obtener el número total de proyectos en los se está<br />
-trabajando</cite></p>
+<p><cite>Obtener el número total de proyectos en los se está trabajando</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">FROM</span> trabajos;  <span class="hljs-comment">-- Devuelve 12</span>
 </span></span></foreignObject></svg></code></pre>
-<p><cite>Obtener el número total de máquinas que se han utilizado en<br />
-<code>'P02'</code></cite></p>
+<p><cite>Obtener el número total de máquinas que se han utilizado en <code>'P02'</code></cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> codM) <span class="hljs-keyword">FROM</span> trabajos <span class="hljs-keyword">WHERE</span> codP <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;P02&#x27;</span>; <span class="hljs-comment">-- Devuelve 3</span>
 </span></span></foreignObject></svg></code></pre>
 <p><cite>Obtener el precio medio por hora de las máquinas</cite></p>
@@ -1300,18 +1255,14 @@ trabajando</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="63" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Funciones agregadas: ejemplos (y II)</h1>
-<p><cite>Obtener el máximo para el nombre y el precioHora de las<br />
-máquinas</cite></p>
+<p><cite>Obtener el máximo para el nombre y el precioHora de las máquinas</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MAX</span>(nombre), <span class="hljs-built_in">MAX</span>(precioHora) <span class="hljs-keyword">FROM</span> maquinas;  <span class="hljs-comment">-- Devuelve (Volquete, 10)</span>
 </span></span></foreignObject></svg></code></pre>
-<p><cite>Obtener la máxima fecha, el mínimo tiempo y la suma y media del<br />
-tiempo de la tabla trabajos</cite></p>
+<p><cite>Obtener la máxima fecha, el mínimo tiempo y la suma y media del tiempo de la tabla trabajos</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MAX</span>(fecha), <span class="hljs-built_in">MIN</span>(tiempo), <span class="hljs-built_in">SUM</span>(tiempo), <span class="hljs-built_in">AVG</span>(tiempo)
 <span class="hljs-keyword">FROM</span> trabajos;  <span class="hljs-comment">-- Devuelve (18/09/11, 20, 1260, 140)</span>
 </span></span></foreignObject></svg></code></pre>
-<p><cite>Contar el número de filas de la tabla trabajos, número de valores<br />
-de la columna tiempo y número de valores distintos de dicha<br />
-columna</cite></p>
+<p><cite>Contar el número de filas de la tabla trabajos, número de valores de la columna tiempo y número de valores distintos de dicha columna</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>), <span class="hljs-built_in">COUNT</span>(tiempo), <span class="hljs-built_in">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> tiempo)
 <span class="hljs-keyword">FROM</span> trabajos;<span class="hljs-comment">-- Devuelve (12, 9, 8)</span>
 </span></span></foreignObject></svg></code></pre>
@@ -1322,12 +1273,10 @@ columna</cite></p>
 <h1>Cláusula <code>GROUP BY</code> (I)</h1>
 <p>Agrupa los resultados en base a una <strong>clave</strong>, devolviendo una única fila por grupo</p>
 <ul>
-<li>Todo atributo que aparezca en el <code>SELECT</code> debe aparecer en el<br />
-<code>GROUP BY</code></li>
+<li>Todo atributo que aparezca en el <code>SELECT</code> debe aparecer en el <code>GROUP BY</code></li>
 <li>Suele combinarse con funciones agregadas</li>
 </ul>
-<p><cite>Obtener por cada conductor que haya trabajado, el código de éste y<br />
-la cantidad total de tiempo empleado</cite></p>
+<p><cite>Obtener por cada conductor que haya trabajado, el código de éste y la cantidad total de tiempo empleado</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC, <span class="hljs-built_in">SUM</span>(tiempo)
   <span class="hljs-keyword">FROM</span> trabajos
   <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> codC;
@@ -1344,8 +1293,7 @@ la cantidad total de tiempo empleado</cite></p>
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>HAVING</code> (I)</h1>
 <p>Condición aplicada a los grupos generados por la cláusula <code>GROUP BY</code></p>
-<p><cite>Obtener para los conductores que figuren con más de un trabajo<br />
-realizado, la suma de tiempos trabajados</cite></p>
+<p><cite>Obtener para los conductores que figuren con más de un trabajo realizado, la suma de tiempos trabajados</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC, <span class="hljs-built_in">SUM</span>(tiempo)
   <span class="hljs-keyword">FROM</span> trabajos
   <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> codC
@@ -1382,9 +1330,7 @@ realizado, la suma de tiempos trabajados</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="67" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="67" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>HAVING</code> (II)</h1>
-<p><cite>Obtener para los conductores que hayan utilizado la misma máquina<br />
-más de una vez entre el 12/09/02 y el 18/09/02, el código de conductor,<br />
-el código de máquina y el tiempo total empleado</cite></p>
+<p><cite>Obtener para los conductores que hayan utilizado la misma máquina más de una vez entre el 12/09/02 y el 18/09/02, el código de conductor, el código de máquina y el tiempo total empleado</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC, codM, <span class="hljs-built_in">SUM</span>(tiempo) <span class="hljs-keyword">FROM</span> trabajos
 <span class="hljs-keyword">WHERE</span> fecha <span class="hljs-keyword">BETWEEN</span> <span class="hljs-string">&#x27;12/09/11&#x27;</span> <span class="hljs-keyword">AND</span> <span class="hljs-string">&#x27;18/09/11&#x27;</span>
 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> codC, codM <span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">&gt;</span> <span class="hljs-number">1</span>;
@@ -1434,8 +1380,7 @@ el código de máquina y el tiempo total empleado</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="70" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="70" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>ORDER BY</code> (y II)</h1>
-<p><cite>Obtener los partes de trabajo correspondientes al proyecto P04<br />
-ordenados ascendentemente por conductor y máquina</cite></p>
+<p><cite>Obtener los partes de trabajo correspondientes al proyecto P04 ordenados ascendentemente por conductor y máquina</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> CodC, CodM, CodP <span class="hljs-keyword">FROM</span> trabajos
 <span class="hljs-keyword">WHERE</span> codP <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;P04&#x27;</span> <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> codC, codM;
 </span></span></foreignObject></svg></code></pre>
@@ -1475,12 +1420,10 @@ ordenados ascendentemente por conductor y máquina</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="71" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="71" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Alias de columnas</h1>
-<p>Es posible modificar el nombre de una columna como resultado de una<br />
-consulta</p>
+<p>Es posible modificar el nombre de una columna como resultado de una consulta</p>
 <ul>
 <li>Permite distinguir entre dos columnas con el mismo nombre</li>
-<li>Los alias pueden ir entre comillas ` para definir alias que contengan<br />
-caracteres especiales</li>
+<li>Los alias pueden ir entre comillas ` para definir alias que contengan caracteres especiales</li>
 </ul>
 <p>Sintaxis:</p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> atributo_1 [[<span class="hljs-keyword">AS</span>] alias_1] [,...]
@@ -1490,8 +1433,7 @@ caracteres especiales</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="72" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="72" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Alias de columnas: ejemplo</h1>
-<p><cite>Obtener el código (como 'cod conductor') y el nombre de aquellos<br />
-conductores de Rivas</cite></p>
+<p><cite>Obtener el código (como 'cod conductor') y el nombre de aquellos conductores de Rivas</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> codC <span class="hljs-keyword">AS</span> `cod conductor`, nombre
   <span class="hljs-keyword">FROM</span> conductores
   <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Rivas&#x27;</span>;
@@ -1519,8 +1461,7 @@ conductores de Rivas</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="73" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="73" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Alias de tablas</h1>
-<p>Es posible modificar el nombre de una tabla para su uso dentro de una<br />
-consulta</p>
+<p>Es posible modificar el nombre de una tabla para su uso dentro de una consulta</p>
 <ul>
 <li>Permite hacer más legibles consultas complicadas</li>
 </ul>
@@ -1534,8 +1475,7 @@ consulta</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="74" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="74" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Expresiones en la cláusula <code>SELECT</code></h1>
-<p>Se permite añadir expresiones en las que aparezcan atributos y/o<br />
-constantes y operadores aritméticos</p>
+<p>Se permite añadir expresiones en las que aparezcan atributos y/o constantes y operadores aritméticos</p>
 <ul>
 <li>Deben definirse junto a los atributos a devolver por el <code>SELECT</code></li>
 </ul>
@@ -1577,14 +1517,12 @@ constantes y operadores aritméticos</p>
 <ul>
 <li>Suele realizarse mediante la Unión Natural o Join:
 <ul>
-<li>Subconjunto del producto cartesiano de dos tablas en las que se<br />
-seleccionan las filas con el mismo valor de los atributos comunes</li>
+<li>Subconjunto del producto cartesiano de dos tablas en las que se seleccionan las filas con el mismo valor de los atributos comunes</li>
 </ul>
 </li>
 <li>Debe existir al menos un atributo común entre las tablas participantes
 <ul>
-<li>Habitualmente se emparejan las claves primarias con las claves<br />
-foráneas</li>
+<li>Habitualmente se emparejan las claves primarias con las claves foráneas</li>
 </ul>
 </li>
 </ul>
@@ -1628,9 +1566,7 @@ foráneas</li>
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (I)</h1>
 <p>Operador <code>IN</code></p>
-<p><cite>Obtener la descripción y cliente de aquellos proyectos en los que<br />
-hayan trabajado máquinas con un precio hora superior a 75 conducidas por<br />
-conductores de Rivas</cite></p>
+<p><cite>Obtener la descripción y cliente de aquellos proyectos en los que hayan trabajado máquinas con un precio hora superior a 75 conducidas por conductores de Rivas</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> descripcion, cliente <span class="hljs-keyword">FROM</span> proyectos
 <span class="hljs-keyword">WHERE</span> codP <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> codP <span class="hljs-keyword">FROM</span> trabajos
                <span class="hljs-keyword">WHERE</span> codM <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> codM <span class="hljs-keyword">FROM</span> maquinas
@@ -1644,8 +1580,7 @@ conductores de Rivas</cite></p>
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (II)</h1>
 <p>Operador <code>ANY</code></p>
-<p><cite>Obtener los trabajadores con categoría inferior a la de algún<br />
-trabajador de Arganda</cite></p>
+<p><cite>Obtener los trabajadores con categoría inferior a la de algún trabajador de Arganda</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> nombre <span class="hljs-keyword">FROM</span> conductores
 <span class="hljs-keyword">WHERE</span> categoria <span class="hljs-operator">&lt;</span> <span class="hljs-keyword">ANY</span> (<span class="hljs-keyword">SELECT</span> categoria <span class="hljs-keyword">FROM</span> conductores
                        <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Arganda&#x27;</span>);
@@ -1656,8 +1591,7 @@ trabajador de Arganda</cite></p>
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (III)</h1>
 <p>Operador <code>ALL</code></p>
-<p><cite>Obtener conductores que no ha participado en el proyecto<br />
-<code>'P01'</code></cite></p>
+<p><cite>Obtener conductores que no ha participado en el proyecto <code>'P01'</code></cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> nombre <span class="hljs-keyword">FROM</span> conductores
 <span class="hljs-keyword">WHERE</span> codC <span class="hljs-operator">&lt;&gt;</span> <span class="hljs-keyword">ALL</span> (<span class="hljs-keyword">SELECT</span> codC <span class="hljs-keyword">FROM</span> trabajos
                    <span class="hljs-keyword">WHERE</span> codP <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;P01&#x27;</span>);
@@ -1668,8 +1602,7 @@ trabajador de Arganda</cite></p>
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (IV)</h1>
 <p>Operador de comparación</p>
-<p><cite>Obtener el conductor de Arganda que tenga la categoría más alta de<br />
-entre los que sean de Arganda</cite></p>
+<p><cite>Obtener el conductor de Arganda que tenga la categoría más alta de entre los que sean de Arganda</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> nombre <span class="hljs-keyword">FROM</span> conductores
 <span class="hljs-keyword">WHERE</span> categoria <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MAX</span>(categoria) <span class="hljs-keyword">FROM</span> conductores
                    <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Arganda&#x27;</span>)
@@ -1681,8 +1614,7 @@ entre los que sean de Arganda</cite></p>
 <header>El lenguaje SQL</header>
 <h1>Consultas anidadas: ejemplos (y V)</h1>
 <p>Operador <code>EXISTS</code></p>
-<p><cite>Encontrar todos los conductores que no tengan un homónimo en la<br />
-misma localidad</cite></p>
+<p><cite>Encontrar todos los conductores que no tengan un homónimo en la misma localidad</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> conductores C1
 <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> conductores C2
                    <span class="hljs-keyword">WHERE</span> C1.nombre <span class="hljs-operator">=</span> C2.nombre
@@ -1694,8 +1626,7 @@ misma localidad</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="83" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="83" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Consultas</h1>
-<p>El alcance (scope) de las «variables» de una subconsulta se limita a la<br />
-subconsulta y sus descendientes</p>
+<p>El alcance (scope) de las «variables» de una subconsulta se limita a la subconsulta y sus descendientes</p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> conductores
 <span class="hljs-keyword">WHERE</span> codC <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> codC
                <span class="hljs-keyword">FROM</span> trabajos T1
@@ -1710,11 +1641,8 @@ subconsulta y sus descendientes</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="84" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="84" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Join implícito</h1>
-<p>Se debe poner una condición de unión en el <code>WHERE</code> por cada atributo<br />
-común entre las tablas relacionadas que figuren en la cláusula <code>FROM</code></p>
-<p><cite>Obtener para cada máquina utilizada de precio hora superior a 80,<br />
-el nombre del conductor, la descripción del proyecto y el nombre de la<br />
-máquina</cite></p>
+<p>Se debe poner una condición de unión en el <code>WHERE</code> por cada atributo común entre las tablas relacionadas que figuren en la cláusula <code>FROM</code></p>
+<p><cite>Obtener para cada máquina utilizada de precio hora superior a 80, el nombre del conductor, la descripción del proyecto y el nombre de la máquina</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> c.nombre <span class="hljs-keyword">AS</span> cond, descripcion, m.nombre <span class="hljs-keyword">AS</span> maq
 <span class="hljs-keyword">FROM</span> conductores c, trabajos t, proyectos p, maquinas m
 <span class="hljs-keyword">WHERE</span> c.codC <span class="hljs-operator">=</span> t.codC
@@ -1730,12 +1658,9 @@ máquina</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">FROM</span> tabla_1 [tipo_join] <span class="hljs-keyword">JOIN</span> tabla_2 <span class="hljs-keyword">ON</span> condicion_join
 </span></span></foreignObject></svg></code></pre>
 <ul>
-<li><code>INNER</code>: Unión natural (por defecto). Sólo se tienen en cuenta filas<br />
-con igualdad en los atributos comunes</li>
-<li><code>LEFT [OUTER]</code>: Se tienen en cuenta todas las filas de la tabla del<br />
-primer operando (izquierda)</li>
-<li><code>RIGHT [OUTER]</code>: Se tienen en cuenta todas las filas de la tabla del<br />
-segundo operando (derecha)</li>
+<li><code>INNER</code>: Unión natural (por defecto). Sólo se tienen en cuenta filas con igualdad en los atributos comunes</li>
+<li><code>LEFT [OUTER]</code>: Se tienen en cuenta todas las filas de la tabla del primer operando (izquierda)</li>
+<li><code>RIGHT [OUTER]</code>: Se tienen en cuenta todas las filas de la tabla del segundo operando (derecha)</li>
 <li><code>FULL [OUTER]</code>: Se tienen en cuenta todas las filas de ambas tablas</li>
 </ul>
 <p>Condición:</p>
@@ -1746,8 +1671,7 @@ segundo operando (derecha)</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="86" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="86" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>INNER JOIN</code></h1>
-<p><cite>Obtener el nombre del conductor y tiempo empleado para aquellos<br />
-trabajos realizados el 10/09/11</cite></p>
+<p><cite>Obtener el nombre del conductor y tiempo empleado para aquellos trabajos realizados el 10/09/11</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> nombre, tiempo <span class="hljs-keyword">FROM</span> conductores <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> trabajos
                         <span class="hljs-keyword">ON</span> conductores.codC <span class="hljs-operator">=</span> trabajos.codC
 <span class="hljs-keyword">WHERE</span> fecha <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;10/09/11&#x27;</span>;
@@ -1783,18 +1707,13 @@ trabajos realizados el 10/09/11</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="87" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="87" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Cláusula <code>NATURAL JOIN</code></h1>
-<p>Si los atributos comunes tienen el mismo nombre (y dominio), puede<br />
-emplearse <code>NATURAL JOIN</code> en lugar de <code>INNER JOIN</code> y no poner la<br />
-cláusula <code>ON</code></p>
-<p><cite>Obtener el nombre del conductor y tiempo empleado para aquellos<br />
-trabajos realizados el 10/09/11</cite></p>
+<p>Si los atributos comunes tienen el mismo nombre (y dominio), puede emplearse <code>NATURAL JOIN</code> en lugar de <code>INNER JOIN</code> y no poner la cláusula <code>ON</code></p>
+<p><cite>Obtener el nombre del conductor y tiempo empleado para aquellos trabajos realizados el 10/09/11</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SELECT</span> nombre, tiempo
 <span class="hljs-keyword">FROM</span> conductores <span class="hljs-keyword">NATURAL</span> <span class="hljs-keyword">JOIN</span> trabajos
 <span class="hljs-keyword">WHERE</span> fecha <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;10/09/11&#x27;</span>;
 </span></span></foreignObject></svg></code></pre>
-<p><strong>CUIDADO</strong>: unirá todas las columnas comunes que dispongan del mismo<br />
-nombre y dominio, sin importar si estas representan la misma<br />
-información</p>
+<p><strong>CUIDADO</strong>: unirá todas las columnas comunes que dispongan del mismo nombre y dominio, sin importar si estas representan la misma información</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="88" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="88" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
@@ -2004,12 +1923,9 @@ información</p>
   <span class="hljs-keyword">AS</span> select_sql
   [<span class="hljs-keyword">WITH</span> <span class="hljs-keyword">CHECK</span> OPTIONS]
 </span></span></foreignObject></svg></code></pre>
-<p>Si no se definen los nombres de las columnas se emplean los definidos en<br />
-el <code>SELECT SQL</code></p>
+<p>Si no se definen los nombres de las columnas se emplean los definidos en el <code>SELECT SQL</code></p>
 <ul>
-<li><code>WITH CHECK OPTIONS</code> fuerza a que toda las instrucción de modificación<br />
-de datos que se ejecuten en la vista sigan los criterios establecidos<br />
-en el <code>SELECT SQL</code>.</li>
+<li><code>WITH CHECK OPTIONS</code> fuerza a que toda las instrucción de modificación de datos que se ejecuten en la vista sigan los criterios establecidos en el <code>SELECT SQL</code>.</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
@@ -2036,21 +1952,19 @@ en el <code>SELECT SQL</code>.</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="95" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="95" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 <h1>Modificación de filas: ejemplo</h1>
-<p><cite>Incrementar un 15% el valor de la categoría de los conductores de<br />
-Rivas</cite></p>
+<p><cite>Incrementar un 15% el valor de la categoría de los conductores de Rivas</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>UPDATE conductores
   <span class="hljs-keyword">SET</span> categoria <span class="hljs-operator">=</span> categoría <span class="hljs-operator">*</span> <span class="hljs-number">1.15</span>
   <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Rivas&#x27;</span>;
 </span></span></foreignObject></svg></code></pre>
-<p><cite>Establecer la categoría por defecto a todos los conductores de<br />
-Loeches</cite></p>
+<p><cite>Establecer la categoría por defecto a todos los conductores de Loeches</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>UPDATE conductores
   <span class="hljs-keyword">SET</span> categoria <span class="hljs-operator">=</span> <span class="hljs-keyword">DEFAULT</span>
   <span class="hljs-keyword">WHERE</span> localidad <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Loeches&#x27;</span>;
 </span></span></foreignObject></svg></code></pre>
 <footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="96" data-marpit-scope-5najBjHl="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="96" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="96" data-marpit-scope-TsEb7bnz="" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="96" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--theme:bbdd;">
 <header>El lenguaje SQL</header>
 
 <h1>Eliminación de filas</h1>
@@ -2059,14 +1973,10 @@ Loeches</cite></p>
 </span></span></foreignObject></svg></code></pre>
 <ul>
 <li>No se pueden eliminar partes de una fila</li>
-<li>Si no aparece la cláusula <code>WHERE</code> se vacía la tabla (se eliminan todas<br />
-la filas)</li>
-<li>El borrado de una fila puede provocar el borrado de filas de otras<br />
-tablas si hay definida una restricción de integridad referencial con<br />
-opción <code>CASCADE</code></li>
+<li>Si no aparece la cláusula <code>WHERE</code> se vacía la tabla (se eliminan todas la filas)</li>
+<li>El borrado de una fila puede provocar el borrado de filas de otras tablas si hay definida una restricción de integridad referencial con opción <code>CASCADE</code></li>
 </ul>
-<p><cite>Eliminar todos los proyectos realizados al cliente Felipe<br />
-Sol</cite></p>
+<p><cite>Eliminar todos los proyectos realizados al cliente Felipe Sol</cite></p>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> proyectos
   <span class="hljs-keyword">WHERE</span> cliente <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Felipe Sol&#x27;</span>;
 </span></span></foreignObject></svg></code></pre>
@@ -2076,18 +1986,16 @@ Sol</cite></p>
 <header>El lenguaje SQL</header>
 <h1>Estas diapositivas está basadas en el siguiente material</h1>
 <ul>
-<li>Pedro Pablo Alarcón (2012), <em>Lenguaje SQL</em>. Aplicación de la Gestión<br />
-de Información, Departamento de OEI, Escuela Universitaria de<br />
-Informática, Universidad Politécnica de Madrid</li>
-<li>Eugenio Santos (2006), <em>Integridad Referencial</em>. Aplicación de la<br />
-Gestión de Información, Departamento de OEI, Escuela Universitaria de<br />
-Informática, Universidad Politécnica de Madrid</li>
+<li>Pedro Pablo Alarcón (2012), <em>Lenguaje SQL</em>. Aplicación de la Gestión de Información, Departamento de OEI, Escuela Universitaria de Informática, Universidad Politécnica de Madrid</li>
+<li>Eugenio Santos (2006), <em>Integridad Referencial</em>. Aplicación de la Gestión de Información, Departamento de OEI, Escuela Universitaria de Informática, Universidad Politécnica de Madrid</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="98" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="endpage" data-theme="bbdd" class="endpage" data-marpit-pagination="98" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:endpage;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="98" data-paginate="true" data-header="El lenguaje SQL" data-footer="Bases de datos" data-class="license" data-theme="bbdd" class="license" data-marpit-pagination="98" data-marpit-pagination-total="98" style="--paginate:true;--header:El lenguaje SQL;--footer:Bases de datos;--class:license;--theme:bbdd;">
 <header>El lenguaje SQL</header>
-<h1>Gracias</h1>
+<h1>Licencia</h1>
+<p>Esta obra está licenciada bajo una licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.</p>
+<p>Puede encontrar su código en el siguiente enlace: <a href="https://github.com/etsisi/Aprendizaje-profundo">https://github.com/etsisi/Aprendizaje-profundo</a></p>
 <footer>Bases de datos</footer>
 </section>
 <script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let r,o;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(o=r)}}catch(t){console.error(t)}})));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||o||t.currentScale||1;r!==c&&(r=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let r=0;r<u;r+=1){const o=t.children[r],a=o.getScreenCTM();if(a){const t=null!==(n=null===(e=o.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,r=null!==(s=null===(i=o.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=o.firstElementChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-r}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}})),!1!==l&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)}))}r=1,o=void 0;const i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function a({once:t=!1,target:e=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[n]:[];let o=!t;const a=()=>{for(const t of r)t({target:e});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),(t=>{var e;const r=t.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:a}=o;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(r,"width",`${c}`),i(r,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")}))}(e),o&&window.requestAnimationFrame(a)};return a(),()=>{o=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),r=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:r})})(s?s.getRootNode():document)}();

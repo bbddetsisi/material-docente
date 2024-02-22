@@ -17,7 +17,7 @@
 
 /*****************
  @author: Alberto Díaz-Álvarez
- @version: 1.0
+ @version: 1.1
  @update: 2022-01-27
  Based on the work of Paulo Cunha (https://github.com/cunhapaulo/marpstyle)
 *****************/
@@ -38,7 +38,8 @@
   ### Autor
   #### Fecha
   ##### Institución
-*/div#p>svg>foreignObject>section.titlepage{background-color:var(--color-tertiary);
+*/div#p>svg>foreignObject>section.titlepage{
+  /*background-color: var(--color-tertiary);*/background-image:linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0.8),rgba(255,255,255,0.6)),url(https://etsisi.github.io/Styles/images/front-slide-background.png);background-size:auto;background-position:0;background-blend-mode:normal;
     /* fonts sizes */--title-size:150%;--subtitle-size:110%;--author-size:110%;--date-size:90%;--institute-size:90%;--letter-spacing:var(--letter-spacing);
 
   /* font weights */--title-font-weight:600;--subtitle-font-weight:600;--subtitle-color:#586e75;--subtitle-color:#93a1a1;--titlepage-color:#242d31}div#p>svg>foreignObject>section.titlepage h1{font-size:var(--title-size);font-weight:var(--title-font-weight);text-align:left;line-height:1.25;padding-right:20%}div#p>svg>foreignObject>section.titlepage h2{font-size:var(--subtitle-size);font-weight:var(--subtitle-font-weight);text-align:left;color:var(--subtitle-color);letter-spacing:var(--letter-spacing);line-height:1.2;margin-top:-0.2em;padding-bottom:95px}div#p>svg>foreignObject>section.titlepage h3,div#p>svg>foreignObject>section.titlepage h4,div#p>svg>foreignObject>section.titlepage h5{font-weight:400;color:var(--titlepage-color);line-height:0;letter-spacing:var(--letter-spacing)}div#p>svg>foreignObject>section.titlepage h3{font-size:var(--author-size)}div#p>svg>foreignObject>section.titlepage h4{font-size:var(--date-size)}div#p>svg>foreignObject>section.titlepage h5{font-size:var(--institute-size)}div#p>svg>foreignObject>section.titlepage img{background-color:var(--background-color);border-top:1px solid var(--color-primary);padding-top:0.5em;text-align:left;margin:0}
@@ -46,7 +47,7 @@
 /* Omits page number in Title Page Slide */div#p>svg>foreignObject>section.titlepage footer,div#p>svg>foreignObject>section.titlepage header,div#p>svg>foreignObject>section.titlepage:after{
   /* hide header, footer and pagination */display:none}
 
-/* Última página de las transparencias */div#p>svg>foreignObject>section.endpage{background-color:var(--color-tertiary);background-image:none;text-align:center!important;font-weight:bold!important;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.endpage a,div#p>svg>foreignObject>section.endpage h1,div#p>svg>foreignObject>section.endpage h2,div#p>svg>foreignObject>section.endpage p{font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.endpage footer,div#p>svg>foreignObject>section.endpage header,div#p>svg>foreignObject>section.endpage:after{display:none}
+/* Última página de las transparencias */div#p>svg>foreignObject>section.endpage{background-color:var(--color-tertiary);background-image:none;text-align:center!important;font-weight:bold!important;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.endpage a,div#p>svg>foreignObject>section.endpage h1,div#p>svg>foreignObject>section.endpage h2,div#p>svg>foreignObject>section.endpage p{font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.endpage footer,div#p>svg>foreignObject>section.endpage header,div#p>svg>foreignObject>section.endpage:after{display:none}div#p>svg>foreignObject>section.license{background-image:url(https://etsisi.github.io/Styles/images/end-slide-background.png);background-size:auto;background-position:0;background-blend-mode:luminosity;text-align:center!important;font-weight:bold}div#p>svg>foreignObject>section.license footer,div#p>svg>foreignObject>section.license header,div#p>svg>foreignObject>section.license:after{display:none}div#p>svg>foreignObject>section.license h1{font-size:200%;border-bottom:none;color:var(--color-primary)}div#p>svg>foreignObject>section.license p{font-size:120%;color:var(--color-primary)}div#p>svg>foreignObject>section.license a{border-bottom:none;color:var(--color-error)}
 
 /* Separador de secciones */div#p>svg>foreignObject>section.section{background-image:none;background-color:var(--color-secondary);text-align:center!important;font-weight:bold!important;color:white;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.section a,div#p>svg>foreignObject>section.section h1,div#p>svg>foreignObject>section.section h2,div#p>svg>foreignObject>section.section p{color:white;font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.section footer,div#p>svg>foreignObject>section.section header,div#p>svg>foreignObject>section.section:after{display:none}
 
@@ -100,12 +101,7 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="4" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Cuál prefieres? (I)</h1>
-<p><cite>Pues como le iba diciendo, necesito que me construya una aplicación para<br />
-gestionar mi gasolinera low-cost. Ya sabe, la gente echa diésel o gasolina y<br />
-luego me pagan. Algunos me piden factura, y resoplan cuando les pido los datos<br />
-de la empresa, sobre todo aquellos que son clientes fijos. ¡Se me olvidaba!<br />
-Tengo que llevar un registro de los litros que se gastan en cada repostaje,<br />
-además de cuándo se realizó.</cite></p>
+<p><cite>Pues como le iba diciendo, necesito que me construya una aplicación para gestionar mi gasolinera low-cost. Ya sabe, la gente echa diésel o gasolina y luego me pagan. Algunos me piden factura, y resoplan cuando les pido los datos de la empresa, sobre todo aquellos que son clientes fijos. ¡Se me olvidaba! Tengo que llevar un registro de los litros que se gastan en cada repostaje, además de cuándo se realizó.</cite></p>
 <p>Requisitos de datos:</p>
 <ul>
 <li>Facturas que se emiten a clientes</li>
@@ -118,12 +114,7 @@ además de cuándo se realizó.</cite></p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="5" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Cuál prefieres? (y II)</h1>
-<p><cite>Pues como le iba diciendo, necesito que me construya una aplicación para<br />
-gestionar mi gasolinera low-cost. Ya sabe, la gente echa diésel o gasolina y<br />
-luego me pagan. Algunos me piden factura, y resoplan cuando les pido los datos<br />
-de la empresa, sobre todo aquellos que son clientes fijos. ¡Se me olvidaba!<br />
-Tengo que llevar un registro de los litros que se gastan en cada repostaje,<br />
-además de cuándo se realizó.</cite></p>
+<p><cite>Pues como le iba diciendo, necesito que me construya una aplicación para gestionar mi gasolinera low-cost. Ya sabe, la gente echa diésel o gasolina y luego me pagan. Algunos me piden factura, y resoplan cuando les pido los datos de la empresa, sobre todo aquellos que son clientes fijos. ¡Se me olvidaba! Tengo que llevar un registro de los litros que se gastan en cada repostaje, además de cuándo se realizó.</cite></p>
 <p>Requisitos de datos:</p>
 <ul>
 <li><s>Facturas</s> que se emiten a <s>clientes</s></li>
@@ -139,8 +130,7 @@ además de cuándo se realizó.</cite></p>
 <h1>Entidad (I)</h1>
 <div class="columns">
 <div class="column">
-<p><s>Factura</s>, <s>cliente</s> y <s>combustible</s> son objetos o cosas del<br />
-mundo real que tienen existencia por sí mismas</p>
+<p><s>Factura</s>, <s>cliente</s> y <s>combustible</s> son objetos o cosas del mundo real que tienen existencia por sí mismas</p>
 </div>
 <div class="column">
 <img src="img/t2/entidad.png" alt="Entidad" />
@@ -184,8 +174,7 @@ mundo real que tienen existencia por sí mismas</p>
 <h1>Atributos</h1>
 <div class="columns">
 <div class="column">
-<p>El <s>nombre</s>, <s>CIF</s> y <s>correo electrónico</s> de los clientes definen las<br />
-propiedades de la entidad <code>Cliente</code></p>
+<p>El <s>nombre</s>, <s>CIF</s> y <s>correo electrónico</s> de los clientes definen las propiedades de la entidad <code>Cliente</code></p>
 </div>
 <div class="column">
 <img src="img/t2/atributos.png" alt="Atributos de una entidad" />
@@ -207,8 +196,7 @@ propiedades de la entidad <code>Cliente</code></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="11" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
-<p>Entonces... ¿la base de datos para la gasolinera queda definida por estas<br />
-<strong>entidades</strong> y sus <strong>atributos</strong>?</p>
+<p>Entonces... ¿la base de datos para la gasolinera queda definida por estas <strong>entidades</strong> y sus <strong>atributos</strong>?</p>
 <p><img src="img/t2/gasolinera_incompleta.png" alt="" style="width:800px;" /></p>
 <footer>Bases de datos</footer>
 </section>
@@ -255,8 +243,7 @@ propiedades de la entidad <code>Cliente</code></p>
 <h1>Relaciones reflexivas</h1>
 <p>Una relación reflexiva relaciona <strong>ocurrencias de la misma entidad</strong></p>
 <ul>
-<li>En este caso, <strong>es obligatorio</strong> especificar el rol de la entidad en ambos<br />
-sentidos de la relación.</li>
+<li>En este caso, <strong>es obligatorio</strong> especificar el rol de la entidad en ambos sentidos de la relación.</li>
 </ul>
 <p><img src="img/t2/reflexiva.png" alt="center" /></p>
 <footer>Bases de datos</footer>
@@ -264,11 +251,9 @@ sentidos de la relación.</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="18" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad</h1>
-<p>Número de ocurrencias de entidad que se pueden asociar como máximo/mínimo a otra<br />
-a través de una relación</p>
+<p>Número de ocurrencias de entidad que se pueden asociar como máximo/mínimo a otra a través de una relación</p>
 <ul>
-<li>Mediante cardinalidades máximas y mínimas se pueden representar restricciones<br />
-del cliente al modelo de datos</li>
+<li>Mediante cardinalidades máximas y mínimas se pueden representar restricciones del cliente al modelo de datos</li>
 <li>Valores posibles:
 <ul>
 <li>Máximo: 1, N</li>
@@ -291,11 +276,8 @@ del cliente al modelo de datos</li>
 <p><img src="img/t2/cardinalidad-reposta-cliente.png" alt="" style="width:500px;" /></p>
 <p>Para una ocurrencia de combustible:</p>
 <ul>
-<li>¿Cuántos clientes como mínimo repostarán? Ninguno, puede que una ocurrencia de<br />
-combustible nunca sea repostada por algún cliente <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad<br />
-mínima 0</li>
-<li>¿Cuántos clientes como máximo lo repostarán? Más de uno <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container><br />
-cardinalidad N</li>
+<li>¿Cuántos clientes como mínimo repostarán? Ninguno, puede que una ocurrencia de combustible nunca sea repostada por algún cliente <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad   mínima 0</li>
+<li>¿Cuántos clientes como máximo lo repostarán? Más de uno <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad N</li>
 </ul>
 <p><strong>Opciones posibles</strong>: cardinalidad mínima (0, 1), cardinalidad máxima (1, N)</p>
 <footer>Bases de datos</footer>
@@ -306,11 +288,8 @@ cardinalidad N</li>
 <p><img src="img/t2/cardinalidad-reposta-cliente.png" alt="" style="width:500px;" /></p>
 <p>Para una ocurrencia de cliente:</p>
 <ul>
-<li>¿Cuántos combustibles repostará como mínimo? Ninguno, puede que el cliente se<br />
-registre y no vuelva nunca <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad mínima 0</li>
-<li>¿Cuántos combustibles repostará como máximo? Más de uno, puede que el cliente<br />
-tenga varios vehículos <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad M (para diferenciarlo de la<br />
-N)</li>
+<li>¿Cuántos combustibles repostará como mínimo? Ninguno, puede que el cliente se registre y no vuelva nunca <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad mínima 0</li>
+<li>¿Cuántos combustibles repostará como máximo? Más de uno, puede que el cliente tenga varios vehículos <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad M (para diferenciarlo de la N)</li>
 </ul>
 <p><strong>Opciones posibles</strong>: cardinalidad mínima (0, 1), cardinalidad máxima (1, N)</p>
 <footer>Bases de datos</footer>
@@ -328,11 +307,8 @@ N)</li>
 <p><img src="img/t2/emitida-cliente.png" alt="" style="width:550px;" /></p>
 <p>Para una ocurrencia de factura:</p>
 <ul>
-<li>¿Para cuántos clientes se emitirá como mínimo? Las facturas tienen que<br />
-emitirse obligatoriamente para un cliente <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad mínima 1</li>
-<li>¿Para cuantos clientes se emitirá como máximo? No tiene sentido que una<br />
-factura se emita a más de un cliente (de hecho es ilegal) <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container><br />
-cardinalidad máxima 1</li>
+<li>¿Para cuántos clientes se emitirá como mínimo? Las facturas tienen que emitirse obligatoriamente para un cliente <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad mínima 1</li>
+<li>¿Para cuantos clientes se emitirá como máximo? No tiene sentido que una factura se emita a más de un cliente (de hecho es ilegal) <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad máxima 1</li>
 </ul>
 <p><strong>Opciones posibles</strong>: cardinalidad mínima (0, 1), cardinalidad máxima (1, N)</p>
 <footer>Bases de datos</footer>
@@ -343,11 +319,8 @@ cardinalidad máxima 1</li>
 <p><img src="img/t2/emitida-factura.png" alt="center" style="width:550px;" /></p>
 <p>Para una ocurrencia de cliente:</p>
 <ul>
-<li>¿Cuántas facturas se le emitirán como mínimo? En un momento dado, puede<br />
-ocurrir que no se haya facturado todavía al cliente <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad<br />
-mínima 0</li>
-<li>¿Cuántas facturas se le emitirán como máximo? Podemos emitir multitud de</li>
-<li>facturas a un cliente <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad máxima N</li>
+<li>¿Cuántas facturas se le emitirán como mínimo? En un momento dado, puede ocurrir que no se haya facturado todavía al cliente <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad mínima 0</li>
+<li>¿Cuántas facturas se le emitirán como máximo? Podemos emitir multitud de facturas a un cliente <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> cardinalidad máxima N</li>
 </ul>
 <p><strong>Opciones posibles</strong>: cardinalidad mínima (0, 1), cardinalidad máxima (1, N)</p>
 <footer>Bases de datos</footer>
@@ -355,8 +328,7 @@ mínima 0</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="25" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Cardinalidad en relaciones <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container>-arias</h1>
-<p>En el caso de las relaciones <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container>-arias, la cardinalidad hay que definirla entre<br />
-pares de entidades relacionadas</p>
+<p>En el caso de las relaciones <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container>-arias, la cardinalidad hay que definirla entre pares de entidades relacionadas</p>
 <ul>
 <li>Por ejemplo, en una ternaria:</li>
 </ul>
@@ -366,11 +338,9 @@ pares de entidades relacionadas</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="26" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Clave de entidad</h1>
-<p>Atributo o conjunto de atributos que <strong>identifican unívocamente</strong> cada<br />
-ocurrencia de una entidad</p>
+<p>Atributo o conjunto de atributos que <strong>identifican unívocamente</strong> cada ocurrencia de una entidad</p>
 <ul>
-<li>Si una entidad no tiene clave, se le considera <strong>entidad débil</strong> y que tiene<br />
-dependencia de <strong>Identificación</strong>.</li>
+<li>Si una entidad no tiene clave, se le considera <strong>entidad débil</strong> y que tiene dependencia de <strong>Identificación</strong>.</li>
 <li>Se subraya el nombre de los atributos que formen parte de la clave</li>
 </ul>
 <p><img src="img/t2/claves-de-entidad.png" alt="center" /></p>
@@ -379,8 +349,7 @@ dependencia de <strong>Identificación</strong>.</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="27" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Entidad débil</h1>
-<p>Una entidad débil es aquella cuya existencia está supeditada a la existencia de<br />
-otra entidad</p>
+<p>Una entidad débil es aquella cuya existencia está supeditada a la existencia de otra entidad</p>
 <ul>
 <li>Dos tipos:
 <ul>
@@ -388,8 +357,7 @@ otra entidad</p>
 <li>Entidad débil con relación de existencia</li>
 </ul>
 </li>
-<li>La representación en el modelo ER tanto de la entidad débil como de la<br />
-relación con la entidad fuerte es la siguiente:</li>
+<li>La representación en el modelo ER tanto de la entidad débil como de la relación con la entidad fuerte es la siguiente:</li>
 </ul>
 <p><img src="img/t2/entidad-debil.png" alt="center" /></p>
 <footer>Bases de datos</footer>
@@ -402,23 +370,19 @@ relación con la entidad fuerte es la siguiente:</li>
 <li>Necesita de la clave de otra entidad con la que se relaciona:</li>
 </ul>
 <p><img src="img/t2/identificacion.png" alt="" style="width:550px;" /></p>
-<p>Dos surtidores de la base de datos pueden tener el mismo número si están en<br />
-gasolineras distintas</p>
+<p>Dos surtidores de la base de datos pueden tener el mismo número si están en gasolineras distintas</p>
 <ul>
 <li>El surtidor <strong>adquiere</strong> la clave de <code>Gasolinera</code></li>
-<li>En algunas notaciones, el atributo discriminador se indica con subrayado<br />
-discontinuo, como es el caso del número de surtidor</li>
+<li>En algunas notaciones, el atributo discriminador se indica con subrayado discontinuo, como es el caso del número de surtidor</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="29" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Entidad débil (existencia)</h1>
-<p>La existencia de una ocurrencia está condicionada a la existencia de otra<br />
-ocurrencia</p>
+<p>La existencia de una ocurrencia está condicionada a la existencia de otra ocurrencia</p>
 <p><img src="img/t2/existencia.png" alt="" style="width:700px;" /></p>
-<p>Aunque <code>Factura</code> tenga clave, si se da de baja un cliente hay que dar de baja<br />
-todas sus facturas</p>
+<p>Aunque <code>Factura</code> tenga clave, si se da de baja un cliente hay que dar de baja todas sus facturas</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="30" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/t2/chen.png&quot;);background-size:90%;"></figure></div></section></foreignObject><foreignObject width="70%" height="720"><section id="30" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="30" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
@@ -485,8 +449,7 @@ todas sus facturas</p>
 <h1>Conclusiones</h1>
 <p>¿Por qué?</p>
 <ul>
-<li>Necesitamos especificar las restricciones de una forma clara, concisa,<br />
-fácilmente entendible y sin ambigüedades</li>
+<li>Necesitamos especificar las restricciones de una forma clara, concisa, fácilmente entendible y sin ambigüedades</li>
 </ul>
 <p>¿Cómo?</p>
 <ul>
@@ -509,16 +472,10 @@ fácilmente entendible y sin ambigüedades</li>
 <h1>Foro</h1>
 <p>Un conocido foro de coches nos ha encargado el diseño conceptual de su BBDD:</p>
 <ul>
-<li>El foro se compone de hilos, que tendrán un título, un número identificador,<br />
-una categoría y será necesario saber la fecha en la que se creó y el usuario<br />
-que lo hizo</li>
-<li>Los usuarios del foro se identifican por su nombre de usuario. Es necesario<br />
-almacenar su correo electrónico y ciudad donde vive</li>
-<li>Los usuarios añaden respuestas a un hilo, que constan de un mensaje y,<br />
-opcionalmente, una URL de imagen. Para ordenar las respuestas, hay que conocer<br />
-la fecha y hora en la que se realizó, así como su posición relativa en el hilo</li>
-<li>En una respuesta se puede citar el texto de otra, situación que conviene<br />
-registrar en la base de datos</li>
+<li>El foro se compone de hilos, que tendrán un título, un número identificador, una categoría y será necesario saber la fecha en la que se creó y el usuario que lo hizo</li>
+<li>Los usuarios del foro se identifican por su nombre de usuario. Es necesario almacenar su correo electrónico y ciudad donde vive</li>
+<li>Los usuarios añaden respuestas a un hilo, que constan de un mensaje y, opcionalmente, una URL de imagen. Para ordenar las respuestas, hay que conocer la fecha y hora en la que se realizó, así como su posición relativa en el hilo</li>
+<li>En una respuesta se puede citar el texto de otra, situación que conviene registrar en la base de datos</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
@@ -532,15 +489,10 @@ registrar en la base de datos</li>
 <header>Modelado de datos</header>
 <h1>Base de datos de películas</h1>
 <ul>
-<li>Las películas se identifican por su título y año de lanzamiento. Además,<br />
-tienen una duración (en minutos), una productora, al menos un director y<br />
-también al menos un actor y un género</li>
-<li>Los actores se identifican por su nombre y fecha de nacimiento. Actúan en al<br />
-menos una película, donde interpretan un personaje</li>
-<li>Los directores se identifican también por nombre y fecha de nacimiento.<br />
-Además de dirigir, pueden también actuar en películas</li>
-<li>Las productoras se identifican por su nombre y dirección. Producen al menos<br />
-una película</li>
+<li>Las películas se identifican por su título y año de lanzamiento. Además, tienen una duración (en minutos), una productora, al menos un director y también al menos un actor y un género</li>
+<li>Los actores se identifican por su nombre y fecha de nacimiento. Actúan en al menos una película, donde interpretan un personaje</li>
+<li>Los directores se identifican también por nombre y fecha de nacimiento. Además de dirigir, pueden también actuar en películas</li>
+<li>Las productoras se identifican por su nombre y dirección. Producen al menos una película</li>
 </ul>
 <footer>Bases de datos</footer>
 </section>
@@ -560,71 +512,38 @@ una película</li>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="43" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>La ETSISI</h1>
-<p>En la ETSISI nos han pedido que diseñemos el diagrama entidad relación para<br />
-posteriormente crear una base de datos de la información relativa a los alumnos</p>
+<p>En la ETSISI nos han pedido que diseñemos el diagrama entidad relación para posteriormente crear una base de datos de la información relativa a los alumnos</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="44" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>Nuestro modelo</h1>
-<p>En la ETSISI se imparten estudios de grado o de máster. Hay que guardar su<br />
-nombre, máximo de alumnos y asignaturas que incluyen, que se pueden compartir<br />
-entre títulos. Hay que indicar en qué aula concreta se imparte cada asignatura y<br />
-su aforo, según haya o no que mantener distancia de seguridad o no.</p>
-<p>Hay también alumnos identificados por Nombre, DNI y E-mail. Se matriculan en una<br />
-fecha, asignatura y cuatrimestre concretos (una asignatura se puede impartir en<br />
-varios cuatrimestres). También se lleva un registro de las calificaciones<br />
-obtenidas por cada alumno en las convocatorias de cada asignatura (mes y año).</p>
-<p>Por último, hay que registrar profesores y las asignaturas que imparten. Un<br />
-profesor tiene los mismos datos que un alumno más número de cuenta y número de<br />
-empleado. Además, para facilitar que se cubran posibles bajas, para cada<br />
-profesor hay que indicar aquellos que pueden cubrirle.</p>
+<p>En la ETSISI se imparten estudios de grado o de máster. Hay que guardar su nombre, máximo de alumnos y asignaturas que incluyen, que se pueden compartir entre títulos. Hay que indicar en qué aula concreta se imparte cada asignatura y su aforo, según haya o no que mantener distancia de seguridad o no.</p>
+<p>Hay también alumnos identificados por Nombre, DNI y E-mail. Se matriculan en una fecha, asignatura y cuatrimestre concretos (una asignatura se puede impartir en varios cuatrimestres). También se lleva un registro de las calificaciones obtenidas por cada alumno en las convocatorias de cada asignatura (mes y año).</p>
+<p>Por último, hay que registrar profesores y las asignaturas que imparten. Un profesor tiene los mismos datos que un alumno más número de cuenta y número de empleado. Además, para facilitar que se cubran posibles bajas, para cada profesor hay que indicar aquellos que pueden cubrirle.</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="45" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué entidades observamos?</h1>
-<p>En la ETSISI se imparten <s>estudios</s> de grado o de máster. Hay que guardar su<br />
-nombre, máximo de alumnos y <s>asignaturas</s> que incluyen, que se pueden<br />
-compartir entre <s>títulos</s>. Hay que indicar en qué aula concreta se imparte<br />
-cada asignatura y su aforo, según haya o no que mantener distancia de seguridad<br />
-o no.</p>
-<p>Hay también  <s>alumnos</s> identificados por Nombre, DNI y E-mail. Se matriculan<br />
-en una fecha, asignatura y <s>cuatrimestre</s> concretos (una asignatura se puede<br />
-impartir en varios cuatrimestres). También se lleva un registro de las<br />
-<s>calificaciones</s> obtenidas por cada alumno en las convocatorias de cada<br />
-asignatura (mes y año).</p>
-<p>Por último, hay que registrar <s>profesores</s> y las asignaturas que imparten. Un<br />
-profesor tiene los mismos datos que un alumno más número de cuenta y número de<br />
-empleado. Además, para facilitar que se cubran posibles bajas, para cada<br />
-profesor hay que indicar aquellos que pueden cubrirle.</p>
+<p>En la ETSISI se imparten <s>estudios</s> de grado o de máster. Hay que guardar su nombre, máximo de alumnos y <s>asignaturas</s> que incluyen, que se pueden compartir entre <s>títulos</s>. Hay que indicar en qué aula concreta se imparte cada asignatura y su aforo, según haya o no que mantener distancia de seguridad o no.</p>
+<p>Hay también  <s>alumnos</s> identificados por Nombre, DNI y E-mail. Se matriculan en una fecha, asignatura y <s>cuatrimestre</s> concretos (una asignatura se puede impartir en varios cuatrimestres). También se lleva un registro de las <s>calificaciones</s> obtenidas por cada alumno en las convocatorias de cada asignatura (mes y año).</p>
+<p>Por último, hay que registrar <s>profesores</s> y las asignaturas que imparten. Un profesor tiene los mismos datos que un alumno más número de cuenta y número de empleado. Además, para facilitar que se cubran posibles bajas, para cada profesor hay que indicar aquellos que pueden cubrirle.</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="46" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué entidades observamos? Solución</h1>
-<p><code>Calificación</code> es una entidad débil, ya que no tiene clave propia y depende de<br />
-estudiantes y asignaturas</p>
+<p><code>Calificación</code> es una entidad débil, ya que no tiene clave propia y depende de estudiantes y asignaturas</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-entidades.png" alt="" /></p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="47" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué atributos observamos?</h1>
-<p>En la ETSISI se imparten estudios <s>de grado o de máster</s>. Hay que guardar su<br />
-<s>nombre</s>, <s>máximo de alumnos</s> y asignaturas que incluyen, que se pueden<br />
-compartir entre títulos. Hay que indicar en qué aula concreta se imparte cada<br />
-asignatura y su <s>aforo, según haya o no que mantener distancia de seguridad o<br />
-no</s>.</p>
-<p>Hay también alumnos identificados por <s>Nombre</s>, <s>DNI</s> y <s>E-mail</s>. Se<br />
-matriculan en una fecha, asignatura y cuatrimestre concretos (una asignatura se<br />
-puede impartir en varios cuatrimestres). También se lleva un registro de las<br />
-calificaciones obtenidas por cada alumno en las convocatorias de cada asignatura<br />
-(<s>mes y año</s>).</p>
-<p>Por último, hay que registrar profesores y las asignaturas que imparten. Un<br />
-profesor tiene los mismos datos que un alumno más <s>número de cuenta</s> y<br />
-<s>número de empleado</s>. Además, para facilitar que se cubran posibles bajas,<br />
-para cada profesor hay que indicar aquellos que pueden cubrirle.</p>
+<p>En la ETSISI se imparten estudios <s>de grado o de máster</s>. Hay que guardar su <s>nombre</s>, <s>máximo de alumnos</s> y asignaturas que incluyen, que se pueden compartir entre títulos. Hay que indicar en qué aula concreta se imparte cada asignatura y su <s>aforo, según haya o no que mantener distancia de seguridad o no</s>.</p>
+<p>Hay también alumnos identificados por <s>Nombre</s>, <s>DNI</s> y <s>E-mail</s>. Se matriculan en una fecha, asignatura y cuatrimestre concretos (una asignatura se puede impartir en varios cuatrimestres). También se lleva un registro de las calificaciones obtenidas por cada alumno en las convocatorias de cada asignatura (<s>mes y año</s>).</p>
+<p>Por último, hay que registrar profesores y las asignaturas que imparten. Un profesor tiene los mismos datos que un alumno más <s>número de cuenta</s> y <s>número de empleado</s>. Además, para facilitar que se cubran posibles bajas, para cada profesor hay que indicar aquellos que pueden cubrirle.</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="48" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
@@ -637,20 +556,9 @@ para cada profesor hay que indicar aquellos que pueden cubrirle.</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="49" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos?</h1>
-<p>En la ETSISI se imparten estudios de grado o de máster. Hay que guardar su<br />
-nombre, máximo de alumnos y <s>asignaturas que incluyen</s>, que se pueden<br />
-compartir entre títulos. Hay que indicar <s>en qué aula concreta se imparte cada<br />
-asignatura</s> y su aforo, según haya o no que mantener distancia de seguridad o<br />
-no.</p>
-<p>Hay también alumnos identificados por Nombre, DNI y E-mail. <s>Se matriculan en<br />
-una fecha, asignatura y cuatrimestre concretos</s> (una asignatura se puede<br />
-impartir en varios cuatrimestres). También se lleva un <s>registro de las<br />
-calificaciones obtenidas por cada alumno en las convocatorias de cada<br />
-asignatura</s> (mes y año).</p>
-<p>Por último, hay que registrar profesores y las <s>asignaturas que imparten</s>. Un<br />
-profesor tiene los mismos datos que un alumno más número de cuenta y número de<br />
-empleado. Además, para facilitar que se cubran posibles bajas, para cada<br />
-profesor hay que indicar <s>aquellos que pueden cubrirle</s>.</p>
+<p>En la ETSISI se imparten estudios de grado o de máster. Hay que guardar su nombre, máximo de alumnos y <s>asignaturas que incluyen</s>, que se pueden compartir entre títulos. Hay que indicar <s>en qué aula concreta se imparte cada asignatura</s> y su aforo, según haya o no que mantener distancia de seguridad o no.</p>
+<p>Hay también alumnos identificados por Nombre, DNI y E-mail. <s>Se matriculan en una fecha, asignatura y cuatrimestre concretos</s> (una asignatura se puede impartir en varios cuatrimestres). También se lleva un <s>registro de las calificaciones obtenidas por cada alumno en las convocatorias de cada asignatura</s> (mes y año).</p>
+<p>Por último, hay que registrar profesores y las <s>asignaturas que imparten</s>. Un profesor tiene los mismos datos que un alumno más número de cuenta y número de empleado. Además, para facilitar que se cubran posibles bajas, para cada profesor hay que indicar <s>aquellos que pueden cubrirle</s>.</p>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="50" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
@@ -687,8 +595,7 @@ profesor hay que indicar <s>aquellos que pueden cubrirle</s>.</p>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="54" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Modelado de datos</header>
 <h1>¿Qué relaciones observamos? Solución (V)</h1>
-<p>Calificaciones obtenidas por cada alumno en las convocatorias de exámenes de<br />
-cada asignatura</p>
+<p>Calificaciones obtenidas por cada alumno en las convocatorias de exámenes de cada asignatura</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-calficaciones.png" alt="" /></p>
 <footer>Bases de datos</footer>
 </section>
@@ -712,9 +619,11 @@ cada asignatura</p>
 <p><img src="img/t2/ejercicio-paso-a-paso-relacion-todas.png" alt="" /></p>
 <footer>Bases de datos</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-class="endpage" data-theme="bbdd" class="endpage" data-marpit-pagination="58" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--class:endpage;--theme:bbdd;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-paginate="true" data-header="Modelado de datos" data-footer="Bases de datos" data-class="license" data-theme="bbdd" class="license" data-marpit-pagination="58" data-marpit-pagination-total="58" style="--paginate:true;--header:Modelado de datos;--footer:Bases de datos;--class:license;--theme:bbdd;">
 <header>Modelado de datos</header>
-<h1>Gracias</h1>
+<h1>Licencia</h1>
+<p>Esta obra está licenciada bajo una licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.</p>
+<p>Puede encontrar su código en el siguiente enlace: <a href="https://github.com/etsisi/Aprendizaje-profundo">https://github.com/etsisi/Aprendizaje-profundo</a></p>
 <footer>Bases de datos</footer>
 </section>
 <script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let r,o;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(o=r)}}catch(t){console.error(t)}})));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||o||t.currentScale||1;r!==c&&(r=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let r=0;r<u;r+=1){const o=t.children[r],a=o.getScreenCTM();if(a){const t=null!==(n=null===(e=o.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,r=null!==(s=null===(i=o.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=o.firstElementChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-r}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}})),!1!==l&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)}))}r=1,o=void 0;const i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function a({once:t=!1,target:e=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[n]:[];let o=!t;const a=()=>{for(const t of r)t({target:e});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),(t=>{var e;const r=t.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:a}=o;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(r,"width",`${c}`),i(r,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")}))}(e),o&&window.requestAnimationFrame(a)};return a(),()=>{o=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),r=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:r})})(s?s.getRootNode():document)}();
