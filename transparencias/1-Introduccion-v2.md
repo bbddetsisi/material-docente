@@ -113,11 +113,9 @@ Cuando se utilizan bases de datos los programas "*comparten*" los datos
 
 <!-- _class: cite -->
 
-<div class="cite-author"> <!--data-text="Edward Thorndike - Law of Effect (1898)"-->
+<div class="cite-author" data-text="ase de datos"-->
 
-   «Conjunto de información (datos) **homogénea** de una organización,
-   **almacenada** en un ordenador, y que permite realizar **consultas** y
-   **actualizaciones** (inserciones, modificaciones y/o borrados)»
+«Conjunto de información (datos) **homogénea** de una organización, **almacenada** en un ordenador, y que permite realizar **consultas** y **actualizaciones** (inserciones, modificaciones y/o borrados)»
 
 </div>
 
@@ -127,12 +125,7 @@ Cuando se utilizan bases de datos los programas "*comparten*" los datos
 
 <div class="cite-author">
 
-   Conjunto **exhaustivo**, con redundancia controlada de
-   **datos estructurados**, fiables y homogéneos, organizados con
-   **independencia** de su utilización y de su implementación en
-   máquina, accesibles en tiempo útil, **compartibles** por usuarios
-   concurrentes que tienen necesidades de información diferentes y no
-   predecibles en el tiempo»
+«Conjunto **exhaustivo**, con redundancia controlada de **datos estructurados**, fiables y homogéneos, organizados con **independencia** de su utilización y de su implementación en máquina, accesibles en tiempo útil, **compartibles** por usuarios concurrentes que tienen necesidades de información diferentes y no predecibles en el tiempo»
 
 </div>
 
@@ -428,4 +421,8 @@ Más adelante en la asignatura trabajaremos la conesión desde aplicaciones
 
 ---
 
-# Gracias<!--class: endpage-->
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/etsisi/Aprendizaje-profundo>

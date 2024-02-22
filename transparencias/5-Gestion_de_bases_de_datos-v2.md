@@ -53,8 +53,7 @@ math        : mathjax
 
 Tendemos a pensar que los SGBD son aplicaciones monousuario
 
-- Pero una de sus principales ventajas es el **acceso concurrente a los
-  datos**
+- Pero una de sus principales ventajas es el **acceso concurrente a los datos**
 
 ![center](img/t5/cliente-servidor.png)
 
@@ -62,19 +61,15 @@ Tendemos a pensar que los SGBD son aplicaciones monousuario
 
 # El problema (y II)
 
-Para entender el problema que motiva el uso de transacciones, vamos a
-realizar varias suposiciones:
+Para entender el problema que motiva el uso de transacciones, vamos a realizar varias suposiciones:
 
-- Una **base de datos** se representa básicamente como una colección de
-  elementos de datos con nombres:
+- Una **base de datos** se representa básicamente como una colección de elementos de datos con nombres:
 
 $$\{A,B,X,Y,\ldots\}$$
 
 - Se definen dos operaciones:
-  - $\mathtt{leer\_item}(X)$: Lee un elemento de la base de datos
-    llamado $X$ en una variable $X$ del programa
-  - $\mathtt{escribir\_item}(X)$: Escribe el valor de la variable de
-    programa $X$ en el elemento de la base de datos llamado $X$
+  - $\mathtt{leer\_item}(X)$: Lee un elemento de la base de datos llamado $X$ en una variable $X$ del programa
+  - $\mathtt{escribir\_item}(X)$: Escribe el valor de la variable de programa $X$ en el elemento de la base de datos llamado $X$
 
 ---
 
@@ -94,8 +89,7 @@ $$\{A,B,X,Y,\ldots\}$$
 
 ![center w:700](img/t5/ap3.png)
 
-El elemento X tiene un valor incorrecto porque su actualización se
-pierde (se sobrescribe)
+El elemento X tiene un valor incorrecto porque su actualización se pierde (se sobrescribe)
 
 ---
 
@@ -109,8 +103,7 @@ pierde (se sobrescribe)
 
 ![center w:700](img/t5/ls2.png)
 
-Se ha leído un valor de X que no es el correcto, pues se debería haber
-restaurado tras el error
+Se ha leído un valor de X que no es el correcto, pues se debería haber restaurado tras el error
 
 ---
 
@@ -124,15 +117,13 @@ restaurado tras el error
 
 ![center w:700](img/t5/ri2.png)
 
-Se ha leído un valor inconsistente de $Y$, ya que la lectura se ha
-adelantado a la actualización de su valor
+Se ha leído un valor inconsistente de $Y$, ya que la lectura se ha adelantado a la actualización de su valor
 
 ---
 
 # Cómo evitar los errores anteriores (I)
 
-Se podrían agrupar varias instrucciones de lecturas y escrituras de
-forma que se ejecuten de forma ~~atómica~~
+Se podrían agrupar varias instrucciones de lecturas y escrituras de forma que se ejecuten de forma ~~atómica~~
 
 ![center w:450](img/t5/atomica.png)
 
@@ -140,8 +131,7 @@ forma que se ejecuten de forma ~~atómica~~
 
 # Cómo evitar los errores anteriores (II)
 
-La ejecución de un conjunto de operaciones debe dejar la base de datos
-en un estado ~~consistente~~
+La ejecución de un conjunto de operaciones debe dejar la base de datos en un estado ~~consistente~~
 
 ![center w:450](img/t5/consistente.png)
 
@@ -149,9 +139,7 @@ en un estado ~~consistente~~
 
 # Cómo evitar los errores anteriores (III)
 
-Las instrucciones agrupadas deberían ejecutarse de manera ~~aislada~~,
-de forma que dos conjuntos de instrucciones que no dependan entre sí, se
-ejecutarían simultáneamente:
+Las instrucciones agrupadas deberían ejecutarse de manera ~~aislada~~, de forma que dos conjuntos de instrucciones que no dependan entre sí, se ejecutarían simultáneamente:
 
 ![center w:400](img/t5/aislada.png)
 
@@ -159,8 +147,7 @@ ejecutarían simultáneamente:
 
 # Cómo evitar los errores anteriores (y IV)
 
-Los cambios realizados por las operaciones deben ser ~~duraderos~~, de
-forma que no les afecten los fallos:
+Los cambios realizados por las operaciones deben ser ~~duraderos~~, de forma que no les afecten los fallos:
 
 ![center w:400](img/t5/duraderos.png)
 
@@ -168,29 +155,20 @@ forma que no les afecten los fallos:
 
 # Propiedades deseables: ACID
 
-Deben cumplirse en un SGBD para evitar los errores relacionados con el
-acceso concurrente a los datos
+Deben cumplirse en un SGBD para evitar los errores relacionados con el acceso concurrente a los datos
 
 - **~~A~~tomicity**: Instrucciones se ejecutan de manera autónoma
-- **~~C~~onsistency**: Los cambios deben dejar la base de datos en un
-  estado consistente
-- **~~I~~solation**: Las instrucciones se ejecutan de manera aislada,
-  sin interdependencias
-- **~~D~~urability**: Todo cambio debe ser durable en el tiempo y
-  tolerante a fallos
+- **~~C~~onsistency**: Los cambios deben dejar la base de datos en un estado consistente
+- **~~I~~solation**: Las instrucciones se ejecutan de manera aislada, sin interdependencias
+- **~~D~~urability**: Todo cambio debe ser durable en el tiempo y tolerante a fallos
 
 ---
 
 # ¿Qué es una transacción?
 
-- Es una agrupación de operaciones sobre una base de datos que se
-  ejecutan de forma **atómica**, **aislada**, mantienen la
-  **consistencia** de la base de datos y los cambios realizados son
-  **duraderos**
-- En otras palabras, cumple con las propiedades ACID descritas
-  anteriormente
-- El lenguaje SQL nos permite agrupar consultas como transacciones,
-  además de ejecutarlas, confirmarlas y deshacerlas en caso de error
+- Es una agrupación de operaciones sobre una base de datos que se ejecutan de forma **atómica**, **aislada**, mantienen la **consistencia** de la base de datos y los cambios realizados son **duraderos**
+- En otras palabras, cumple con las propiedades ACID descritas anteriormente
+- El lenguaje SQL nos permite agrupar consultas como transacciones, además de ejecutarlas, confirmarlas y deshacerlas en caso de error
 
 ---
 
@@ -271,10 +249,8 @@ COMMIT;
 
 En MySQL, las transacciones se confirman de forma automática
 
-- Esto es, cada consulta ejecutada se convierte en una transacción y se
-  confirma automáticamente
-- Se puede activar/desactivar este comportamiento con la siguiente
-  consulta
+- Esto es, cada consulta ejecutada se convierte en una transacción y se confirma automáticamente
+- Se puede activar/desactivar este comportamiento con la siguiente consulta
 
 ```SQL
 SET autocommit = {0 | 1}
@@ -318,8 +294,7 @@ Se gestionan mediante tres operaciones
 ![center](img/t5/write_lock.png)
 
 - Si el objeto está desbloqueado, se bloquea el mismo para escritura
-- Si el objeto está bloqueado, se espera a que quede libre antes de
-  bloquearlo para escritura
+- Si el objeto está bloqueado, se espera a que quede libre antes de bloquearlo para escritura
 
 ---
 
@@ -327,12 +302,9 @@ Se gestionan mediante tres operaciones
 
 ![center](img/t5/unlock.png)
 
-- Si el bloqueo era por **lectura**, se decrementa en 1 el número de
-  lecturas
-- Si el número de lecturas **llega a 0**, se establece que el objeto
-  queda desbloqueado y se notifica a los bloqueos que esperan
-- Si el bloqueo era por **escritura**, se desbloquea el objeto y se
-  notifica a los bloqueos que estaban esperando
+- Si el bloqueo era por **lectura**, se decrementa en 1 el número de lecturas
+- Si el número de lecturas **llega a 0**, se establece que el objeto queda desbloqueado y se notifica a los bloqueos que esperan
+- Si el bloqueo era por **escritura**, se desbloquea el objeto y se notifica a los bloqueos que estaban esperando
 
 ---
 
@@ -341,10 +313,8 @@ Se gestionan mediante tres operaciones
 Para garantizar la ejecución en serie de las transacciones se realiza un
 **bloqueo en dos fases**:
 
-- *Fase de crecimiento*: se realizan todos los bloqueos de los objetos
-  que se vayan a utilizar en la transacción
-- *Fase de liberación*: se liberan aquellos bloqueos solicitados durante
-  la fase anterior.
+- *Fase de crecimiento*: se realizan todos los bloqueos de los objetos que se vayan a utilizar en la transacción
+- *Fase de liberación*: se liberan aquellos bloqueos solicitados durante la fase anterior.
 
 ---
 
@@ -376,14 +346,10 @@ Parámetros:
 
 Niveles:
 
-- `REPEATABLE READ` (**por defecto**): Dentro de una misma transacción
-  las lecturas se realizan sobre el conjunto inicial de datos (no
-  bloquea)
-- `READ COMMITTED`: Cada lectura establece su propio conjunto de datos
-  incluso dentro de la misma transacción (no bloquea)
+- `REPEATABLE READ` (**por defecto**): Dentro de una misma transacción las lecturas se realizan sobre el conjunto inicial de datos (no bloquea)
+- `READ COMMITTED`: Cada lectura establece su propio conjunto de datos incluso dentro de la misma transacción (no bloquea)
 - `READ UNCOMMITTED`: Permite _lecturas sucias_
-- `SERIALIZABLE`: Bloqueo compartido solo para lectura con otras
-  sesiones
+- `SERIALIZABLE`: Bloqueo compartido solo para lectura con otras sesiones
 
 ---
 
@@ -396,11 +362,9 @@ Niveles:
 Subrutina que se almacena en una base de datos
 
 - Similar a un subprograma en cualquier otro lenguaje de programación
-- Cuenta con un **nombre**, una **lista de parámetros** y **sentencias
-  SQL**
+- Cuenta con un **nombre**, una **lista de parámetros** y **sentencias SQL**
 - Ventajas:
-  - **Rápidos**: El SGBD puede aprovechar hasta la caché y además
-    posibilita evitar tráfico de red
+  - **Rápidos**: El SGBD puede aprovechar hasta la caché y además posibilita evitar tráfico de red
   - **Portables**: Son fácilmente migrables entre servidores
   - **Fuentes disponibles**: Accesible desde la propia base de datos
 
@@ -436,8 +400,7 @@ END$$
 DELIMITER ;
 ```
 
-**Importante**: Cambiar el delimitador de fin de línea por defecto de
-SQL
+**Importante**: Cambiar el delimitador de fin de línea por defecto de SQL
 
 - Así se evita que el `;` dentro del procedimiento se interprete como
   fin del mismo
@@ -455,14 +418,9 @@ SQL
 
 Los parámetros de un procedimiento pueden sertres tipos
 
-- `IN` (por defecto): El procedimiento puede modificar el valor, pero la
-  modificación no es visible para el invocador cuando el procedimiento
-  acaba
-- `OUT`: Su valor inicial es NULL dentro del procedimiento, y su valor
-  es visible para el invocador cuando el procedimiento acaba
-- `INOUT`: El parámetro se inicializa en la llamada, puede ser
-  modificado por el procedimiento, y cualquier cambio hecho por el
-  procedimiento es visible tras la ejecución
+- `IN` (por defecto): El procedimiento puede modificar el valor, pero la modificación no es visible para el invocador cuando el procedimiento acaba
+- `OUT`: Su valor inicial es NULL dentro del procedimiento, y su valor es visible para el invocador cuando el procedimiento acaba
+- `INOUT`: El parámetro se inicializa en la llamada, puede ser modificado por el procedimiento, y cualquier cambio hecho por el procedimiento es visible tras la ejecución
 
 ---
 
@@ -541,16 +499,14 @@ SELECT @num;
 
 # Variables y variables de usuario
 
-Ya hemos visto cómo se declaran variables de usuario: anteponiendo una
-`@` delante del nombre
+Ya hemos visto cómo se declaran variables de usuario: anteponiendo una `@` delante del nombre
 
 ```SQL
 SET @miVar = 10; -- Asignar valor
 SELECT @miVar;   -- Consultar valor
 ```
 
-Se pueden declarar variables locales en los procedimientos usando
-`DECLARE`
+Se pueden declarar variables locales en los procedimientos usando `DECLARE`
 
 ```SQL
 DECLARE nombre_variable [,...] tipo [DEFAULT valor]
@@ -576,15 +532,13 @@ END$$
 DELIMITER ;
 ```
 
-Si hay **varias consultas** en el cuerpo de un procedimiento, se
-devuelve **el último resultado**
+Si hay **varias consultas** en el cuerpo de un procedimiento, se devuelve **el último resultado**
 
 ---
 
 # Sentencias de control de flujo
 
-SQL soporta varias sentencias para controlar el flujo de ejecución de
-los procedimientos:
+SQL soporta varias sentencias para controlar el flujo de ejecución de los procedimientos:
 
 - `IF`
 - `CASE`
@@ -613,8 +567,7 @@ Se pueden encadenar condiciones con `ELSEIF`.
 
 # Sentencia `CASE` (I)
 
-Evalúa la expresión y ejecuta las sentencias acorde al resultado
-obtenido
+Evalúa la expresión y ejecuta las sentencias acorde al resultado obtenido
 
 ```SQL
 CASE variable_a_evaluar
@@ -639,8 +592,7 @@ WHEN condicion THEN sentencias
 END CASE
 ```
 
-Una vez encuentra una verdadera, ejecuta las sentencias y sale del
-`CASE`
+Una vez encuentra una verdadera, ejecuta las sentencias y sale del `CASE`
 
 - En caso contrario se ejecuta el fragmento del `ELSE`.
 
@@ -785,8 +737,7 @@ END $$
 DELIMITER ;
 ```
 
-Es necesario especificar `DETERMINISTIC` (determinista) para que el
-optimizador del SGBD haga su trabajo correctamente
+Es necesario especificar `DETERMINISTIC` (determinista) para que el optimizador del SGBD haga su trabajo correctamente
 
 ---
 
@@ -819,13 +770,10 @@ DELIMITER ;
 
 # Cursor
 
-Estructura de control para recorrer secuencialmente los resultados de
-una consulta
+Estructura de control para recorrer secuencialmente los resultados de una consulta
 
-- En otras palabras, es un iterador sobre las filas resultantes de
-  una consulta
-- Se suelen utilizar en subrutinas almacenadas en la base de datos,
-  como procedimientos y funciones
+- En otras palabras, es un iterador sobre las filas resultantes de una consulta
+- Se suelen utilizar en subrutinas almacenadas en la base de datos, como procedimientos y funciones
 
 ---
 
@@ -853,24 +801,20 @@ END;
 
 # Cursores: detalles importantes
 
-El número (y tipos) de variables donde almacenar el resultado de `FETCH`
-se corresponde con el número (tipo) de columnas devueltas por la
-consulta que alimenta el cursor:
+El número (y tipos) de variables donde almacenar el resultado de `FETCH` se corresponde con el número (tipo) de columnas devueltas por la consulta que alimenta el cursor:
 
 ```SQL
 DECLARE cur1 CURSOR FOR SELECT id,data FROM t1;
 FETCH cur1 INTO b, c;
 ```
 
-Hay que declarar un manejador especial para cuando se alcance el final
-del cursor en un `FETCH`:
+Hay que declarar un manejador especial para cuando se alcance el final del cursor en un `FETCH`:
 
 ```SQL
 DECLARE CONTINUE HANDLER FOR NOT FOUND sentencias;
 ```
 
-**No olvidar**: Los cursores **se abren antes de su uso** y **se cierran
-al acabar**.
+**No olvidar**: Los cursores **se abren antes de su uso** y **se cierran al acabar**.
 
 ---
 
@@ -880,20 +824,16 @@ al acabar**.
 
 # ¿Por qué?
 
-En ocasiones es necesario comprobar una serie de restricciones en los
-datos de manera periódica
+En ocasiones es necesario comprobar una serie de restricciones en los datos de manera periódica
 
-- Una posible solución es realizar una comprobación _activa_,
-  consultando periódicamente a la base de datos
-- Otra solución más eficiente pasaría por utilizar un sistema basado en
-  eventos y realizar la comprobación cuando se dispare
+- Una posible solución es realizar una comprobación _activa_, consultando periódicamente a la base de datos
+- Otra solución más eficiente pasaría por utilizar un sistema basado en eventos y realizar la comprobación cuando se dispare
 
 ---
 
 # ¿Qué eventos suceden en una BBDD?
 
-Durante el uso de una BBDD, pueden ocurrir diferentes eventos que
-requieran volver a comprobar las restricciones de las que hablábamos
+Durante el uso de una BBDD, pueden ocurrir diferentes eventos que requieran volver a comprobar las restricciones de las que hablábamos
 
 - Se insertan nuevas filas en una tabla
 - Se modifica el valor de algún atributo de una o varias filas
@@ -903,11 +843,9 @@ requieran volver a comprobar las restricciones de las que hablábamos
 
 # Caso de estudio
 
-Una empresa quiere garantizar que un empleado nunca gane más dinero que
-su supervisor
+Una empresa quiere garantizar que un empleado nunca gane más dinero que su supervisor
 
-Se plantea programar una consulta que obtenga los salarios de empleados
-y supervisores directos
+Se plantea programar una consulta que obtenga los salarios de empleados y supervisores directos
 
 ¿Se te ocurre una manera mejor?
 
@@ -945,8 +883,7 @@ DELIMITER ;
 
 # Eventos `BEFORE`y `AFTER`
 
-Los eventos `BEFORE` se ejecutan antes de que se lleve a cabo el evento
-en cuestión:
+Los eventos `BEFORE` se ejecutan antes de que se lleve a cabo el evento en cuestión:
 
 - `BEFORE INSERT`
 - `BEFORE UPDATE`
@@ -962,13 +899,10 @@ Los eventos `AFTER` se ejecutan una vez se ha producido el evento:
 
 # Variables `NEW` y `OLD` (I)
 
-Una característica interesante de los triggers son las variables `NEW` y
-`OLD`
+Una característica interesante de los triggers son las variables `NEW` y `OLD`
 
-- `NEW.columna` es el nuevo valor que se le va a asignar a la columna en
-  cuestión (para eventos `UPDATE` e `INSERT`)
-- `OLD.columna` es el valor que tenía la columna en cuestión que se
-  modifica (para eventos `UPDATE` y `DELETE`)
+- `NEW.columna` es el nuevo valor que se le va a asignar a la columna en cuestión (para eventos `UPDATE` e `INSERT`)
+- `OLD.columna` es el valor que tenía la columna en cuestión que se modifica (para eventos `UPDATE` y `DELETE`)
 
 ---
 
@@ -988,8 +922,7 @@ END//
 DELIMITER ;
 ```
 
-- Se pueden modificar las variables `NEW` para cambiar los valores a
-  insertar/modificar en base a unas condiciones
+- Se pueden modificar las variables `NEW` para cambiar los valores a insertar/modificar en base a unas condiciones
 - Las variables `OLD` solo se pueden leer
 
 ---
@@ -997,8 +930,7 @@ DELIMITER ;
 # Orden de ejecución de los Triggers
 
 - Se pueden definir varios triggers sobre el mismo evento y objeto.
-- Es posible especificar el orden de ejecución en el momento de creación
-  del trigger
+- Es posible especificar el orden de ejecución en el momento de creación del trigger
 
 ```SQL
 CREATE TRIGGER ins_transaction BEFORE INSERT ON account
@@ -1037,8 +969,7 @@ Presta atención a la forma de lanzar una excepción en MYSQL
 
 # Algunos ejemplos (II)
 
-Corregir valores inusuales o fuera de rango en consultas de inserción
-y/o modificación:
+Corregir valores inusuales o fuera de rango en consultas de inserción y/o modificación:
 
 ```SQL
 DELIMITER $$
@@ -1079,15 +1010,12 @@ DELIMITER ;
 
 # ¿Qué es un índice?
 
-Permite que una consulta recupere eficientemente los datos de una base
-de datos
+Permite que una consulta recupere eficientemente los datos de una base de datos
 
-- Los índices están relacionados con tablas específicas y constan de una
-  o más claves
+- Los índices están relacionados con tablas específicas y constan de una o más claves
 - Una tabla puede tener más de un índice construido a partir de ella
 - Las claves se basan en las columnas de las tablas
-- Sin un índice, MySQL debe comenzar con la primera fila y luego leer
-  toda la tabla para encontrar las filas relevantes
+- Sin un índice, MySQL debe comenzar con la primera fila y luego leer toda la tabla para encontrar las filas relevantes
 
 ---
 
@@ -1095,8 +1023,7 @@ de datos
 
 MySQL usa los índices para:
 
-- Encontrar las filas que cumplen la condición de un `WHERE` de manera
-  rápida
+- Encontrar las filas que cumplen la condición de un `WHERE` de manera rápida
 - Obtener filas de otras tablas cuando se hacen `JOIN` entre ellas
 - Encontrar máximos y mínimos mediante las funciones `MAX()` y `MIN()`
 - Para establecer ordenaciones en los resultados de una consulta
@@ -1105,8 +1032,7 @@ MySQL usa los índices para:
 
 # Creando índices (I)
 
-Una posibilidad es definir el índice en el mismo momento que se crea la
-tabla para la cual se define:
+Una posibilidad es definir el índice en el mismo momento que se crea la tabla para la cual se define:
 
 ```SQL
 CREATE TABLE test (
@@ -1120,8 +1046,7 @@ CREATE TABLE test (
 
 # Creando índices (y II)
 
-Otra opción es definir el índice de manera explícita mediante una
-consulta DDL:
+Otra opción es definir el índice de manera explícita mediante una consulta DDL:
 
 ```SQL
 CREATE [UNIQUE] INDEX index_name
@@ -1136,14 +1061,10 @@ CREATE [UNIQUE] INDEX index_name
 
 # Índices automatizados
 
-**InnoDB**, el motor de MySQL, crea automáticamente índices en las
-siguientes situaciones:
+**InnoDB**, el motor de MySQL, crea automáticamente índices en las siguientes situaciones:
 
-- Las claves primarias de las tablas tienen asociadas un índice de
-  manera automática, para que buscar valores duplicados sea eficiente
-- De la misma forma, las claves ajenas también tienen definidas
-  automáticamente un índice para comprobar eficientemente si el valor de
-  la columna referenciada existe
+- Las claves primarias de las tablas tienen asociadas un índice de manera automática, para que buscar valores duplicados sea eficiente
+- De la misma forma, las claves ajenas también tienen definidas automáticamente un índice para comprobar eficientemente si el valor de la columna referenciada existe
 
 ---
 
@@ -1161,21 +1082,15 @@ Los índices basan su funcionamiento en los árboles B:
 
 # Creación de usuarios (I)
 
-La creación de un usuario en SQL se refiere al proceso de establecer una
-cuenta de usuario en un sistema de gestión de bases de datos
+La creación de un usuario en SQL se refiere al proceso de establecer una cuenta de usuario en un sistema de gestión de bases de datos
 
-La creación de un usuario permite a una persona o una aplicación acceder
-a la base de datos y realizar diversas operaciones, como consultar
-datos, insertar registros, actualizar información o eliminar
-información, dependiendo de los permisos otorgados al usuario
+La creación de un usuario permite a una persona o una aplicación acceder a la base de datos y realizar diversas operaciones, como consultar datos, insertar registros, actualizar información o eliminar información, dependiendo de los permisos otorgados al usuario
 
 ---
 
 # Creación de usuarios (y II)
 
-Para crear un usuario debemos estar conectados a la base de datos con un
-usuario que disponga de permisos suficientes para llevar a cabo tal
-acción
+Para crear un usuario debemos estar conectados a la base de datos con un usuario que disponga de permisos suficientes para llevar a cabo tal acción
 
 La sentencia para crear usuarios es:
 
@@ -1198,25 +1113,17 @@ GRANT PRIVILEGE ON schema.tabla TO 'nombre_de_usuario' WITH GRANT OPTION;
 
 Asigna los permisos que consideremos necesarios a un usuario
 
-- `PRIVILEGE`: Uno o más de los siguientes valores que permiten
-  ejecución de las sentencias homónimas: `CREATE`, `ALTER`, `DROP`,
-  `INSERT`, `UPDATE`, `DELETE`, `SELECT`; `*` para todos los permisos
-- `schema.tabla`: El `schema` y la tabla(s) sobre la que aplicar los
-  permisos, siendo `*` equivalente a _todos_ (e.g. `s.*` todas tabla de
-  `s`, `*.*` toda tabla de todo `schema`)
-- `WITH GRANT OPTION` (opcional): , que puede omitirse, otorga al usuario la
-  posibilidad de asignatar permisos iguales o inferiores a los suyos a
-  otros usuarios
+- `PRIVILEGE`: Uno o más de los siguientes valores que permiten ejecución de las sentencias homónimas: `CREATE`, `ALTER`, `DROP`, `INSERT`, `UPDATE`, `DELETE`, `SELECT`; `*` para todos los permisos
+- `schema.tabla`: El `schema` y la tabla(s) sobre la que aplicar los permisos, siendo `*` equivalente a _todos_ (e.g. `s.*` todas tabla de `s`, `*.*` toda tabla de todo `schema`)
+- `WITH GRANT OPTION` (opcional): , que puede omitirse, otorga al usuario la posibilidad de asignatar permisos iguales o inferiores a los suyos a otros usuarios
 
-`FLUSH PRIVILEGES` tras asignar permisos fuerza su refresco en algunos
-SGBD
+`FLUSH PRIVILEGES` tras asignar permisos fuerza su refresco en algunos SGBD
 
 ---
 
 # Asignación de permisos sobre vistas
 
-Las vistas toman un papel crucial en la privacidad de las bases datos
-cuando se combinan con una gestión de permisos adecuada
+Las vistas toman un papel crucial en la privacidad de las bases datos cuando se combinan con una gestión de permisos adecuada
 
 Por ejemplo, ante una vista creada como:
 
@@ -1230,15 +1137,13 @@ Es posible establecer un permiso tal que:
 GRANT SELECT ON miBD.miVista TO 'nombre_de_usuario';
 ```
 
-De tal forma que `nombre_de_usuario` solo pueda consultar la información
-proporcionada por `miVista` del `miBD`
+De tal forma que `nombre_de_usuario` solo pueda consultar la información proporcionada por `miVista` del `miBD`
 
 ---
 
 # Revocación de permisos
 
-Al igual que podemos crear permisos, podemos revocarlos. Para ello
-empleamos:
+Al igual que podemos crear permisos, podemos revocarlos. Para ello empleamos:
 
 ```SQL
 REVOKE PRIVILEGE ON base_de_datos.tabla FROM 'nombre_de_usuario';
@@ -1270,18 +1175,14 @@ DROP USER 'nombre_de_usuario';
 
 # Recomendaciones generales
 
-Es fundamental tener en cuenta la seguridad al crear usuarios en una
-base de datos. Esto implica asignar permisos mínimos necesarios para
-evitar el acceso no autorizado y utilizar contraseñas seguras. Además,
-debes administrar y mantener adecuadamente las cuentas de usuario a lo
-largo del tiempo, revocando permisos si ya no son necesarios y cambiando
-contraseñas periódicamente
+Es fundamental tener en cuenta la seguridad al crear usuarios en una base de datos. Esto implica asignar permisos mínimos necesarios para evitar el acceso no autorizado y utilizar contraseñas seguras. Además, debes administrar y mantener adecuadamente las cuentas de usuario a lo largo del tiempo, revocando permisos si ya no son necesarios y cambiando contraseñas periódicamente
 
-Ten en cuenta que los detalles exactos y la sintaxis pueden variar según
-el SGBD que utilices, por lo que es importante consultar la
-documentación específica de tu sistema de gestión de bases de datos para
-obtener instrucciones precisas
+Ten en cuenta que los detalles exactos y la sintaxis pueden variar según el SGBD que utilices, por lo que es importante consultar la documentación específica de tu sistema de gestión de bases de datos para obtener instrucciones precisas
 
 ---
 
-# Gracias<!--class: endpage-->
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/etsisi/Aprendizaje-profundo>

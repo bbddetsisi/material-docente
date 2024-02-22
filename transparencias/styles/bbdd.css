@@ -2,7 +2,7 @@
 
 /*****************
  @author: Alberto Díaz-Álvarez
- @version: 1.0
+ @version: 1.1
  @update: 2022-01-27
  Based on the work of Paulo Cunha (https://github.com/cunhapaulo/marpstyle)
 *****************/
@@ -219,7 +219,11 @@ section blockquote sup {
   ##### Institución
 */
 section.titlepage {
-  background-color: var(--color-tertiary);
+  /*background-color: var(--color-tertiary);*/
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)), url(https://etsisi.github.io/Styles/images/front-slide-background.png);
+  background-size: auto;
+  background-position: 0;
+  background-blend-mode: normal;
     /* fonts sizes */
   --title-size: 150%;
   --subtitle-size: 110%;
@@ -296,7 +300,6 @@ section.titlepage:after {
 }
 
 /* Última página de las transparencias */
-
 section.endpage {
   background-color: var(--color-tertiary);
   background-image: none;
@@ -318,6 +321,34 @@ section.endpage footer,
 section.endpage header,
 section.endpage:after {
   display: none;
+}
+
+section.license {
+  background-image: url(https://etsisi.github.io/Styles/images/end-slide-background.png);
+  background-size: auto;
+  background-position: 0;
+  background-blend-mode: luminosity;
+  text-align: center !important;
+  font-weight: bold;
+}
+
+section.license footer,
+section.license header,
+section.license:after {
+  display: none;
+}
+section.license h1 {
+  font-size: 200%;
+  border-bottom: none;
+  color: var(--color-primary);
+}
+section.license p {
+  font-size: 120%;
+  color: var(--color-primary);
+}
+section.license a {
+  border-bottom: none;
+  color: var(--color-error);
 }
 
 /* Separador de secciones */
@@ -546,4 +577,3 @@ section.biblio header,
 section.biblio:after {
   display: none;
 }
-
