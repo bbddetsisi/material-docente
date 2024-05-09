@@ -600,7 +600,7 @@ La [API de SLQAlchemy](https://docs.sqlalchemy.org/en/14/orm/loading_objects.htm
 ```python
 res = session
    .query(Capitulos)
-   .filterBy(duracion >= 25)
+   .filter_by(duracion >= 25)
    .all()
 ```
 
