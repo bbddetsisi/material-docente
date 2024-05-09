@@ -585,7 +585,7 @@ session.commit()
 <p>La <a href="https://docs.sqlalchemy.org/en/14/orm/loading_objects.html">API de SLQAlchemy</a> para realizar consultas es bastante extensa y permite realizar búsquedas más complejas. Por ejemplo, podemos aplicar filtros sobre valores de columnas:</p>
 <pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>res = session
    .query(Capitulos)
-   .filterBy(duracion &gt;= <span class="hljs-number">25</span>)
+   .filter_by(duracion &gt;= <span class="hljs-number">25</span>)
    .<span class="hljs-built_in">all</span>()
 </span></span></foreignObject></svg></code></pre>
 <p>e incluso aplicar funciones de agregación y agrupamiento:</p>
