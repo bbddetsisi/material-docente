@@ -10,7 +10,7 @@ description : >
   bases de datos desde aplicaciones de software. E.T.S.I. Sistemas
   Informáticos (UPM)
 keywords    : >
-  Bases de datos, Programación, JDBC, Hibernate, ORM
+  Bases de datos, Programación, python, sqlalchemy, mysql
 math        : mathjax
 ---
 
