@@ -1,22 +1,21 @@
 ---
 marp        : true
-title       : Programación contra bases de datos
+title       : Seguridad en bases de datos
 paginate    : true
 theme       : bbdd
-header      : Programación contra bases de datos
+header      : Seguridad en bases de datos
 footer      : Bases de datos
 description : >
-  Cubre las técnicas y herramientas para interactuar eficientemente con
-  bases de datos desde aplicaciones de software. E.T.S.I. Sistemas
+  Cubre las principales de medidas de seguridad a introducir en bases de datos. E.T.S.I. Sistemas
   Informáticos (UPM)
 keywords    : >
-  Bases de datos, Programación, JDBC, Hibernate, ORM
+  Bases de datos, Seguridad
 math        : mathjax
 ---
 
 <!-- _class: titlepage -->
 
-# Programación contra bases de datos en python
+# Seguridad en Bases de Datos
 
 ##
 
@@ -30,602 +29,265 @@ math        : mathjax
 
 # Índice
 
-1. Arquitectura cliente-servidor
-2. Drivers nativos
-3. SQLAlchemy
+1. Introducción
+2. Amenazas a la seguridad de las bases de datos
+3. Estrategias de seguridad
+4. Mejores prácticas
+---
+
+<!-- _class: section -->
+# INTRODUCCIÓN
+
+---
+
+# Introducción
+
+- La seguridad en bases de datos es crucial para proteger la información confidencial y garantizar la integridad de los datos.
+- Implementar una combinación de medidas de seguridad es fundamental para mitigar las amenazas potenciales.
+- La vigilancia constante y las actualizaciones periódicas son clave para mantener la seguridad de la base de datos a largo plazo.
+  
+---
+
+<!-- _class: section -->
+# AMENANZAS A LA SEGURIDAD DE LAS BASES DE DATOS
+
+
+---
+
+# Amenaza 1: Acceso No Autorizado
+
+- **Descripción**: Intentos de acceder a la base de datos sin permisos adecuados.
+- **Ejemplo**: Un empleado descontento intenta acceder a la base de datos de recursos humanos para ver información salarial de sus colegas sin tener autorización.
+
+---
+
+# Amenaza 2: Inyección de SQL
+
+- **Descripción**: Ataques que aprovechan vulnerabilidades en consultas SQL para obtener acceso no autorizado.
+- **Ejemplo**: Un atacante inserta código SQL malicioso en un campo de entrada de un formulario web para manipular la base de datos y extraer información confidencial, como nombres de usuario y contraseñas.
+
+---
+
+# Amenaza 3: Fugas de Información
+
+- **Descripción**: Divulgación no autorizada de datos sensibles.
+- **Ejemplo**: Un empleado descarga una lista de clientes de la base de datos y la comparte con un competidor, violando la política de privacidad y comprometiendo la confidencialidad de los datos.
+
+---
+
+# Amenaza 4: Modificaciones No Autorizadas
+
+- **Descripción**: Alteración de datos por parte de usuarios no autorizados.
+- **Ejemplo**: Un hacker compromete las credenciales de un administrador de la base de datos y modifica registros financieros para desviar fondos a una cuenta bancaria controlada por él mismo.
 
 ---
 
 <!-- _class: section -->
-# ARQUITECTURA CLIENTE-SERVIDOR
+# ESTRATEGIAS DE SEGURIDAD
 
 ---
 
-# Arquitectura cliente-servidor
+# Estrategia 1: Autenticación y Autorización
 
-- Las bases de datos funcionan de acuerdo con una arquitectura cliente-servidor.
-- El servidor, que contiene los datos, escucha las peticiones de los clientes.
-- Los clientes solicitan al servidor que realicen operaciones sobre los datos: creación, actualización, borrado y consulta de los datos.
-- Habitualmente, el servidor y los clientes se ejecutan en dispositivos físicos diferentes.
+En las bases de datos en fundamental el proceso de autenticación (verificar la identidad del usuario) como de autorización (controlar los permisos de acceso de los usuarios).
 
----
+Para gestionarlo SQL dispone de mecanismos de creación de usuarios.
 
-# MySQL Client/Server Protocol
-
-Para comunicarse, el servidor y los clientes necesitan “hablar” el mismo idioma.
-
-MySQL dispone de un protocolo que implementan tanto el servidor como los clientes para establecer la comunicación:
-
-- Se denomina MySQL Client/Server Protocol.
-- Se ejecuta sobre TCP.
-- El cuerpo de los mensajes incluye sentencias SQL.
-
-Más información en [la documentación de MySQL](https://dev.mysql.com/doc/internals/en/client-server-protocol.html).
+La creación de un usuario permite a una persona o una aplicación acceder a la base de datos y realizar diversas operaciones, como consultar datos, insertar registros, actualizar información o eliminar información, dependiendo de los permisos otorgados al usuario
 
 ---
 
-# Esquema
+# Creación de usuarios
 
-Esquema básico de la arquitectura:
+Para crear un usuario debemos estar conectados a la base de datos con un usuario que disponga de permisos suficientes para llevar a cabo tal acción
 
-<center>
+La sentencia para crear usuarios es:
 
-![w:1000](img/t6/cliente-servidor.png)
-</center>
+```SQL
+CREATE USER 'nombre_de_usuario' IDENTIFIED BY 'contraseña_del_usuario';
+```
 
----
+Donde:
 
-# Esquema con varios clientes
-
-Lo habitual es que un mismo servidor reciba conexiones de diferentes clientes:
-
-<center>
-
-![w:900](img/t6/multi.png)
-</center>
+- `nombre_de_usuario`: es el nombre que se dará al nuevo usuario (debe ser único).
+- `contraseña_del_usuario`: es la contraseña que se utilizará para acceder (usar reglas estándar de contraseñas).
 
 ---
 
-# Clientes de MySQL
+# Asignación de permisos
 
-- El cliente no tiene por qué ser **MySQL Workbench**.
-- El cliente puede ser cualquier software que implemente el protocolo **MySQL Client/Server Protocol**.
-- La mayoría de lenguajes de programación incorporan librerías (extensiones) para comunicarse con *MySQL* a través de clases y funciones de alto nivel.
-- La base de datos es común para todos los programas. Cada programa se comunica con la base de datos a través de su conector:
+```SQL
+GRANT PRIVILEGE ON schema.tabla TO 'nombre_de_usuario' WITH GRANT OPTION;
+```
+
+Asigna los permisos que consideremos necesarios a un usuario
+
+- `PRIVILEGE`: Uno o más de los siguientes valores que permiten ejecución de las sentencias homónimas: `CREATE`, `ALTER`, `DROP`, `INSERT`, `UPDATE`, `DELETE`, `SELECT`; `*` para todos los permisos
+- `schema.tabla`: El `schema` y la tabla(s) sobre la que aplicar los permisos, siendo `*` equivalente a _todos_ (e.g. `s.*` todas tabla de `s`, `*.*` toda tabla de todo `schema`)
+- `WITH GRANT OPTION` (opcional): , que puede omitirse, otorga al usuario la posibilidad de asignatar permisos iguales o inferiores a los suyos a otros usuarios
+
+`FLUSH PRIVILEGES` tras asignar permisos fuerza su refresco en algunos SGBD
+
+---
+
+# Asignación de permisos sobre vistas
+
+Las vistas toman un papel crucial en la privacidad de las bases datos cuando se combinan con una gestión de permisos adecuada
+
+Por ejemplo, ante una vista creada como:
+
+```SQL
+CREATE VIEW miBD.miVista AS SELECT ...
+```
+
+Es posible establecer un permiso tal que:
+
+```SQL
+GRANT SELECT ON miBD.miVista TO 'nombre_de_usuario';
+```
+
+De tal forma que `nombre_de_usuario` solo pueda consultar la información proporcionada por `miVista` del `miBD`
+
+---
+
+# Revocación de permisos
+
+Al igual que podemos crear permisos, podemos revocarlos. Para ello empleamos:
+
+```SQL
+REVOKE PRIVILEGE ON base_de_datos.tabla FROM 'nombre_de_usuario';
+```
+
+Que funciona de forma análoga a `GRANT`.
+
+---
+
+# Consultar los permisos de un usuario
+
+Podemos consultar los permisos de un usuario con:
+
+```SQL
+SHOW GRANTS FOR 'nombre_de_usuario';
+```
+
+---
+
+# Eliminar usuario
+
+Para eliminar un usuario usaremos la siguiente sentencia:
+
+```SQL
+DROP USER 'nombre_de_usuario';
+```
+
+---
+
+## Estrategia 2. Encriptación de datos
+
+La encritación de datos consiste en codificación de datos para proteger su confidencialidad.
+
+En MySQL existen diferente mecanismos que permiten esta encriptación.
+
+---
+
+# Encriptación en la aplicación
+
+- Encripta los datos antes de enviarlos a MySQL desde la aplicación.
+- Utiliza algoritmos como AES o RSA.
+- Desencripta los datos cuando se recuperan.
+
+---
+
+# Funciones de Encriptación de MySQL
+
+- `AES_ENCRYPT(str, key)`: Encripta una cadena de texto utilizando el algoritmo AES.
+- `AES_DECRYPT(str, key)`: Desencripta una cadena de texto encriptada utilizando el algoritmo AES.
+- Puedes usar estas funciones en las consultas SQL para encriptar y desencriptar datos:
+
+```sql
+SELECT CAST(AES_DECRYPT(AES_ENCRYPT('hola', '1234'), '1234') AS CHAR); # hola
+```
+
+- `AES_ENCRYPT` genera un binario (`BLOB`) con los datos codificados y `AES_DECRYPT` los decodifica. `CAST` permite volver a transformar los datos *string* para poder mostrarlos
+
+---
+
+# Columnas Encriptadas (MySQL Enterprise Edition)
+
+- Define columnas como encriptadas.
+- MySQL encripta automáticamente los datos al insertarlos en estas columnas.
+- Los datos se desencriptan automáticamente al recuperarlos.
+
+---
+
+# SSL/TLS
+
+- Habilita SSL/TLS para cifrar la comunicación entre la aplicación y MySQL y asegura una transferencia segura de datos entre la aplicación y el servidor de MySQL.
+
+- Primero debes obtener un certificado SSL/TLS válido de una autoridad de certificación confiable o generarlo tú mismo.
+
+- Después abre el archivo de configuración de MySQL (`my.cnf` o `my.ini`) y agrega o modifica las siguientes líneas:
+
+```
+[mysqld]
+ssl-ca=/ruta/al/archivo/ca-cert.pem
+ssl-cert=/ruta/al/archivo/server-cert.pem
+ssl-key=/ruta/al/archivo/server-key.pem
+```
+
+> Si usas docker puedes customizar el fichero de configuración con `-v /my/custom:/etc/mysql/conf.d` al arrancar el contenedor.*
+
+---
+
+# SSL/TLS
+
+- A continuación reinicia el servidor MySQL para que los cambios en la configuración surtan efecto.
+
+- Verifica si SSL/TLS está habilitado ejecutando la siguiente consulta SQL: 
+
+```sql
+SHOW VARIABLES LIKE 'have_ssl'; # Cono  SSL/TLS  habilitado have_ssl debería ser YES.
+```
+
+- Finalmente conectate a MySQL utilizando SSL/TLS desde el cliente, especifica la opción `--ssl-mode` al iniciar sesión:
+
+```bash
+mysql --ssl-mode=REQUIRED -u usuario -p
+```
+
+--- 
+
+# Estrategia 3. Auditoría de Seguridad
+
+- La auditoría de seguridad en bases de datos es el proceso de monitoreo y registro de actividades relacionadas con el acceso y uso de la base de datos. Permite:
+
+   - Identificar y Prevenir Brechas de Seguridad: La auditoría permite identificar intentos de acceso no autorizado, inyecciones de SQL, modificaciones no autorizadas y otras actividades maliciosas que podrían comprometer la seguridad de la base de datos.
+
+   - Garantizar el Cumplimiento Normativo: Muchas regulaciones, como GDPR, HIPAA y PCI DSS, requieren que las organizaciones implementen medidas de auditoría de seguridad para proteger los datos personales y sensibles. 
+
+   - Detectar Comportamientos Anómalos: El monitoreo constante de la actividad de la base de datos permite detectar patrones y comportamientos anómalos que podrían indicar una amenaza de seguridad, como accesos inusuales o intentos de acceso a datos sensibles.
+
+   - Investigación de Incidentes: En caso de un incidente de seguridad, la auditoría proporciona un registro detallado de las actividades ocurridas en la base de datos, lo que facilita la investigación y la respuesta rápida ante incidentes.
+
+---
+
+# Estrategia 4. Actualizaciones y Parches
+
+- Mantener el software de la base de datos actualizado para protegerse contra vulnerabilidades conocidas.
+
+- Por ejemplo, la *release* [MySQL 8.0.35](hhttps://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-35.html) incluye entre sus mejoras de seguridad: *Binary packages that include curl rather than linking to the system curl library have been upgraded to use curl 8.4.0. Important issues fixed in curl version 8.4.0*. Es decir, actualizo sus dependencias hacia la librería *curl* con contenía importantes problemas de seguridad.
 
 ---
 
 <!-- _class: section -->
-# DRIVERS NATIVOS 
+# MEJORES PRÁCTICAS
 
 ---
 
-# Open Database Connectivity
+# Mejores Prácticas
 
-Open DataBase Connectivity (ODBC) es un estándar de acceso a las bases de datos.
+- **Principio de Menor Privilegio**: Asignar los permisos mínimos necesarios para cada usuario.
+- **Validación de Datos de Entrada**: Filtrar y validar los datos ingresados para prevenir inyecciones de SQL.
+- **Respaldo Regular**: Realizar copias de seguridad de la base de datos de forma regular para evitar pérdida de datos en caso de un incidente de seguridad.
 
-El objetivo de ODBC es permitir el acceso a cualquier dato desde cualquier aplicación.
 
-- Se crea una capa intermedia entre la aplicación y el SGBD.
-- Esta capa actúa de traductor entre ODBC y el SGBD.
-- Permite utilizar diferentes bases de datos sin cambiar la aplicación.
-
-![center](img/t6/odbc.png)
-
----
-
-# pyodbc
-
-`pyodbc` es un módulo de código abierto de Python que facilita el acceso a las bases de datos **ODBC**. Implementa la especificación *DB API 2.0*, pero incluye además funciones y características adicionales para facilitar el acceso a la información.
-
-La forma más fácil de instalarlo es usar pip:
-
-```bash
-pip install pyodbc
-```
-
-Consulta la [documentación de instalación](https://github.com/mkleehammer/pyodbc/wiki/Install) para innformación adicional.
-
----
-
-# MySQL Connector/ODBC
-
-Para conectarnos a una base de datos **MySQL** mediante el protocolo ODBC es necesario instalar el driver específico que nos porporciona el fabricante.
-
-Este driver será dependiende del sistema operativo desde el cual nos queramos conectar al sistema gestor de bases de datos y, por tanto, su [instalación](https://dev.mysql.com/doc/connector-odbc/en/) es diferente para cada SO.
-
-Aunque usemos una librería específica de Python para conectarnos (**pyodbc**), esta se basa en el conector oficial de **MySQL** para funcionar.
-
----
-
-# pyodbc: cadena de conexión
-
-Las conexiones a las bases de datos suelen apoyarse en la **cadena de conexión** para especificar los parámetros.
-
-En el caso de ODBC, una cadena de conexión incluye información como:
-
-- Versión del driver que se va a usar
-- Host y puerto de comunicaciones
-- Usuario y contraseña
-- Codificación y otras opciones de la base de datos
-
----
-
-# Conector oficial de MySQL para Python
-
-En lugar de usar el conector ODBC, bastante complejo de instalar y configurar, vamos a usar una [librería propia](https://dev.mysql.com/doc/connector-python/en/) de MySQL para conectarnos al SGBD desde Python.
-
-Podemos instalar el conector directamente desde `pip`:
-
-```bash
-pip install mysql-connector-python
-```
-
-La principal ventaja de este conector es que es autocontenido, no requiere descargarse el conector oficial ni librerías adicionales de Python.
-
----
-
-# Demo `mysql.connector`
-
-```python
-import mysql.connector
-from datetime import date, datetime, timedelta
-```
-
----
-
-# Demo `mysql.connector`
-
-```python
-# Nos conectamos a la base de datos, creando un objeto para gestionar la conexión
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="root"
-)
-
-# Las operaciones se ejecutan con un objeto de tipo cursor:
-cursor = mydb.cursor()
-```
-
----
-
-# Demo `mysql.connector`
-
-```python
-# Vamos a crear un esquema de prueba
-cursor.execute("CREATE DATABASE prueba DEFAULT CHARACTER SET 'utf8'")
-```
-
----
-
-# Demo `mysql.connector`
-
-```python
-# Podemos usar strings multilínea de Python para las consultas SQL
-tabla_empleado = """
-CREATE TABLE prueba.employees (
-    emp_no      INT             NOT NULL AUTO_INCREMENT,
-    birth_date  DATE            NOT NULL,
-    first_name  VARCHAR(14)     NOT NULL,
-    last_name   VARCHAR(16)     NOT NULL,
-    gender      ENUM ('M','F')  NOT NULL,
-    hire_date   DATE            NOT NULL,
-    PRIMARY KEY (emp_no)
-);
-"""
-
-cursor.execute(tabla_empleado)
-```
-
----
-
-# Demo `mysql.connector`
-
-```python
-# Podemos definirnos una función para crear un empleado y almacenarlo en la base de datos
-def crear_empleado(fecha_nac, nombre, apellidos, genero, fecha_alta):
-    # Vamos a utilizar las consultas parametrizadas
-    add_employee = ("INSERT INTO prueba.employees "
-                    "(first_name, last_name, hire_date, gender, birth_date) "
-                    "VALUES (%s, %s, %s, %s, %s)")
-    cursor.execute(add_employee, (nombre, apellidos, fecha_alta, genero, fecha_nac))
-    # Nos aseguramos de confirmar la transacción
-    mydb.commit()
-```
-
----
-
-# Demo `mysql.connector`
-
-```python
-# Vamos a solicitar los datos del empleado por pantalla
-fecha_nac = datetime.strptime(input("Fecha de nacimiento dd/mm/aa: "), r"%d/%m/%y")
-nombre = input("Nombre: ")
-apellidos = input("Apellidos: ")
-genero = input("Género M/F: ")
-fecha_alta = datetime.strptime(input("Fecha de alta dd/mm/aa: "), r"%d/%m/%y")
-
-# Añadimos al usuario
-crear_empleado(fecha_nac, nombre, apellidos, genero, fecha_alta)
-```
-
----
-
-# Demo `mysql.connector`
-
-```python
-# Vamos a realizar una consulta para obtener todos los empleados de la tabla
-consulta = """
-SELECT emp_no, first_name, last_name, hire_date
-FROM prueba.employees
-"""
-
-cursor.execute(consulta)
-
-for (id_emp, nombre, apellidos, fecha_alta) in cursor:
-    print(f"Empleado {id_emp} - {apellidos}, {nombre} dado de alta el {fecha_alta}")
-```
-
----
-
-# Demo `mysql.connector`
-
-```python
-# Limpiamos la base de datos
-cursor.execute("DROP SCHEMA prueba")
-cursor.close()
-mydb.close()
-```
-
----
-
-<!-- _class: section -->
-# SQLAlchemy
-
----
-
-# SQLAlchemy
-
-SQLAlchemy es el conjunto de herramientas SQL de Python y un ORM$^1$ que ofrece a los desarrolladores de aplicaciones toda la potencia y flexibilidad de SQL.
-
-Proporciona un conjunto completo de patrones de persistencia de nivel empresarial bien conocidos, diseñados para un acceso a la base de datos eficiente y de alto rendimiento, adaptados a un lenguaje de dominio sencillo y pitónico.
-
-Para instalar:
-
-```bash
-pip install sqlalchemy pymysql
-```
-
-> $^1$: Object Relational Mapper
-
----
-
-# ¿Quién usa SQLAlchemy?
-
-- Yelp!
-- reddit
-- DropBox
-- The OpenStack Project
-- Survey Monkey
-
-Es una de las librerías para trabajar con bases de datos más usada en Python.
-
----
-
-# Conexión con el SGBD
-
-Las conexiones con el SGBD se gestionan mediante un **motor (engine)**, que no es más que un objeto que representa una base de datos.
-
-```python
-"""Conexión con la BBDD."""
-from sqlalchemy import create_engine
-
-engine = create_engine(
-    "mysql+pymysql://user:password@host:3600/database",
-)
-```
-
-Como se puede observar, la conexión se configura mediante una **cadena de conexión** con el siguiente formato:
-
-```text
-[DB_TYPE]+[DB_CONNECTOR]://[USERNAME]:[PASSWORD]@[HOST]:[PORT]/[DB_NAME]
-```
-
----
-
-# Ejecutando consultas
-
-Podemos usar SQLAlchemy de forma similar al conector oficial de MySQL que ya hemos visto con respecto a la ejecución de consultas:
-
-```python
-res = engine.execute("SELECT * FROM tabla")
-for row in res.fetchall():
-   ...
-```
-
-La principal diferencia es que SQLAlchemy abre la conexión, ejecuta la consulta y cierra la conexión de manera automática.
-
-Aunque interesante, este modo de funcionamiento es similar al conector nativo, por lo que vamos a centrarnos en el ORM.
-
----
-
-# Object Relational Mapping
-
-- Los ORM se encargan de representar las tablas de la base de datos mediante una estructura de clases
-- Toda la interacción entre el programa y la base de datos se realiza a través del ORM:
-  - Creación de tablas
-  - Inserción y modificación de datos
-  - Consultas
-- El desarrollador no necesita conocer SQL, aunque es recomendable entender su funcionamiento
-
----
-
-# SQLAlchemy: ejemplo de uso
-
-Vamos a estudiar el funcionamiento de **SQLAlchemy** mediante el siguiente ejemplo:
-
-- Se quiere desarrollar una aplicación para gestionar las visualizaciones de series por parte de los usuarios.
-- Un usuario estará definido por su alias y podrá ver todos los capítulos de las series que quiera.
-- Un capítulo, que dispondrá de un título y una duración, pertenecerá a una serie.
-- Una serie estará caracterizada por su título y género y dispondrá de un número indeterminado de capítulos.
-
----
-
-# SQLAlchemy: ejemplo de uso
-
-<center>
-
-![w:700](img/t6/hibernate-er.png)
-</center>
-
----
-
-# SQLAlchemy: ejemplo de uso
-
-<center>
-
-![w:800](img/t6/hibernate-rel.png)
-</center>
-
----
-
-# Definiendo las tablas como modelos de SQLAlchemy
-
-Los modelos de datos son clases de Python que representan una tabla SQL en nuestra base de datos, donde los atributos de un modelo se traducen en columnas de una tabla.
-
-Al trabajar con ORMs, la creación de instancias de nuestros modelos se traduce en la creación de filas en una tabla SQL.
-
-Creamos modelos definiendo clases de Python que extienden una clase Base:
-
-```python
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-```
-
-Nuestros modelos **deben** extender la clase `Base`.
-
----
-
-# Modelando los usuarios
-
-Empezamos nuestros modelos con los *Usuarios*:
-
-```python
-from sqlalchemy import Column, Table, ForeignKey
-from sqlalchemy.types import Integer, String, DateTime
-from sqlalchemy.sql import func
-from sqlalchemy.orm import relationship
-
-class Usuario(Base):
-   # Nombre de la tabla que se creará en la BD
-   __tablename__ = "usuarios"
-
-   # Atributos del modelo (columnas de la tabla)
-   id = Column(Integer, primary_key=True, autoincrement="auto")
-   alias = Column(String(255), unique=True, nullable=False)
-   fecha_alta = Column(DateTime, server_default=func.now())
-
-   def __repr__(self):
-      return f"<Usuario: {self.alias}>"
-```
-
----
-
-# Modelando las series
-
-El modelo para las *Series* se construye de manera similar a los usuarios:
-
-```python
-class Serie(Base):
-   __tablename__ = "series"
-
-   id = Column(Integer, primary_key=True, autoincrement="auto")
-   titulo = Column(String(500), nullable=False)
-   genero = Column(String(150), nullable=False)
-   fecha_alta = Column(DateTime, server_default=func.now())
-
-   def __repr__(self):
-      return f"<Serie '{self.titulo}'>"
-```
-
----
-
-# Relaciones 1:N
-
-Para los *capítulos* necesitamos establecer una relación 1:N con la serie a la que pertenecen. Definimos la clave externa en la columna:
-
-```python
-class Capitulo(Base):
-   __tablename__ = "capitulos"
-
-   id = Column(Integer, primary_key=True, autoincrement="auto")
-   titulo = Column(String(500), nullable=False)
-   duracion = Column(Integer, nullable=False)
-   id_serie = Column(Integer, ForeignKey("series.id")) # Referencia a nombre de tabla
-
-   serie = relationship("Serie", backref="capitulos") # Referencia a nombre de la clase
-
-   def __repr__(self):
-      return f"<Capítulo '{self.titulo}' ({self.serie})>"
-```
-
----
-
-# Relaciones N:M
-
-Para las relaciones N:M se define una **tabla de asociación** en SQLAlchemy:
-
-```python
-tabla_asoc = Table('visualiza', Base.metadata,
-   Column('id_usuario', ForeignKey('usuarios.id'), primary_key=True),
-   Column('id_capitulo', ForeignKey('capitulos.id'), primary_key=True)
-)
-```
-
-Ahora solo queda añadir las relaciones a los modelos **Usuario**:
-
-```python
-   capitulos = relationship("Capitulo", secondary=tabla_asoc, backref="usuarios")
-```
-
----
-
-# Creación del modelo de datos
-
-Una vez hemos definido nuestros modelos es el momento de crear las tablas correspondientes en la base de datos. Para ello basta con ejecutar el método `create_all()` de nuestra clase `Base`:
-
-```python
-Base.metadata.create_all(engine)
-```
-
-Será SLQAlchemy quien generará las sentencias SQL correspondientes para crear en la base de datos los modelos definidos.
-
----
-
-# Creación de registros
-
-Vamos a añadir un usuario a nuestra base de datos, pero en lugar de usar una sentencia `INSERT` vamos a aprovechar el ORM de SQLAlchemy. Lo primero es crearnos una sesión:
-
-```python
-from sqlalchemy.orm import sessionmaker
-Session = sessionmaker(bind=engine)
-session = Session()
-```
-
-A partir de ahora tenemos una conexión abierta con la BD que se corresponde con una transacción abierta, por lo que tendremos que confirmar los cambios `commit()` de manera manual.
-
----
-
-# Creación de registros
-
-Vamos a crear una nueva instancia de un usuario utilizando nuestro modelo `Usuario` para ello:
-
-```python
-u1 = Usuario(
-   alias="Carlos Boyero"
-)
-```
-
-Para que nuestro usuario se propague a la BD bastará con añadir la instancia a nuestra sesión:
-
-```python
-session.add(u1)
-session.commit()
-```
-
----
-
-# Registros relacionados: serie y capítulos
-
-Creamos una nueva serie:
-
-```python
-perdidos = Serie(titulo="Lost", genero="Ciencia Ficción")
-session.add(perdidos)
-session.commit()
-```
-
-Vamos a añadir dos capítulos de la serie que acabamos de crear:
-
-```python
-s01e01 = Capitulo(titulo="Pilot, Part 1", duracion=42, id_serie=perdidos.id)
-s01e02 = Capitulo(titulo="Pilot, Part 2", duracion=41, id_serie=perdidos.id)
-session.add(s01e01)
-session.add(s01e02)
-session.commit()
-```
-
----
-
-# Visalizaciones del usuario
-
-Recordemos que nuestro modelo `Usuario` disponía de un atributo `capitulos` vinculado a la tabla que modela nuestra relación N:M.
-
-Para decir que un usuario ha visto un capítulo en concreto, basta con añadir la instancia del capítulo a este atributo:
-
-```python
-u1.capitulos.append(s01e01)
-session.commit()
-```
-
----
-
-# Recuperando registros de la BD
-
-Para realizar consultas a la BD y obtener el objeto correspondiente a nuestro modelo usaremos la función `query()` de la sesión abierta.
-
-Por ejemplo, podemos obtener todos los capítulos de la base de datos:
-
-```python
-caps = session
-   .query(Capitulo) # FROM Capitulos
-   .all()           # SELECT *
-```
-
-La variable `caps` contendrá una colección de instancias de capítulos:
-
-```python
-for c in caps:
-   print(c)
-```
-
----
-
-# API de consultas
-
-La [API de SLQAlchemy](https://docs.sqlalchemy.org/en/14/orm/loading_objects.html) para realizar consultas es bastante extensa y permite realizar búsquedas más complejas. Por ejemplo, podemos aplicar filtros sobre valores de columnas:
-
-```python
-res = session
-   .query(Capitulos)
-   .filter_by(duracion >= 25)
-   .all()
-```
-
-e incluso aplicar funciones de agregación y agrupamiento:
-
-```python
-res = session
-   .query(func.Count(Serie.id))
-   .group_by(Serie.genero)
-   .all()
-```
-
----
-
-# Actualización y eliminación de registros
-
-La actualización de una instancia implica que los cambios se propagan a la base de datos cuando finalice la transacción. Podemos forzar la propagación de cambios con:
-
-```python
-session.flush()
-```
-
-Para eliminar un registro bastará con pasar la instancia del elemento que se quiere eliminar al método `delete()` de la sesión que tengamos abierta:
-
-```python
-session.delete(s01e02)
-session.commit()
-```
