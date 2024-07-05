@@ -1,189 +1,225 @@
 ---
-marp: true
-size: 4:3
-auto-scaling: 
-    - true
-    - fittingHeader
-    - math
-    - code
-backgroundColor: #fff
-backgroundImage: url('https://marp.app/assets/hero-background.jpg')
-paginate: true
-header: Almacenamiento basado en ficheros
+marp        : true
+title       : Almacenamiento de información basada en ficheros
+paginate    : true
+theme       : bbdd
+header      : Almacenamiento de información basada en ficheros
+footer      : Bases de datos
+description : >
+  Explora la organización, gestión y acceso a/de los datos almacenados
+  en sistemas de archivos, contrastando con enfoques de bases de datos
+  tradicionales. E.T.S.I. Sistemas Informáticos (UPM)
+keywords    : >
+    Bases de datos, Ficheros, Almacenamiento, Sistemas de archivos,
+    XML, JSON, CSV, DTD, XML Schema, XPath, XQuery
+math        : mathjax
 ---
-<!--
-_header: ''
-_footer: ![Licencia de Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)<br>Esta obra está bajo una [licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/).
--->
-<style>
-img[alt~="center"] {
-  display: block;
-  margin: 0 auto;
-}
-</style>
 
-![bg left:40% 80%](img/t7/files.png)
+<!-- _class: titlepage -->
 
-# TEMA 7
+# Almacenamiento de información basada en ficheros
 
-Almacenamiento de información basada en ficheros
+## Bases de datos
+
+### Departamento de Sistemas Informáticos
+
+#### E.T.S.I. de Sistemas Informáticos - UPM
+
+##### 15 de febrero de 2024
+
+[![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
 
 # Estructura de la información (I)
 
-La información almacenada en una base de datos relacional se considera como **datos estructurados**:
+La información almacenada en una base de datos relacional se considera **datos estructurados**
 
 - Se representan en un formato estricto
 - Todas las filas de una tabla tienen el mismo formato
 - Se conoce a priori el número y formato de atributos de una tabla
 
-Hay aplicaciones en las que estas condiciones son demasiado estrictas.
+Hay aplicaciones en las que estas condiciones son demasiado estrictas
 
 ---
 
-# Estructura de la información (II)
+# Estructura de la información (y II)
 
-Una estructura menos restrictiva serían los **datos semi-estructurados**:
+Una estructura menos restrictiva serían los **datos semi-estructurados**
 
-- La información del esquema está mezclada con los valores de los atributos.
-- Cada objeto de datos puede tener diferentes atributos que no se conocen a priori.
+- La información del esquema está mezclada con los valores de los atributos
+- Cada objeto de datos puede tener diferentes atributos que no se conocen a priori
 - Se les conoce como datos auto-descriptivos
 
 ---
 
 # Datos semi-estructurados
 
-Una posible representación para los datos semi-estructurados sería un grafo dirigido:
+<div class="columns">
+<div class="column">
 
-![bg right:45% 95%](img/t7/tree.png)
+Una posible representación para los datos semi-estructurados sería un grafo dirigido
+
+- Los nodos representan los objetos de datos
+- Los arcos representan las relaciones entre los objetos
+
+</div>
+<div class="column">
+
+![](img/t7/tree.png)
+
+</div>
+</div>
 
 ---
 
-# CSV: Comma-Separated Values
+![bg right:35% 88%](https://upload.wikimedia.org/wikipedia/commons/3/3d/Logo_CSV.svg)
 
-Los ficheros _CSV_ almacenan **información estructurada**:
-
-- Cada fila del fichero se corresponde con un registro de información.
-- Los elementos del registro se separan por un caracter delimitador, generalmente una coma.
-- El orden de dichos elementos se mantiene a lo largo del fichero.
+# _Comma-Separated Values_ (CSV)<!--_class: section-->
 
 ---
 
-# CSV: Un ejemplo
+# Formato
+
+Almacenan **información estructurada** en ficheros de texto plano
+
+<hr />
+
+<div class="columns">
+<div class="column">
+
+- Fila $\rightarrow$ Registro de información
+  - La primera puede ser cabecera
+- Cada elemento está separado por un caracter
+  - Más común `,` pero puede variar (e.g. `;`)
+- Cada elemento se puede delimitar
+  - Generalmente con comillas dobles (`"`)
+
+</div>
+<div class="column">
 
 ```csv
-Login email,Identifier,First name,Last name
-laura@example.com,2070,Laura,Grey
-craig@example.com,4081,Craig,Johnson
-mary@example.com,9346,Mary,Jenkins
-jamie@example.com,5079,Jamie,Smith
+Email,Id,First name,Last name
+laura@ex.com,20,Laura,Grey
+craig@ex.com,40,Craig,Johnson
+mary@ex.com,93,Mary,Jenkins
+jamie@ex.com,50,Jamie,Smith
+virginia@ex.com,20,Virginia,Williams
+paul@ex.com,20,Paul,Johnson
+livi@ex.com,20,Livi,Smith
 ```
 
-Se observa que el nombre de los campos se encuentra en la primera fila del fichero (opcional).
+</div>
+</div>
 
-También se comprueba que todos los campos de los registros siguen el mismo orden.
-
----
-
-# CSV: Ventajas
-
-Las ventajas de usar ficheros CSV son:
-
-1. Al ser información estructurada, su lectura y escritura es rápida y sencilla.
-2. Salvo por el separador, no añade información adicional o supérflua a los datos.
-3. Tiene un formato fácilmente entendible y editable.
-4. Está considerado como un formato estándar (RFC4180).
-5. Es fácil de generar.
+El orden de dichos elementos se mantiene a lo largo del fichero
 
 ---
 
-# CSV: Inconvenientes
+# Ventajas e inconvenientes
 
-1. Solo permite tipos de datos simples.
-2. Hay que controlar que el separador no aparezca en los datos.
-3. Hay que utilizar caracteres de escape para representar cadenas de texto que incluyan símbolos especiales.
-4. Todos los registros tienen que tener el mismo número de elementos.
+<div class="columns">
+<div class="column">
+
+## Ventajas
+
+1. Información estructurada $\rightarrow$ Lectura y escritura es rápida y sencilla
+2. No añade información supérflua a los datos (salvo separador y delimitador)
+3. Facil de entender, editar y generar
+4. Se considera formato estándar<sup>1</sup>
+5. Fácil interoperabilidad con otras aplicaciones
+
+</div>
+<div class="column">
+
+## Inconvenientes
+
+1. Información estructurada $\rightarrow$ Todos registro tienen que tener el mismo número de campos
+2. Solo permite tipos de datos simples
+3. El separador no debe aperecer en los datos
+4. Caracteres de escape para texto con símbolos especiales
+5. No hay un estánda para comentarios
+
+</div>
+</div>
+
+> <sup>1</sup> RFC4180 (<https://www.rfc-editor.org/rfc/rfc4180.html>)
+---
+
+# Casos de uso
+
+El formato **CSV** se utiliza principalmente en las siguientes situaciones
+
+- Almacén de datos de procesos temporales (p.e. sensores, logs del sistema), ya que es facil escribir al final de los ficheros
+- Análisis de datos, donde se realizan operaciones sobre el conjunto de datos completo
+- Integración de sistemas y aplicaciones (bases de datos, hojas de cálculo)
 
 ---
 
-# CSV: Casos de uso
+![bg right:35% 88%](img/t7/xml_logo.png)
 
-El formato **CSV** se utiliza principalmente en las siguientes situaciones:
-
-- Dada su estructura secuencial intrínseca, es muy común usar **CSV** para almacenar datos de procesos temporales (p.e. sensores), ya que es facil escribir al final de los ficheros.
-
-- Análisis de datos, donde se realizan operaciones sobre el conjunto de datos completo.
-
----
-![bg right:60% 99%](img/t7/xml_logo.png)
-
-# XML
-
-Extended Markup Language
+# _eXtensible Markup Language_ (XML)<!--_class: section-->
 
 ---
 
 # Orígenes de XML
 
-El origen de XML es SGML:
+Viene del _Standard Generalized Markup Lenguage_ (SGML)
 
-- Standard Generalized Markup Lenguage (SGML).
-- Definido como estándar en 1986 (ISO 8879).
-- Metalenguaje creado para mantener almacenes de documentación estructurada en formato electrónico.
-- HTML y XML son aplicaciones de SGML.
-- Muy potente y versátil pero complejo de utilizar.
+- Definido como estándar en 1986<sup>2</sup>
+- _Metalenguaje_ para mantener documentación estructurada en formato electrónico
+  - HTML y XML son lenguajes derivados (aplicaciones) de SGML
+- Muy potente y versátil pero complejo de utilizar
 
----
+**XML** viene de _eXtensible Markup Language_.
 
-# Definición y antecedentes
+- Recomendación del W3C (_World Wide Web Consortium_) desde 1998 (v1.0)
+- Estándar de facto para definir, crear, validar, compartir y publicar documentos con información, mediante marcas con significado
+- Puede representar tanto datos estructurados como semi-estructurados
 
-- **XML** viene de _eXtensible Markup Language_.
-- La versión 1.0 de **XML** es una recomendación del W3C (World Wide Web Consortium) desde Febrero de 1998.
-- Estándar de facto para definir, crear, validar, compartir y publicar documentos con información, mediante marcas con significado.
-- Puede representar datos estructurados, siendo útil como formato para el intercambio de datos entre aplicaciones.
-- También se puede considerar como datos semi-estructurados.
-
+> <sup>2</sup> ISO 8879:1986
+> (<https://www.iso.org/es/contents/data/standard/02/85/28557.html>)
 ---
 
 # El modelo de datos jerárquico de XML
 
-El objeto básico de **XML** es el **documento**. Para construir un **documento XML** contamos con los siguientes conceptos:
+El objeto básico de **XML** es el **documento**, y se construye a partir de
 
-- Elementos
-- Atributos
+- **Elementos**: Nodos que contienen información
+- **Atributos**: Metadatos que describen los elementos
 
-**¡OJO!** El concepto de _atributo_ en **XML** no se corresponde al de Bases de Datos que hemos visto hasta ahora. En **XML** los _atributos_ añaden información a los _elementos_.
+**¡OJO!** El concepto de _atributo_ en **XML** no se corresponde al de las bases de datos visto hasta ahora. En **XML** los _atributos_
+**añaden** información a los _elementos_
 
 ---
 
-# Elementos XML
+# Elementos
 
-Los **elementos** de un documento se identifican por su etiqueta de inicio y su etiqueta final.
+Se identifican por su **etiqueta de inicio** y su **etiqueta final** (con `/` al comienzo)
+
+- El nombre de la etiqueta inicial y final se incluye entre los caracteres `<`y `>`.
 
 ```xml
 <etiqueta>Elemento 1</etiqueta>
 <cosa>Otro elemento</cosa>
 ```
 
-El nombre de la etiqueta se incluye entre los caracteres `<`y `>`.
+Podemos distinguir dos tipos de **elementos**:
 
-Además, se añade `/` delante del nombre de la **etiqueta** para identificarla como **etiqueta final**.
+<div class="columns">
+<div class="column">
 
----
-
-# Elementos simples y complejos
-
-Debido al modelo de datos de **XML** podemos distinguir dos tipos de **elementos**:
-
-- **Elemento simple**: Contiene únicamente valores.
+**Simple**: Solo contiene valores
 
 ```xml
 <simple>50.3</simple>
 <simple>Hola Mundo</simple>
 ```
 
-- **Elemento compuesto**: contiene una jerarquía de otros elementos.
+</div>
+<div class="column">
+
+**Compuesto**: Contiene otros elementos
 
 ```xml
 <empleado>
@@ -192,11 +228,22 @@ Debido al modelo de datos de **XML** podemos distinguir dos tipos de **elementos
 </empleado>
 ```
 
+</div>
+</div>
+
 ---
 
 # Los documentos XML son árboles
 
-![bg left:40% 100%](img/t7/tree.png)
+Los **elementos** de un documento **XML** se organizan en una estructura de **árbol**
+
+<div class="columns">
+<div class="column">
+
+![](img/t7/tree.png)
+
+</div>
+<div class="column">
 
 ```xml
 <asignatura>
@@ -215,11 +262,14 @@ Debido al modelo de datos de **XML** podemos distinguir dos tipos de **elementos
 </asignatura>
 ```
 
+</div>
+</div>
+
 ---
 
-# Atributos XML
+# Atributos
 
-Los **atributos** en **XML** se usan para describir propiedades y características de los elementos a los que se añaden.
+Se usan para describir propiedades de los elementos a los que se añaden
 
 ```xml
 <persona rol="jefe" departamento="ventas">
@@ -229,46 +279,42 @@ Los **atributos** en **XML** se usan para describir propiedades y característic
 </persona>
 ```
 
-Los **atributos** se incluyen en la etiqueta inicial a continuación del nombre de la misma.
-Es posible añadir tantos atributos como se deseen a un mismo elemento.
-El formato es `nombre-atributo="valor"`.
+Se incluyen en la etiqueta inicial a continuación del nombre de la misma
+
+- Es posible añadir tantos atributos como se deseen a un mismo elemento.
+- El formato es `nombre-atributo="valor"`.
 
 ---
 
 # XML vs. HTML
 
-- Extensibilidad (etiquetas):
-  - HTML: las etiquetas y atributos están prefijados.
-  - XML: etiquetas y atributos **extensibles**.
-- Estructura:
-  - HTML se centra en presentación y es poco estructurado.
-  - XML se centra en datos y es fuertemente estructurado.
-- Validación:
-  - HTML no comprueba tipo ni fin de las etiquetas.
-  - XML requiere que el documento esté bien formado.
+- Extensibilidad (etiquetas)
+  - HTML: las etiquetas y atributos están prefijados
+  - XML: etiquetas y atributos **extensibles**
+- Estructura
+  - HTML se centra en presentación y es poco estructurado
+  - XML se centra en datos y es fuertemente estructurado
+- Validación
+  - HTML no comprueba tipo ni fin de las etiquetas
+  - XML requiere que el documento esté bien formado
 
 ---
 
-# Puntos fuertes de XML (I)
+# Puntos fuertes de XML
 
-- **Metalenguaje**: permite definir lenguajes para representar información.
-- **Simplicidad**: facilidad de procesamiento por software y de entendimiento por personas.
-  - Utilizable con cualquier lenguaje o alfabeto (representa el estándar unicode).
-  - Sensitivo a mayúsculas y minúsculas.
-  - Gramática de obligado cumplimiento.
-- **Auto-descriptivo**: datos como texto, metadatos como etiquetas y atributos.
-
----
-
-# Puntos fuertes de XML (II)
-
+- **Metalenguaje**: Permite definir lenguajes para representar información
+- **Simplicidad**: Facilidad de procesar por software y de entender por personas
+  - Utilizable con cualquier lenguaje o alfabeto (representa el estándar unicode)
+  - Sensible a mayúsculas y minúsculas
+  - Gramática de obligado cumplimiento
+- **Auto-descriptivo**: Datos como texto, metadatos como etiquetas y atributos
 - Separa:
   - Estructura (metadatos): DTD, Xml-Schema
   - Contenido (datos): documento xml
   - Apariencia (presentación): XSL, CSS
-- Es un estándar para intercambio de datos en la Web y aplicaciones en general
-- Poderosas técnicas para búsqueda de información: Xpath y XQuery.
-- APIs en programación: DOM y SAX.
+- Estándar para intercambio de datos en la Web y aplicaciones en general
+- Poderosas técnicas para búsqueda de información: Xpath y XQuery
+- APIs en programación: DOM y SAX
 
 ---
 
@@ -276,11 +322,11 @@ El formato es `nombre-atributo="valor"`.
 
 Se considera que un documento **XML** está bien formado si:
 
-1. Tiene un **único** elemento raíz.
-2. Los elementos tienen una etiqueta final.
-3. Las etiquetas son _case sensitive_.
-4. Los elementos están anidados correctamente.
-5. Los valores de los atributos están entre comillas dobles `""`.
+1. Tiene un **único** elemento raíz
+2. Los elementos tienen una etiqueta final
+3. Las etiquetas son _case sensitive_
+4. Los elementos están anidados correctamente
+5. Los valores de los atributos están entre comillas dobles `""`
 
 ---
 
@@ -307,39 +353,36 @@ Se considera que un documento **XML** está bien formado si:
 
 # Documentos XML válidos
 
-Además de estar bien formados, podemos comprobar la **validez** de un documento con respecto a un esquema determinado.
+Además de estar bien formados, podemos comprobar la **validez** de un documento con respecto a un esquema determinado
 
-> Un documento XML se dice que es válido con respecto a un esquema si tanto su estructura como sus elementos cumplen con la especificación de dicho esquema
+<cite>Se dice que un documento XML es válido con respecto a un esquema si tanto su estructura como sus elementos cumplen con la especificación de dicho esquema</cite>
 
 Para especificar equemas se usa:
 
-- DTD (Document Type Definition)
-- XML Schema
+- _Document Type Definition_ (DTD)
+- _XML Schema_ (XSD)
 
 ---
 
-# Document Type Definition (I)
+# _Document Type Definition_
 
-Una **DTD** es un conjunto de reglas que deben cumplir tanto la estructura como los elementos de un documento **XML** para considerarse **válido**.
+Conjunto de reglas a cumplir por un documento **XML** para considerarse **válido**
 
-Una **DTD** puede incrustarse en un documento **XML** o almacenarse en un fichero distinto. En ese caso, habrá que referenciar a dicho fichero desde el documento **XML**.
+- Puede incrustarse en el propio documento **XML** o almacenarse externamente
+- Si se almacena externamente, hay que referenciarlo desde el documento a validar
 
-Un ejemplo de regla:
+Ejemplo de regla:
 
 ```xml
 <!ELEMENT grupo (turno id alumno+)>
 ```
 
----
-
-# Document Type Definition (II)
-
 Podemos usar caracteres especiales en las reglas de una DTD:
 
-- `+`: permite **uno o más** elementos de ese tipo dentro del elemento padre
-- `*`: permite **cero o más** elementos de ese tipo dentro del elemento padre
-- `?`: puede haber **entre 0 y 1** ocurrencias de elementos de ese tipo dentro del padre
-- `|`: en conjunto con los paréntesis, permite establecer opcionalidad de los elementos permitidos. Equivale al operador booleano _OR_.
+- `+`: **Uno o más** elementos de ese tipo dentro del elemento padre
+- `*`: **Cero o más** elementos de ese tipo dentro del elemento padre
+- `?`: **Cero o una** ocurrencias de elementos de ese tipo dentro del padre
+- `|`: Junto con los paréntesis, opcionalidad de elementos permitidos (_OR_)
 
 ---
 
@@ -349,13 +392,13 @@ Podemos usar caracteres especiales en las reglas de una DTD:
 
 - `#PCDATA`: indica que el elemento será un nodo hoja, pues requiere que tenga un valor
 - `EMPTY`: indica que el elemento no tiene ningún contenido
-- `ALL`: sin restricción sobre los sub-elementos de un elemento. Cualquier elemento incluso los no mencionados en la DTD pueden ser sub-elementos.
+- `ALL`: sin restricción sobre los sub-elementos de un elemento. Cualquier elemento incluso los no mencionados en la DTD pueden ser sub-elementos
 
 ---
 
 # Un ejemplo de DTD
 
-```hxml
+```xml
 <!DOCTYPE banco [
     <!ELEMENT banco ((cuenta | cliente | impositor)+)>
     <!ELEMENT cuenta (número-cuenta nombre-sucursal saldo)>
@@ -374,22 +417,24 @@ Podemos usar caracteres especiales en las reglas de una DTD:
 
 # DTD: Atributos (I)
 
-Para definir los atributos de cierto elemento:
+Para definir los atributos de cierto elemento
 
 ```xml
 <!ATTLIST element name type enum default mods>
 ```
 
-- `element`: nombre del elemento cuyo atributo se quiere definir.
-- `name`: nombre del atributo.
-- `type`: tipo del atributo:
-  - `CDATA`: caracteres.
-  - `ID`: identificador único para el elemento (solo uno por elemento).
-  - `IDREFS`: referencia al ID de otro elemento.
+Siendo:
+
+- `element`: nombre del elemento cuyo atributo se quiere definir
+- `name`: nombre del atributo
+- `type`: tipo del atributo
+  - `CDATA`: caracteres
+  - `ID`: identificador único para el elemento (solo uno por elemento)
+  - `IDREFS`: referencia al ID de otro elemento
 
 ---
 
-# DTD: Atributos (II)
+# DTD: Atributos (y II)
 
 Para definir los atributos de cierto elemento:
 
@@ -397,19 +442,17 @@ Para definir los atributos de cierto elemento:
 <!ATTLIST element name type enum default mods>
 ```
 
-- `enum`: (opcional) enumera los posibles valores que puede tomar el atributo (ej: `(a|b|c)`).
-- `default`: (opcional) valor por defecto del atributo.
-- `mods`: (opcional) modificadores que aplican al atributo:
-  - `#REQUIRED`: es obligatorio definir el atributo para el elemento.
-  - `#FIXED valor`: el atributo siempre será `valor`.
+- `enum`: (opcional) enumera los posibles valores que puede tomar el atributo (ej: `(a|b|c)`)
+- `default`: (opcional) valor por defecto del atributo
+- `mods`: (opcional) modificadores que aplican al atributo
+  - `#REQUIRED`: es obligatorio definir el atributo para el elemento
+  - `#FIXED valor`: el atributo siempre será `valor`
 
 ---
 
 # Un ejemplo de DTD para atributos
 
-```hxml
-
-
+```xml
 <!DOCTYPE banco-2 [
     <!ELEMENT cuenta (nombre-sucursal saldo)>
     <!ATTLIST cuenta
@@ -422,8 +465,6 @@ Para definir los atributos de cierto elemento:
                 cuentas IDREFS #REQUIRED>
     ...
 ]>
-
-
 ```
 
 ---
@@ -458,20 +499,20 @@ Para definir los atributos de cierto elemento:
 
 **DTD** como mecanismo de definición de esquema tiene las siguientes limitaciones:
 
-- No se puede declarar el **tipo de cada elemento** y de cada atributo de texto.
-  - El elemento `saldo` no se puede restringir para que sea un número positivo.
-- No hay forma de especificar el **tipo de elemento** al que se debería **referir** un atributo `IDREF`.
-  - No se evita, por ejemplo, que el atributo `titulares` de un elemento `cuenta` se refiera a otros números de cuentas (aunque no tenga sentido).
+- No se puede declarar el **tipo de cada elemento** y de cada atributo de texto
+  - El elemento `saldo` no se puede restringir para que sea un número positivo
+- No hay forma de especificar el **tipo de elemento** al que se debería **referir** un atributo `IDREF`
+  - No se evita, por ejemplo, que el atributo `titulares` de un elemento `cuenta` se refiera a otros números de cuentas (aunque no tenga sentido)
 
 ---
 
-# XML Schema
+# _XML Schema_ (XSD)
 
-- Surge como un intento para mejorar las deficiencias de las DTDs.
-- Define varios tipos predefinidos: string, integer, decimal, date y boolean.
-- Permite tipos definidos por el usuario.
-- Se especifica en **XML**.
-- El esquema se encierra en un elemento global:
+- Surge como un intento para mejorar las deficiencias de las DTDs
+- Define varios tipos predefinidos: string, integer, decimal, date y boolean
+- Permite tipos definidos por el usuario
+- Se especifica en **XML**
+- El esquema se encierra en un elemento global
 
 ```xsd
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -484,7 +525,6 @@ Para definir los atributos de cierto elemento:
 # Un ejemplo de XML Schema
 
 ```xml
-
 <?xml version="1.0" encoding="iso-8859-1"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <xsd:element name="Empleado">
@@ -498,14 +538,11 @@ Para definir los atributos de cierto elemento:
     </xsd:complexType>
 </xsd:element>
 </xsd:schema>
-
 ```
 
 ---
 
-# XPath
-
-Lenguaje de consulta sobre documentos XML
+# XPath<!--_class: section-->
 
 ---
 
@@ -513,10 +550,10 @@ Lenguaje de consulta sobre documentos XML
 
 Es un lenguaje de consulta sobre documentos **XML**:
 
-- Basa su funcionamiento en expresiones de ruta.
-- Estas expresiones representan una navegación por los nodos del árbol del documento XML.
-- Visto de otra forma, representan la ruta a un determinado punto del documento.
-- Una expresión **XPath** devuelve una colección de elementos que cumplen el patrón de la consulta (expresión).
+- Basa su funcionamiento en expresiones de ruta
+- Estas expresiones representan una navegación por los nodos del árbol del documento XML
+- Visto de otra forma, representan la ruta a un determinado punto del documento
+- Una expresión **XPath** devuelve una colección de elementos que cumplen el patrón de la consulta (expresión)
 
 ```xpath
 /elem1/elem2/elemento
@@ -524,7 +561,7 @@ Es un lenguaje de consulta sobre documentos **XML**:
 
 ---
 
-# XPath: consultando rutas a elementos
+# Consultando rutas a elementos
 
 Podemos acceder a los elementos que hay en la ruta del documento:
 
@@ -561,7 +598,7 @@ Incluso podemos indicar en la expresión algún predicado de selección:
 /banco/cuenta[saldo > 600]/@numero-cuenta
 ```
 
-que devolvería los números de cuenta con un saldo superior a 600.
+que devolvería los números de cuenta con un saldo superior a 600
 
 ---
 
@@ -573,7 +610,7 @@ También podemos usar funciones proporcionadas por XPath:
 /banco/cuenta[count(./cliente)>2]
 ```
 
-devuelve las cuentas con más de dos clientes.
+devuelve las cuentas con más de dos clientes
 
 Podemos buscar también por nodos enlazados por ID:
 
@@ -581,7 +618,7 @@ Podemos buscar también por nodos enlazados por ID:
 /banco/cuenta/id(@titulares)
 ```
 
-devuelve todos los clientes referenciados desde el atributo titulares de los elementos "cuenta".
+devuelve todos los clientes referenciados desde el atributo titulares de los elementos "cuenta"
 
 ---
 
@@ -603,7 +640,7 @@ devolvería **todos** los elementos `curso` con independencia de su ubicación e
 
 ---
 
-# XPath: más opciones de consulta (IV)
+# XPath: más opciones de consulta (y IV)
 
 Otros operadores de búsqueda interesantes:
 
@@ -616,29 +653,27 @@ Otros operadores de búsqueda interesantes:
 
 ---
 
-# XQuery
-
-Lenguaje de consultas sobre documentos XML
+# XQuery<!--_class: section-->
 
 ---
 
 # XQuery: introducción
 
-- Lenguaje de consulta para documentos XML.
-- Es una recomendación del W3C.
-- Integrado con XPath.
-- Mantiene cierta analogía con SQL.
-- La entrada y la salida de una consulta XQuery corresponde a un documento o fragmento de documento XML.
+- Lenguaje de consulta para documentos XML
+- Es una recomendación del W3C
+- Integrado con XPath
+- Mantiene cierta analogía con SQL
+- La entrada y la salida de una consulta XQuery corresponde a un documento o fragmento de documento XML
 
 ---
 
 # FLWOR: for, let, where, order by, return
 
-- **FOR**: similar al `FROM` de SQL. Asigna resultados de consultas _XPath_ a variables. Si pones varias variables, se realiza el producto cartesiano.
-- **LET**: asigna resultados parciales a variables temporales.
-- **WHERE**: aplica filtrados a las tuplas resultantes del `FOR`.
-- **ORDER BY**: permite la ordenación de las salidas.
-- **RETURN**: establece la forma en la que se devuelven los resultados.
+- **FOR**: similar al `FROM` de SQL. Asigna resultados de consultas _XPath_ a variables. Si pones varias variables, se realiza el producto cartesiano
+- **LET**: asigna resultados parciales a variables temporales
+- **WHERE**: aplica filtrados a las tuplas resultantes del `FOR`
+- **ORDER BY**: permite la ordenación de las salidas
+- **RETURN**: establece la forma en la que se devuelven los resultados
 
 ---
 
@@ -666,11 +701,9 @@ Lenguaje de consultas sobre documentos XML
 
 ---
 
-# XQuery: consulta de ejemplo
+# XQuery: Ejemplo (I)
 
-Un ejemplo de consulta con **XQuery**:
-
-> Obtener el titulo de los libros con valor 2 en el identificador
+<cite>Obtener el titulo de los libros con valor 2 en el identificador</cite>
 
 ```xquery
 for $b in doc("libros.xml")//libro
@@ -678,15 +711,15 @@ where $b/@id = 2
 return $b/titulo
 ```
 
-- Indicamos el documento XML mediante: `doc("libros.xml")`.
-- La doble barra `//` indica la parte del árbol xml a considerar.
-- Como id es un atributo y no un elemento se antepone `@`.
+- Indicamos el documento XML mediante: `doc("libros.xml")`
+- La doble barra `//` indica la parte del árbol xml a considerar
+- Como id es un atributo y no un elemento se antepone `@`
 
 ---
 
-Otro ejemplo de consulta con **XQuery**:
+# XQuery: Ejemplo (y II)
 
-> Titulo de los libros con precio superior a 20€ ordenados por autor
+<cite>Titulo de los libros con precio superior a 20€ ordenados por autor</cite>
 
 ```xquery
 for $x in /libros/libro
@@ -696,7 +729,8 @@ order by $x/autor
 return <titulo-libro>{$tit}</titulo-libro>
 ```
 
-- El uso de llaves `{}` permite ser tratado como expresiones a evaluar. Si no aparecieran, se trataría como una cadena `$tit`.
+- El uso de llaves `{}` permite ser tratado como expresiones a evaluar
+- Si no aparecieran, se trataría como una cadena `$tit`
 
 ---
 
@@ -714,7 +748,7 @@ where $a/número-cuenta=$i/número-cuenta and
 return <cuenta-cliente>{$ccc}</cuenta-cliente>
 ```
 
-que devolvería los códigos de cuenta de la unión natural entre cuentas, clientes e impositores.
+que devolvería los códigos de cuenta de la unión natural entre cuentas, clientes e impositores
 
 ---
 
@@ -732,7 +766,7 @@ return <cliente>
        </cliente>
 ```
 
-ya que, como hemos dicho antes, cualquier cosa que pongamos entre llaves se va a evaluar.
+Ya que, como hemos dicho antes, cualquier cosa que pongamos entre llaves se va a evaluar.
 
 ---
 
@@ -746,7 +780,7 @@ order by $c/nombre-cliente descending
 return <cliente>{$c/*}</cliente>
 ```
 
-Esta consulta nos devolvería los sub-elementos incluidos en cada `cliente`, pero ordenados de manera descendente según el nombre de los mismos.
+Esta consulta nos devolvería los sub-elementos incluidos en cada `cliente`, pero ordenados de manera descendente según el nombre de los mismos
 
 ---
 
@@ -799,26 +833,24 @@ return $lib/titulo
 ---
 ![bg right:40% 50%](img/t7/JSON_vector_logo.svg)
 
-# JSON
-
-JavaScript Object Notation
+# _JavaScript Object Notation_ (JSON)<!--_class: section-->
 
 ---
 
-# JSON: definición
+# Definición
 
-- Formato de datos semi-estructurados.
-- Es una representación textual de objetos de datos.
-- Permite el intercambio sencillo de información entre servicios.
-- Representa objetos usando pares atributo-valor.
-- Formato para SGBD no relacionales (NoSQL) como _MongoDB_.
-- Su sintaxis es un subconjunto de JavaScript.
+- Formato de datos semi-estructurados
+- Es una representación textual de objetos de datos
+- Permite el intercambio sencillo de información entre servicios
+- Representa objetos usando pares atributo-valor
+- Formato para SGBD no relacionales (NoSQL) como _MongoDB_
+- Su sintaxis es un subconjunto de JavaScript
 
 ---
 
-# JSON: ventajas (I)
+# Ventajas (I)
 
-Una de las principales ventajas de **JSON** es que es auto-descriptivo y fácil de entender:
+Una de las principales ventajas es que es auto-descriptivo y fácil de entender:
 
 ```json
 {
@@ -834,9 +866,9 @@ Se pueden observar los pares de clave-valor en el documento.
 
 ---
 
-# JSON: ventajas (II)
+# Ventajas (y II)
 
-Además, es más compacto que **XML** ya que elimina las etiquetas. Por ejemplo, el JSON anterior en XML sería:
+Es más compacto que **XML** ya que no hay etiquetas. Por ejemplo, el JSON anterior en XML sería:
 
 ```xml
 <employees>
@@ -856,14 +888,17 @@ Además, es más compacto que **XML** ya que elimina las etiquetas. Por ejemplo,
 
 # JSON: estructuras básicas (I)
 
-- Objeto
-  - Colección de datos expresados como pares nombre-valor
-  - Van encerrados entre llaves
-  - El par nombre/valor se separa por `:`
-  - Los datos o pares están separados por comas
-- Lista de valores
-  - Llamada array en los lenguajes de programación
-  - Se encierra con corchetes `[]` y los valores se separan por comas `,`
+Objeto
+
+- Colección de datos expresados como pares nombre-valor
+- Van encerrados entre llaves
+- El par nombre/valor se separa por `:`
+- Los datos o pares están separados por comas
+
+Lista de valores
+
+- Llamada array en los lenguajes de programación
+- Se encierra con corchetes `[]` y los valores se separan por comas `,`
 
 ---
 
@@ -892,8 +927,8 @@ Además, es más compacto que **XML** ya que elimina las etiquetas. Por ejemplo,
 
 # Documentos embebidos/integrados
 
-- Los datos relacionados se almacenan en una sola estructura de documento.
-- Recuperación  y manipulación datos relacionados con una sola operación (un solo documento).
+- Los datos relacionados se almacenan en una sola estructura de documento
+- Recuperación  y manipulación datos relacionados con una sola operación (un solo documento)
 
 ```json
 {
@@ -910,9 +945,10 @@ Además, es más compacto que **XML** ya que elimina las etiquetas. Por ejemplo,
 
 # Documentos referenciados
 
-- Se les llama modelos normalizados.
-- Los datos se almacenan con más de un documento y se referencian entre sí.
-- Requieren más accesos al servidor pero permite evitar duplicación de datos.
+Se les llama modelos normalizados
+
+- Los datos se almacenan con más de un documento y se referencian entre sí
+- Requieren más accesos al servidor pero permite evitar duplicación de datos
 
 Documento **empleado**:
 
@@ -964,7 +1000,7 @@ Documento **coche** referencia a **empleado**:
 }
 ```
 
-Añadimos uno de los extremos de la relación (coche) como documento del otro extremo (empleado).
+Añadimos uno de los extremos de la relación (coche) como documento del otro extremo (empleado)
 
 ---
 
@@ -1001,7 +1037,7 @@ Vinculamos un extremo (coche) con el otro (empleado).
 }
 ```
 
-Añadimos una lista de objetos a la parte 1 de la relación (departamento), y añadimos los documentos de la parte N (empleados).
+Añadimos una lista de objetos a la parte 1 de la relación (departamento), y añadimos los documentos de la parte N (empleados)
 
 ---
 
@@ -1024,7 +1060,7 @@ Añadimos una lista de objetos a la parte 1 de la relación (departamento), y a�
 }
 ```
 
-Se disocian departamento y empleados en varios documentos, y se vinculan los últimos con los primeros.
+Se disocian departamento y empleados en varios documentos, y se vinculan los últimos con los primeros
 
 ---
 
@@ -1079,11 +1115,11 @@ Tres documentos, uno para cada Entidad relacionada y otro para reflejar referenc
 
 Recomendable **diseño normalizado (referenciado)**:
 
-- Relaciones complejas entre documentos de diferentes colecciones.
-- Si se realizan actualizaciones frecuentemente sobre los documentos.
-- Cuando la duplicación de datos no aporta ventajas suficientes que compensen el aumento de espacio en disco utilizado para ello.
-- El modelo de datos se rige por una jerarquía compleja.
-- Realizar varias consultas para obtener los datos no tiene un coste importante.
+- Relaciones complejas entre documentos de diferentes colecciones
+- Si se realizan actualizaciones frecuentemente sobre los documentos
+- Cuando la duplicación de datos no aporta ventajas suficientes que compensen el aumento de espacio en disco utilizado para ello
+- El modelo de datos se rige por una jerarquía compleja
+- Realizar varias consultas para obtener los datos no tiene un coste importante
 
 ---
 
@@ -1091,8 +1127,16 @@ Recomendable **diseño normalizado (referenciado)**:
 
 Recomendable diseño embebido:
 
-- Sin jerarquía compleja ni relaciones con otras colecciones de documentos.
+- Sin jerarquía compleja ni relaciones con otras colecciones de documentos
 - Se quieren obtener los datos con las mínimas peticiones al servidor
-- En el modelo de datos se tienen relaciones 1:N, donde el lado N siempre será consumidos en el contexto del elemento principal.
-- Optimizar la lectura de los datos, por encima de la escritura o actualización.
-- Actualizaciones atómicas a nivel de documento.
+- En el modelo de datos se tienen relaciones 1:N, donde el lado N siempre será consumidos en el contexto del elemento principal
+- Optimizar la lectura de los datos, por encima de la escritura o actualización
+- Actualizaciones atómicas a nivel de documento
+
+---
+
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/etsisi/Aprendizaje-profundo>

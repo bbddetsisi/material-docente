@@ -1,55 +1,36 @@
 ---
-marp: true
-size: 4:3
-auto-scaling:
-    - true
-    - fittingHeader
-    - math
-    - code
-backgroundColor: #fff
-backgroundImage: url('https://marp.app/assets/hero-background.jpg')
-paginate: true
-header: Programación contra bases de datos
+marp        : true
+title       : Programación contra bases de datos
+paginate    : true
+theme       : bbdd
+header      : Programación contra bases de datos
+footer      : Bases de datos
+description : >
+  Cubre las técnicas y herramientas para interactuar eficientemente con
+  bases de datos desde aplicaciones de software. E.T.S.I. Sistemas
+  Informáticos (UPM)
+keywords    : >
+  Bases de datos, Programación, JDBC, Hibernate, ORM
+math        : mathjax
 ---
-<!--
-_header: ''
-_footer: ![Licencia de Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)<br>Esta obra está bajo una [licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/). Icono diseñado por Laura Reen.
--->
-<style>
-img[alt~="center"] {
-  display: block;
-  margin: 0 auto;
-}
-img {
-  background-color: transparent!important;
-}
-li {
-  text-align: justify;
-}
-s {
-  background-color: yellow;
-  text-decoration: none;
-}
-p {
-  text-align: justify;
-}
-/*Tablas centradas*/
-table {
-  width: auto;
-  margin-left: auto;
-  margin-right: auto
-}
-</style>
 
-# TEMA 6
+<!-- _class: titlepage -->
 
 # Programación contra bases de datos
 
-![bg left:40% 60%](img/t6/code.svg)
+## Bases de datos
+
+### Departamento de Sistemas Informáticos
+
+#### E.T.S.I. de Sistemas Informáticos - UPM
+
+##### 15 de febrero de 2024
+
+[![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
 
-## Índice
+# Índice
 
 1. Arquitectura cliente-servidor
 2. Drivers nativos
@@ -57,148 +38,145 @@ table {
 
 ---
 
-# ARQUITECTURA CLIENTE-SERVIDOR
-
-## Programación contra bases de datos
+# ARQUITECTURA CLIENTE-SERVIDOR<!-- _class: section -->
 
 ---
 
-## Arquitectura cliente-servidor
+# Arquitectura cliente-servidor
 
-- Las bases de datos funcionan de acuerdo con una arquitectura cliente-servidor.
-- El servidor, que contiene los datos, escucha las peticiones de los clientes.
-- Los clientes solicitan al servidor que realicen operaciones sobre los datos: creación, actualización, borrado y consulta de los datos.
+Las bases de datos funcionan de acuerdo con una arquitectura **cliente-servidor**
+
+- El servidor, que contiene los datos, escucha las peticiones de los   clientes
+- Los clientes solicitan al servidor que realicen operaciones sobre los datos: creación, actualización, borrado y consulta de los datos
 - Habitualmente, el servidor y los clientes se ejecutan en dispositivos físicos diferentes.
 
 ---
 
-## MySQL Client/Server Protocol
+# MySQL Client/Server Protocol
 
-Para comunicarse, el servidor y los clientes necesitan "hablar" el mismo idioma.
+Para comunicarse, el servidor y los clientes necesitan _hablar_ el mis mo idioma
 
-MySQL dispone de un protocolo que implementan tanto el servidor como los clientes para establecer la comunicación:
+MySQL dispone de un protocolo que implementan tanto el servidor como los clientes para establecer la comunicación<sup>1</sup>:
 
 - Se denomina MySQL Client/Server Protocol.
 - Se ejecuta sobre TCP.
 - El cuerpo de los mensajes incluye sentencias SQL.
 
-Más información en [la documentación de MySQL](https://dev.mysql.com/doc/internals/en/client-server-protocol.html).
+> <sup>1</sup> Más información en <https://dev.mysql.com/doc/internals/en/client-server-protocol.html>
 
 ---
 
-## Esquema
+# Esquema (I)
 
 Esquema básico de la arquitectura:
 
-![center](img/t6/cliente-servidor.png)
+![center h:400](img/t6/cliente-servidor.png)
 
 ---
 
-## Esquema
+# Esquema (y II)
 
-En las sesiones de prácticas de la asignatura, la arquitectura era la siguiente:
+En las sesiones de prácticas de la asignatura, la arquitectura era la siguiente
 
-![center](img/t6/practicas.png)
-
----
-
-## Esquema con varios clientes
-
-Lo habitual es que un mismo servidor reciba conexiones de diferentes clientes:
-
-![center](img/t6/multi.png)
+![center h:400](img/t6/practicas.png)
 
 ---
 
-## Clientes de MySQL
+# Esquema con varios clientes
 
-- El cliente no tiene por qué ser *phpMyAdmin*.
-- El cliente puede ser cualquier software que implemente el protocolo *MySQL Client/Server Protocol*.
-- La mayoría de lenguajes de programación incorporan librerías (extensiones) para comunicarse con *MySQL* a través de clases y funciones de alto nivel.
+Lo habitual es que un mismo servidor reciba conexiones de diferentes clientes
 
----
-
-## Clientes de MySQL
-
-La base de datos es común para todos los programas. Cada programa se comunica con la base de datos a través de su conector:
-
-![center w:600](img/t6/clientes.png)
+![center h:400](img/t6/multi.png)
 
 ---
 
-# DRIVERS NATIVOS
+# Clientes de MySQL
 
-## Programación contra bases de datos
+Pueden ser cualquier software que implemente el _MySQL Client/Server Protocol_
+
+- _phpMyAdmin_ es un ejemplo, pero hay muchos otros, por ejemplo:
+  - MySQL Workbench<sup>2</sup>
+  - Cliente de línea de comandos general y específicos <sup>3</sup>
+- Además, prácticamente todo lenguajes de programación incorpora bibliotecas para comunicarse con _MySQL_ a través de clases y funciones de alto nivel
+
+En definitiva, **la base de datos es común para todos los programas**
+
+- Cada programa se comunica con la base de datos a través de su conector
+
+> <sup>2</sup> Más información en <https://www.mysql.com/products/workbench/>  
+> <sup>3</sup> Más información en <https://dev.mysql.com/doc/refman/8.0/en/programs-client.html>
 
 ---
 
-## Open Database Connectivity
+# DRIVERS NATIVOS<!-- _class: section -->
 
-Open DataBase Connectivity (ODBC) es un estándar de acceso a las bases de datos.
-El objetivo de ODBC es hacer posible el acceder a cualquier dato desde cualquier aplicación.
+---
 
-- Se crea una capa intermedia entre la aplicación y el SGBD.
+# _Open Database Connectivity_ (ODBC)
+
+Estándar de acceso a las bases de datos
+
+- Su objetivo es hacer posible el acceder a cualquier dato desde cualquier aplicación
+
+Crea una capa intermedia entre la aplicación y el SGBD
+
 - Esta capa actúa de traductor entre ODBC y el SGBD.
 - Permite utilizar diferentes bases de datos sin cambiar la aplicación.
 
-![center](img/t6/odbc.png)
+![center h:140](img/t6/odbc.png)
 
 ---
 
-## Java Database Connectivity
+# _Java Database Connectivity_ (JDBC)
 
-- Java Database Connectivity (JDBC) es una API que permite la ejecución de operaciones sobre bases de datos desde Java.
-- Es independiente a la base de datos y al sistema operativo.
-- Dispone de clases e interfaces que permiten gestionar la operativa con la base de datos.
-  - Conexión con base de datos.
-  - Operaciones CRUD.
+API para ejecutar operaciones sobre bases de datos desde Java
 
----
-<style scoped>
-  li {font-size: 0.9rem}
-  p {font-size: 0.9rem}
-</style>
-
-## Java Database Connectivity
+- Independiente a la base de datos y al sistema operativo
+- Clases e interfaces para gestionar conexión y CRUD con la base de datos
 
 JDBC ha evolucionado con 4 versiones:
 
-- **Tipo 1**: transforma las llamadas *JDBC* en llamadas *ODBC*. La traducción es lenta.
-- **Tipo 2**: transforma las llamadas *JDBC* en llamadas nativas de la API del SGBD. Evita el proceso de traducción pero requiere instalar la librería del SGBD en el cliente.
-- **Tipo 3**: crea una capa intermedia (middleware) para la gestión de las llamadas al SGBD. Evita instalar la librería del SGBD en el cliente pero el middleware añade latencia.
-- **Tipo 4**: realiza llamadas a la API de cada SGBD. Es Java puro y no añade latencia, pero cada SGBD requiere un driver específico.
+- **Tipo 1**: Transforma las llamadas _JDBC_ en llamadas _ODBC_ (lenta)
+- **Tipo 2**: Transforma las llamadas *JDBC* en llamadas nativas de la
+  API del SGBD
+  - Evita el proceso de traducción pero requiere instalar la librería
+    del SGBD en el cliente.
+- **Tipo 3**: Capa intermedia (_middleware_) para gestionar las llamadas
+  al SGBD
+  - Evita instalar la librería del SGBD en el cliente pero el
+    _middleware_ añade latencia
+- **Tipo 4**: Llamada directa a la API de cada SGBD
+  - Java puro y sin latencia, pero cada SGBD requiere un driver específico
 
 ---
 
-## JDBC Tipo 4
+# JDBC Tipo 4
 
-En la actualidad, se utiliza JDBC de Tipo 4 por ser el que mejor rendimiento reporta.
+En la actualidad, se usa JDBC de Tipo 4 por ser el que mejor rendimiento reporta
 
 ![center h:400](img/t6/jdbc4.png)
 
 ---
 
-## MySQL Connector/J8.0
+# MySQL Connector/J8.0
 
-- La implementación más reciente de JDBC para MySQL se denomina MySQL Connector/J8.0.
-- Requiere Java 1.8.x para funcionar.
-- Funciona con MySQL 5.6, 5.7 y 8.0.
-- Implementa JDBC 4.2.
-- Incluido en el JDK de Java.
-- Puedes encontrar toda la documentación en el siguiente [enlace](https://dev.mysql.com/doc/connector-j/en/).
+La implementación más reciente de JDBC para MySQL es _MySQL Connector/J8.0_<sup>4</sup>
 
+- Requiere Java 1.8.x para funcionar
+- Funciona con MySQL 5.6, 5.7 y 8.0
+- Implementa JDBC 4.2
+- Incluido en el JDK de Java
+- Es gratuito (pero no es _software libre_)
+
+> <sup>4</sup> Más información en <https://dev.mysql.com/doc/connector-j/en/>
 ---
 
-<style scoped>
-  li  {font-size: 0.9rem;}
-</style>
+# Instalación
 
-## Instalación
+Depende de la plataforma (Windows/Linux/macOS).
 
-- La descarga de **MySQL Connector/J8.0** es gratuita.
-- Depende de la plataforma (Windows/Linux/macOS).
-- Consiste en un `.jar` que debemos añadir al `CLASSPATH` de nuestro proyecto.
-- Contiene todas las clases e interfaces necesarias para operar con el servidor de MySQL.
+- Consiste en un `.jar` que debemos añadir al `CLASSPATH` de nuestro proyecto
+- Contiene todas las primitivas necesarias para operar con el servidor de MySQL
 - Está disponible en Maven:
 
 ```xml
@@ -211,18 +189,18 @@ En la actualidad, se utiliza JDBC de Tipo 4 por ser el que mejor rendimiento rep
 
 ---
 
-## Uso del conector
+# Uso del conector
 
-Toda aplicación que haga uso de MySQL Connector/J8.0 debe seguir los siguientes pasos:
+Toda aplicación que use de _MySQL Connector/J8.0_ debe seguir los siguientes pasos:
 
-1. Definir el SGBD a utilizar (cargar el driver).
-2. Establecer conexión con la base de datos.
-3. Ejecutar sentencias o llamadas a procedimientos.
-4. Liberar recursos.
+1. Definir el SGBD a utilizar (cargar el driver)
+2. Establecer conexión con la base de datos
+3. Ejecutar sentencias o llamadas a procedimientos
+4. Liberar recursos
 
 ---
 
-## Paso 1: definir la base de datos a utilizar
+# Paso 1: definir la base de datos a utilizar
 
 ```java
 // se importan las clases de JDK
@@ -243,7 +221,7 @@ public class LoadDriver {
 
 ---
 
-## Paso 2: conexión con la base de datos
+# Paso 2: conexión con la base de datos
 
 ```java
 import java.sql.Connection;
@@ -253,9 +231,7 @@ import java.sql.SQLException;
 Connection conn = null;
 // ...
 try {
-  conn = DriverManager.getConnection(
-    "jdbc:mysql://localhost/test?" + "user=minty&password=greatsqldb"
-    );
+  conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" + "user=minty&password=greatsqldb");
   // trabajar con la BBDD ...
 } catch (SQLException ex) {
   // manejar los errores ...
@@ -270,16 +246,17 @@ conn = DriverManager.getConnection("jdbc:mysql://localhost/test", "user", "pass"
 
 ---
 
-## Sintaxis de la URL de conexión
+# Sintaxis de la URL de conexión
 
-- Para conectar con una base de datos debemos definir la URL de conexión.
-- Debe tener el siguiente formato:
+Para conectar con una base de datos debemos definir la URL de conexión
+
+- Debe tener el siguiente formato
 
 ```text
 protocol://hosts[:port][/database][?properties]
 ```
 
-Por ejemplo, para conectarnos a la base de datos de las reformas, usaríamos:
+Por ejemplo, para conectarnos a la base de datos de las reformas, usaríamos
 
 ```text
 jdbc:mysql://localhost:3306/reformas?user=usuario&password=pass
@@ -291,19 +268,20 @@ jdbc:mysql://localhost:3306/reformas?user=usuario&password=pass
   p {font-size: 0.9rem}
 </style>
 
-## Paso 3: ejecutar sentencias
+# Paso 3: ejecutar sentencias (I)
 
-- La ejecución de las sentencias se realiza a partir de la clase `Statement`.
-- Se pueden crear nuevos `Statement` a partir del método `createStatement()` de la clase `Connection`.
-- Para ejecutar las sentencias usaremos:.
+Las sentencias se ejecutan con la clase `Statement`
+
+- Se pueden crear nuevos `Statement` a partir del método `createStatement()` de la clase `Connection`
+- Para ejecutar las sentencias usaremos:
   - `executeQuery(String)` si la sentencia es un `SELECT`.
-  - `executeUpdate(String)` si la sentencia es un `INSERT`, `UPDATE` o `DELETE`.
-  - `execute(String)` para cualquier sentencia.
-- Los resultados se devuelven en una instancia de la clase ResultSet.
+  - `executeUpdate(String)` si la sentencia es un `INSERT`, `UPDATE` o `DELETE`
+  - `execute(String)` para cualquier tipo de sentencia
+- Los resultados se devuelven en una instancia de la clase `ResultSet`
 
 ---
 
-## Paso 3: ejecutar sentencias
+# Paso 3: ejecutar sentencias (II)
 
 ```java
 import java.sql.Connection;
@@ -330,7 +308,7 @@ try {
   pre {font-size: 0.7rem}
 </style>
 
-## Paso 3: ejecutar sentencias (alternativa)
+# Paso 3: ejecutar sentencias (y III)
 
 ```java
 import java.sql.Connection;
@@ -356,9 +334,9 @@ try {
 
 ---
 
-## Paso 3: llamar a procedimientos
+# Paso 3: llamar a procedimientos (I)
 
-Para invocar un procedimiento debemos usar la clase `CallableStatement`. La llamada a un procedimiento implica:
+Los procedimientos se invocan con `CallableStatement`, lo que implica:
 
 1. Preparar la llamada (alto coste computacional, conviene reutilizar llamadas anteriores si es posible).
 2. Registrar los parámetros de salida (si existen)
@@ -367,19 +345,15 @@ Para invocar un procedimiento debemos usar la clase `CallableStatement`. La llam
 5. Recuperar los resultados
 
 ---
-<style scoped>
-  p {font-size: 0.7rem}
-</style>
 
-## Paso 3: llamar a procedimientos
+# Paso 3: llamar a procedimientos (y II)
 
 Supongamos que tenemos definido el siguiente procedimiento:
 
 ```sql
 CREATE PROCEDURE demoSp (IN inputParam VARCHAR(255), INOUT inOutParam INT)
-BEGIN
-  ...
-END
+...
+
 ```
 
 La ejecución desde código quedaría:
@@ -389,22 +363,20 @@ import java.sql.CallableStatement;
 import java.sql.Types;
 
 CallableStatement cStmt = conn.prepareCall("{call demoSp(?, ?)}");
-cStmt.setString(1, "abc"); // alternativa: cStmt.setString("inputParam", "abc );
 
+cStmt.setString(1, "abc");  // alternativa: cStmt.setString("inputParam", "abc );
 cStmt.registerOutParameter(2, Types.INTEGER);
-cStmt.setInt(2, 1); // alternativa: cStmt.setInt("inOutParam", 1);
-
+cStmt.setInt(2, 1);  // alternativa: cStmt.setInt("inOutParam", 1);
 cStmt.execute();
 
-outputValue = cStmt.getInt(2);
-// alternativa: outputValue = cStmt.getInt("inOutParam");
+outputValue = cStmt.getInt(2);  // alternativa: outputValue = cStmt.getInt("inOutParam");
 ```
 
 ---
 
-## Paso 4: liberar recursos
+# Paso 4: liberar recursos
 
-**Debemos** cerrar todos los recursos que se hayan abierto.
+**Debemos** cerrar todos los recursos que se hayan abierto
 
 Para cerrar `Statement`:
 
@@ -424,11 +396,11 @@ conn.close();
 
 ---
 
-## PreparedStatement
+# `PreparedStatement` (I)
 
-El uso de la clase `Statement` esta desaconsejado cuando se quiere parametrizar una sentencia.
+Usar `Statement` esta desaconsejado cuando se quiere parametrizar una sentencia
 
-La clase `Statement` construye sentencias SQL parametrizadas mediante la concatenación de objetos de tipo `String`:
+- Con `Statement` solo podemos parametrizar concatenando cadenas de texto
 
 ```java
 String name = "Alice";
@@ -438,17 +410,18 @@ Statement stmt = conn.createStatement();
 stmt.executeUpdate("INSERT INTO people (name, age) VALUES ('" + name + "'," + age + ")");
 ```
 
-Esto favorece los ataques de tipo *SQL Injection*.
+Esto favorece los ataques de tipo _SQL Injection_<sup>5</sup>
+
+> <sup>5</sup> Más información en <https://owasp.org/www-community/attacks/SQL_Injection>
 
 ---
 
-## PreparedStatement
+# `PreparedStatement` (y II)
 
 Alternativamente podemos usar las clase `PreparedStatement`.
 
-Parametriza una llamada mediante la inclusión del carácter `?` en la sentencia SQL.
-
-Requiere establecer el valor de cada parámetro antes de ejecutar la llamada:
+- Parametriza una llamada mediante la inclusión del carácter `?` en la sentencia SQL
+- Requiere establecer el valor de cada parámetro antes de ejecutar la llamada:
 
 ```java
 String name = "Alice";
@@ -465,29 +438,22 @@ stmt.executeUpdate();
 
 ---
 
-<style scoped>
-  li {font-size: 0.9rem}
-  p {font-size: 0.9rem}
-</style>
+# `ResultSet` (I)
 
-## ResultSet
+Nos permite recuperar los resultados devueltos por una consulta
 
-La clase `ResultSet` nos permite recuperar los resultados devueltos por una consulta.
+- Funciona como un cursor que apunta a una fila del resultado
+  - El método `next()` permite avanzar el cursor:
+  - Devuelve el valor falso cuando ha alanzado la última posición.
+  - El cursor se inicia en la posición anterior a la primera fila.
 
-Funciona como un cursor que apunta a una fila del resultado.
+Se proporcionan _getters_ para recuperar los atributos de una fila
 
-El método `next()` permite avanzar el cursor:
-
-- Devuelve el valor falso cuando ha alanzado la última posición.
-- El cursor se inicia en la posición anterior a la primera fila.
-
-Se proporcionan *getters* para recuperar los atributos de una fila.
-
-La recuperación puede hacerse por el número de columna (comienza en 1) o por el nombre de la misma (case-insensitive).
+- Se puede hacer mediante número de columna o por su nombre (_case-insensitive_)
 
 ---
 
-## ResultSet
+# `ResultSet` (y II)
 
 ```java
 PreparedStatement stmt;
@@ -510,44 +476,52 @@ rs.close(); // estamos obligados a cerrar el objeto
 
 ---
 
-# OBJECT RELATIONAL MAPPING (ORM)
-
-## Programación contra bases de datos
+# OBJECT RELATIONAL MAPPING (ORM)<!-- _class: section -->
 
 ---
 
-## Por qué necesitamos ORM
+# Por qué necesitamos ORM
 
-- La mayoría de lenguajes de programación actuales son orientados a objetos.
-- El modelo relacional y la orientación a objetos tienen importantes diferencias que dificultan el desarrollo software.
-- Es necesario invertir gran cantidad de tiempo y recursos para desarrollar aplicaciones que se comuniquen con la base de datos.
-- Los ORM buscan reducir la brecha entre ambos paradigmas para simplificar el proceso de desarrollo software.
+Casi todo lenguaje de programación es orientado a objetos, pero el modelo relacional no
+
+- Tienen importantes diferencias que dificultan el desarrollo software
+- Necesitan de tiempo y recursos para desarrollar aplicaciones que se comuniquen con la base de datos.
+- Los ORM buscan reducir la brecha entre ambos paradigmas para simplificar el proceso de desarrollo software
 
 ---
 
-## Características de un ORM
+# Características de un ORM
 
-- Los ORM se encargan de representar las tablas de la base de datos mediante una estructura de clases.
-- Toda la interacción entre el programa y la base de datos se realiza a través del ORM:
+Representan las tablas de la base de datos mediante una estructura de clases
+
+- Toda la interacción entre programa y base de datos se realiza a través del ORM:
   - Creación de tablas
   - Inserción y modificación de datos
   - Consultas
-- El desarrollador no necesita conocer SQL, aunque es recomendable entender su funcionamiento
+- No requiere conocer SQL, pero es muy recomendable entender su funcionamiento
 
 ---
 
-## Cuándo debemos usar un ORM
+# Cuándo debemos usar un ORM
 
-Distinguimos **dos** tipos de aplicaciones:
+Distinguimos **dos** tipos de aplicaciones
 
-- **Aplicaciones centradas en los datos**: se caracterizan por tener una alta dependencia con el SGBD y delegar la mayoría operativa a procedimientos almacenados. **No aptas para ORM**.
-- **Aplicaciones centradas en el modelo de datos**: la lógica de la aplicación gira en torno al modelo de datos. Las consultas de datos son simples. La mayoría de aplicaciones actuales siguen esta filosofía. **Aptas para ORM**.
+- **Centradas en los datos**
+  - Alta dependencia con el SGBD
+  - Delegan la mayoría operativa a procedimientos almacenados
+  - **No aptas para ORM**
+- **Centradas en el modelo de datos**
+  - La lógica gira en torno al modelo de datos
+  - Las consultas de datos son simples
+  - La mayoría de aplicaciones actuales siguen esta filosofía
+  - **Aptas para ORM**
 
 ---
 
-## Hibernate
+# Hibernate
 
-- Hibernate es el ORM más popular para Java
+Es el ORM más popular para Java
+
 - Independiente del SGBD
 - Define el modelo de clases mediante anotaciones
 - Se encarga de traducir métodos de Java en consultas SQL
@@ -557,9 +531,10 @@ Distinguimos **dos** tipos de aplicaciones:
 
 ---
 
-## Hibernate: Instalación
+# Hibernate: Instalación
 
-Haremos uso de Maven para instalar la librería en nuestro proyecto (fichero `pom.xml`). Requerimos tanto *Hibernate* como *Connector/J*:
+Haremos uso de Maven para instalar la librería en nuestro proyecto
+(fichero `pom.xml`). Requerimos tanto _Hibernate_ como _Connector/J_
 
 ```xml
 <dependencies>
@@ -578,42 +553,44 @@ Haremos uso de Maven para instalar la librería en nuestro proyecto (fichero `po
 
 ---
 
-## Hibernate: ejemplo de uso
+# Hibernate: ejemplo de uso
 
-Vamos a estudiar el funcionamiento de *Hibernate* mediante el siguiente ejemplo:
+Se quiere desarrollar una aplicación para gestionar las visualizaciones de series por parte de los usuarios
 
-- Se quiere desarrollar una aplicación para gestionar las visualizaciones de series por parte de los usuarios.
-- Un usuario estará definido por su alias y podrá ver todos los capítulos de las series que quiera.
-- Un capítulo, que dispondrá de un título y una duración, pertenecerá a una serie.
-- Una serie estará caracterizada por su título y género y dispondrá de un número indeterminado de capítulos.
+Un usuario estará definido por su alias y podrá ver todos los capítulos de las series que quiera
 
----
+Un capítulo, que dispondrá de un título y una duración, pertenecerá a una serie
 
-## Hibernate: ejemplo de uso (modelo ER)
-
-![center w:700](img/t6/hibernate-er.png)
+Una serie estará caracterizada por su título y género y dispondrá de un número indeterminado de capítulos
 
 ---
 
-## Hibernate: ejemplo de uso (modelo relacional)
+# Hibernate: ejemplo de uso (modelo ER)
 
-![center](img/t6/hibernate-rel.png)
+![center h:500](img/t6/hibernate-er.png)
 
 ---
-<style scoped>
-  li {font-size: 0.7rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.7rem}
-</style>
 
-## Hibernate: ejemplo de uso (clases Java)
+# Hibernate: ejemplo de uso (modelo relacional)
 
-![center h:200](img/t6/hibernate-rel.png)
+![center h:500](img/t6/hibernate-rel.png)
 
-Las relaciones entre las entidades se logran a través de los atributos de las clases:
+---
+
+# Hibernate: ejemplo de uso (clases Java, I)
+
+![center h:210](img/t6/hibernate-rel.png)
+
+Las relaciones entre las entidades se logran a través de los atributos de las clases
+
+<div class="columns">
+<div class="column">
 
 - **Relación 1:N** con una instancia de la clase.
 - **Relación N:M** con un `Set` de instancias de la clase.
+
+</div>
+<div class="column">
 
 ```java
 public class Usuario {
@@ -624,18 +601,16 @@ public class Usuario {
 }
 ```
 
----
-<style scoped>
-  li {font-size: 0.7rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.7rem}
-</style>
+</div>
+</div>
 
-## Hibernate: ejemplo de uso (clases Java)
+---
+
+# Hibernate: ejemplo de uso (clases Java, II)
 
 ![center h:200](img/t6/hibernate-rel.png)
 
-En el caso de las series, incluiremos un conjunto de capítulos que pertenecen a ella.
+En el caso de las series, incluiremos un conjunto de capítulos que le pertenezcan
 
 ```java
 public class Serie {
@@ -648,17 +623,12 @@ public class Serie {
 ```
 
 ---
-<style scoped>
-  li {font-size: 0.7rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.7rem}
-</style>
 
-## Hibernate: ejemplo de uso (clases Java)
+# Hibernate: ejemplo de uso (clases Java, y III)
 
-![center h:200](img/t6/hibernate-rel.png)
+![center h:190](img/t6/hibernate-rel.png)
 
-En el caso de los capítulos, incluiremos una referencia a la serie a la que pertenecen.
+Para los capítulos, incluiremos una referencia a la serie a la que pertenecen
 
 ```java
 public class Capitulo {
@@ -672,17 +642,10 @@ public class Capitulo {
 ```
 
 ---
-<style scoped>
-  li {font-size: 0.9rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.9rem}
-</style>
 
-## Hibernate: ejemplo de uso (anotaciones)
+# Hibernate: ejemplo de uso (anotaciones)
 
-Debemos indicar cómo construir nuestro modelo relacional a partir de las clases anteriores
-
-Disponemos de las siguientes anotaciones:
+Debemos indicar cómo construir nuestro modelo relacional a partir de las clases anteriores; para ello:
 
 - `@Entity`: define una clase como una entidad de nuestro modelo
 - `@Table`: define una tabla asociada a una entidad
@@ -693,7 +656,7 @@ Disponemos de las siguientes anotaciones:
 
 ---
 
-## Hibernate: ejemplo (anotaciones básicas)
+# Hibernate: ejemplo (anotaciones básicas, I)
 
 ```java
 @Entity
@@ -713,7 +676,7 @@ public class Usuario {
 
 ---
 
-## Hibernate: ejemplo (anotaciones básicas)
+# Hibernate: ejemplo (anotaciones básicas, II)
 
 ```java
 @Entity
@@ -735,7 +698,7 @@ public class Capitulo {
 
 ---
 
-## Hibernate: ejemplo (anotaciones básicas)
+# Hibernate: ejemplo (anotaciones básicas, y III)
 
 ```java
 @Entity
@@ -756,17 +719,10 @@ public class Serie {
 ```
 
 ---
-<style scoped>
-  li {font-size: 0.9rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.9rem}
-</style>
 
-## Hibernate: atributo `@Column`
+# Hibernate: atributo `@Column`
 
-Permite vincular un atributo de la clase con una columna de un tabla.
-
-Admite los siguiente parámetros:
+Permite vincular un atributo de la clase con una columna de un tabla:
 
 - `name`: nombre de la columna (default: nombre del atributo).
 - `unique`: el valor del atributo no puede repetirse (default: false).
@@ -775,65 +731,56 @@ Admite los siguiente parámetros:
 - `precision`: número de dígitos decimales si el atributo es Double (default: 0).
 
 ---
-<style scoped>
-  li {font-size: 0.9rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.9rem}
-</style>
 
-## Hibernate: atributo `@GeneratedValue`
+# Hibernate: atributo `@GeneratedValue`
 
-Permite crear identificadores únicos de forma automática. Los atributos de las clases se instancian **cuando el objeto es creado** en la base de datos.
+Permite crear identificadores únicos de forma automática
+
+- Dichos atributos se instancian **cuando el objeto se crea** en la base de datos
 
 ```java
 @Entity
 @Table(name = "serie")
 public class Serie {
-  @Id
-  @GeneratedValue
-  @Column(name = "id")
-  private Long id;
+  @Id @GeneratedValue @Column(name = "id") private Long id;
 }
-
 Serie lost = new Serie("Lost", "SciFi");
-
 System.out.println(lost.getId()); // null
-
 session.beginTransaction();
 session.save(lost);
 session.getTransaction().commit();
-
 System.out.println(lost.getId()); // 1
 ```
 
 ---
 
-## Hibernate: relaciones 1:N
+# Hibernate: relaciones 1:N
 
 Las relaciones 1:N requieren dos anotaciones:
 
-- `@ManyToOne`: indica que muchas instancias de una clase se relacionan con una de otra.
-  - Requiere definir el atributo de dicha relación mediante la etiqueta `@JoinColumn`.
-- `@OneToMany`: indica que una instancia de una clase clase se relaciona con muchas de otra.
+<div class="columns">
+<div class="column">
 
----
+- `@ManyToOne`: Muchos objetos de una clase se relacionan con uno de otra
+  - Requiere definir el atributo de dicha relación mediante la etiqueta `@JoinColumn`
+- `@OneToMany`: Un objeto de una clase clase se relaciona con muchos de otra
 
-## Hibernate: relaciones 1:N
+</div>
+<div class="column">
 
 ![center](img/t6/relacion-1n.png)
 
+</div>
+</div>
+
 ---
-<style scoped>
-  li {font-size: 0.9rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.9rem}
-</style>
 
-## Hibernate: relaciones 1:N (cascada)
+# Hibernate: relaciones 1:N (cascada)
 
-- Tanto a `@ManyToOne` como a `@OneToMany` se les puede añadir el parámetro `cascade = CascadeType.ALL`.
-- Esto permite que las actualizaciones en el modelo se propaguen a la base de datos.
-- Por defecto está **desactivado** (`cascade = 0`).
+`@ManyToOne` y `@OneToMany` admiten el parámetro `cascade = CascadeType.ALL`
+
+- Permite que las actualizaciones en el modelo se propaguen a la base de datos
+- Por defecto está **desactivado** (`cascade = 0`)
 
 ```java
 Serie lost = new Serie("Lost", "SciFi");
@@ -851,67 +798,64 @@ session.getTransaction().commit();
 
 ---
 
-## Hibernate: relaciones N:M
+# Hibernate: relaciones N:M
 
-- Las relaciones **N:M** requieren etiquetar las dos clases con `@ManyToMany`.
-- Todas las relaciones **N:M** tienen dos elementos:
-  - La clase poseedora de la relación.
-  - La clase no-poseedora (inversa) de la relación.
-- Se debe etiquetar con `@JoinTable` la clase poseedora para definir la tabla de relación.
+<div class="columns">
+<div class="column">
 
----
+Las relaciones **N:M** requieren **etiquetar las dos clases** con `@ManyToMany`
 
-## Hibernate: relaciones N:M
+- La clase poseedora de la relación.
+- La clase no-poseedora (inversa) de la relación.
 
-![center](img/t6/relacion-nm.png)
+</div>
+<div class="column">
 
----
-<style scoped>
-  li {font-size: 0.8rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.8rem}
-</style>
+![center h:300](img/t6/relacion-nm.png)
 
-## Hibernate: relaciones N:M (cascada)
+</div>
+</div>
 
-- `@ManyToMany` admite el parámetro `cascade = CascadeType.ALL`.
-- Permite mantener la consistencia entre las clases y los datos almacenados en el SGBD.
-- Si no se define, las nuevas filas de la tabla de relación sólo se generan al guardar los cambios en la clase poseedora.
-
-![center](img/t6/cascade-nm.png)
+`@JoinTable` en la clase poseedora sirve para definir la tabla de relación
 
 ---
 
-## Hibernate: creación de las tablas
+# Hibernate: relaciones N:M (cascada)
 
-- Una vez realizadas las anotaciones, *Hibernate* crea de manera automática todas las tablas en la base de datos.
-- **No es necesario** que ejecutemos ninguna sentencia `CREATE TABLE`.
-- Si las tablas ya existieran, *Hibernate* usará dichas tablas.
-- Su estructura debe coincidir con las anotaciones que hayamos hecho en las clases.
+Al igual que en las relaciones 1:N, `@ManyToMany` admite
+`cascade = CascadeType.ALL`
+
+- Permite mantener la consistencia entre clases y datos almacenados en el SGBD
+- Si no se define, las nuevas filas de la tabla de relación sólo se generan al guardar los cambios en la clase poseedora
+
+![center h:250](img/t6/cascade-nm.png)
 
 ---
-<style scoped>
-  li {font-size: 0.8rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.8rem}
-</style>
 
-## Hibernate: Session
+# Hibernate: creación de las tablas
 
-Hibernate gestiona todas las conexione al SGBD a través de la clase `Session`.
+_Hibernate_ genera automáticamente todas las tablas en la base de datos
 
-Las instancias de Session son creadas mediante un patrón factoría con el objeto `SessionFactory`.
+- **No es necesario** que ejecutemos ninguna sentencia `CREATE TABLE`
+- Si las tablas ya existieran, _Hibernate_ usará dichas tablas
+- Su estructura debe coincidir con las anotaciones que hayamos hecho en las clases
+
+---
+
+# Hibernate: Session
+
+Hibernate gestiona todas las conexione al SGBD a través de la clase
+`Session`
+
+- Sus objetos son creadas mediante un patrón factoría con el objeto
+  `SessionFactory`<sup>6</sup>
 
 ```java
 // configuración de la factoría
-StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-    .configure()
-    .build();
+StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 
 // creación de la factoría
-SessionFactory sessionFactory = new MetadataSources(registry)
-    .buildMetadata()
-    .buildSessionFactory();
+SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 
 // apertura, uso y cierre de sesión
 Session session = sessionFactory.openSession();
@@ -919,21 +863,22 @@ Session session = sessionFactory.openSession();
 session.close();
 ```
 
+> <sup>6</sup> Más información en
+> <https://refactoring.guru/design-patterns/factory-method>
 ---
 
-## Hibernate: configuración de `SessionFactory`
+# Hibernate: Configuración de `SessionFactory`
 
-Para configurar `SessionFactory` necesitamos el fichero de configuración `hibernate.cfg.xml`.
+Para configurar `SessionFactory` necesitamos el fichero de configuración `hibernate.cfg.xml`
 
-En el se definen las propiedades para conectar *Hibernate* con el SGBD.
+- En el se definen las propiedades para conectar _Hibernate_ con el SGBD
+- Este fichero **es dependiente del SGBD**
 
-Este fichero **es dependiente del SGBD**.
-
-Es un **error muy común** olvidarse de configurar este fichero, por lo que el proyecto no funcionará.
+Es un **error muy común** olvidarse de configurar este fichero, por lo que el proyecto no funcionará
 
 ---
 
-## Hibernate: fichero de configuración
+# Hibernate: Fichero de configuración
 
 ```xml
 <hibernate-configuration>
@@ -943,18 +888,13 @@ Es un **error muy común** olvidarse de configurar este fichero, por lo que el p
       <property name="connection.url">jdbc:mysql://localhost:3306/series</property>
       <property name="connection.username">root</property>
       <property name="connection.password">root</property>
-
       <!-- Dialecto: MySQL 8.0 -->
       <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
-
       <!-- Propiedades de la conexión -->
       <property name="connection.pool_size">10</property>
       <property name="hibernate.current_session_context_class">thread</property>
-      <property name="show_sql">true</property>
-
       <!-- Gestión del modelo de datos -->
       <property name="hibernate.hbm2ddl.auto">update</property>
-
       <!-- IMPORTANTE: clases que tienen anotaciones -->
       <mapping class="datamodel.Serie"/>
       <mapping class="datamodel.Capitulo"/>
@@ -965,41 +905,36 @@ Es un **error muy común** olvidarse de configurar este fichero, por lo que el p
 
 ---
 
-## Hibernate: propiedad `hibernate.hbm2ddl.auto`
+# <!-- fit -->Hibernate: Propiedad `hibernate.hbm2ddl.auto`
 
-Esta propiedad del fichero de configuración permite definir la gestión del modelo de datos:
+Esta propiedad del fichero de configuración permite definir la gestión del modelo de datos
 
-- `validate`: valida el esquema, **no** hace cambios en la base de datos.
-- `update`: actualiza el esquema si es necesario.
-- `create`: crea el esquema **destruyendo los datos existentes**.
-- `create-drop`: borra el esquema cuando `SessionFactory` es cerrado explícitamente.
+- `validate`: Valida el esquema, **no** hace cambios en la base de datos
+- `update`: Actualiza el esquema si es necesario
+- `create`: Cera el esquema **destruyendo los datos existentes**
+- `create-drop`: Borra el esquema cuando `SessionFactory` es cerrado explícitamente
 
 ---
 
-## Hibernate: funcionamiento transaccional
+# Hibernate: funcionamiento transaccional
 
-Todas las operaciones de escritura de Hibernate con el SGBD es recomendable hacerlas de manera transaccional.
+Todas las operaciones de escritura de Hibernate con el SGBD es recomendable hacerlas de manera transaccional, esto es:
 
-Esquema de funcionamiento:
-
-1. Apertura de la transacción:
+1. Apertura de la transacción
+2. Operaciones de escritura
+3. _Commit_ de la transacción
 
 ```java
 session.beginTransaction();
-```
-
-2. Operaciones de escritura.
-3. *Commit* de la transacción:
-
-```java
+// ... cosas
 session.getTransaction().commit();
 ```
 
 ---
 
-## Hibernate: operaciones de escritura
+# Hibernate: operaciones de escritura (I)
 
-Crear un nuevo registro (INSERT):
+Crear un nuevo registro (`INSERT`):
 
 ```java
 Serie lost = new Serie("Lost", "SciFi");
@@ -1008,7 +943,7 @@ session.save(lost);
 session.getTransaction().commit();
 ```
 
-Actualizar un registro (UPDATE):
+Actualizar un registro (`UPDATE`):
 
 ```java
 lost.setGenero("Sci-Fi");
@@ -1019,7 +954,7 @@ session.getTransaction().commit();
 
 ---
 
-## Hibernate: operaciones de escritura
+# Hibernate: operaciones de escritura (y II)
 
 Crear o actualizar un registro:
 
@@ -1040,7 +975,7 @@ session.getTransaction().commit();
 
 ---
 
-## Hibernate: operaciones de lectura
+# Hibernate: operaciones de lectura
 
 Las operaciones de lectura **no** requieren transacciones.
 
@@ -1050,7 +985,7 @@ Recuperar un registro a partir de su clave primaria:
 Serie lost = session.load(Serie.class, 1L);
 ```
 
-Para consultas más avanzadas se utiliza *Hibernate Query Language (HQL)*:
+Para consultas más avanzadas se utiliza _Hibernate Query Language (HQL)_
 
 ```java
 Query query = session.createQuery("from Serie where genero = :genero");
@@ -1060,17 +995,17 @@ List <Serie> list = query.getResultList();
 
 ---
 
-## Hibernate: consideraciones finales
+# Hibernate: consideraciones finales
 
-- Las clases anotadas deben tener un constructor vacío para que *Hibernate* pueda funcionar.
-- Se pueden añadir todos los constructores y métodos que sean necesario a las clases para su funcionamiento dentro de la aplicación.
-- Para hacer persistente un cambio debe llamarse a `save`, `update` o `saveOrUpdate`.
-- Los identificadores numéricos deben ser de tipo `Long`.
-- Todos los métodos vistos anteriormente pueden arrojar excepciones que **deben ser tratadas**.
+- Las clases anotadas deben tener un constructor vacío para que _Hibernate_ pueda funcionar
+- Se pueden añadir todos los constructores y métodos que sean necesario a las clases para su funcionamiento dentro de la aplicación
+- Para hacer persistente un cambio debe llamarse a `save`, `update` o `saveOrUpdate`
+- Los identificadores numéricos deben ser de tipo `Long`
+- Todos los métodos vistos anteriormente pueden arrojar excepciones que **deben ser tratadas**
 
 ---
 
-## Hibernate: secuencia de comandos (I)
+# Hibernate: secuencia de comandos (I)
 
 ```java
 // creación de la serie lost
@@ -1092,7 +1027,7 @@ session.getTransaction().commit();
 
 ---
 
-## Hibernate: secuencia de comandos (II)
+# Hibernate: secuencia de comandos (II)
 
 ```java
 // actualización de la serie Lost
@@ -1106,7 +1041,7 @@ session.getTransaction().commit();
 
 ---
 
-## Hibernate: secuencia de comandos (III)
+# Hibernate: secuencia de comandos (III)
 
 ```java
 // creación de la serie Friends
@@ -1124,7 +1059,7 @@ session.getTransaction().commit();
 
 ---
 
-## Hibernate: secuencia de comandos (IV)
+# Hibernate: secuencia de comandos (y IV)
 
 ```java
 // creación de dos usuarios
@@ -1146,24 +1081,32 @@ session.getTransaction().commit();
 
 ---
 
-## Hibernate: estado de la tabla `Serie`
+# Hibernate: estado de la tabla `Serie`
 
-![center](img/t6/serie.png)
-
----
-
-## Hibernate: estado de la tabla `Capitulo`
-
-![center](img/t6/capitulo.png)
+![center h:450](img/t6/serie.png)
 
 ---
 
-## Hibernate: estado de la tabla `Usuario`
+# Hibernate: estado de la tabla `Capitulo`
 
-![center](img/t6/usuario.png)
+![center h:450](img/t6/capitulo.png)
 
 ---
 
-## Hibernate: estado de la tabla `Visualizaciones`
+# Hibernate: estado de la tabla `Usuario`
 
-![center](img/t6/visualizaciones.png)
+![center h:450](img/t6/usuario.png)
+
+---
+
+# Hibernate: estado de la tabla `Visualizaciones`
+
+![center h:450](img/t6/visualizaciones.png)
+
+---
+
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/etsisi/Aprendizaje-profundo>

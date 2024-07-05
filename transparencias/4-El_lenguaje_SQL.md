@@ -1,91 +1,65 @@
 ---
-marp: true
-size: 4:3
-auto-scaling: 
-    - true
-    - fittingHeader
-    - math
-    - code
-backgroundColor: #fff
-backgroundImage: url('https://marp.app/assets/hero-background.jpg')
-paginate: true
-header: El lenguaje SQL
+marp        : true
+title       : El lenguaje SQL
+paginate    : true
+theme       : bbdd
+header      : El lenguaje SQL
+footer      : Bases de datos
+description : >
+  Estándar utilizado para la gestión y manipulación de bases de datos
+  relacionales, el cual permite consultar, actualizar, insertar y borrar
+  registros, entre otras operaciones, mediante una sintaxis declarativa.
+  E.T.S.I. Sistemas Informáticos (UPM)
+keywords    : >
+  Bases de datos, SQL, DDL, DML, CREATE, ALTER, DROP, INSERT, DELETE,
+  SELECT, UPDATE, JOIN, GROUP BY, HAVING, ORDER BY, WHERE, LIKE, IN,
+  BETWEEN, UNION, INTERSECT, MINUS, EXISTS, NOT EXISTS, ALL, ANY, SOME,
+  COUNT, AVG, SUM, MAX, MIN, DISTINCT, NULL, NOT NULL, PRIMARY KEY,
+  FOREIGN KEY, UNIQUE, AUTO_INCREMENT, COLLATE, CHARACTER SET
+math        : mathjax
 ---
-<!--
-_header: ''
-_footer: ![Licencia de Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)<br>Esta obra está bajo una [licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/). Icono diseñado por Flaticon
--->
-<style>
-img[alt~="center"] {
-  display: block;
-  margin: 0 auto;
-}
-img {
-  background-color: transparent!important;
-}
-li {
-  text-align: justify;
-}
-s {
-  background-color: yellow;
-  text-decoration: none;
-}
-p {
-  text-align: justify;
-}
-/*Tablas centradas*/
-table {
-  width: auto;
-  margin-left: auto;
-  margin-right: auto
-}
-</style>
 
-# TEMA 4
+<!-- _class: titlepage -->
 
 # El lenguaje SQL
+
+## Bases de datos
+
+### Departamento de Sistemas Informáticos
+
+#### E.T.S.I. de Sistemas Informáticos - UPM
+
+##### 15 de febrero de 2024
+
+[![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+---
+
+<!-- _class: section -->
+
+# EL LENGUAJE SQL
 
 ![bg left:40% 60%](img/t4/sql.svg)
 
 ---
 
-## Índice
-
-1. Introducción
-2. Lenguaje de definición de datos
-3. Integridad referencial
-4. Consultas
-5. Actualización y borrado de datos
-
----
-
-# INTRODUCCIÓN
-
-## El lenguaje SQL
-
----
-
-## Por qué necesitamos SQL
+# Por qué necesitamos SQL
 
 ![centered](img/t4/por_que_SQL.png)
 
 ---
 
-## SQL: Structured Query Language
+# SQL: _Structured Query Language_
 
-- Lenguaje de consulta estructurado para bases de datos relacionales.
-- Es mucho más que un lenguaje de consulta, puesto que permite además funciones de definición y control de datos.
-- La estandarización ha sido crucial para su difusión.
-- Prácticamente la mayoría de los sistemas relacionales soportan las bases de SQL estándar y suelen incluir aportaciones propias.
-- Utilizado masivamente en la industria.
+- Lenguaje de consulta estructurado para bases de datos relacionales
+- Es mucho más que un lenguaje de consulta, puesto que permite además funciones de definición y control de datos
+- La estandarización ha sido crucial para su difusión
+- Prácticamente la mayoría de los sistemas relacionales soportan las bases de SQL estándar y suelen incluir aportaciones propias
+- Utilizado masivamente en la industria
 
 ---
-<style scoped>
-  td {font-size: 0.65rem}
-  thead {font-size: 0.7rem}
-</style>
 
-## Evolución de SQL
+# Evolución de SQL
 
 | Año  | Nombre   | Comentarios                                           |
 |------|----------|-------------------------------------------------------|
@@ -98,8 +72,6 @@ table {
 | 2008 | SQL:2008 | `ORDER BY`, `TRUNCATE`                                |
 | 2011 | SQL:2011 | Datos temporales, `FETCH`                             |
 | 2016 | SQL:2016 | Patrones y JSON                                       |
-
-Fuente: [Wikipedia](https://es.wikipedia.org/wiki/SQL#Orígenes_y_evolución)
 
 ---
 
@@ -124,55 +96,44 @@ Fuente: [Wikipedia](https://es.wikipedia.org/wiki/SQL#Orígenes_y_evolución)
 - Lenguaje de **definición** de datos (*DDL*):
   - Permite diseñar, definir, modificar y borrar las estructuras de almacenamiento de datos.
 - Lenguaje de **manipulación** de datos (*DML*):
-  - Permite insertar, recuperar, manipular, modificar y borrar datos.
+  - Permite insertar, recuperar, manipular, modificar y borrar datos
 - Lenguaje de **control** de datos (*DCL*):
-  - Permite controlar y gestionar los permisos de la base de datos.
+  - Permite controlar y gestionar los permisos de la base de datos
 
 ---
-<style scoped>
-li {
-  font-size: 0.9rem;
-}
-</style>
 
-## Sentencias SQL (I)
+# Sentencias SQL (I)
 
 - Las sentencias SQL están formadas por:
-  - Palabras reservadas.
+  - Palabras reservadas
   - Palabras definidas por el usuario (nombres de tablas, atributos, etc).
 - Características de las sentencias:
-  - _Case insensitive_: es indiferente escribir las palabras en mayúsculas o minúsculas.
-  - Cada cláusula o palabra puede aparecer en líneas diferentes.
-  - Se puede utilizar la indentación que se quiera.
-  - Una sentencia o comando SQL finaliza con la aparición del símbolo `;`, aunque es opcional si el comando es único.
+  - _Case insensitive_: es indiferente escribir las palabras en mayúsculas o minúsculas
+  - Cada cláusula o palabra puede aparecer en líneas diferentes
+  - Se puede utilizar la indentación que se quiera
+  - Una sentencia o comando SQL finaliza con la aparición del símbolo `;`, aunque es opcional si el comando es único
 
 ---
-<style scoped>
-li {
-  font-size: 1rem;
-}
-</style>
 
-## Sentencias SQL (II)
+# Sentencias SQL (y II)
 
 Explicaremos las sentencias SQL mediante notación BNF:
 
-- Palabras en mayúsculas representan palabras reservadas.
-- Palabras en minúsculas representan palabras definidas por el usuario.
-- El símbolo `|` indica una elección entre alternativas.
-- Las llaves `{}` representan elementos requeridos.
-- Los corchetes `[]` representan elementos opcionales.
-- Los `...` indican repetición opcional (0 ó más).
+- Palabras en mayúsculas representan palabras reservadas
+- Palabras en minúsculas representan palabras definidas por el usuario
+- El símbolo `|` indica una elección entre alternativas
+- Las llaves `{}` representan elementos requeridos
+- Los corchetes `[]` representan elementos opcionales
+- Los `...` indican repetición opcional (0 ó más)
 
 ---
 
+<!--_class: section-->
 # LENGUAJE DE DEFINICIÓN DE DATOS
 
-## El lenguaje SQL
-
 ---
 
-## Schemas
+# Schemas (I)
 
 En *MySQL* un schema en una agrupación de lógica de tablas que constituyen un modelo datos:
 
@@ -180,11 +141,11 @@ En *MySQL* un schema en una agrupación de lógica de tablas que constituyen un 
 
 ---
 
-## Schemas
+# Schemas (y II)
 
 Sintaxis:
 
-```bnf
+```ebnf
 CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] nombre_del_schema
  [ [DEFAULT] CHARACTER SET [=] charset_name
  | [DEFAULT] COLLATE [=] collation_name
@@ -204,7 +165,7 @@ Más información sobre `COLLATE`: [documentación](https://dev.mysql.com/doc/re
 
 ---
 
-## Creación de tablas
+# Creación de tablas
 
 ```SQL
 CREATE TABLE [schema.]nombre_tabla (
@@ -222,7 +183,7 @@ Modificadores de columna:
 
 ---
 
-## Tipos de datos en SQL
+# Tipos de datos en SQL
 
 | Familia    | Tipos                      |
 |------------|----------------------------|
@@ -231,14 +192,9 @@ Modificadores de columna:
 | Enumerados | `ENUM('val1', ..., 'valn')`|
 | Fecha      | `DATETIME`, `TIMESTAMP`    |
 
-Más tipos de datos: [documentación](https://dev.mysql.com/doc/refman/8.0/en/data-types.html)
+Más tipos en <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 
 ---
-<style scoped>
-  td {font-size: 0.75rem}
-  thead {font-size: 0.75rem}
-  s {text-decoration: underline; background-color: transparent}
-</style>
 
 # Creación de tablas: ejemplo
 
@@ -259,11 +215,12 @@ CREATE TABLE corporacion.personas (
 
 ---
 
-## Claves primarias
+# Claves primarias
 
-- Toda definición de una tabla debe indicar una clave primaria.
-- Esta debe referenciarse a un atributo (o conjunto de atributos) que identifiquen unívocamente cada fila.
-- El/los atributo/s deben declararse de la forma habitual.
+Toda definición de una tabla debe indicar una clave primaria
+
+- Debe referenciar a uno o más atributos que identifiquen unívocamente cada fila
+- El/los atributo/s deben declararse de la forma habitual
 
 ```SQL
 CREATE TABLE [schema.]nombre_tabla (
@@ -273,13 +230,8 @@ CREATE TABLE [schema.]nombre_tabla (
 ```
 
 ---
-<style scoped>
-  td {font-size: 0.75rem}
-  thead {font-size: 0.75rem}
-  s {text-decoration: underline; background-color: transparent}
-</style>
 
-## Claves primarias: ejemplo
+# Claves primarias: ejemplo
 
 | ~~ID~~ | NOMBRE | APELLIDOS    | DNI        | FECHA DE NACIMIENTO |
 |--------|--------|--------------|------------|---------------------|
@@ -299,7 +251,7 @@ CREATE TABLE corporacion.personas (
 
 ---
 
-## Modificación de tablas
+# Modificación de tablas
 
 Añadir un nuevo atributo:
 
@@ -324,7 +276,7 @@ DROP nombre_de_atributo;
 
 ---
 
-## Eliminación de tablas
+# Eliminación de tablas
 
 Vaciar una tabla (eliminar todas sus filas pero mantener la estructura):
 
@@ -340,7 +292,7 @@ DROP TABLE [schema.]nombre_tabla;
 
 ---
 
-## Inserción de datos
+# Inserción de datos (I)
 
 - Los datos deben añadirse fila a fila.
 - Los datos añadidos deben cumplir las restricciones de la tabla:
@@ -351,7 +303,7 @@ DROP TABLE [schema.]nombre_tabla;
 
 ---
 
-## Inserción de datos
+# Inserción de datos (y II)
 
 Inserción de una fila de datos:
 
@@ -370,15 +322,8 @@ INSERT INTO [schema.]tabla
 **Solo podrán omitirse columnas que no hayan sido definidas como** `NOT NULL`.
 
 ---
-<style scoped>
-  td {font-size: 0.8rem}
-  thead {font-size: 0.8rem}
-  s {text-decoration: underline; background-color: transparent}
-</style>
 
-## Inserción de datos: ejemplos
-
-`PERSONAS`:
+# Inserción de datos: ejemplos (I)
 
 | ~~ID~~ | NOMBRE        | DNI        | FECHA_NAC              |
 |--------|---------------|------------|------------------------|
@@ -398,15 +343,10 @@ INSERT INTO corporacion.personas (nombre, fecha_nac, dni, id)
 ```
 
 ---
-<style scoped>
-  td {font-size: 0.8rem}
-  thead {font-size: 0.8rem}
-  s {text-decoration: underline; background-color: transparent}
-</style>
 
-## Inserción de datos: ejemplos
+# Inserción de datos: ejemplos (y II)
 
-Es posible insertar varias filas con una única sentencia `INSERT INTO`.
+Es posible insertar varias filas con una única sentencia `INSERT INTO`
 
 | ~~ID~~ | NOMBRE        | DNI        | FECHA_NAC              |
 |--------|---------------|------------|------------------------|
@@ -423,10 +363,12 @@ INSERT INTO corporacion.personas VALUES
 
 ---
 
-## Valores por defecto
+# Valores por defecto
 
-- Es posible definir valores por defecto a los atributos.
+Es posible definir valores por defecto a los atributos.
+
 - Se definen en la sentencia CREATE TABLE:
+- Si no se especifica el valor al realizar el `INSERT INTO`, se pone el valor por defecto.
 
 ```SQL
 CREATE TABLE [schema.]tabla (
@@ -436,21 +378,14 @@ CREATE TABLE [schema.]tabla (
 );
 ```
 
-- Si no se especifica el valor al realizar el `INSERT INTO`, se pone el valor por defecto.
-
 ---
-<style scoped>
-li {
-  font-size: 0.8rem;
-}
-</style>
 
-## Generación automática de claves
+# Generación automática de claves
 
-- Es posible generar claves únicas de forma automática.
-- Se debe definir un atributo numérico como `AUTO_INCREMENT`.
+- Es posible generar claves únicas de forma automática
+- Se debe definir un atributo numérico como `AUTO_INCREMENT`
 - El atributo tomará un valor incremental cada vez que se inserte una nueva fila.
-  - No debe especificarse su valor cuando se realiza el `INSERT INTO`.
+  - No debe especificarse su valor cuando se realiza el `INSERT INTO`
 
 ```SQL
 CREATE TABLE corporacion.personas (
@@ -467,28 +402,25 @@ INSERT INTO corporacion.personas (nombre, apellidos, fecha_nac)
 
 ---
 
+<!-- _class: section -->
 # INTEGRIDAD REFERENCIAL
 
-## El lenguaje SQL
+---
+
+# Qué es la integridad referencial
+
+Restricciones referenciales de acuerdo con un conjunto predefinido de reglas para `INSERT`, `UPDATE` Y `DELETE` que gobiernan las operaciones de inserción, borrado, actualización y carga sobre tablas relacionadas mediante claves primarias y claves ajenas
+
+- Se encarga de conservar y garantizar automáticamente la integridad de todos los datos almacenados
 
 ---
 
-## Qué es la integridad referencial
-
-- Implantación de restricciones referenciales de acuerdo con un conjunto predefinido de reglas de `INSERT`, `UPDATE` Y `DELETE` que gobiernan las operaciones de inserción, borrado, actualización y carga sobre tablas relacionadas mediante claves primarias y claves ajenas.
-- La integridad referencial se encarga de conservar y garantizar automáticamente la integridad de todos los datos almacenados.
-
----
-<style scoped>
-  td {font-size: 0.6rem}
-  thead {font-size: 0.7rem}
-  p {font-size: 0.7rem}
-  s {text-decoration: underline; background-color: transparent}
-</style>
-
-## Integridad referencial: ejemplo
+# Integridad referencial: ejemplo
 
 Supongamos que tenemos las siguientes tablas:
+
+<div class="columns">
+<div class="column">
 
 `EMPLEADOS`
 
@@ -497,6 +429,9 @@ Supongamos que tenemos las siguientes tablas:
 | 11       | Fernando | Ruíz Pérez   | 2    |
 | 67       | Raúl     | Gómez García | 4    |
 
+</div>
+<div class="column">
+
 `DEPARTAMENTOS`
 
 | ~~ID_D~~ | NOMBRE               |
@@ -504,45 +439,45 @@ Supongamos que tenemos las siguientes tablas:
 | 2        | I+D+i                |
 | 4        | Dirección y gobierno |
 
-¿Puedo borrar el departamento 2 sin que afecte a Fernando?
-¿Puedo actualizar el departamento 4 sin que afecte a Raúl?
+</div>
+</div>
+
+¿Puedo borrar el departamento 2 sin que afecte a Fernando? ¿Puedo actualizar el departamento 4 sin que afecte a Raúl?
 
 ---
 
-## Restricción referencial
+# Restricción referencia
 
-- Para mantener la **Integridad Referencial** debemos añadir **Restricciones Referenciales** cuando definimos las tablas.
-- Una Restricción Referencial permite “vincular” la clave foránea de una tabla con la clave primaria de otra tabla (o la misma).
+Para mantener la **integridad referencial** debemos añadir **restricciones referenciales** cuando definimos las tablas
+
+- Una restricción referencial permite “vincular” la clave foránea de una tabla con la clave primaria de otra tabla (o la misma)
 - Se deben definir las opciones de integridad referencial:
   - Política de actualización.
   - Política de borrado.
 
 ---
 
-## Restricción referencial en SQL
+# Restricción referencial en SQL
 
-![center](img/t4/rr.png)
+![center h:500](img/t4/rr.png)
 
 ---
-<style scoped>
-li {
-  font-size: 0.85rem;
-}
-</style>
 
-## Reglas de integridad referencial
+# Reglas de integridad referencial
 
-- `ON DELETE` permite definir qué sucede con la clave foránea cuando se elimina la clave primaria.
-- `ON UPDATE` permite definir qué sucede con la clave foránea cuando se actualiza la clave primaria.
+- `ON DELETE` $\rightarrow$ ¿qué sucede con la clave foránea al eliminar la clave primaria?
+- `ON UPDATE` $\rightarrow$ ¿qué sucede con la clave foránea al actualizar la clave primaria?
 - Cuatro opciones:
-  - `RESTRICT` (o `NO ACTION`): impide la propagación de la operación. **Opción por defecto**.
+  - `RESTRICT` (o `NO ACTION`)<sup>1</sup>: impide la propagación de la operación. **Opción por defecto**.
   - `SET NULL`: se pone a `NULL` la clave ajena, siempre que sea posible.
   - `CASCADE`: se propaga la operación.
   - `SET DEFAULT`: se pone al valor por defecto la clave ajena, si es posible.
 
+> <sup>1</sup> La diferencia entre ambas es que `RESTRICT` realiza las comprobaciones inmediatamente, mientras que `NO ACTION` las aplaza. En el caso concreto de MySQL, como no implementa comprobaciones diferidas, no hay diferencia entre ambas.
+
 ---
 
-## Restricción referencial: ejemplo
+# Restricción referencial: ejemplo
 
 ```SQL
 CREATE TABLE corp.departamentos (
@@ -563,69 +498,70 @@ CREATE TABLE Corp.empleados (
     ON DELETE NO ACTION
     ON UPDATE CASCADE
 );
-
 ```
 
 ---
 
-## Estructura referencial
+# Estructura referencial
 
-- Definiremos una estructura referencial como el conjunto de tablas y restricciones entre ellas de modo que cada tabla del conjunto es padre o dependiente de otra u otras del mismo conjunto.
-  - Gráficamente se indica una flecha desde la clave foránea a la clave primaria.
-- Existen tres tipos de estructuras:
-  - Lineal.
-  - Cíclica.
-  - Cíclica-autoreferencial.
+Conjunto de tablas y restricciones entre ellas de modo que cada tabla del conjunto es padre o dependiente de otra u otras del mismo conjunto
 
----
+- Gráficamente se indica una flecha desde la clave foránea a la clave primaria.
 
-## Estructura lineal
+Existen tres tipos de estructuras:
 
-![center](img/t4/lineal.png)
+- Lineal.
+- Cíclica.
+- Cíclica-autoreferencial.
 
 ---
 
-## Estructura lineal
+# Estructura lineal (I)
 
-![center](img/t4/lineal_valida.png)
-
----
-
-## Estructura cíclica
-
-![center h:400](img/t4/ciclica.png)
+![center h:500](img/t4/lineal.png)
 
 ---
 
-## Estructura cíclica
+# Estructura lineal (y II)
 
-![center h:400](img/t4/ciclica_valida.png)
+![center h:500](img/t4/lineal_valida.png)
+
+---
+
+# Estructura cíclica (I)
+
+![center h:500](img/t4/ciclica.png)
+
+---
+
+# Estructura cíclica (II)
+
+![center h:450](img/t4/ciclica_valida.png)
 
 Eliminamos de T1 la fila con clave T1A. ¿Qué sucede?
 
 ---
 
-## Estructura cíclica
+# Estructura cíclica (y III)
 
-![center h:400](img/t4/ciclica_valida2.png)
+![center h:450](img/t4/ciclica_valida2.png)
 
 Eliminamos de T1 la fila con clave T1A. ¿Qué sucede?
 
 ---
 
-## Estructura cíclica autoreferencial
+# Estructura cíclica autoreferencial
 
-![center](img/t4/autoref.png)
+![center h:500](img/t4/autoref.png)
 
 ---
 
+<!-- _class: section -->
 # CONSULTAS
 
-## El lenguaje SQL
-
 ---
 
-## Consultas con SQL
+# Consultas con SQL (I)
 
 La sintaxis para realizar consultas con SQL es la siguiente:
 
@@ -640,18 +576,18 @@ SELECT [DISTINCT | ALL] {*|expresión [[AS] alias] [,...]}
 
 ---
 
-## Consultas con SQL
+# Consultas con SQL (y II)
 
-- `SELECT`: indica la información que se desea obtener.
-- `FROM`: especifica la tabla (o tablas) en las que se encuentra los atributos implicados en la consulta.
-- `WHERE`: define la condición de búsqueda.
-- `GROUP BY`: permite agrupar los resultados.
-- `HAVING`: especifica condiciones de grupo (sólo se se emplea `GROUP BY`).
-- `ORDER BY`: ordena los resultados.
+- `SELECT`: indica la información que se desea obtener
+- `FROM`: especifica la tabla (o tablas) en las que se encuentra los atributos implicados en la consulta
+- `WHERE`: define la condición de búsqueda
+- `GROUP BY`: permite agrupar los resultados
+- `HAVING`: especifica condiciones de grupo (sólo se se emplea `GROUP BY`)
+- `ORDER BY`: ordena los resultados
 
 ---
 
-## Operadores
+# Operadores
 
 SQL define los siguientes operadores para expresar condiciones de fila (`WHERE`) o grupo (`HAVING`).
 
@@ -666,15 +602,15 @@ SQL define los siguientes operadores para expresar condiciones de fila (`WHERE`)
 
 ---
 
-## Base de datos de ejemplo
+# Base de datos de ejemplo
 
-![center](img/t4/ejemplo.png)
+![center h:500](img/t4/ejemplo.png)
 
 ---
 
-## Recuperación simple
+# Recuperación simple
 
-> Obtener todos los datos de todos los proyectos:
+<cite>Obtener todos los datos de todos los proyectos</cite>
 
 ```SQL
 SELECT codP, descripcion, localidad, cliente, telefono
@@ -683,7 +619,8 @@ SELECT * -- equivale a todas las columnas de la tabla
   FROM proyectos;
 ```
 
-> Obtener los códigos de máquina `CodM` para todas las máquinas utilizadas:
+<cite>Obtener los códigos de máquina `CodM` para todas las máquinas
+utilizadas</cite>
 
 ```SQL
 -- Necesitamos poner DISTINCT para no devolver
@@ -694,11 +631,11 @@ SELECT DISTINCT codM
 
 ---
 
-## Cláusula `DISTINCT`
+# Cláusula `DISTINCT`
 
 Elimina los valores duplicados del resultado. Por ejemplo, para la consulta *Obtener las localidades de los conductores*
 
-![center](img/t4/distinct.png)
+![center h:350](img/t4/distinct.png)
 
 ---
 <style scoped>
@@ -707,11 +644,11 @@ Elimina los valores duplicados del resultado. Por ejemplo, para la consulta *Obt
   s {text-decoration: underline; background-color: transparent}
 </style>
 
-## Cláusula `WHERE`
+# Cláusula `WHERE` (I)
 
 La cláusula `WHERE` contiene una condición simple o compuesta para *filtrar* filas.
 
-> Obtener los códigos de los conductores de Arganda:
+<cite>Obtener los códigos de los conductores de Arganda</cite>
 
 ```SQL
 SELECT codC
@@ -726,15 +663,10 @@ SELECT codC
 | C04  |
 
 ---
-<style scoped>
-  td {font-size: 0.9rem}
-  thead {font-size: 0.9rem}
-  s {text-decoration: underline; background-color: transparent}
-</style>
 
-## Cláusula `WHERE`
+# Cláusula `WHERE` (y II)
 
-> Obtener los códigos de los conductores de Arganda que tengan categoría inferior a 18:
+<cite>Obtener los códigos de los conductores de Arganda que tengan categoría inferior a 18</cite>
 
 ```SQL
 SELECT codC
@@ -748,21 +680,14 @@ SELECT codC
 | C02  |
 
 ---
-<style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.8rem}
-  pre {font-size:0.7rem}
-</style>
 
-## Operador `BETWEEN`
+# Operador `BETWEEN`
 
 - Establece una comparación en un rango.
 - Se utiliza con valores numéricos o de fecha.
 - También se puede utilizar `NOT BETWEEN`.
 
-> Obtener el nombre de las máquinas cuyo precio por hora esté comprendido entre 70 y 90 euros:
+<cite>Obtener el nombre de las máquinas cuyo precio por hora esté comprendido entre 70 y 90 euros</cite>
 
 ```SQL
 SELECT nombre, precioHora
@@ -776,23 +701,15 @@ SELECT nombre, precioHora
 | Volquete   | 70         |
 
 ---
-<style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.8rem}
-  pre {font-size:0.7rem}
-  p {font-size: 0.8rem}
-</style>
 
-## Operador `LIKE`
+# Operador `LIKE`
 
 Establece una comparación entre cadenas de caracteres con la inclusión de comodines:
 
 - `%`: secuencia de cero o más caracteres.
 - `_`: sustituye a un único carácter.
 
-> Obtener los conductores que se apellidan 'Pérez'
+<cite>Obtener los conductores que se apellidan 'Pérez'</cite>
 
 ```SQL
 SELECT nombre
@@ -806,25 +723,15 @@ SELECT nombre
 | Carmen Pérez |
 
 ---
-<style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.8rem}
-  pre {font-size:0.7rem}
-  p {font-size: 0.8rem}
-</style>
 
-## Operador `IN`
+# Operador `IN` (I)
 
 Comprueba la pertenencia de un valor a un conjunto dado.
 
-> Obtener el nombre de los conductores que residan en Arganda o Rivas:
+<cite>Obtener el nombre de los conductores que residan en Arganda o Rivas</cite>
 
 ```SQL
-SELECT nombre
-  FROM conductores
-  WHERE localidad IN ('Arganda', 'Rivas');
+SELECT nombre FROM conductores WHERE localidad IN ('Arganda', 'Rivas');
 ```
 
 | Nombre       |
@@ -836,25 +743,15 @@ SELECT nombre
 | Carmen Pérez |
 
 ---
-<style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.8rem}
-  pre {font-size:0.7rem}
-  p {font-size: 0.8rem}
-</style>
 
-## Operador `IN`
+# Operador `IN` (y II)
 
 También se puede utilizar con el modificador `NOT`.
 
-> Obtener el nombre de los conductores que no sean de Arganda:
+<cite>Obtener el nombre de los conductores que no sean de Arganda</cite>
 
 ```SQL
-SELECT nombre
-  FROM conductores
-  WHERE localidad NOT IN ('Arganda');
+SELECT nombre FROM conductores WHERE localidad NOT IN ('Arganda');
 ```
 
 | Nombre        |
@@ -864,27 +761,17 @@ SELECT nombre
 | Javier Martín |
 
 ---
-<style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.7rem}
-  pre {font-size:0.7rem}
-  p {font-size: 0.8rem}
-</style>
 
-## Operador `IS NULL`
+# Operador `IS NULL`
 
-- Comprueba si un valor es nulo.
-- No es posible determinar si un valor es o no nulo utilizando operadores de igualdad `=` o diferencia `<>`.
-- También se puede utilizar `IS NOT NULL`.
+Comprueba si un valor es nulo ( no nulo con `IS NOT NULL`)
 
-> Obtener los partes de trabajo que no figuren con el tiempo empleado:
+- No se puede conseguir con los operadores de igualdad `=` o diferencia `<>`.
+
+<cite>Obtener los partes de trabajo que no figuren con el tiempo empleado</cite>
 
 ```SQL
-SELECT codC, codM, codP, fecha
-  FROM trabajos
-  WHERE tiempo IS NULL;
+SELECT codC, codM, codP, fecha FROM trabajos WHERE tiempo IS NULL;
 ```
 
 | CodC | CodM | CodP | Fecha    |
@@ -894,31 +781,22 @@ SELECT codC, codM, codP, fecha
 | C02  | M03  | P01  | 18/09/11 |
 
 ---
-<style scoped>
-  td {font-size: 0.5rem}
-  thead {font-size: 0.5rem}
-  blockquote {font-size: 0.6rem}
-  li {font-size: 0.6rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.7rem}
-</style>
 
-## Operadores `ALL` y `ANY`
+# Operadores `ALL` y `ANY`
 
-- Permiten comparar valores con respecto de un conjunto.
+Permiten comparar valores con respecto de un conjunto
+
 - El segundo operando **debe** ser una subconsulta.
 - Van acompañados de un operador de comparación (`>`, `>=`, `<`, `<=`, `=`, `<>`):
-- `ALL` implica que la condición se cumpla respecto de todo el conjunto.
+- Comprueba que la condición se cumple para todos (`ALL`) o al menos para uno (`ANY`)
 - `ANY` implica que la condición se cumpla respecto de, al menos, un elemento del conjunto.
 
-> Obtener proyectos que no sean ninguna de las localidades de aquellos conductores con categoría superior a 17:
+<cite>Obtener proyectos que no sean ninguna de las localidades de aquellos conductores con categoría superior a 17:
 
 ```SQL
-SELECT descripcion, localidad
-  FROM proyectos
-  WHERE localidad <> ALL (SELECT localidad
-                          FROM conductores
-                          WHERE categoria > 17);
+SELECT descripcion, localidad FROM proyectos
+WHERE localidad <> ALL (SELECT localidad FROM conductores
+                        WHERE categoria > 17);
 ```
 
 | Descripción | Localidad |
@@ -926,42 +804,30 @@ SELECT descripcion, localidad
 | Techado     | Loeches   |
 
 ---
-<style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.9rem}
-  pre {font-size:0.8rem}
-  p {font-size: 0.9rem}
-</style>
 
-## Operador `EXISTS`
+# Operador `EXISTS`
 
-- Indica la existencia o no de un conjunto.
-- El operando suele ser una subconsulta.
-- Devuelve `TRUE` o `FALSE` dependiendo si la subconsulta devuelve resultado o no, respectivamente.
+Indica la existencia o no de un conjunto
 
-> Obtener nombres de las máquinas que se han utilizado en el proyecto P03:
+- El operando suele ser una subconsulta
+- Devuelve `TRUE` o `FALSE` dependiendo si la subconsulta devuelve resultado o no, respectivamente
+
+<cite>Obtener nombres de las máquinas que se han utilizado en el proyecto P03</cite>
 
 ```SQL
-SELECT nombre
-  FROM maquinas
-  WHERE EXISTS (SELECT *
-                FROM trabajos
-                WHERE trabajos.codM = maquinas.codM
-                  AND codP = 'P03');
+SELECT nombre FROM maquinas
+WHERE EXISTS (SELECT * FROM trabajos
+              WHERE trabajos.codM = maquinas.codM
+              AND codP = 'P03');
 ```
 
 ---
 
-## Operadores `UNION`, `MINUS` e `INTERSECT`
+# Operadores `UNION`, `MINUS` e `INTERSECT`
 
-- Realizan operaciones sobre conjuntos de resultados.
-- Los conjuntos deben ser unión-compatibles.
-- Tener las mismas columnas.
-  - `UNION`: une dos conjuntos.
-  - `MINUS` (o `EXCEPT`): diferencia de conjuntos.
-  - `INTERSECT`: intersección de dos conjuntos.
+Unión, diferencia e intersección respectivamente entre conjuntos de resultados
+
+- Los conjuntos deben ser **unión-compatibles** (en esencia, mismas columnas de datos compatibles)
 
 ```SQL
 SelectSQL {UNION | MINUS | INTERSECT} [ALL] SelectSQL
@@ -971,11 +837,11 @@ La opción `ALL` **no** elimina duplicados
 
 ---
 
-## Operador `UNION`
+# Operador `UNION` (I)
 
 Las consultas a unir tienen que estar definidas sobre los mismos dominios.
 
-> Obtener los códigos de aquellos conductores que residan en Rivas o tengan categoría inferior a 18:
+<cite>Obtener los códigos de aquellos conductores que residan en Rivas o tengan categoría inferior a 18</cite>
 
 ```SQL
 SELECT codC
@@ -994,11 +860,11 @@ SELECT codC
   pre {font-size: 0.7rem}
 </style>
 
-## Operador `UNION`
+# Operador `UNION` (y II)
 
 Pueden concatenarse varios `UNION`.
 
-> Obtener los códigos de aquellos conductores que residan en Rivas o tengan categoría inferior a 18 o hayan manejado la máquina M01:
+<cite>Obtener los códigos de aquellos conductores que residan en Rivas o tengan categoría inferior a 18 o hayan manejado la máquina M01</cite>
 
 ```SQL
 SELECT codC
@@ -1016,11 +882,13 @@ SELECT codC
 
 ---
 
-## Operador `MINUS`
+# Operador `MINUS`
 
-Elimina las filas del primer operando que se encuentren en el segundo. **MySQL no soporta este operador**, por lo que hay que usar `NOT IN` en su lugar.
+Elimina las filas del primer operando que se encuentren en el segundo
 
-> Obtener los códigos de aquellos conductores que tengan categoría inferior a 18 y no hayan trabajado con la máquina M03:
+- **MySQL no soporta este operador**, por lo que hay que usar `NOT IN` en su lugar.
+
+<cite>Obtener los códigos de aquellos conductores que tengan categoría inferior a 18 y no hayan trabajado con la máquina M03</cite>
 
 ```SQL
 SELECT codC
@@ -1034,103 +902,90 @@ SELECT codC
 
 ---
 
-## Operador `INTERSECT`
+# Operador `INTERSECT`
 
-Obtiene las filas comunes al resultado de dos subconsultas. **MySQL no soporta este operador**, por lo que hay que usar `IN` en su lugar.
+Obtiene las filas comunes al resultado de dos subconsultas. **MySQL no soporta este operador**, por lo que hay que usar `IN` en su lugar
 
-> Obtener los códigos de los conductores que hayan utilizado las máquinas M01 y M03.
+<cite>Obtener los códigos de los conductores que hayan utilizado las máquinas M01 y M03</cite>
 
 ```SQL
 SELECT codC
+FROM trabajos
+WHERE codM = 'M01' AND codC IN (
+  SELECT codC
   FROM trabajos
-  WHERE codM = 'M01' AND codC IN (
-    SELECT codC
-    FROM trabajos
-    WHERE codM = 'M03';
-  )
+  WHERE codM = 'M03'
+);
 ```
 
 ---
 
-## Funciones agregadas
+# Funciones agregadas
 
-- Permiten combinar los resultados de varias filas.
-- Existen cinco funciones agregadas:
-  - `COUNT`: cuenta el número de filas considerando valores duplicados y nulos.
-  - `AVG`: media aritmética de un atributo o expresión numérica.
-  - `SUM`: suma de atributos o expresiones numéricas.
-  - `MAX`: valor máximo de una atributo.
-  - `MIN`: valor mínimo de un atributo.
+Cinco funciones que permiten combinar los resultados de varias filas
+
+- `COUNT`: cuenta el número de filas considerando valores duplicados y nulos
+- `AVG`: media aritmética de un atributo o expresión numérica
+- `SUM`: suma de atributos o expresiones numéricas
+- `MAX`: valor máximo de una atributo
+- `MIN`: valor mínimo de un atributo
 
 ---
-<style scoped>
-p {font-size: 0.8rem}
-pre {font-size: 0.7rem}
-</style>
 
-## Funciones agregadas: ejemplos
+# Funciones agregadas: ejemplos (I)
 
-> Obtener el número total de proyectos en los se está trabajando:
+<cite>Obtener el número total de proyectos en los se está trabajando</cite>
 
 ```SQL
-SELECT COUNT(*)
-  FROM trabajos;  -- Devuelve 12
+SELECT COUNT(*) FROM trabajos;  -- Devuelve 12
 ```
 
-> Obtener el número total de máquinas que se han utilizado en ‘P02’:
+<cite>Obtener el número total de máquinas que se han utilizado en `'P02'`</cite>
 
 ```SQL
-SELECT COUNT(DISTINCT codM)
-  FROM trabajos
-  WHERE codP = 'P02'; -- Devuelve 3
+SELECT COUNT(DISTINCT codM) FROM trabajos WHERE codP = 'P02'; -- Devuelve 3
 ```
 
-> Obtener el precio medio por hora de las máquinas:
+<cite>Obtener el precio medio por hora de las máquinas</cite>
 
 ```SQL
-SELECT AVG(precioHora)
-  FROM maquinas;  -- Devuelve 84
+SELECT AVG(precioHora) FROM maquinas;  -- Devuelve 84
 ```
 
 ---
-<style scoped>
-p {font-size: 0.8rem}
-pre {font-size: 0.7rem}
-</style>
 
-## Funciones agregadas: ejemplos (II)
+# Funciones agregadas: ejemplos (y II)
 
-> Obtener el máximo para el nombre y el precioHora de las máquinas:
+<cite>Obtener el máximo para el nombre y el precioHora de las máquinas</cite>
 
 ```SQL
-SELECT MAX(nombre), MAX(precioHora)
-  FROM maquinas;  -- Devuelve (Volquete, 10)
+SELECT MAX(nombre), MAX(precioHora) FROM maquinas;  -- Devuelve (Volquete, 10)
 ```
 
-> Obtener la máxima fecha, el mínimo tiempo y la suma y media del tiempo de la tabla trabajos:
+<cite>Obtener la máxima fecha, el mínimo tiempo y la suma y media del tiempo de la tabla trabajos</cite>
 
 ```SQL
 SELECT MAX(fecha), MIN(tiempo), SUM(tiempo), AVG(tiempo)
-  FROM trabajos;  -- Devuelve (18/09/11, 20, 1260, 140)
+FROM trabajos;  -- Devuelve (18/09/11, 20, 1260, 140)
 ```
 
-> Contar el número de filas de la tabla trabajos, número de valores de la columna tiempo y número de valores distintos de dicha columna:
+<cite>Contar el número de filas de la tabla trabajos, número de valores de la columna tiempo y número de valores distintos de dicha columna</cite>
 
 ```SQL
-SELECT COUNT(*), COUNT(tiempo), COUNT(DISTINCT tiempo) FROM trabajos;
--- Devuelve (12, 9, 8)
+SELECT COUNT(*), COUNT(tiempo), COUNT(DISTINCT tiempo)
+FROM trabajos;-- Devuelve (12, 9, 8)
 ```
 
 ---
 
-## Cláusula `GROUP BY`
+# Cláusula `GROUP BY` (I)
 
-- Agrupa los resultados en base a una “clave”.
-- Se devuelve una única fila por grupo.
-- Todos los atributos que aparezcan en el `SELECT` deben aparecer en el `GROUP BY`.
-- Suele combinarse con funciones agregadas.
+Agrupa los resultados en base a una **clave**, devolviendo una única fila por grupo
 
-> Obtener por cada conductor que haya trabajado, el código de éste y la cantidad total de tiempo empleado:
+- Todo atributo que aparezca en el `SELECT` debe aparecer en el `GROUP BY`
+- Suele combinarse con funciones agregadas
+
+<cite>Obtener por cada conductor que haya trabajado, el código de éste y la cantidad total de tiempo empleado</cite>
 
 ```SQL
 SELECT codC, SUM(tiempo)
@@ -1140,27 +995,17 @@ SELECT codC, SUM(tiempo)
 
 ---
 
-## Cláusula `GROUP BY`
+# Cláusula `GROUP BY` (y II)
 
-![center](img/t4/group_by.png)
+![center h:500](img/t4/group_by.png)
 
 ---
-<style scoped>
-  td {font-size: 0.6rem}
-  thead {font-size: 0.6rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.7rem}
-  pre {font-size:0.6rem}
-  p {font-size: 0.7rem}
-  h2 {font-size: 1rem}
-</style>
 
-## Cláusula `HAVING`
+# Cláusula `HAVING` (I)
 
-- Especifica una condición de grupo.
-- Siempre va a acompañado de la cláusula `GROUP BY`.
+Condición aplicada a los grupos generados por la cláusula `GROUP BY`
 
-> Obtener para los conductores que figuren con más de un trabajo realizado, la suma de tiempos trabajados:
+<cite>Obtener para los conductores que figuren con más de un trabajo realizado, la suma de tiempos trabajados</cite>
 
 ```SQL
 SELECT codC, SUM(tiempo)
@@ -1177,25 +1022,15 @@ SELECT codC, SUM(tiempo)
 | C05  | 240         |
 
 ---
-<style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.9rem}
-  pre {font-size:0.8rem}
-  p {font-size: 0.9rem}
-</style>
 
-## Cláusula `HAVING`
+# Cláusula `HAVING` (II)
 
-> Obtener para los conductores que hayan utilizado la misma máquina más de una vez entre el 12/09/02 y el 18/09/02, el código de conductor, el código de máquina y el tiempo total empleado.
+<cite>Obtener para los conductores que hayan utilizado la misma máquina más de una vez entre el 12/09/02 y el 18/09/02, el código de conductor, el código de máquina y el tiempo total empleado</cite>
 
 ```SQL
-SELECT codC, codM, SUM(tiempo)
-  FROM trabajos
-  WHERE fecha BETWEEN '12/09/11' AND '18/09/11'
-  GROUP BY codC, codM
-  HAVING COUNT(*) > 1;
+SELECT codC, codM, SUM(tiempo) FROM trabajos
+WHERE fecha BETWEEN '12/09/11' AND '18/09/11'
+GROUP BY codC, codM HAVING COUNT(*) > 1;
 ```
 
 | CodC | CodM | SUM(Tiempo) |
@@ -1205,13 +1040,13 @@ SELECT codC, codM, SUM(tiempo)
 
 ---
 
-## Cláusula `HAVING`
+# Cláusula `HAVING` (y III)
 
-![center](img/t4/having.png)
+![center h:500](img/t4/having.png)
 
 ---
 
-## Cláusula `ORDER BY`
+# Cláusula `ORDER BY` (I)
 
 - Permite ordenar los resultados de una consulta en función de uno o varios campos.
 - Los atributos de ordenación deben aparecer en el `SELECT`.
@@ -1224,24 +1059,14 @@ ORDER BY atributo_1 [DESC] [,...]
 ```
 
 ---
-<style scoped>
-  td {font-size: 0.7rem}
-  thead {font-size: 0.7rem}
-  blockquote {font-size: 0.8rem}
-  li {font-size: 0.9rem}
-  pre {font-size:0.8rem}
-  p {font-size: 0.9rem}
-</style>
 
-## Cláusula `ORDER BY`
+# Cláusula `ORDER BY` (y II)
 
-> Obtener los partes de trabajo correspondientes al proyecto P04 ordenados ascendentemente por conductor y máquina:
+<cite>Obtener los partes de trabajo correspondientes al proyecto P04 ordenados ascendentemente por conductor y máquina</cite>
 
 ```SQL
-SELECT CodC, CodM, CodP
-  FROM trabajos
-  WHERE codP = 'P04'
-  ORDER BY codC, codM;
+SELECT CodC, CodM, CodP FROM trabajos
+WHERE codP = 'P04' ORDER BY codC, codM;
 ```
 
 | CodC | CodM | CodP |
@@ -1253,11 +1078,12 @@ SELECT CodC, CodM, CodP
 
 ---
 
-## Alias de columnas
+# Alias de columnas
 
-- Es posible modificar el nombre de una columna como resultado de una consulta.
-- Permite distinguir entre dos columnas con el mismo nombre.
-- Los alias pueden ir entre comillas \` para definir alias que contengan caracteres especiales.
+Es posible modificar el nombre de una columna como resultado de una consulta
+
+- Permite distinguir entre dos columnas con el mismo nombre
+- Los alias pueden ir entre comillas \` para definir alias que contengan caracteres especiales
 
 Sintaxis:
 
@@ -1267,9 +1093,9 @@ SELECT atributo_1 [[AS] alias_1] [,...]
 
 ---
 
-## Alias de columnas: ejemplo
+# Alias de columnas: ejemplo
 
-> Obtener el código (como 'cod conductor') y el nombre de aquellos conductores de Rivas:
+<cite>Obtener el código (como 'cod conductor') y el nombre de aquellos conductores de Rivas</cite>
 
 ```SQL
 SELECT codC AS `cod conductor`, nombre
@@ -1284,10 +1110,11 @@ SELECT codC AS `cod conductor`, nombre
 
 ---
 
-## Alias de tablas
+# Alias de tablas
 
-- Es posible modificar el nombre de una tabla para su uso dentro de una consulta.
-- Permite hacer más legibles consultas complicadas.
+Es posible modificar el nombre de una tabla para su uso dentro de una consulta
+
+- Permite hacer más legibles consultas complicadas
 
 Sintaxis:
 
@@ -1298,21 +1125,16 @@ FROM tabla_1 [[AS] alias_1] [,...]
 ```
 
 ---
-<style scoped>
-li {font-size: 0.85rem}
-thead {font-size: 0.8rem}
-td {font-size: 0.8rem}
-</style>
 
-## Expresiones en la cláusula `SELECT`
+# Expresiones en la cláusula `SELECT`
 
-- Se permite añadir expresiones en las que aparezcan atributos y/o constantes y operadores aritméticos.
-- Deben definirse junto a los atributos a devolver por el `SELECT`.
+Se permite añadir expresiones en las que aparezcan atributos y/o constantes y operadores aritméticos
+
+- Deben definirse junto a los atributos a devolver por el `SELECT`
 
 ```SQL
 SELECT nombre, 'coste final:' AS texto, (precioHora*1.15) AS nuevoPrecio
-  FROM maquinas
-  WHERE precioHora < 110;
+FROM maquinas WHERE precioHora < 110;
 ```
 
 | nombre      | texto        | nuevoPrecio |
@@ -1323,144 +1145,125 @@ SELECT nombre, 'coste final:' AS texto, (precioHora*1.15) AS nuevoPrecio
 
 ---
 
-## Consultas con más de una tabla
+# Consultas con más de una tabla
 
-- Se permite seleccionar dos tablas para obtener información común.
+Se permite seleccionar dos tablas para obtener información común
+
 - Suele realizarse mediante la Unión Natural o Join:
-  - Subconjunto del producto cartesiano de dos tablas en las que se seleccionan las filas con el mismo valor de los atributos comunes.
-- Debe existir al menos un atributo común entre las tablas participantes.
-  - Habitualmente se emparejan las claves primarias con las claves foráneas.
+  - Subconjunto del producto cartesiano de dos tablas en las que se seleccionan las filas con el mismo valor de los atributos comunes
+- Debe existir al menos un atributo común entre las tablas participantes
+  - Habitualmente se emparejan las claves primarias con las claves foráneas
 
 ---
-<style scoped>
-pre {font-size: 0.6rem}
-p {font-size: 0.9rem}
-</style>
 
-## Consultas con más de una tabla: ejemplos
+# Consultas con más de una tabla: ejemplos
 
-> Obtener nombres de conductores que han utilizado la máquina ‘M02’.
+<cite>Obtener nombres de conductores que han utilizado la máquina
+`'M02'`</cite>
 
 ```SQL
 -- Consulta anidada:
-SELECT nombre
-  FROM conductores
-  WHERE codC IN (SELECT codC
-                 FROM trabajos
-                 WHERE codM = 'M02');
+SELECT nombre FROM conductores
+WHERE codC IN (SELECT codC FROM trabajos WHERE codM = 'M02');
 ```
 
 ```SQL
 -- Join implícito:
-SELECT nombre
-  FROM conductores, trabajos
-  WHERE conductores.codC = trabajos.codC
-    AND codM = 'M02';
+SELECT nombre FROM conductores, trabajos
+WHERE conductores.codC = trabajos.codC
+  AND codM = 'M02';
 ```
 
 ```SQL
 -- Join explícito:
-SELECT nombre
-  FROM conductores INNER JOIN trabajos
-         ON conductores.codC = trabajos.codC
-  WHERE codM = 'M02';
+SELECT nombre FROM conductores INNER JOIN trabajos
+                ON conductores.codC = trabajos.codC
+WHERE codM = 'M02';
 ```
 
 ---
 
-## Consultas anidadas
+# Consultas anidadas
 
-- Las consultas anidadas establecen una comparación entre dos operandos.
-- Posibilidades:
-  - Operador `IN`.
-  - Operador `ANY`.
-  - Operador `ALL`.
-  - Operador de comparación (`<`, `<=`, `>`, `>=`, `=`, `<>`).
-  - Operador `EXISTS`.
+Las consultas anidadas establecen una comparación entre dos operandos
+
+- Operador `IN`.
+- Operador `ANY`.
+- Operador `ALL`.
+- Operador de comparación (`<`, `<=`, `>`, `>=`, `=`, `<>`).
+- Operador `EXISTS`.
 
 ---
 
-## Consultas anidadas: ejemplos
+# Consultas anidadas: ejemplos (I)
 
 Operador `IN`
 
-> Obtener la descripción y cliente de aquellos proyectos en los que hayan trabajado máquinas con un precio hora superior a 75 conducidas por conductores de Rivas:
+<cite>Obtener la descripción y cliente de aquellos proyectos en los que hayan trabajado máquinas con un precio hora superior a 75 conducidas por conductores de Rivas</cite>
 
 ```SQL
-SELECT descripcion, cliente
-FROM proyectos
-WHERE codP IN (SELECT codP
-               FROM trabajos
-               WHERE codM IN (SELECT codM
-                              FROM maquinas
+SELECT descripcion, cliente FROM proyectos
+WHERE codP IN (SELECT codP FROM trabajos
+               WHERE codM IN (SELECT codM FROM maquinas
                               WHERE precioHora > 75)
-                 AND codC IN (SELECT codC
-                              FROM conductores
+                 AND codC IN (SELECT codC FROM conductores
                               WHERE localidad = ‘Rivas’));  
 ```
 
 ---
 
-## Consultas anidadas: ejemplos
+# Consultas anidadas: ejemplos (II)
 
 Operador `ANY`
 
-> Obtener los trabajadores con categoría inferior a la de algún trabajador de Arganda:
+<cite>Obtener los trabajadores con categoría inferior a la de algún trabajador de Arganda</cite>
 
 ```SQL
-SELECT nombre
-FROM conductores
-WHERE categoria < ANY (SELECT categoria
-                       FROM conductores
+SELECT nombre FROM conductores
+WHERE categoria < ANY (SELECT categoria FROM conductores
                        WHERE localidad = 'Arganda');
 ```
 
 ---
 
-## Consultas anidadas: ejemplos
+# Consultas anidadas: ejemplos (III)
 
 Operador `ALL`
 
-> Obtener conductores que no ha participado en el proyecto ‘P01’:
+<cite>Obtener conductores que no ha participado en el proyecto `'P01'`</cite>
 
 ```SQL
-SELECT nombre
-FROM conductores
-WHERE codC <> ALL (SELECT codC
-                   FROM trabajos
+SELECT nombre FROM conductores
+WHERE codC <> ALL (SELECT codC FROM trabajos
                    WHERE codP = 'P01');
 ```
 
 ---
 
-## Consultas anidadas: ejemplos
+# Consultas anidadas: ejemplos (IV)
 
 Operador de comparación
 
-> Obtener el conductor de Arganda que tenga la categoría más alta de entre los que sean de Arganda:
+<cite>Obtener el conductor de Arganda que tenga la categoría más alta de entre los que sean de Arganda</cite>
 
 ```SQL
-SELECT nombre
-FROM conductores
-WHERE categoria = (SELECT MAX(categoria)
-                   FROM conductores
+SELECT nombre FROM conductores
+WHERE categoria = (SELECT MAX(categoria) FROM conductores
                    WHERE localidad = 'Arganda')
   AND localidad = 'Arganda';
 ```
 
 ---
 
-## Consultas anidadas: ejemplos
+# Consultas anidadas: ejemplos (y V)
 
 Operador `EXISTS`
 
-> Encontrar todos los conductores que no tengan un homónimo en la misma localidad:
+<cite>Encontrar todos los conductores que no tengan un homónimo en la misma localidad</cite>
 
 ```SQL
-SELECT *
-FROM conductores C1
-WHERE NOT EXISTS (SELECT *
-                   FROM conductores C2
+SELECT * FROM conductores C1
+WHERE NOT EXISTS (SELECT * FROM conductores C2
                    WHERE C1.nombre = C2.nombre
                      AND C1.localidad = C2.localidad
                      AND C1.codC <> C2.codC);
@@ -1468,13 +1271,12 @@ WHERE NOT EXISTS (SELECT *
 
 ---
 
-## Consultas
+# Consultas
 
-El alcance (scope) de las “variables” de una subconsulta se limita a la subconsulta y sus descendientes.
+El alcance (scope) de las «variables» de una subconsulta se limita a la subconsulta y sus descendientes
 
 ```SQL
-SELECT *
-FROM conductores
+SELECT * FROM conductores
 WHERE codC IN (SELECT codC
                FROM trabajos T1
                WHERE codM = 'M02')
@@ -1487,11 +1289,11 @@ La consulta **es incorrecta**, porque T1 no es visible desde la segunda subconsu
 
 ---
 
-## Join implícito
+# Join implícito
 
-Se debe poner una condición de unión en el `WHERE` por cada atributo común entre las tablas relacionadas que figuren en la cláusula `FROM`.
+Se debe poner una condición de unión en el `WHERE` por cada atributo común entre las tablas relacionadas que figuren en la cláusula `FROM`
 
-> Obtener para cada máquina utilizada de precio hora superior a 80, el nombre del conductor, la descripción del proyecto y el nombre de la máquina:
+<cite>Obtener para cada máquina utilizada de precio hora superior a 80, el nombre del conductor, la descripción del proyecto y el nombre de la máquina</cite>
 
 ```SQL
 SELECT c.nombre AS cond, descripcion, m.nombre AS maq
@@ -1503,24 +1305,17 @@ WHERE c.codC = t.codC
 ```
 
 ---
-<style scoped>
-pre {font-size: 0.6rem}
-p {font-size: 0.8rem}
-li {font-size: 0.8rem}
-</style>
 
-## Cláusula `JOIN` (explícito)
+# Cláusula `JOIN` (explícito)
 
 ```SQL
 FROM tabla_1 [tipo_join] JOIN tabla_2 ON condicion_join
 ```
 
-Tipos:
-
-- `INNER`: es la unión natural (por defecto). Sólo se tienen en cuenta las filas con igualdad en los atributos comunes.
-- `LEFT [OUTER]`: se tienen en cuenta todas las filas de la tabla del primer operando (izquierda).
-- `RIGHT [OUTER]`: se tienen en cuenta todas las filas de la tabla del segundo operando (derecha).
-- `FULL [OUTER]`: se tienen en cuenta todas las filas de ambas tablas.
+- `INNER`: Unión natural (por defecto). Sólo se tienen en cuenta filas con igualdad en los atributos comunes
+- `LEFT [OUTER]`: Se tienen en cuenta todas las filas de la tabla del primer operando (izquierda)
+- `RIGHT [OUTER]`: Se tienen en cuenta todas las filas de la tabla del segundo operando (derecha)
+- `FULL [OUTER]`: Se tienen en cuenta todas las filas de ambas tablas
 
 Condición:
 
@@ -1529,38 +1324,31 @@ tabla_1.atributo_común = tabla_2.atributo_comun
 ```
 
 ---
-<style scoped>
-li {font-size: 0.85rem}
-thead {font-size: 0.7rem}
-td {font-size: 0.7rem}
-</style>
 
-## Cláusula `INNER JOIN`
+# Cláusula `INNER JOIN`
 
-> Obtener el nombre del conductor y tiempo empleado para aquellos trabajos realizados el 10/09/11:
+<cite>Obtener el nombre del conductor y tiempo empleado para aquellos trabajos realizados el 10/09/11</cite>
 
 ```SQL
-SELECT nombre, tiempo
-FROM conductores INNER JOIN trabajos
-       ON conductores.codC = trabajos.codC
+SELECT nombre, tiempo FROM conductores INNER JOIN trabajos
+                        ON conductores.codC = trabajos.codC
 WHERE fecha = '10/09/11';
 ```
 
 | Nombre        | tiempo |
 |---------------|--------|
-| Manuel Díaz   | 100    |
+| Lidia García  | 100    |
 | Juan Pérez    | 200    |
-| Luis Ortiz    | 90     |
+| Luisa Ortiz   | 90     |
 | Javier Martín | 150    |
 
 ---
 
-## Cláusula `NATURAL JOIN`
+# Cláusula `NATURAL JOIN`
 
-- Si los atributos comunes tienen el mismo nombre (y dominio), puede emplearse `NATURAL JOIN` en lugar de `INNER JOIN` y no poner la cláusula `ON`.
-- **CUIDADO**: unirá todas las columnas comunes que dispongan del mismo nombre y dominio, sin importar si estas representan la misma información.
+Si los atributos comunes tienen el mismo nombre (y dominio), puede emplearse `NATURAL JOIN` en lugar de `INNER JOIN` y no poner la cláusula `ON`
 
-> Obtener el nombre del conductor y tiempo empleado para aquellos trabajos realizados el 10/09/11:
+<cite>Obtener el nombre del conductor y tiempo empleado para aquellos trabajos realizados el 10/09/11</cite>
 
 ```SQL
 SELECT nombre, tiempo
@@ -1568,27 +1356,29 @@ FROM conductores NATURAL JOIN trabajos
 WHERE fecha = '10/09/11';
 ```
 
+**CUIDADO**: unirá todas las columnas comunes que dispongan del mismo nombre y dominio, sin importar si estas representan la misma información
+
 ---
 
-## `INNER JOIN` vs `LEFT`, `RIGHT` y `FULL`
+# `INNER JOIN` vs `LEFT`, `RIGHT` y `FULL` (I)
 
 `INNER JOIN`:
 
 ```SQL
-SELECT nombre, codM, codP, tiempo
-FROM conductores INNER JOIN trabajos
-       ON conductores.codC = trabajos.codC
+SELECT nombre, codM, codP, tiempo FROM conductores
+INNER JOIN trabajos
+      ON conductores.codC = trabajos.codC
 WHERE localidad = 'Rivas';
 ```
 
-| nombre     | codM | codP | tiempo |
-|------------|------|------|--------|
-| Juan Pérez | P02  | M01  | 200    |
-| Juan Pérez | P04  | M01  | 300    |
+| nombre       | codM | codP | tiempo |
+|--------------|------|------|--------|
+| Lidia García | P02  | M01  | 200    |
+| Lidia García | P04  | M01  | 300    |
 
 ---
 
-## `INNER JOIN` vs `LEFT`, `RIGHT` y `FULL`
+# `INNER JOIN` vs `LEFT`, `RIGHT` y `FULL` (II)
 
 `LEFT JOIN`:
 
@@ -1607,7 +1397,7 @@ WHERE localidad = 'Rivas';
 
 ---
 
-## `INNER JOIN` vs `LEFT`, `RIGHT` y `FULL`
+# `INNER JOIN` vs `LEFT`, `RIGHT` y `FULL` (III)
 
 `RIGHT JOIN`:
 
@@ -1625,26 +1415,25 @@ WHERE localidad = 'Rivas';
 | Carmen Pérez | `NULL` | `NULL` | `NULL` |
 
 ---
-<style scoped>
-pre {font-size: 0.5rem}
-thead {font-size: 0.4rem}
-td {font-size: 0.4rem}
-p {font-size: 0.7rem}
-h2{font-size: 1rem}
-</style>
 
-## `INNER JOIN` vs `LEFT`, `RIGHT` y `FULL`
+# `INNER JOIN` vs `LEFT`, `RIGHT` y `FULL` (y IV)
+
+<div class="columns">
+  <div class="column">
 
 `FULL JOIN`:
 
 ```SQL
 SELECT nombre, codM, descripcion, tiempo
-FROM conductores
-  FULL JOIN trabajos ON conductores.codC = trabajos.codC
-  FULL JOIN proyectos ON trabajos.codP = proyectos.codP
-WHERE conductores.localidad = 'Rivas'
-   OR proyectos.localidad = 'Rivas';
+FROM conductores c
+FULL JOIN trabajos t ON c.codC = t.codC
+FULL JOIN proyectos p ON t.codP = p.codP
+WHERE c.localidad = 'Rivas'
+   OR p.localidad = 'Rivas';
 ```
+
+</div>
+<div class="column">
 
 | nombre        | codM   | codP       | tiempo |
 |---------------|--------|------------|--------|
@@ -1657,16 +1446,16 @@ WHERE conductores.localidad = 'Rivas'
 | Carmen Pérez  | `NULL` | `NULL`     | `NULL` |
 | `NULL`        | `NULL` | Buhardilla | `NULL` |
 
+</div>
+</div>
+
 ---
-<style scoped>
-li {font-size: 0.8rem}
-pre {font-size: 0.8rem}
-</style>
 
-## Vistas
+# Vistas
 
-- Una vista es una tabla virtual cuyo contenido está definido por una consulta.
-- Suelen emplearse para simplificar y personalizar una base de datos.
+Tabla virtual cuyo contenido está definido por una consulta
+
+- Suelen emplearse para simplificar y personalizar una base de datos
 
 ```SQL
 CREATE VIEW [schema.]nombre_vista [nombre_columna [,…]]
@@ -1674,18 +1463,18 @@ CREATE VIEW [schema.]nombre_vista [nombre_columna [,…]]
   [WITH CHECK OPTIONS]
 ```
 
-- Si no se definen los nombres de las columnas se emplean los definidos en el `SELECT SQL`.
-- `WITH CHECK OPTIONS` fuerza que todas las instrucciones de modificación de datos que se ejecuten en la vista sigan los criterios establecidos en el `SELECT SQL`.
+Si no se definen los nombres de las columnas se emplean los definidos en el `SELECT SQL`
+
+- `WITH CHECK OPTIONS` fuerza a que toda las instrucción de modificación de datos que se ejecuten en la vista sigan los criterios establecidos en el `SELECT SQL`.
 
 ---
 
+<!-- _class: section -->
 # ACTUALIZACIÓN Y BORRADO DE DATOS
 
-## El lenguaje SQL
-
 ---
 
-## Modificación de filas
+# Modificación de filas
 
 ```SQL
 UPDATE [schema.]tabla
@@ -1693,15 +1482,15 @@ UPDATE [schema.]tabla
   [WHERE condición]
 ```
 
-- `tabla` puede ser una tabla base o una vista actualizable.
+- `tabla` puede ser una tabla base o una vista actualizable
 - El valor que se asigne a un atributo puede ser una expresión, el resultado de una subconsulta (que deberá ir entre paréntesis), el valor `NULL` o el valor por defecto del atributo.
 - La modificación afectará a todas las filas que cumplan la condición. Si no se indica, afecta a todas la filas.
 
 ---
 
-## Modificación de filas: ejemplo
+# Modificación de filas: ejemplo
 
-> Incrementar un 15% el valor de la categoría de los conductores de Rivas:
+<cite>Incrementar un 15% el valor de la categoría de los conductores de Rivas</cite>
 
 ```SQL
 UPDATE conductores
@@ -1709,7 +1498,7 @@ UPDATE conductores
   WHERE localidad = 'Rivas';
 ```
 
-> Establecer la categoría por defecto a todos los conductores de Loeches:
+<cite>Establecer la categoría por defecto a todos los conductores de Loeches</cite>
 
 ```SQL
 UPDATE conductores
@@ -1723,18 +1512,18 @@ UPDATE conductores
   li {font-size: 0.9rem;}
 </style>
 
-## Eliminación de filas
+# Eliminación de filas
 
 ```SQL
 DELETE FROM [schema.]tabla
   [WHERE condición]
 ```
 
-- No se pueden eliminar partes de una fila.
-- Si no aparece la cláusula `WHERE` se vacía la tabla (se eliminan todas la filas).
-- El borrado de una fila puede provocar el borrado de filas de otras tablas si hay definida una restricción de integridad referencial con opción `CASCADE`.
+- No se pueden eliminar partes de una fila
+- Si no aparece la cláusula `WHERE` se vacía la tabla (se eliminan todas la filas)
+- El borrado de una fila puede provocar el borrado de filas de otras tablas si hay definida una restricción de integridad referencial con opción `CASCADE`
 
-> Eliminar todos los proyectos realizados al cliente Felipe Sol.
+<cite>Eliminar todos los proyectos realizados al cliente Felipe Sol</cite>
 
 ```SQL
 DELETE FROM proyectos
@@ -1743,7 +1532,15 @@ DELETE FROM proyectos
 
 ---
 
-### Estas diapositivas está basadas en el siguiente material
+# Estas diapositivas está basadas en el siguiente material
 
-- Pedro Pablo Alarcón (2012), *Lenguaje SQL*. Aplicación de la Gestión de Información, Departamento de OEI, Escuela Universitaria de Informática, Universidad Politécnica de Madrid.
-- Eugenio Santos (2006), *Integridad Referencial*. Aplicación de la Gestión de Información, Departamento de OEI, Escuela Universitaria de Informática, Universidad Politécnica de Madrid.
+- Pedro Pablo Alarcón (2012), *Lenguaje SQL*. Aplicación de la Gestión de Información, Departamento de OEI, Escuela Universitaria de Informática, Universidad Politécnica de Madrid
+- Eugenio Santos (2006), *Integridad Referencial*. Aplicación de la Gestión de Información, Departamento de OEI, Escuela Universitaria de Informática, Universidad Politécnica de Madrid
+
+---
+
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/etsisi/Aprendizaje-profundo>

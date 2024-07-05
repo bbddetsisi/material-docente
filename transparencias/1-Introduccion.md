@@ -1,331 +1,318 @@
 ---
-marp: true
-size: 4:3
-auto-scaling: 
-    - true
-    - fittingHeader
-    - math
-    - code
-backgroundColor: #fff
-backgroundImage: url('https://marp.app/assets/hero-background.jpg')
-paginate: true
-header: Introducción
+marp        : true
+title       : Presentación de la asignatura
+paginate    : true
+theme       : bbdd
+header      : Introducción
+footer      : Bases de datos. Curso 2023-2024.
+description : >
+  Introducción a las bases de datos. Curso 2023-2024.
+  E.T.S.I. Sistemas Informáticos (UPM)
+keywords    : >
+  Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
+  Presentación
 ---
-<!--
-_header: ''
-_footer: ![Licencia de Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)<br>Esta obra está bajo una [licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/). Icono diseñado por Flaticon
--->
-<style>
-img[alt~="center"] {
-  display: block;
-  margin: 0 auto;
-}
-img {
-  background-color: transparent!important;
-}
-li {
-  text-align: justify;
-}
-</style>
+
+<!-- _class: titlepage -->
+
+# Tema 1. Introducción
+
+## Bases de datos - Curso 2023-2024
+
+### Departamento de Sistemas Informáticos
+
+#### E.T.S.I. de Sistemas Informáticos - UPM
+
+##### 29 de enero de 2024
+
+[![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+---
+
+<!-- _class: section -->
+
 ![bg left:40% 60%](img/t1/nueva-base-de-datos.png)
 
-# TEMA 1
-
-Introducción
+## INTRODUCCIÓN A LAS BASES DE DATOS
 
 ---
 
-## Introducción
+# ¿Qué son los datos? (I)
 
-# INTRODUCCIÓN A LAS BASES DE DATOS
+Corresponden a **hechos** o **realidades** del mundo real.
 
----
+- A partir de ellos, intentamos reconstruir la información del mundo real
+- Se «almacenan» usando un método de comunicación (ej.: figuras o lenguajes) en un medio semipermanente de "registrarlos" (ej.: piedras o papel)
 
-## ¿Qué son los datos?
+**Generalmente** dato e interpretación van juntos en los lenguajes naturales:
 
-Corresponden a hechos o realidades del mundo real.
-
-A partir de ellos, intentamos reconstruir la información del mundo real.
-
-Son "almacenados" usando un método de comunicación (ej.: figuras o lenguajes) en un medio semipermanente de "registrarlos" (ej.: piedras o papel).
-
----
-
-## ¿Qué son los datos?
-
-**Generalmente**, el dato y su interpretación son recogidos juntos, en los lenguajes naturales
-- Su altura es 175 cm
-  - Dato: 175
-  - Significado: altura en centímetros
+- Mide 175 cm. (dato: 175, significado: altura en centímetros)
 
 **A veces**, los datos son separados de su interpretación
-- Hora en un reloj
-- Temperatura en un termómetro de la calle
+
+- 10:30 (dato: 10:30, significado: hora y minutos)
 
 ---
 
-## ¿Qué son los datos?
+# ¿Qué son los datos? (y II)
 
-Los ordenadores han incrementado la separación entre datos y su significado:
+Los ordenadores han incrementado la **separación entre dato y significado**:
+
 - No se prestan para manipular en lenguaje natural
 - El coste de almacenamiento es muy elevado
 
 La interpretación de los datos es inherente a los programas que los utilizan:
+
 - Dato: valores almacenados
 - Información: significado de los datos
 
 ---
 
-## Almacenamiento de datos
+# Almacenamiento de datos
 
 Existen dos aproximaciones para el almacenamiento de los datos utilizados por un programa informático:
+
 - Sistemas basados en ficheros
 - Bases de datos
 
 ---
 
-<style scoped>
-li { font-size: 0.9rem; }
-p { font-size: 0.9rem; }
-</style>
+# Sistemas basados en ficheros
 
-## Sistemas basados en ficheros
+<img
+  src="img/t1/almacenamiento-en-ficheros.png"
+  alt="Ejemplo de almacenamiento en ficheros"
+  style="margin: 0 auto; display: block; width: 70%;"
+  />
 
-En los sistemas basados en ficheros cada programa utiliza sus propios datos. Esto provoca una ocupación inútil de memoria, la aparición de inconsistencias y duplicidad de información.
+Cada programa utiliza sus propios datos:
 
-Además, existe dependencia física entre los programas y los datos:
-
-![](img/t1/almacenamiento-en-ficheros.png)
-
-
----
-
-### Sistemas basados en bases de datos
-
-Cuando se utilizan bases de datos los programas "*comparten*" los datos:
-
-![](img/t1/almacenamiento-en-bases-de-datos.png)
+- **Dependencia** física entre programas y datos
+- **Ocupación inútil** de memoria
+- Aparición de **inconsistencias** y **duplicidad** de información
 
 ---
 
-## ¿Qué es una base de datos?
+# Sistemas basados en bases de datos
 
-Definición 1:
+<img
+  src="img/t1/almacenamiento-en-bases-de-datos.png"
+  alt="Ejemplo de almacenamiento en base de datos"
+  style="margin: 0 auto; display: block; width: 85%;"
+  />
 
-> Conjunto de información (datos) **homogénea** de una organización, **almacenada** en un ordenador, y que permite realizar **consultas** y **actualizaciones** (inserciones, modificaciones y/o borrados).
+Cuando se utilizan bases de datos los programas "*comparten*" los datos
 
----
-
-## ¿Qué es una base de datos?
-
-Definición 2:
-
-> Conjunto **exhaustivo**, con redundancia controlada de **datos estructurados**, fiables y homogéneos, organizados con **independencia** de su utilización y de su implementación en máquina, accesibles en tiempo útil, **compartibles** por usuarios concurrentes que tienen necesidades de información diferentes y no predecibles en el tiempo.
+- Las bases de datos se definen y manipulan mediante un **Sistema de Gestión de Bases de Datos** (SGDB)
 
 ---
 
-## ¿Cómo se *utilizan* las bases de datos?
+<!-- _class: section -->
 
-Las bases de datos se definen y manipulan mediante un **Sistema de Gestión de Bases de Datos** (SGDB)
+## DEFINIENDO BASES DE DATOS
 
 ---
 
-## Introducción
+<!-- _class: cite -->
+
+<div class="cite-author" data-text="ase de datos"-->
+
+«Conjunto de información (datos) **homogénea** de una organización, **almacenada** en un ordenador, y que permite realizar **consultas** y **actualizaciones** (inserciones, modificaciones y/o borrados)»
+
+</div>
+
+---
+
+<!-- _class: cite -->
+
+<div class="cite-author">
+
+«Conjunto **exhaustivo**, con redundancia controlada de **datos estructurados**, fiables y homogéneos, organizados con **independencia** de su utilización y de su implementación en máquina, accesibles en tiempo útil, **compartibles** por usuarios concurrentes que tienen necesidades de información diferentes y no predecibles en el tiempo»
+
+</div>
+
+---
+
+<!-- _class: section -->
 
 # MODELOS DE DATOS
 
 ---
 
-## ¿Qué es un modelo de datos?
+# ¿Qué es un modelo de datos?
 
-Un modelo de datos permite describir las propiedades de la información almacenada en una base de datos:
+Describen las propiedades de la información almacenada en una base de datos:
 
 - Estructuras de datos
 - Restricciones
 - Dependencias
 - Dominios
 
-Los modelos de datos son fundamentales para introducir la abstracción en una base de datos.
+Son **fundamentales** para introducir la **abstracción** en una base de datos
 
 ---
 
-## Tipos de modelos de datos
-
-<style scoped>
-li { font-size: 0.8rem; }
-p { font-size: 0.8rem; }
-section { padding-left: 24px; }
-</style>
+# Tipos de modelos de datos
 
 Modelos de datos **conceptuales**
+
 - Describen las estructuras de datos y las relaciones de integridad
 - Utilizados en la etapa de análisis
 
 Modelos de datos **lógicos**
+
 - Orientados a las operaciones
 - Dependientes del tipo de base de datos utilizada
 
 Modelos de datos **físicos**
+
 - Estructuras de datos de bajo nivel usadas para almacenar información
 - Dependientes del SGDB
 
-![bg left:8% 80%](img/t1/abstraccion.png)
+![bg left:10% 70%](img/t1/abstraccion.png)
 
 ---
 
-## Modelo conceptual
+# Modelo conceptual
 
 Identifica las **entidades** que se van a almacenar en las base de datos:
+
 - Ejemplo: alumnos, asignaturas, departamentos...
 
 Modela las **relaciones** existentes entre las entidades:
+
 - Ejemplo: los alumnos se matriculan de asignaturas.
 
-Son cercanos al **mundo real**.
+Son **cercanos al mundo real**.
 
-Ayudan a comunicarse con los clientes de las empresa de desarrollo.
+- Ayudan a comunicarse con los clientes de las empresa de desarrollo.
 
 ---
 
-## Modelo lógico
+# Modelo lógico
 
-Incluyen las **relaciones** y **atributos** del modelo conceptual.
+Incluyen las **relaciones** y **atributos** del modelo conceptual
 
 La **normalización** se produce en este nivel:
-- Evita duplicidad de información
 
-Define conceptos propios de las bases de datos:
-- Claves primarias:
-    - Ejemplo: los alumnos son identificados de forma unívoca por su número de matricula
+- Claves primarias
+  - Ejemplo: los alumnos son identificados de forma unívoca por su número de matricula
 - Claves foráneas
-    - Ejemplo: el alumno con número de matrícula aa0000 fue calificado con un 10 en la asignatura de bases de datos
+  - Ejemplo: el alumno con número de matrícula aa0000 fue calificado con un 10 en la asignatura de bases de datos
+- Normalización
+  - Evita la duplicidad de la información
 
-Son cercanos a la base de datos.
-
----
-
-## Modelo físico
-
-Definen cómo debe almacenarse la información en un dispositivo físico.
-
-Altamente dependientes del SGBD y de la versión del mismo.
-
-Cercanos al Sistema Operativo.
-
-Facilitan la rápida recuperación y manipulación de los datos almacenados.
+Son **cercanos a la base de datos**
 
 ---
 
-## Introducción
+# Modelo físico
+
+Definen cómo debe almacenarse la información en un dispositivo físico
+
+- Altamente dependientes del SGBD y de la versión del mismo
+- Cercanos al Sistema Operativo
+- Facilitan la rápida recuperación y manipulación de los datos almacenados
+
+---
+
+<!-- _class: section -->
 
 # TIPOS DE BASES DE DATOS
 
 ---
 
-![bg 95%](img/t1/tipos-bases-de-datos.png)
+![](img/t1/tipos-bases-de-datos.png)
 
 ---
 
-<style scoped>
-section {padding-right: 24px;}
-</style>
-
-## Bases de datos relacionales
+# Bases de datos relacionales
 
 Cumplen con el modelo relacional:
+
 - Normalización
 
-Es el tipo de base de datos más utilizado.
+Es el tipo de base de datos más utilizado
 
-Utilizan el lenguaje SQL (*Structured Query Languaje*) para consultar y manipular datos.
+Utilizan el lenguaje SQL (*Structured Query Languaje*) para consultar y manipular datos
 
 Los datos son almacenados en tablas:
+
 - Es posible "unir" diferentes tablas para recuperar información
 
-![bg vertical right:25% 75%](img/t1/mysql.png)
+![bg vertical right:20% 75%](img/t1/mysql.png)
 ![bg 75%](img/t1/oracle.png)
 ![bg 75%](img/t1/sql-server.png)
 
 ---
 
-## Bases de datos no relacionales
+# Bases de datos no relacionales
 
-No cumplen el modelo relacional.
+No cumplen el modelo relacional:
 
-De "*reciente*" aparición.
+- De «*reciente*» aparición
+  - Si la década de los 2000 es reciente...
+- También llamadas `NoSQL`
 
-También llamadas `NoSQL`.
+Se especializan en resolver un problema concreto:
 
-![bg vertical right:50% 140%](img/t1/no-sql.png)
+- Escalabilidad, rendimiento, flexibilidad...
+
+Se ven en la asignatura de **Bases de Datos II**
+
+![bg vertical right:34% 140%](img/t1/no-sql.png)
 
 ---
 
-<style scoped>
-li { font-size: 0.8rem; }
-p { font-size: 0.8rem; }
-section {padding-right: 24px;}
-</style>
+# Bases de datos documentales (NoSQL)
 
-## Bases de datos documentales
+La información es almacenada en documentos
 
-La información es almacenada en documentos.
-
-Los documentos contienen información semi-estructurada.
-
-Escalabilidad vertical (máquina más potente) y horizontal (más máquinas).
-
-Muy eficientes para la manipulación de datos.
+- Los documentos contienen información **semi-estructurada**
+- Escalabilidad vertical (máquina más potente) y horizontal (más máquinas)
+- Muy eficientes para la manipulación de datos
 
 Aconsejan duplicar información:
+
 - Mejora el rendimiento de las consultas
 
-Consultas muy limitadas.
+Lenguaje de consultas **muy limitado**
 
-![bg vertical right:25% 90%](img/t1/mongodb.png)
+![bg vertical right:20% 90%](img/t1/mongodb.png)
 
 ---
 
-<style scoped>
-li { font-size: 0.8rem; }
-p { font-size: 0.8rem; }
-section {padding-right: 24px;}
-</style>
+## Bases de datos clave-valor (NoSQL)
 
-## Bases de datos clave-valor
+Almacena toda la información en pares `<clave, valor>`
 
-Almacena toda la información en pares `<clave, valor>`.
-- La clave es única.
-- El valor puede ser cualquier objeto.
+- La clave es única, y el valor puede ser cualquier objeto.
 - Ejemplo:
-    - Clave: `aa0000`
-    - Valor: `nombre = "Juan"; apellidos = "García Torres"`
+  - Clave: `aa0000`
+  - Valor: `nombre="Juan"; apellidos="García Torres"`
 
-Altamente divisibles
+Ventajas:
 
-Escalabilidad horizontal
-
-Suelen almacenarse en memoria
+- Altamente divisibles
+- Escalabilidad horizontal
+- Suelen almacenarse en memoria
 
 ![bg vertical right:25% 85%](img/t1/redis.png)
 
 ---
 
-<style scoped>
-section {padding-right: 24px;}
-</style>
+## Bases de datos de alta escalabilidad (NoSQL)
 
-## Bases de datos de alta escalabilidad 
+Bases de datos distribuidas:
 
-Bases de datos distribuidas.
-
-Masivamente escalable (escalabilidad lineal).
+- Masivamente escalables (escalabilidad lineal)
 
 Orientadas a columnas:
-- Optimizadas para la completa recuperación de datos de columnas de datos (analítica de datos).
 
-Pensadas para entornos con pocas escrituras.
+- Optimizadas para la completa recuperación de datos de columnas de datos (analítica de datos)
+- Pensadas para pocas escrituras y muchas lecturas
 
-![bg vertical right:25% 75%](img/t1/cassandra.png)
+![bg vertical right:20% 75%](img/t1/cassandra.png)
 ![bg 75%](img/t1/hbase.png)
 
 ---
@@ -336,95 +323,108 @@ p { font-size: 0.9rem; }
 section {padding-right: 24px;}
 </style>
 
-## Bases de datos orientadas a grafos
+## Bases de datos orientadas a grafos (NoSQL)
 
 Representan la información mediante un grafo:
+
 - Nodos: entidades
 - Aristas: relaciones
 
-Completamente normalizadas:
+**Completamente** normalizadas:
+
 - No duplican información
 
-Muy versátiles.
+Son muy versátiles, pero:
 
-Utilizan un lenguaje de consultas complejo.
-
-Computacionalmente costosas.
+- Utilizan un lenguaje de consultas complejo
+- Son computacionalmente costosas
 
 ![bg vertical right:25% 90%](img/t1/neo4j.png)
 
 ---
 
-## Introducción
+<!-- _class: section -->
 
-# ARQUITECTURA CLIENTE-SERVIDOR
+## ARQUITECTURA CLIENTE-SERVIDOR
 
 ---
 
-## Arquitectura cliente-servidor
+# Arquitectura cliente-servidor
 
 Las bases de datos funcionan bajo una arquitectura cliente-servidor:
+
 - La base de datos es el servidor
 - Las aplicaciones que se conectan a la base de datos son los clientes
 
 Esta arquitectura permite compartir los datos entre diferentes aplicaciones:
+
 - Un solo servidor
 - Múltiples clientes
 
-
 ---
 
-<style scoped>
-li { font-size: 0.9rem; }
-p { font-size: 0.9rem; }
-section {padding-right: 24px;}
-</style>
-
-## Infraestructura física
+# Infraestructura física
 
 Habitualmente, la base de datos (servidor) y la aplicación (cliente) se separan en diferentes máquinas físicas.
 
-Existe un protocolo de comunicación entre el cliente y el servidor.
+Existe un protocolo de comunicación entre el cliente y el servidor
+
 - ¿Cómo se realizan las peticiones?
 - ¿Cómo se responde?
 
-
-![bg right:40% 90%](img/t1/cliente-servidor.png)
+![bg right:30% 100%](img/t1/cliente-servidor.png)
 
 ---
+
+# Lo bueno y lo malo
+
+<div class="columns">
+<div class="column">
 
 ## Ventajas
 
-Se centraliza el acceso a los datos evitando inconsistencias.
+- Se centraliza el acceso a datos evitando inconsistencias
+- Facilita la escalabilidad
+  - Se puede aumentar la capacidad de clientes y servidores por separado
+- Mejora el mantenimiento del sistema
+  - El mantenimiento de la base de datos depende exclusivamente de la propia base de datos
+- Facilita el desarrollo de aplicaciones al abstraerse de la gestión de los datos.
 
-Facilita la escalabilidad:
-- Se puede aumentar la capacidad de clientes y servidores por separado.
-
-Mejora el mantenimiento del sistema:
-- El mantenimiento de la base de datos depende exclusivamente de la propia base de datos.
-
-Facilita el desarrollo de aplicaciones al abstraerse de la gestión de los datos.
-
-
----
+</div>
+<div class="column">
 
 ## Desventajas
 
-Se puede congestionar el acceso a los datos si el ratio cliente/servidor no es adecuado.
+- Se puede congestionar el acceso a los datos si el ratio cliente/servidor no es adecuado
+- No hay robustez frente a caídas o ataques al servidor
+  - Este riesgo se minimiza si se replica el servidor
+- Existe dependencia de la conexión a la base de datos para el funcionamiento de la aplicación
 
-No hay robustez frente a caídas o ataques al servidor:
-- Este riesgo se minimiza si se replica el servidor
-
-Existe dependencia de la conexión a la base de datos para el funcionamiento de la aplicación.
+</div>
 
 ---
 
-## Conexión con la base de datos
+# Conexión con la base de datos
 
-La conexión a base de datos se realiza a partir de un URL (*Universal Resource Location*).
+La conexión se realiza a partir de un URL (*Universal Resource Location*)
 
-Ejemplo:
-
-```
+```bash
 jdbc:mysql://mydb.com:3306/dbname
 ```
+
+Prácticamente todo lenguaje de programación dispone de bibliotecas para conectarse a bases de datos:
+
+- Java: JDBC
+- Python: SQLAlchemy
+- C#: ADO.NET
+- ...
+
+Más adelante en la asignatura trabajaremos la conesión desde aplicaciones
+
+---
+
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/etsisi/Aprendizaje-profundo>
