@@ -105,17 +105,17 @@ Cuando se utilizan bases de datos los programas "*comparten*" los datos
 
 <!-- _class: cite -->
 
-<div class="cite-author" data-text="ase de datos"-->
+<div class="cite-author" data-text="Definición de base de datos"-->
 
-Conjunto de información (datos) **homogénea** de una organización, **almacenada** en un ordenador, y que permite realizar **consultas** y **actualizaciones** (inserciones, modificaciones y/o borrados)»
+«Conjunto de información (datos) **homogénea** de una organización, **almacenada** en un ordenador, y que permite realizar **consultas** y **actualizaciones** (inserciones, modificaciones y/o borrados)»
 
 </div>
 
 ---
 
 <!-- _class: cite -->
-
-<div class="cite-author">
+ 
+<div class="cite-author" data-text="Definición alternativa de base de datos">
 
 «Conjunto **exhaustivo**, con redundancia controlada de **datos estructurados**, fiables y homogéneos, organizados con **independencia** de su utilización y de su implementación en máquina, accesibles en tiempo útil, **compartibles** por usuarios concurrentes que tienen necesidades de información diferentes y no predecibles en el tiempo»
 
