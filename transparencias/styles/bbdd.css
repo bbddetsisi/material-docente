@@ -16,13 +16,13 @@
   --letter-spacing: 0.125px;
 
   /* Reducir todos los colores de la plantilla a los indicados aquí: */
-  --color-primary: #002b36;
-  --color-secondary: #1b998b;
-  --color-tertiary: #f5f5f5;
+  --color-primary: #01519b;
+  --color-secondary: #04b6f0;
+  --color-tertiary: #dcdddf;
   --color-success: #12685e;
-  --color-warning: #d1d646;
-  --color-error: #df2935;
-  --color-neutral: #adadad;
+  --color-warning: #a59772;
+  --color-error: #f03e2e;
+  --color-neutral: #7b7c81;
 }
 
 /***************** COMMON STRUCTURE **********************/
@@ -219,8 +219,6 @@ section blockquote sup {
   ##### Institución
 */
 section.titlepage {
-  /*background-color: var(--color-tertiary);*/
-  /*background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)), url(https://etsisi.github.io/Styles/images/front-slide-background.png);*/
   background: none;
   background-color: white;
   background-size: auto;
