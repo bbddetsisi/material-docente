@@ -1,38 +1,37 @@
 ---
 marp        : true
-title       : Modelado de datos
+title       : Modelado conceptual de datos
 paginate    : true
 theme       : bbdd
-header      : Modelado de datos
+header      : Modelado conceptual de datos
 footer      : Bases de datos
 description : >
-  Cómo estructurar y organizar los datos para facilitar su
-  almacenamiento, recuperación y manipulación en sistemas de bases de
-  datos. Sistemas Informáticos (UPM)
-keywords    : >
-  Bases de datos, Modelo Entidad-Relación, Modelo ER, Modelado de datos
+  Cómo estructurar y organizar los datos para facilitar su   almacenamiento, recuperación y manipulación en sistemas de bases de   datos. 
+  E.T.S.I. Sistemas Informáticos.
+  Universidad Politecnic de Madrid
+
 math        : mathjax
 ---
 
 <!-- _class: titlepage -->
 
-# Modelado de datos
+# Modelado conceltual de datos
 
 ## Bases de datos
 
 ### Departamento de Sistemas Informáticos
 
-#### E.T.S.I. de Sistemas Informáticos - UPM
+#### E.T.S.I. de Sistemas Informáticos
 
-##### 29 de enero de 2024
+##### Universidad Politénica de Madrid
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+![bg left:30%](img/upm-logo.jpg)
 
 ---
 
 <!-- _class: section -->
-
-![bg left:40% 60%](img/t2/logo-entidad.png)
 
 # EL MODELO ENTIDAD-RELACIÓN
 
@@ -54,7 +53,7 @@ Nuestra mente funciona mejor cuando trabaja con abstracciones:
 
 # ¿Cuál prefieres? (I)
 
-<cite>Pues como le iba diciendo, necesito que me construya una aplicación para gestionar mi gasolinera low-cost. Ya sabe, la gente echa diésel o gasolina y luego me pagan. Algunos me piden factura, y resoplan cuando les pido los datos de la empresa, sobre todo aquellos que son clientes fijos. ¡Se me olvidaba! Tengo que llevar un registro de los litros que se gastan en cada repostaje, además de cuándo se realizó.</cite>
+> Pues como le iba diciendo, necesito que me construya una aplicación para gestionar mi gasolinera low-cost. Ya sabe, la gente echa diésel o gasolina y luego me pagan. Algunos me piden factura, y resoplan cuando les pido los datos de la empresa, sobre todo aquellos que son clientes fijos. ¡Se me olvidaba! Tengo que llevar un registro de los litros que se gastan en cada repostaje, además de cuándo se realizó.
 
 Requisitos de datos:
 
@@ -67,7 +66,7 @@ Requisitos de datos:
 
 # ¿Cuál prefieres? (y II)
 
-<cite>Pues como le iba diciendo, necesito que me construya una aplicación para gestionar mi gasolinera low-cost. Ya sabe, la gente echa diésel o gasolina y luego me pagan. Algunos me piden factura, y resoplan cuando les pido los datos de la empresa, sobre todo aquellos que son clientes fijos. ¡Se me olvidaba! Tengo que llevar un registro de los litros que se gastan en cada repostaje, además de cuándo se realizó.</cite>
+> Pues como le iba diciendo, necesito que me construya una aplicación para gestionar mi gasolinera low-cost. Ya sabe, la gente echa diésel o gasolina y luego me pagan. Algunos me piden factura, y resoplan cuando les pido los datos de la empresa, sobre todo aquellos que son clientes fijos. ¡Se me olvidaba! Tengo que llevar un registro de los litros que se gastan en cada repostaje, además de cuándo se realizó.
 
 Requisitos de datos:
 
