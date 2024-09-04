@@ -40,10 +40,10 @@ code {
 }
 
 section {
-  background-image: url(https://www.upm.es/sfs/Rectorado/Gabinete%20del%20Rector/Logos/EU_Informatica/ETSI%20SIST_INFORM_COLOR.png);
-  background-size: auto 60px;
+  /*background-image: url(https://www.upm.es/sfs/Rectorado/Gabinete%20del%20Rector/Logos/UPM/Escudo%20con%20Leyenda/ESCUDO%20leyenda%20color%20PNG%20p.png);
+  background-size: auto 100px;
   background-repeat: no-repeat;
-  background-position: right 1em top 1em;
+  background-position: right 0.5em top 0.5em;*/
 }
 
 section p {
