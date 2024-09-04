@@ -131,11 +131,11 @@ section table {
 }
 
 section table th {
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
   color: white;
   border: 0;
-  border-top: rgb(253, 74, 3) solid 2px;
-  border-top: rgb(255, 0, 0) solid 2px;
+  border-top: var(--color-neutral) solid 2px;
+  border-top: var(--color-neutral) solid 2px;
 }
 
 section table td {
@@ -147,7 +147,7 @@ section table tr:nth-child(2) {
 }
 
 section table tr:last-child {
-  border-bottom: rgb(253, 74, 3) solid 2px;
+  border-bottom: var(--color-neutral) solid 2px;
 }
 
 section tr:nth-child(even) {
