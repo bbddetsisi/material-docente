@@ -26,12 +26,7 @@ description : >
 
 ---
 
-<style scoped>
-li { font-size: 0.8rem; }
-p { font-size: 0.8rem; }
-</style>
-
-## Descripción de la asignatura
+# Descripción de la asignatura
 
 En esta asignatura el alumno aprenderá los conceptos fundamentales, tanto teóricos como prácticos, necesarios para conocer el funcionamiento de las bases de datos. Para ello, se abordará la problemática del almacenamiento de los datos mediante diferentes niveles de abstracción: conceptual, lógico y físico.
 
@@ -41,7 +36,7 @@ La asignatura ha sido diseñada con un elevado contenido práctico, de tal maner
 
 ---
 
-## Profesorado
+# Profesorado
 
 - Santiago Alonso. santiago.alonso@upm.es. *Despacho 1125*.
 - Gema Bello. gema.borgaz@upm.es. *Despacho 1224*.
@@ -52,19 +47,14 @@ La asignatura ha sido diseñada con un elevado contenido práctico, de tal maner
 
 ---
 
-## Conocimientos previos recomendados
+# Conocimientos previos recomendados
 
 - Fundamentos de programación
 - Estructuras de datos
 
 ---
 
-<style scoped>
-li { font-size: 0.8rem; }
-p { font-size: 0.8rem; }
-</style>
-
-## Competencias
+# Competencias
 
 **CC12** | Conocimiento y aplicación de las características, funcionalidades y estructura de las bases de datos, que permitan su adecuado uso, y el diseño y el análisis e implementación de aplicaciones basadas en ellos.
 
@@ -77,11 +67,10 @@ p { font-size: 0.8rem; }
 ---
 
 <style scoped>
-li { font-size: 0.6rem; }
-p { font-size: 0.6rem; }
+p { font-size: 0.75rem; }
 </style>
 
-## Resultados de aprendizaje
+# Resultados de aprendizaje
 
 Conoce la estructura y utilización de ficheros índices para manejar ficheros de datos.
 
@@ -99,7 +88,7 @@ Identifica las estructuras y problemas derivados de la integridad referencial en
 
 ---
 
-## Temario
+# Temario
 
 1. Introducción
 2. Modelado de datos
@@ -111,7 +100,7 @@ Identifica las estructuras y problemas derivados de la integridad referencial en
 
 ---
 
-## Horario
+# Horario
 
 | Grupo   | L     | M     | X     | J     | V     |
 | ------- | ----- | ----- | ----- | ----- | ----- |
@@ -129,7 +118,7 @@ li { font-size: 0.8rem; }
 p { font-size: 0.8rem; }
 </style>
 
-## Evaluación en convocatoria ordinaria
+# Evaluación en convocatoria ordinaria
 
 El sistema de evaluación es idéntico tanto en sistema de evaluación progresiva como en evaluación global.
 
@@ -150,7 +139,7 @@ Será necesario alcanzar una nota total mayor o igual 5 para aprobar la asignatu
 
 ---
 
-## Evaluación convocatoria extraordinaria
+# Evaluación convocatoria extraordinaria
 
 Prueba escrita el **viernes 27 de junio de 2025 a las 15:00** incluyendo preguntas teórico-prácticas de todo el temario de la asignatura.
 
@@ -158,7 +147,7 @@ Es obligatorio alcanzar una nota mínima de 5 puntos sobre 10.
 
 ---
 
-## Recursos didácticos
+# Recursos didácticos
 
 1. **Moodle de la asignatura.**
 2. Elmasri, R. A., & Navathe, S. B. (2007). *Fundamentos de sistemas de bases de datos* (No. 004.65). Addison Wesley.
