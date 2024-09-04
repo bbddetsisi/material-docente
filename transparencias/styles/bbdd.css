@@ -221,6 +221,8 @@ section blockquote sup {
 section.titlepage {
   /*background-color: var(--color-tertiary);*/
   /*background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)), url(https://etsisi.github.io/Styles/images/front-slide-background.png);*/
+  background: none;
+  background-color: white;
   background-size: auto;
   background-position: 0;
   background-blend-mode: normal;
