@@ -415,7 +415,7 @@ section.accent:after {
 /* Cita de alguien famoso */
 section.cite {
   background-color: var(--color-tertiary);
-  --strong-color: rgb(182, 112, 27);
+  --strong-color: var(--color-primary);
   background-image: none;
 }
 
@@ -449,7 +449,7 @@ section.cite:after {
 }
 
 .cite-author:after {
-  color: #083d77;
+  color: var(--color-secondary);
   font-size: 125%;
   font-weight: bold;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
