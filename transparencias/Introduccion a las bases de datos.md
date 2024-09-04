@@ -1,37 +1,34 @@
 ---
 marp        : true
-title       : Presentación de la asignatura
+title       : Introducción a las bases de datos
 paginate    : true
 theme       : bbdd
-header      : Introducción
-footer      : Bases de datos. Curso 2023-2024.
+header      : Introducción a las bases de datos
 description : >
-  Introducción a las bases de datos. Curso 2023-2024.
-  E.T.S.I. Sistemas Informáticos (UPM)
-keywords    : >
-  Bases de datos, Grado en Ciencia de Datos e Inteligencia artificial.
-  Presentación
+  Introducción a las bases de datos. 
+  E.T.S.I. Sistemas Informáticos.
+  Universidad Politecnic de Madrid
 ---
 
 <!-- _class: titlepage -->
 
-# Tema 1. Introducción
+# Introducción a las bases de datos
 
-## Bases de datos - Curso 2023-2024
+## Bases de datos
 
 ### Departamento de Sistemas Informáticos
 
-#### E.T.S.I. de Sistemas Informáticos - UPM
+#### E.T.S.I. de Sistemas Informáticos
 
-##### 29 de enero de 2024
+##### Universidad Politénica de Madrid
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+![bg left:30%](img/upm-logo.jpg)
 
 ---
 
 <!-- _class: section -->
-
-![bg left:40% 60%](img/t1/nueva-base-de-datos.png)
 
 ## INTRODUCCIÓN A LAS BASES DE DATOS
 
@@ -79,11 +76,8 @@ Existen dos aproximaciones para el almacenamiento de los datos utilizados por un
 
 # Sistemas basados en ficheros
 
-<img
-  src="img/t1/almacenamiento-en-ficheros.png"
-  alt="Ejemplo de almacenamiento en ficheros"
-  style="margin: 0 auto; display: block; width: 70%;"
-  />
+
+![width:800px](img/t1/almacenamiento-en-ficheros.png)
 
 Cada programa utiliza sus propios datos:
 
@@ -95,11 +89,7 @@ Cada programa utiliza sus propios datos:
 
 # Sistemas basados en bases de datos
 
-<img
-  src="img/t1/almacenamiento-en-bases-de-datos.png"
-  alt="Ejemplo de almacenamiento en base de datos"
-  style="margin: 0 auto; display: block; width: 85%;"
-  />
+![width:800px](img/t1/almacenamiento-en-bases-de-datos.png)
 
 Cuando se utilizan bases de datos los programas "*comparten*" los datos
 
@@ -117,7 +107,7 @@ Cuando se utilizan bases de datos los programas "*comparten*" los datos
 
 <div class="cite-author" data-text="ase de datos"-->
 
-«Conjunto de información (datos) **homogénea** de una organización, **almacenada** en un ordenador, y que permite realizar **consultas** y **actualizaciones** (inserciones, modificaciones y/o borrados)»
+Conjunto de información (datos) **homogénea** de una organización, **almacenada** en un ordenador, y que permite realizar **consultas** y **actualizaciones** (inserciones, modificaciones y/o borrados)»
 
 </div>
 
