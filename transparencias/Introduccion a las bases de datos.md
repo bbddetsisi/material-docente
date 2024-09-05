@@ -248,7 +248,7 @@ Se especializan en resolver un problema concreto:
 
 - Escalabilidad, rendimiento, flexibilidad...
 
-Se ven en la asignatura de **Bases de Datos II**
+Se ven en otras asignaturas. 
 
 ![bg vertical right:34% 140%](img/t1/no-sql.png)
 
