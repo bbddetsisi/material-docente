@@ -15,7 +15,7 @@ math        : mathjax
 
 <!-- _class: titlepage -->
 
-# Modelado conceltual de datos
+# Modelado conceptual de datos
 
 ## Bases de datos
 
