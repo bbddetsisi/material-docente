@@ -41,6 +41,7 @@ jobs:
           working_directory: ejercicios
           continue_on_error: true
           latexmk_shell_escape: true
+          extra_system_packages: minted
 
       - name: Compile LaTeX exams
         uses: xu-cheng/latex-action@v3
