@@ -53,7 +53,7 @@ jobs:
       - name: Copy pdf files
         run: |
           mkdir -p build/ejercicios  && cp ejercicios/*.pdf build/ejercicios
-          mkdir -p build/examenes  && cp examenes/*.pdf build/examenes
+#          mkdir -p build/examenes  && cp examenes/*.pdf build/examenes
 
       - name: Deploy preview
         if: ${{ github.event_name == 'pull_request' }}
