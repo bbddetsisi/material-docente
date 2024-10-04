@@ -509,7 +509,7 @@ Una tabla está en 2FN si:
 ---
 
 <style scoped>
-table th:nth-child(1) {text-decoration: underline;}
+table th:nth-child(1) , table th:nth-child(2) {text-decoration: underline;}
 </style>
 
 # Segunda Forma Normal (2FN, II)
@@ -522,7 +522,7 @@ La siguiente tabla **NO** está en 2FN...
 | Ramón | Pizza margarita   | La pequeña Italia |
 | Lucía | Costillas asadas  | El asador         |
 | Ana   | Patatas bravas    | El capricho       |
-| Ana   | Pizza margarita   | El capricho       |
+| Rosa  | Pizza margarita   | El capricho       |
 
 A pesar de estar en 1FN, la columna *Restaurante* es dependiente únicamente *Chef*
 
@@ -530,6 +530,9 @@ A pesar de estar en 1FN, la columna *Restaurante* es dependiente únicamente *Ch
 
 <style scoped>
 table th:nth-child(1) {text-decoration: underline;}
+
+.column:last-of-type table th:nth-child(2) 
+{text-decoration: underline;}
 </style>
 
 # Segunda Forma Normal (2FN, y III)
@@ -544,6 +547,8 @@ Podríamos dividir la tabla anterior en:
 | Ramón | La pequeña Italia |
 | Lucía | El asador         |
 | Ana   | El capricho       |
+| Rosa  | El capricho       |
+
 
 </div>
 <div class="column">
@@ -554,7 +559,7 @@ Podríamos dividir la tabla anterior en:
 | Ramón | Pizza margarita   |
 | Lucía | Costillas asadas  |
 | Ana   | Patatas bravas    |
-| Ana   | Pizza margarita   |
+| Rosa  | Pizza margarita   |
 
 </div></div>
 
@@ -591,7 +596,7 @@ La siguiente tabla **NO** está en 3FN...
 | 4  | El pozo de la ascensión | Brandon Sanderson | SM        |
 | 5  | El héroe de las eras    | Brandon Sanderson | SM        |
 
-A pesar de estar en 2FN, *Editorial* depende de *Autor* y no directamente de libro
+A pesar de estar en 2FN, *Editorial* depende de *Autor* y no directamente de *Id*
 
 ---
 
