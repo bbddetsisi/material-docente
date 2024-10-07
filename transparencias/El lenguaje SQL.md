@@ -27,19 +27,14 @@ math        : mathjax
 
 ### Departamento de Sistemas Informáticos
 
-#### E.T.S.I. de Sistemas Informáticos - UPM
+#### E.T.S.I. de Sistemas Informáticos
 
-##### 15 de febrero de 2024
+##### Universidad Politénica de Madrid
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
----
+![bg left:30%](img/upm-logo.jpg)
 
-<!-- _class: section -->
-
-# EL LENGUAJE SQL
-
-![bg left:40% 60%](img/t4/sql.svg)
 
 ---
 
@@ -292,6 +287,12 @@ DROP TABLE [schema.]nombre_tabla;
 
 ---
 
+<!--_class: section-->
+# LENGUAJE DE MANIPULACIÓN DE DATOS
+## (Parte 1)
+
+---
+
 # Inserción de datos (I)
 
 - Los datos deben añadirse fila a fila.
@@ -402,12 +403,65 @@ INSERT INTO corporacion.personas (nombre, apellidos, fecha_nac)
 
 ---
 
-<!-- _class: section -->
-# INTEGRIDAD REFERENCIAL
+# Modificación de filas
+
+```SQL
+UPDATE [schema.]tabla
+  SET atributo = {expresion|selectSQL|NULL|DEFAULT} [,...]
+  [WHERE condición]
+```
+
+- `tabla` puede ser una tabla base o una vista actualizable
+- El valor que se asigne a un atributo puede ser una expresión, el resultado de una subconsulta (que deberá ir entre paréntesis), el valor `NULL` o el valor por defecto del atributo.
+- La modificación afectará a todas las filas que cumplan la condición. Si no se indica, afecta a todas la filas.
 
 ---
 
-# Qué es la integridad referencial
+# Modificación de filas: ejemplo
+
+<cite>Incrementar un 15% el valor de la categoría de los conductores de Rivas</cite>
+
+```SQL
+UPDATE conductores
+  SET categoria = categoría * 1.15
+  WHERE localidad = 'Rivas';
+```
+
+<cite>Establecer la categoría por defecto a todos los conductores de Loeches</cite>
+
+```SQL
+UPDATE conductores
+  SET categoria = DEFAULT
+  WHERE localidad = 'Loeches';
+```
+
+---
+
+<style scoped>
+  li {font-size: 0.9rem;}
+</style>
+
+# Eliminación de filas
+
+```SQL
+DELETE FROM [schema.]tabla
+  [WHERE condición]
+```
+
+- No se pueden eliminar partes de una fila
+- Si no aparece la cláusula `WHERE` se vacía la tabla (se eliminan todas la filas)
+- El borrado de una fila puede provocar el borrado de filas de otras tablas si no se han establecido políticas adecuadas de **integridad referencia**.
+
+<cite>Eliminar todos los proyectos realizados al cliente Felipe Sol</cite>
+
+```SQL
+DELETE FROM proyectos
+  WHERE cliente = 'Felipe Sol';
+```
+
+---
+
+# ¿Qué es la integridad referencial?
 
 Restricciones referenciales de acuerdo con un conjunto predefinido de reglas para `INSERT`, `UPDATE` Y `DELETE` que gobiernan las operaciones de inserción, borrado, actualización y carga sobre tablas relacionadas mediante claves primarias y claves ajenas
 
@@ -557,7 +611,7 @@ Eliminamos de T1 la fila con clave T1A. ¿Qué sucede?
 ---
 
 <!-- _class: section -->
-# CONSULTAS
+# LENGUAJE DE CONSULTA DE DATOS
 
 ---
 
@@ -1470,67 +1524,748 @@ Si no se definen los nombres de las columnas se emplean los definidos en el `SEL
 ---
 
 <!-- _class: section -->
-# ACTUALIZACIÓN Y BORRADO DE DATOS
+# LENGUAJE DE MANIPULACIÓN DE DATOS
+## (Parte 2)
 
 ---
 
-# Modificación de filas
+# Procedimientos, funciones y triggers
 
-```SQL
-UPDATE [schema.]tabla
-  SET atributo = {expresion|selectSQL|NULL|DEFAULT} [,...]
-  [WHERE condición]
-```
+Como complemento a las sentencias `INSERT`, `UPDATE` y `DELETE`, y para solventar las limitaciones de estas, dentro del lenguaje SQL también podemos encontrar:
 
-- `tabla` puede ser una tabla base o una vista actualizable
-- El valor que se asigne a un atributo puede ser una expresión, el resultado de una subconsulta (que deberá ir entre paréntesis), el valor `NULL` o el valor por defecto del atributo.
-- La modificación afectará a todas las filas que cumplan la condición. Si no se indica, afecta a todas la filas.
+- **Procedimientos almacenados**: ejecutan tareas complejas con múltiples sentencias SQL. Reutilizables y mejoran el rendimiento.
 
----
+- **Funciones**: devuelven un valor y se usan en consultas. Ideales para cálculos reutilizables.
 
-# Modificación de filas: ejemplo
+- **Triggers**: se activan automáticamente tras `INSERT`, `UPDATE` o `DELETE`. Usados para  validación de datos.
 
-<cite>Incrementar un 15% el valor de la categoría de los conductores de Rivas</cite>
-
-```SQL
-UPDATE conductores
-  SET categoria = categoría * 1.15
-  WHERE localidad = 'Rivas';
-```
-
-<cite>Establecer la categoría por defecto a todos los conductores de Loeches</cite>
-
-```SQL
-UPDATE conductores
-  SET categoria = DEFAULT
-  WHERE localidad = 'Loeches';
-```
 
 ---
 
-<style scoped>
-  li {font-size: 0.9rem;}
-</style>
+# Procedimiento almacenado
 
-# Eliminación de filas
+Subrutina que se almacena en una base de datos
+
+- Similar a un subprograma en cualquier otro lenguaje de programación
+- Cuenta con un **nombre**, una **lista de parámetros** y **sentencias SQL**
+- Ventajas:
+  - **Rápidos**: El SGBD puede aprovechar hasta la caché y además posibilita evitar tráfico de red
+  - **Portables**: Son fácilmente migrables entre servidores
+  - **Fuentes disponibles**: Accesible desde la propia base de datos
+
+---
+
+# Creación de un procedimiento
 
 ```SQL
-DELETE FROM [schema.]tabla
-  [WHERE condición]
+CREATE PROCEDURE nombre_procedimiento ([param [,...]])
+BEGIN
+  cuerpo_procedimiento
+END
 ```
 
-- No se pueden eliminar partes de una fila
-- Si no aparece la cláusula `WHERE` se vacía la tabla (se eliminan todas la filas)
-- El borrado de una fila puede provocar el borrado de filas de otras tablas si hay definida una restricción de integridad referencial con opción `CASCADE`
-
-<cite>Eliminar todos los proyectos realizados al cliente Felipe Sol</cite>
+Los parámetros `param`` tienen la siguiente sintaxis:
 
 ```SQL
-DELETE FROM proyectos
-  WHERE cliente = 'Felipe Sol';
+[ IN | OUT | INOUT ] nombre_parametro tipo_parametro
+```
+
+El cuerpo estará formado por **sentencias SQL válidas**
+
+---
+
+# Procedimientos: ejemplo (I)
+
+```SQL
+DELIMITER $$
+CREATE PROCEDURE sp_conductores ()
+BEGIN
+    SELECT * FROM conductores;
+END$$
+DELIMITER ;
+```
+
+**Importante**: Cambiar el delimitador de fin de línea por defecto de SQL
+
+- Así se evita que el `;` dentro del procedimiento se interprete como
+  fin del mismo
+- Para ello usamos el operador `DELIMITER`.
+
+---
+
+# Procedimientos: ejemplo (y II)
+
+![center h:500](img/t5/proc_ejemplo.png)
+
+---
+
+# Parámetros del procedimiento
+
+Los parámetros de un procedimiento pueden sertres tipos
+
+- `IN` (por defecto): El procedimiento puede modificar el valor, pero la modificación no es visible para el invocador cuando el procedimiento acaba
+- `OUT`: Su valor inicial es NULL dentro del procedimiento, y su valor es visible para el invocador cuando el procedimiento acaba
+- `INOUT`: El parámetro se inicializa en la llamada, puede ser modificado por el procedimiento, y cualquier cambio hecho por el procedimiento es visible tras la ejecución
+
+---
+
+# Ejemplo: parámetro de entrada (I)
+
+```SQL
+DELIMITER $$
+CREATE PROCEDURE sp_trabajos (IN conductor VARCHAR(3))
+BEGIN
+    SELECT *
+    FROM trabajos
+    WHERE codC = conductor;
+END$$
+DELIMITER ;
+
+CALL sp_trabajos('C03')
 ```
 
 ---
+
+# Ejemplo: parámetro de entrada (y II)
+
+![center h:500](img/t5/param_in.png)
+
+---
+
+# Ejemplo: parámetro de salida (I)
+
+```SQL
+DELIMITER $$
+CREATE PROCEDURE sp_cuenta (IN conductor VARCHAR(3),
+                            OUT num_trabajos INTEGER)
+BEGIN
+    SELECT count(*) INTO num_trabajos
+    FROM trabajos
+    WHERE codC = conductor;
+END$$
+DELIMITER ;
+
+CALL sp_cuenta('C03', @cuenta);
+
+SELECT @cuenta;
+```
+
+---
+
+# Ejemplo: parámetro de salida (y II)
+
+![center h:500](img/t5/param_out.png)
+
+---
+
+# Ejemplo: parámetro de entrada/salida (I)
+
+```SQL
+DELIMITER $$
+CREATE PROCEDURE sp_suma (INOUT inicial INTEGER,
+                          IN cantidad INTEGER)
+BEGIN
+    SET inicial = inicial + cantidad;
+END$$
+DELIMITER ;
+
+SET @num = 10;
+CALL sp_suma(@num, 3);
+SELECT @num;
+```
+
+---
+
+# Ejemplo: parámetro de entrada/salida (y II)
+
+![center h:500](img/t5/param_inout.png)
+
+---
+
+# Variables y variables de usuario
+
+Ya hemos visto cómo se declaran variables de usuario: anteponiendo una `@` delante del nombre
+
+```SQL
+SET @miVar = 10; -- Asignar valor
+SELECT @miVar;   -- Consultar valor
+```
+
+Se pueden declarar variables locales en los procedimientos usando `DECLARE`
+
+```SQL
+DECLARE nombre_variable [,...] tipo [DEFAULT valor]
+```
+
+---
+
+# Ejemplo: variables locales
+
+```SQL
+DELIMITER $$
+CREATE PROCEDURE sp_division ()
+BEGIN
+    DECLARE num_maquinas INTEGER;
+    SELECT COUNT(codM) INTO num_maquinas
+    FROM maquinas;
+
+    SELECT codP
+    FROM trabajos
+    GROUP BY codP
+    HAVING COUNT(distinct codM) = num_maquinas;
+END$$
+DELIMITER ;
+```
+
+Si hay **varias consultas** en el cuerpo de un procedimiento, se devuelve **el último resultado**
+
+---
+
+# Sentencias de control de flujo
+
+SQL soporta varias sentencias para controlar el flujo de ejecución de los procedimientos:
+
+- `IF`
+- `CASE`
+- `ITERATE`
+- `LEAVE`
+- `LOOP`
+- `WHILE`
+- `REPEAT`
+
+---
+
+# Sentencia `IF`
+
+Evalúa condición y ejecuta las sentencias correspondientes
+
+```SQL
+IF condicion THEN sentencias
+[[ELSEIF condicion THEN sentencias] ...]
+[ELSE sentencias]  
+END IF
+```
+
+Se pueden encadenar condiciones con `ELSEIF`.
+
+---
+
+# Sentencia `CASE` (I)
+
+Evalúa la expresión y ejecuta las sentencias acorde al resultado obtenido
+
+```SQL
+CASE variable_a_evaluar
+WHEN valor1 THEN sentencias
+[...]
+WHEN valorN THEN sentencias
+[ELSE setencias]
+END CASE
+```
+
+---
+
+# Sentencia `CASE` (y II)
+
+Alternativa: Comprueba condiciones en lugar de valores
+
+```SQL
+CASE
+WHEN condicion THEN sentencias
+[...]
+[ELSE sentencias]
+END CASE
+```
+
+Una vez encuentra una verdadera, ejecuta las sentencias y sale del `CASE`
+
+- En caso contrario se ejecuta el fragmento del `ELSE`.
+
+---
+
+# Bucle `LOOP`
+
+```SQL
+etiqueta_inicio_loop: LOOP
+sentencias
+IF condicion THEN
+  LEAVE etiqueta_inicio_loop;
+END IF;
+END LOOP;
+[etiqueta_fin_loop]
+```
+
+Se ejecutan las sentencias **hasta abandonar el bucle con `LEAVE`**
+
+---
+
+# Ejemplo: bucle `LOOP`
+
+```SQL
+DELIMITER $$
+CREATE PROCEDURE my_proc_LOOP (IN num INTEGER)
+BEGIN
+    DECLARE x INT;
+    SET x = 0;
+    loop_label: LOOP
+        INSERT INTO number VALUES (rand());
+        SET x = x + 1;
+        IF x >= num THEN
+            LEAVE loop_label;
+        END IF;
+    END LOOP;
+END$$
+DELIMITER ;
+```
+
+---
+
+# Bucle `REPEAT`
+
+```SQL
+[etiqueta_inicio:]REPEAT
+    sentecias
+UNTIL condicion
+END REPEAT
+[etiqueta_fin]
+```
+
+Las sentencias se repiten hasta que la condición se cumpla
+
+- Ambas etiquetas son opcionales en este tipo de bucle
+
+---
+
+# Ejemplo: bucle `REPEAT`
+
+```SQL
+DELIMITER $$
+CREATE PROCEDURE my_proc_REPEAT (IN n INTEGER)
+BEGIN
+    SET @sum = 0;
+    SET @x = 1;  
+    REPEAT
+        IF mod(@x, 2) = 0 THEN
+            SET @sum = @sum + @x;
+        END IF;
+        SET @x = @x + 1;
+    UNTIL @x > n
+    END REPEAT;
+END $$
+DELIMITER ;
+```
+
+---
+
+# Bucle `WHILE`
+
+```SQL
+[etiqueta_inicio:]WHILE condicion DO
+    setencias
+END WHILE
+[etiqueta_fin]
+```
+
+Se ejecutan las instrucciones mientras se cumple la condición
+
+- Similar al `REPEAT` pero con la condición de parada invertida
+
+---
+
+# Ejemplo: bucle `WHILE`
+
+```SQL
+DELIMITER $$
+CREATE PROCEDURE my_proc_WHILE (IN n INTEGER)
+BEGIN
+    SET @sum = 0;
+    SET @x = 1;
+    WHILE @x<=n DO
+        IF mod(@x, 2) <> 0 THEN
+            SET @sum = @sum + @x;
+        END IF;
+        SET @x = @x + 1;
+    END WHILE;
+END$$
+DELIMITER ;
+```
+
+---
+
+# FUNCIONES ALMACENADAS<!-- _class: section -->
+
+---
+
+# Funciones almacenadas
+
+Al igual que con los procedimientos, MySQL admite funciones almacenadas.
+
+- Son subrutinas que se almacenan en la base de datos pero que devuelven un valor cuando son ejecutadas.
+- Por ello, se pueden usar como expresiones en cualquier consulta, condición, etc.
+
+---
+
+# Sintaxis de creación de funciones
+
+```SQL
+DELIMITER $$
+CREATE FUNCTION function_name(
+    param1,
+    param2, …
+)
+RETURNS datatype
+DETERMINISTIC
+BEGIN
+    statements;
+    RETURN (value);
+END $$
+DELIMITER ;
+```
+
+Es necesario especificar `DETERMINISTIC` (determinista) para que el optimizador del SGBD haga su trabajo correctamente
+
+---
+
+# Ejemplo: función (I)
+
+```SQL
+DELIMITER $$
+CREATE FUNCTION sf_masiva(cantidad DECIMAL)
+RETURNS DECIMAL
+DETERMINISTIC
+BEGIN
+    DECLARE cmasiva DECIMAL;
+    SET cmasiva = cantidad * 1.21;
+    RETURN (cmasiva);
+END$$
+DELIMITER ;
+```
+
+---
+
+# Ejemplo: función (y II)
+
+![center h:500](img/t5/funcion.png)
+
+---
+
+# CURSORES<!-- _class: section -->
+
+---
+
+# Cursor
+
+Estructura de control para recorrer secuencialmente los resultados de una consulta
+
+- En otras palabras, es un iterador sobre las filas resultantes de una consulta
+- Se suelen utilizar en subrutinas almacenadas en la base de datos, como procedimientos y funciones
+
+---
+
+# Operaciones con cursores
+
+```SQL
+CREATE PROCEDURE curdemo()
+BEGIN
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE b, c INT;
+  DECLARE cur1 CURSOR FOR SELECT id, data FROM t1; -- Creación
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+   OPEN cur1; -- Apertura
+   read_loop: LOOP
+    FETCH cur1 INTO b, c; -- Uso
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+  END LOOP;
+  CLOSE cur1; -- Cierre
+END;
+```
+
+---
+
+# Cursores: detalles importantes
+
+El número (y tipos) de variables donde almacenar el resultado de `FETCH` se corresponde con el número (tipo) de columnas devueltas por la consulta que alimenta el cursor:
+
+```SQL
+DECLARE cur1 CURSOR FOR SELECT id,data FROM t1;
+FETCH cur1 INTO b, c;
+```
+
+Hay que declarar un manejador especial para cuando se alcance el final del cursor en un `FETCH`:
+
+```SQL
+DECLARE CONTINUE HANDLER FOR NOT FOUND sentencias;
+```
+
+**No olvidar**: Los cursores **se abren antes de su uso** y **se cierran al acabar**.
+
+---
+
+# TRIGGERS<!-- _class: section -->
+
+---
+
+# ¿Por qué?
+
+En ocasiones es necesario comprobar una serie de restricciones en los datos de manera periódica
+
+- Una posible solución es realizar una comprobación _activa_, consultando periódicamente a la base de datos
+- Otra solución más eficiente pasaría por utilizar un sistema basado en eventos y realizar la comprobación cuando se dispare
+
+---
+
+# ¿Qué eventos suceden en una BBDD?
+
+Durante el uso de una BBDD, pueden ocurrir diferentes eventos que requieran volver a comprobar las restricciones de las que hablábamos
+
+- Se insertan nuevas filas en una tabla
+- Se modifica el valor de algún atributo de una o varias filas
+- Se eliminan filas de alguna tabla
+
+---
+
+# Caso de estudio
+
+Una empresa quiere garantizar que un empleado nunca gane más dinero que su supervisor
+
+Se plantea programar una consulta que obtenga los salarios de empleados y supervisores directos
+
+¿Se te ocurre una manera mejor?
+
+---
+
+# Modelo basado en eventos
+
+![center h:500](img/t5/eventos.png)
+
+---
+
+# Composición de un Trigger
+
+![center h:500](img/t5/trigger.png)
+
+---
+
+# SQL Trigger
+
+```SQL
+DELIMITER //
+CREATE TRIGGER upd_check BEFORE UPDATE ON account
+FOR EACH ROW
+BEGIN
+    IF NEW.amount < 0 THEN
+        SET NEW.amount = 0;
+    ELSEIF NEW.amount > 100 THEN
+        SET NEW.amount = 100;
+    END IF;
+END//
+DELIMITER ;
+```
+
+---
+
+# Eventos `BEFORE`y `AFTER`
+
+Los eventos `BEFORE` se ejecutan antes de que se lleve a cabo el evento en cuestión:
+
+- `BEFORE INSERT`
+- `BEFORE UPDATE`
+- `BEFORE DELETE`
+
+Los eventos `AFTER` se ejecutan una vez se ha producido el evento:
+
+- `AFTER INSERT`
+- `AFTER UPDATE`
+- `AFTER DELETE`
+
+---
+
+# Variables `NEW` y `OLD` (I)
+
+Una característica interesante de los triggers son las variables `NEW` y `OLD`
+
+- `NEW.columna` es el nuevo valor que se le va a asignar a la columna en cuestión (para eventos `UPDATE` e `INSERT`)
+- `OLD.columna` es el valor que tenía la columna en cuestión que se modifica (para eventos `UPDATE` y `DELETE`)
+
+---
+
+# Variables `NEW` y `OLD` (y II)
+
+```SQL
+DELIMITER //
+CREATE TRIGGER t1 BEFORE UPDATE ON account
+FOR EACH ROW
+BEGIN
+    IF NEW.amount < 0 THEN
+        SET NEW.amount = 0;
+    ELSEIF NEW.amount > 100 THEN
+        SET NEW.amount = 100;
+    END IF;
+END//
+DELIMITER ;
+```
+
+- Se pueden modificar las variables `NEW` para cambiar los valores a insertar/modificar en base a unas condiciones
+- Las variables `OLD` solo se pueden leer
+
+---
+
+# Orden de ejecución de los Triggers
+
+- Se pueden definir varios triggers sobre el mismo evento y objeto.
+- Es posible especificar el orden de ejecución en el momento de creación del trigger
+
+```SQL
+CREATE TRIGGER ins_transaction BEFORE INSERT ON account
+FOR EACH ROW PRECEDES ins_sum
+...
+
+CREATE TRIGGER ins_ttt BEFORE INSERT ON account
+FOR EACH ROW FOLLOWS ins_transaction
+...
+```
+
+---
+
+# Algunos ejemplos (I)
+
+Forzar el cumplimiento de una determinada restricción:
+
+```SQL
+DELIMITER $$
+CREATE TRIGGER no_futuro
+BEFORE INSERT ON alumno
+FOR EACH ROW
+BEGIN
+  IF NEW.fecha_nac > CURRENT_DATE()
+  THEN
+   SIGNAL SQLSTATE '02000'
+   SET MESSAGE_TEXT = 'Error: no aceptamos alumnos del futuro';
+  END IF;
+END$$
+DELIMITER ;
+```
+
+Presta atención a la forma de lanzar una excepción en MYSQL
+
+---
+
+# Algunos ejemplos (II)
+
+Corregir valores inusuales o fuera de rango en consultas de inserción y/o modificación:
+
+```SQL
+DELIMITER $$
+CREATE TRIGGER trigg1
+BEFORE UPDATE ON usuario
+FOR EACH ROW
+BEGIN
+  IF NEW.edad < 0 THEN
+   SET NEW.edad = 0;
+  END IF;
+END$$
+DELIMITER ;
+```
+
+---
+
+# Algunos ejemplos (y III)
+
+Llevar un registro de los elementos que se borran en la base de datos:
+
+```SQL
+DELIMITER $$
+CREATE TRIGGER trigg1
+AFTER DELETE ON tabla
+FOR EACH ROW
+BEGIN
+  INSERT INTO deletelog (usuario, idborrado, fecha)
+  VALUES (USER(), OLD.id, NOW());
+END$$
+DELIMITER ;
+```
+
+---
+
+# ÍNDICES<!-- _class: section -->
+
+---
+
+# ¿Qué es un índice?
+
+Permite que una consulta recupere eficientemente los datos de una base de datos
+
+- Los índices están relacionados con tablas específicas y constan de una o más claves
+- Una tabla puede tener más de un índice construido a partir de ella
+- Las claves se basan en las columnas de las tablas
+- Sin un índice, MySQL debe comenzar con la primera fila y luego leer toda la tabla para encontrar las filas relevantes
+
+---
+
+# Usos de los índices
+
+MySQL usa los índices para:
+
+- Encontrar las filas que cumplen la condición de un `WHERE` de manera rápida
+- Obtener filas de otras tablas cuando se hacen `JOIN` entre ellas
+- Encontrar máximos y mínimos mediante las funciones `MAX()` y `MIN()`
+- Para establecer ordenaciones en los resultados de una consulta
+
+---
+
+# Creando índices (I)
+
+Una posibilidad es definir el índice en el mismo momento que se crea la tabla para la cual se define:
+
+```SQL
+CREATE TABLE test (
+    id INTEGER,
+    col1 VARCHAR(10),
+    INDEX(col1(5)) -- 5 primeros caracteres
+);
+```
+
+---
+
+# Creando índices (y II)
+
+Otra opción es definir el índice de manera explícita mediante una consulta DDL:
+
+```SQL
+CREATE [UNIQUE] INDEX index_name
+    [index_type]
+    ON tbl_name (key_part,...)
+  key_part: col_name [(length)]
+  index_type:
+    USING {BTREE | HASH}
+```
+
+---
+
+# Índices automatizados
+
+**InnoDB**, el motor de MySQL, crea automáticamente índices en las siguientes situaciones:
+
+- Las claves primarias de las tablas tienen asociadas un índice de manera automática, para que buscar valores duplicados sea eficiente
+- De la misma forma, las claves ajenas también tienen definidas automáticamente un índice para comprobar eficientemente si el valor de la columna referenciada existe
+
+---
+
+# Árboles B
+
+Los índices basan su funcionamiento en los árboles B:
+
+![center h:400](img/t5/arbol.png)
+
+---
+
+<!-- _class: section -->
+# LENGUAJE DE CONTROL DE TRANSACCIONES
+
+---
+
 
 # Estas diapositivas está basadas en el siguiente material
 
