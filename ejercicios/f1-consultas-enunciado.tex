@@ -37,9 +37,8 @@
 
 \section*{Carreras de Formula 1}
 
-La \ac{FIA} está tratando de recopilar toda la información que han recogido en los últimos años durante las carreras de Fórmula 1. Con todos los datos que han conseguido recabar quieren realizar diversos estudios con el fin de mejorar el espectáculo. No obstante, antes de poder realizar ningún estudio se necesita crear una base de datos donde se pueda almacenar la información. 
-
-Para ello, la compañía nos ha suministrado el Modelo Relacional que se muestra en la figura~\ref{fig:relacional}, con el fin de facilitar las pautas necesarias a tener en cuenta para poder crear la base de datos.
+La \ac{FIA}, como parte de su esfuerzo continuo para optimizar y mejorar la calidad de las carreras de Fórmula 1, ha tomado la decisión de recopilar y centralizar en una base de datos toda la información relevante relacionada con estos eventos de competición. Para ello, se ha diseñado una base de datos robusta y estructurada que consta de diversas tablas, las cuales tienen la función de almacenar de manera organizada toda la información referente a las carreras que se llevan a cabo durante los fines de semana en diferentes países del mundo. Estas tablas están diseñadas para capturar datos esenciales sobre cada carrera, como los equipos participantes, los pilotos, los resultados, las clasificaciones, y otros aspectos logísticos y técnicos del evento. La figura~\ref{fig
+} ilustra el modelo relacional de esta base de datos, proporcionando una visión clara de cómo se interconectan las diferentes tablas para ofrecer una representación integral de toda la información gestionada por la \ac{FIA} en el contexto de la Fórmula 1.
 
 \begin{figure}[H]
   \centering
@@ -47,6 +46,19 @@ Para ello, la compañía nos ha suministrado el Modelo Relacional que se muestra
   \caption{Modelo relacional de la Fórmula 1.}
   \label{fig:relacional}
 \end{figure}
+
+A continuación se describe el contenido de las distintas tablas de la base de datos:
+
+\begin{itemize}
+    \item \texttt{drivers}: Esta tabla almacena información sobre los pilotos que han participado en las carreras, incluyendo detalles como su nombre (\texttt{forename}), apellidos (\texttt{surname}), nacionalidad (\texttt{nationality}), y otros datos relevantes para su identificación.
+    \item \texttt{results}: Contiene los resultados obtenidos por cada piloto en las carreras, registrando su posición final (\texttt{positionOrder}), puntos obtenidos (\texttt{points}) y cualquier otro dato que refleje su desempeño en la competición.
+    \item \texttt{races}: En esta tabla se almacena toda la información pertinente a cada carrera, como el nombre del Gran Premio (\texttt{name}), la fecha en que se disputó (\texttt{date}) y el circuito en el que tuvo lugar.
+    \item \texttt{circuits}: Incluye información detallada sobre los circuitos en los que se llevan a cabo las carreras, especificando su ubicación (\texttt{location}) y nombre (\texttt{name}) entre otros.
+    \item \texttt{constructors}: Esta tabla registra a los constructores (equipos) que participan en las carreras. Generalmente, cada equipo compite con dos pilotos en cada carrera.
+    \item \texttt{qualifying}: Almacena los datos sobre las sesiones de calificación que determinan el orden de salida de los pilotos antes de cada carrera. Normalmente, las rondas de calificación se disputan en tres tandas (\texttt{q1}, \texttt{q2} y \texttt{q3}), en las que los pilotos más lentos van siendo eliminados sucesivamente.
+    \item \texttt{pitstops}: Registra las paradas que realizan los pilotos durante las carreras, ya sea para cambiar neumáticos, repostar combustible o realizar ajustes en el coche, detallando el momento  (\texttt{lap}) y la duración de cada una (\texttt{miliseconds}).
+    \item \texttt{status}: Esta tabla especifica el estado final de cada piloto al término de una carrera, indicando si finalizaron en condiciones normales, si perdieron vueltas, si tuvieron problemas técnicos o si abandonaron por alguna razón.
+\end{itemize}
 
 Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes restricciones:
 \begin{itemize}
@@ -59,6 +71,12 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
 La consultas que maneja la \ac{FIA} y que deben resolverse dentro de este ejecicio haciendo uso del lenguaje SQL son:
 
 \begin{enumerate}
+    \item Obtener el nombre y apellidos de los pilotos españoles.
+
+    \item Obtener todos los datos de los circuitos alemanes.
+    
+    \item Obtener los paises en los que se disputaron carreras en el año 2010.
+
     \item Obtener el nombre de los pilotos que han participado en al menos 1 carrera del año 2016.
 
     \item Nombre de los constructores con los que han disputado carreras más de 50 pilotos diferentes.
