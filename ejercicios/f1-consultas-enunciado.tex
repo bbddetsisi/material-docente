@@ -37,8 +37,7 @@
 
 \section*{Carreras de Formula 1}
 
-La \ac{FIA}, como parte de su esfuerzo continuo para optimizar y mejorar la calidad de las carreras de Fórmula 1, ha tomado la decisión de recopilar y centralizar en una base de datos toda la información relevante relacionada con estos eventos de competición. Para ello, se ha diseñado una base de datos robusta y estructurada que consta de diversas tablas, las cuales tienen la función de almacenar de manera organizada toda la información referente a las carreras que se llevan a cabo durante los fines de semana en diferentes países del mundo. Estas tablas están diseñadas para capturar datos esenciales sobre cada carrera, como los equipos participantes, los pilotos, los resultados, las clasificaciones, y otros aspectos logísticos y técnicos del evento. La figura~\ref{fig
-} ilustra el modelo relacional de esta base de datos, proporcionando una visión clara de cómo se interconectan las diferentes tablas para ofrecer una representación integral de toda la información gestionada por la \ac{FIA} en el contexto de la Fórmula 1.
+La \ac{FIA}, como parte de su esfuerzo continuo para optimizar y mejorar la calidad de las carreras de Fórmula 1, ha tomado la decisión de recopilar y centralizar en una base de datos toda la información relevante relacionada con estos eventos de competición. Para ello, se ha diseñado una base de datos robusta y estructurada que consta de diversas tablas, las cuales tienen la función de almacenar de manera organizada toda la información referente a las carreras que se llevan a cabo durante los fines de semana en diferentes países del mundo. Estas tablas están diseñadas para capturar datos esenciales sobre cada carrera, como los equipos participantes, los pilotos, los resultados, las clasificaciones, y otros aspectos logísticos y técnicos del evento. La figura~\ref{fig:relacional} ilustra el modelo relacional de esta base de datos, proporcionando una visión clara de cómo se interconectan las diferentes tablas para ofrecer una representación integral de toda la información gestionada por la \ac{FIA} en el contexto de la Fórmula 1.
 
 \begin{figure}[H]
   \centering
@@ -117,7 +116,7 @@ La consultas que maneja la \ac{FIA} y que deben resolverse dentro de este ejecic
     
     \item Obtener nombre y apellidos del piloto, el nombre del circuito, el año de la carrera donde un piloto español obtuvo el tiempo de parada más pequeño (atributo \texttt{miliseconds}). Incluya este atributo en la salida de la consulta.
 
-    \item Codifique una consulta que obtenga el nombre de los constructores italianos (\texttt{nationality = `Italian'}) con los que hayan disputado carreras al menos un piloto italiano.
+    \item Codifique una consulta que obtenga el nombre de aquellos constructores que sean italianos (\texttt{nationality = 'Italian'}) con los que hayan disputado carreras al menos un piloto italiano.
             
     \item Codifique una consulta que obtenga el nombre y apellidos del piloto que más accidentes (\texttt{status.status = `Accident'}) ha tenido. Mostrar también el número de accidentes.
             
