@@ -332,7 +332,8 @@ Añadir la clave de la entidad de la parte "uno" de la relación a la relación 
 
 # Paso a tablas: Relaciones 1:1
 
-- Si la cardinalidad mínima es **igual** en ambos extremos de la relación, se añade la clave de una de las entidades a la entidad restante, incluyendo los atributos de la relación si los hubiere
+- Si la cardinalidad mínima es **uno** en ambos extremos de la relación las tablas se fusionan junto con los atributos de la relación si los hubiere
+- Si la cardinalidad mínima es **cero** en ambos extremos de la relación, se añade la clave a una tabla a la otra indistintamente
 - Si la cardinalidad mínima es **diferente** en los extremos de la relación, se añade la clave de la entidad *"uno"* a la tabla de la entidad *"cero"*
 
 ![center h:280](img/t3/rel_11.png)
@@ -394,7 +395,7 @@ table th:nth-child(1), table th:nth-child(4) {
 
 - ¿Añadir la asignatura IA? No sé los datos de alumnos (**problema de inserción**)
 - ¿Borrar las notas de Andrés? Adios a asignatura POO (**problema de borrado**)
-- ¿Y si Pepe cambia la asignatura de BD? Hay que cambiar la información en varios sitios para mantener la consistencia (**problema de actualización**)
+- ¿Y si la asignatura de BD cambia de profesor? Hay que cambiar la información en varios sitios para mantener la consistencia (**problema de actualización**)
 
 ---
 
@@ -499,7 +500,7 @@ Este problema se podría solucionar dividiendo la tabla en:
 
 ---
 
-## Segunda Forma Normal (2FN, I)
+# Segunda Forma Normal (2FN, I)
 
 Una tabla está en 2FN si:
 
@@ -567,11 +568,11 @@ Ahora los atributos que dependen de la clave lo hacen de forma completa
 
 ---
 
-## Tercera Forma Normal (3FN, I)
+# Tercera Forma Normal (3FN, I)
 
 Una tabla estará en 3FN si:
 
-1. Está en 2NF
+1. Está en 2FN
 2. Ninguna columna no clave depende transitivamente de la clave primaria
 
 Esto es, no debe haber dependencias funcionales indirectas entre columnas no clave y la clave primaria
@@ -604,7 +605,7 @@ A pesar de estar en 2FN, *Editorial* depende de *Autor* y no directamente de *Id
 table th:nth-child(1) {text-decoration: underline;}
 </style>
 
-## Tercera Forma Normal (3FN, III)
+# Tercera Forma Normal (3FN, III)
 
 Será necesario dividir la tabla anterior en:
 
@@ -629,7 +630,7 @@ table th:nth-child(1) {text-decoration: underline;}
 table tr:last-child td:last-child {background-color: #FFA5A5;}
 </style>
 
-## Tercera Forma Normal (3FN, y IV)
+# Tercera Forma Normal (3FN, y IV)
 
 **¡CUIDADO!** Si los autores no siempre publican con la misma editorial la tabla **SI** está en 3FN:
 
@@ -643,7 +644,7 @@ table tr:last-child td:last-child {background-color: #FFA5A5;}
 
 ---
 
-## Una cosa más ...
+# Una cosa más ...
 
 El diseño de bases de datos siguiendo las formas normales es una buena práctica para evitar problemas como la pérdida de datos, inconsistencias y dificultades en la gestión de la información. Sin embargo, es importante recordar que en algunos casos, desnormalizar una base de datos (romper las formas normales) puede ser necesario para optimizar el rendimiento en consultas específicas, pero debe hacerse de manera consciente y justificada
 
