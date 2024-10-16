@@ -205,7 +205,7 @@ Más tipos en <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 CREATE TABLE corporacion.personas (
   id        INTEGER     UNIQUE NOT NULL,
   nombre    VARCHAR(30) NOT NULL,
-  apellidos VARCHAR(30) NOT NULL,
+  apellidos VARCHAR(60) NOT NULL,
   dni       VARCHAR(10) UNIQUE NOT NULL,
   fecha_nac DATETIME
 );
@@ -238,9 +238,9 @@ CREATE TABLE [schema.]nombre_tabla (
 
 ```SQL
 CREATE TABLE corporacion.personas (
-  id        INTEGER     UNIQUE NOT NULL,
+  id        INTEGER,
   nombre    VARCHAR(30) NOT NULL,
-  apellidos VARCHAR(30) NOT NULL,
+  apellidos VARCHAR(60) NOT NULL,
   dni       VARCHAR(10) UNIQUE NOT NULL,
   fecha_nac DATETIME,
   PRIMARY KEY (id)
@@ -329,21 +329,21 @@ INSERT INTO [schema.]tabla
 
 # Inserción de datos: ejemplos (I)
 
-| ~~ID~~ | NOMBRE        | DNI        | FECHA_NAC              |
-|--------|---------------|------------|------------------------|
-| 3      | Juan Gómez    | 00000000-T | 3 de mayo de 1983      |
-| 67     | Lucía Duque   | 99999999-R | 7 de julio de 1995     |
-| 101    | Diana Álvarez | 12345678-Z | 9 de diciembre de 2000 |
+| ~~ID~~ | NOMBRE        | APELLIDOS        | DNI        | FECHA_NAC              |
+|--------|---------------|---------------|------------|------------------------|
+| 3      | Juan          | Gómez          | 00000000-T | 3 de mayo de 1983      |
+| 67     | Lucía         | Duque          | 99999999-R | 7 de julio de 1995     |
+| 101    | Diana         | Álvarez        | 12345678-Z | 9 de diciembre de 2000 |
 
 ```SQL
-INSERT INTO corporacion.personas (id, nombre, dni, fecha_nac)
-  VALUES (3, “Juan Gómez”, “00000000-T”, “1983-05-03”);
+INSERT INTO personas (id, nombre, apellidos, dni, fecha_nac)
+  VALUES (3, "Juan", "Gómez", "00000000-T", "1983-05-03");
 
-INSERT INTO corporacion.personas
-  VALUES (67, “Lucía Duque”, “99999999-R”, “1995-07-07”);
+INSERT INTO personas
+  VALUES (67, "Lucía", "Duque", "99999999-R", "1995-07-07");
 
-INSERT INTO corporacion.personas (nombre, fecha_nac, dni, id)
-  VALUES (“Diana Álvarez”, “2000-12-09”, “12345678-Z”, 101);
+INSERT INTO personas (nombre,  apellidos, fecha_nac, dni, id)
+  VALUES ("Diana",  "Álvarez", "2000-12-09", "12345678-Z", 101);
 ```
 
 ---
@@ -352,17 +352,17 @@ INSERT INTO corporacion.personas (nombre, fecha_nac, dni, id)
 
 Es posible insertar varias filas con una única sentencia `INSERT INTO`
 
-| ~~ID~~ | NOMBRE        | DNI        | FECHA_NAC              |
-|--------|---------------|------------|------------------------|
-| 3      | Juan Gómez    | 00000000-T | 3 de mayo de 1983      |
-| 67     | Lucía Duque   | 99999999-R | 7 de julio de 1995     |
-| 101    | Diana Álvarez | 12345678-Z | 9 de diciembre de 2000 |
+| ~~ID~~ | NOMBRE        | APELLIDOS        | DNI        | FECHA_NAC              |
+|--------|---------------|---------------|------------|------------------------|
+| 3      | Juan          | Gómez          | 00000000-T | 3 de mayo de 1983      |
+| 67     | Lucía         | Duque          | 99999999-R | 7 de julio de 1995     |
+| 101    | Diana         | Álvarez        | 12345678-Z | 9 de diciembre de 2000 |
 
 ```SQL
-INSERT INTO corporacion.personas VALUES
-  (3,   “Juan Gómez”,    “00000000-T”, “1983-05-03”),
-  (67,  “Lucía Duque”,   “99999999-R”, “1995-07-07”),
-  (101, “Diana Álvarez”, “12345678-Z”, “2000-12-09”);
+INSERT INTO personas VALUES
+  (3,   "Juan",  "Gómez",   "00000000-T", "1983-05-03"),
+  (67,  "Lucía", "Duque",   "99999999-R", "1995-07-07"),
+  (101, "Diana", "Álvarez", "12345678-Z", "2000-12-09");
 ```
 
 ---
@@ -392,16 +392,16 @@ CREATE TABLE [schema.]tabla (
   - No debe especificarse su valor cuando se realiza el `INSERT INTO`
 
 ```SQL
-CREATE TABLE corporacion.personas (
-  id        INTEGER UNIQUE NOT NULL AUTO_INCREMENT,
+CREATE TABLE personas (
+  id        INTEGER AUTO_INCREMENT,
   nombre    VARCHAR(30) NOT NULL,
-  apellidos VARCHAR(30) NOT NULL,
+  apellidos VARCHAR(60) NOT NULL,
   fecha_nac DATETIME,
   PRIMARY KEY (id)
 );
 
-INSERT INTO corporacion.personas (nombre, apellidos, fecha_nac)
-  VALUES (“Juan”, “Gómez”, “1983-05-03”);
+INSERT INTO personas (nombre, apellidos, fecha_nac)
+  VALUES ("Juan", "Gómez", "1983-05-03");
 ```
 
 ---
@@ -528,30 +528,30 @@ Para mantener la **integridad referencial** debemos añadir **restricciones refe
   - `RESTRICT` (o `NO ACTION`)<sup>1</sup>: impide la propagación de la operación. **Opción por defecto**.
   - `SET NULL`: se pone a `NULL` la clave ajena, siempre que sea posible.
   - `CASCADE`: se propaga la operación.
-  - `SET DEFAULT`: se pone al valor por defecto la clave ajena, si es posible.
+  - `SET DEFAULT`<sup>2</sup>: se pone al valor por defecto la clave ajena, si es posible.
 
 > <sup>1</sup> La diferencia entre ambas es que `RESTRICT` realiza las comprobaciones inmediatamente, mientras que `NO ACTION` las aplaza. En el caso concreto de MySQL, como no implementa comprobaciones diferidas, no hay diferencia entre ambas.
-
+> <sup>2</sup> Esta opción es ignorada por MySQL.
 ---
 
 # Restricción referencial: ejemplo
 
 ```SQL
-CREATE TABLE corp.departamentos (
-  id_d      INTEGER     UNIQUE NOT NULL AUTO_INCREMENT,
+CREATE TABLE departamentos (
+  id_d      INTEGER AUTO_INCREMENT,
   nombre    VARCHAR(60) NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id_d)
 );
 
-CREATE TABLE Corp.empleados (
-  id_e       INTEGER     UNIQUE NOT NULL AUTO_INCREMENT,
+CREATE TABLE empleados (
+  id_e       INTEGER AUTO_INCREMENT,
   nombre     VARCHAR(60) NOT NULL,
   apellidos  VARCHAR(60) NOT NULL,
   id_d       INTEGER     NOT NULL,
-  PRIMARY KEY (id),
+  PRIMARY KEY (id_e),
   CONSTRAINT
     FOREIGN KEY (id_d)
-    REFERENCES copr.departamentos (id_d)
+    REFERENCES departamentos (id_d)
     ON DELETE NO ACTION
     ON UPDATE CASCADE
 );
