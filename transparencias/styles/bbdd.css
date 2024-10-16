@@ -84,8 +84,7 @@ section i {
 }
 
 s {
-  text-decoration: none;
-  background-color: var(--color-warning)
+  text-decoration: underline;
 }
 
 section strong {
