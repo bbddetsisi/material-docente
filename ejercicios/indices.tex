@@ -7,7 +7,7 @@
 \usepackage[spanish]{babel}
 \usepackage{fancyhdr}
 \usepackage{float}
-\usepackage{minted}
+\usepackage{listings}
 \usepackage[
     type={CC},
     modifier={by-nc-sa},
@@ -44,19 +44,19 @@ Como primer paso hacia las creaciones de índices, debemos entender que sin darn
 
 \begin{enumerate}
     \item Podemos crear el índice directamente: 
-    \begin{minted}{sql}
-CREATE INDEX índice ON tabla (columna); 
-    \end{minted}
+    \begin{lstlisting}[language=SQL]
+CREATE INDEX indice ON tabla (columna); 
+    \end{lstlisting}
         
     \item Modificando una tabla ya creada: 
-    \begin{minted}{sql}
-ALTER TABLE tabla ADD INDEX (tabla.columna, [tabla.columna2, ….]); 
-    \end{minted} 
+    \begin{lstlisting}[language=SQL]
+ALTER TABLE tabla ADD INDEX (columna1, [columna2, ...]); 
+    \end{lstlisting} 
 
      \item En la misma creación de la tabla: 
-     \begin{minted}{sql}
+     \begin{lstlisting}[language=SQL]
 CREATE TABLE tabla (columna VARCHAR(32), INDEX(columna)); 
-     \end{minted} 
+     \end{lstlisting} 
 \end{enumerate}
 
 \subsection*{Consideraciones de MySQL Workbench}
@@ -97,14 +97,17 @@ Carga el fichero \texttt{peliculas.sql} que puedes encontrar en el Moodle de la 
 
 Crea la consulta que muestre el nombre y apellidos del actor ``Lonzo Bode'', así como el número total de películas en las que ha participado.
     
-\begin{minted}{sql}
+\begin{lstlisting}[language=SQL]
 SELECT ac.first_name, ac.last_name, COUNT(*) Total
 FROM (SELECT fi.film_id, actor_id 
-      FROM film fi INNER JOIN film_actor fiac ON fi.film_id = fiac.film_id) jo 
-          INNER JOIN actor ac ON ac.actor_id=jo.actor_id
+      FROM film fi 
+        INNER JOIN film_actor fiac 
+            ON fi.film_id = fiac.film_id) jo 
+        INNER JOIN actor ac 
+            ON ac.actor_id=jo.actor_id
 WHERE ac.first_name="Lonzo" AND ac.last_name="Bode"
 GROUP BY ac.first_name, ac.last_name;
-\end{minted} 
+\end{lstlisting} 
 
 Si ejecutamos la consulta y miramos su \emph{explain} podemos apreciar diferentes aspectos a tener en cuenta sobre la misma consulta de la Figura \ref{fig:ejecucion1}.
 
@@ -124,10 +127,10 @@ Si ejecutamos la consulta y miramos su \emph{explain} podemos apreciar diferente
 
 Ahora que ya hemos visto cómo funcionan los índices primarios y la diferencia de tiempo que existe al realizar una consulta sin índices, vamos a tratar de crear nuestro propio índice para mejorar la eficiencia de la consulta. Lo primero que tenemos que fijarnos es que la consulta buscaba a ``Lonzo'' por dos campos, ``first\_name'' y ``last\_name'', por tanto, si queremos realizar un índice que se use para esta consulta, tiene que ser un índice compuesto que contenga los dos campos.
 
-\begin{minted}{sql}
+\begin{lstlisting}[language=SQL]
 ALTER TABLE actor
 ADD INDEX `optimizar` (`first_name` ASC, `last_name` ASC) VISIBLE;
-\end{minted}
+\end{lstlisting}
 
 Con la sentencia anterior crearemos el índice compuesto que nos permitirá optimizar la consulta. Una vez lo creemos, deberemos volver a ejecutar la consulta para ver los resultados.
 
@@ -147,10 +150,10 @@ Una vez ejecutada la consulta (ver Figura \ref{fig:ejecucion1optimizada}, se pue
 
 Ahora que ya creemos haber optimizado al completo nuestra consulta, vamos a tratar de crear un índice más simple para nuestra consulta para ver como trabaja nuestra base de datos. Para ello, creamos un índice que solo contenga ``first\_name'':
 
-\begin{minted}{sql}
+\begin{lstlisting}[language=SQL]
 ALTER TABLE actor
 ADD INDEX `optimizar` (`first_name` ASC) VISIBLE;
-\end{minted}
+\end{lstlisting}
 
 Y una vez creado ejecutamos de nuevo nuestra consulta. Si todo ha funcionado correctamente nos daremos cuenta de que el gestor ha decido utilizar este índice y no el anterior, obteniendo incluso mejores resultados a pesar de devolver 2 filas en la sentencia (ver Figura \ref{fig:ejecucion1coste}).
 
@@ -176,11 +179,11 @@ Ahora vamos a realizar la operación de escritura, para ello queremos actualizar
 
 \newpage
 
-\begin{minted}{sql}
+\begin{lstlisting}[language=SQL]
 UPDATE film
 SET length_minutes = length_minutes +1 
 WHERE length_minutes >= 100;
-\end{minted}
+\end{lstlisting}
 
 Antes de ejecutar nuestra consulta debemos tener en cuenta que esta operación la queremos realizar repetidas veces sobre nuestra tabla para comprobar las diferencias, y para ello tenemos que fijarnos en la duración de la consulta tal y como indica la Figura \ref{fig:tiempoEjecucion}. Este valor diferirá dependiendo de la maquina en que ejecutemos nuestra consulta, pero podemos tomarlo como referencia. Una vez realizada la consulta es momento de trastear creando índices que incluyan la columna ``length\_minutes''. Podemos crear la cantidad de índices que queramos, a cuantos más creemos mayor será la diferencia. 
 
