@@ -8,7 +8,7 @@
 \usepackage[spanish]{babel}
 \usepackage{fancyhdr}
 \usepackage{float}
-\usepackage{minted}
+\usepackage{listings}
 \usepackage[
     type={CC},
     modifier={by-nc-sa},
@@ -44,7 +44,7 @@ Una transacción debe cumplir con las propiedades ACID:
 \begin{enumerate}
     \item Atomicidad: las operaciones que componen una transacción deben considerarse como una sola.
     \item Consistencia: una operación nunca deberá dejar datos inconsistentes.
-    \item Aislamiento: los datos ``sucios'' deben estar aislados, y evitar que los usuarios utilicen información que aún no está confirmada o validada.
+    \item Aislamiento: los datos sucios'' deben estar aislados, y evitar que los usuarios utilicen información que aún no está confirmada o validada.
     \item Durabilidad: una vez completada la transacción los datos actualizados ya serán permanentes y confirmados.
 \end{enumerate}
 
@@ -58,9 +58,9 @@ Aunque la función de confirmación automática esté activada, MySQL permite de
 
 Para que las confirmaciones no se realicen de forma automática, desactiva esta función de MySQL ejecutando la siguiente sentencia:
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 SET autocommit = 0;
-\end{minted}
+\end{lstlisting}
 
 ¡OJO! También tendremos que desactivar este modo en las pestañas de consultas del Workbench desmarcando el botón de la Figura \ref{fig:autoejecución}.
 
@@ -94,23 +94,23 @@ Podrás comprobar que se te ha abierto una nueva pestaña con una conexión a la
 
 En una de las dos pestañas vamos a iniciar una transacción para añadir una nueva película y un nuevo actor a la base de datos. Ejecuta las siguientes sentencias para inicializar una transacción e insertar una fila en la tabla \texttt{film}:
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 START TRANSACTION;
 
-INSERT INTO `peliculas`.`film` (`title`, `description`, `release_date`, 
-  `language_id`, `original_language_id`, `length_minutes`) 
+INSERT INTO peliculas.film (title, description, release_date, 
+  language_id, original_language_id, length_minutes) 
 VALUES ('Pulp Fiction', 'Pulp Fiction is a 1994 American crime film 
   written and directed by Quentin Tarantino, who conceived it  with 
   Roger Avary.', '1994-05-21', 'es', 'en', 154);
-\end{minted}
+\end{lstlisting}
 
 Comprobamos que en la pestaña en la cual tenemos la transacción abierta la filas aparecen como insertadas (ver Figura \ref{fig:1consulta}):
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 SELECT * 
 FROM film
 WHERE title LIKE('Pulp%')
-\end{minted}
+\end{lstlisting}
 
 \begin{figure}[ht]
     \centering
@@ -120,7 +120,7 @@ WHERE title LIKE('Pulp%')
 
 Sin embargo, si cambiamos de pestaña para comprobar el otro usuario, al ejecutar la misma consulta podemos observar que la película no aparece (ver Figura \ref{fig:2consulta}):
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 START TRANSACTION;
 
 SELECT * 
@@ -128,7 +128,7 @@ FROM film
 WHERE title LIKE('Pulp%');
 
 COMMIT;
-\end{minted}
+\end{lstlisting}
 
 \begin{figure}[ht]
     \centering
@@ -140,13 +140,13 @@ Este es el comportamiento que se podría esperar, puesto que el usuario que ha r
 
 Volvemos a la pestaña del usuario que mantiene la transacción abierta y confirmaremos los cambios con la sentencia:
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 COMMIT;
-\end{minted}
+\end{lstlisting}
 
 La transacción se ha cerrado y los cambios realizados en ella se han convertido en permanentes, por lo que la fila se ha insertado en la tabla de la base de datos y ya es visible para el resto de usuarios. Vamos a comprobarlo cambiando a la otra pestaña y volviendo a ejecutar la consulta:
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 START TRANSACTION;
 
 SELECT * 
@@ -154,7 +154,7 @@ FROM film
 WHERE title LIKE('Pulp%');
 
 COMMIT;
-\end{minted}
+\end{lstlisting}
 
 Ahora, tal como muestra la Figura \ref{fig:3consulta} ya aparece la película que insertó el otro usuario, puesto que los cambios han sido confirmados.
 
@@ -168,20 +168,20 @@ Ahora, tal como muestra la Figura \ref{fig:3consulta} ya aparece la película qu
 
 Vamos a comprobar el funcionamiento de la instrucción \texttt{ROLLBACK}. Para ello, en alguna de las dos pestañas de conexión vamos a inicializar una nueva transacción y a eliminar la película que acabamos de añadir. \textbf{Para ello será necesario saber qué ID se le ha asignado a esa película en la base de datos}:
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 START TRANSACTION;
 
 DELETE FROM film 
 WHERE film_id = 6001;
-\end{minted}
+\end{lstlisting}
 
 Los cambios todavía no se han confirmado, por lo que la película debería seguir apareciendo en las otras conexiones que tengamos abiertas. Si consultamos en la pestaña en la que tenemos la transacción abierta, podemos observar que la película se ha eliminado (ver Figura \ref{fig:4consulta}):
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 SELECT * 
 FROM film
 WHERE title LIKE('Pulp%');
-\end{minted}
+\end{lstlisting}
 
 \begin{figure}[ht]
     \centering
@@ -191,13 +191,13 @@ WHERE title LIKE('Pulp%');
 
 Supongamos que la eliminación no tendría que realizarse. Gracias a que dicha eliminación está en una transacción todavía abierta, podemos descartar las modificaciones haciendo \texttt{ROLLBACK}:
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 ROLLBACK;
-\end{minted}
+\end{lstlisting}
 
 Por lo que los cambios quedan descartados y la fila permanece en la tabla correspondiente (ver Figura \ref{fig:5consulta}):
 
-\begin{minted}{SQL}
+\begin{lstlisting}[language=SQL]
 START TRANSACTION;
 
 SELECT * 
@@ -205,7 +205,7 @@ FROM film
 WHERE title LIKE('Pulp%');
 
 COMMIT;
-\end{minted}
+\end{lstlisting}
 
 \begin{figure}[ht]
     \centering
