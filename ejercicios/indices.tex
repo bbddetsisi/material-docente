@@ -117,11 +117,11 @@ Si ejecutamos la consulta y miramos su \emph{explain} podemos apreciar diferente
     \caption{Resultado del \emph{explain} al ejecutar la consulta.}\label{fig:ejecucion1}
 \end{figure}
 
-\begin{enumerate}
-    \item A pesar de que aún no hemos realizado ninguna operación de modificación sobre la base de datos, estas dos cajitas nos dan mucha información de los índices primarios asociados a las claves primarias de cada tabla. Y es que estas dos cajitas son el resultado de la búsqueda por clave repetida (\emph{Non-Unique Key Lookup}) y por clave única respectivamente (\emph{Unique Key Lookup}). Y es debido a que nuestra base de datos ha usado estos índices que el coste es tan bajo 4.5 y 7.0.
-    \item No obstante, la diferencia entre usar índices y no usarlos se ve reflejado en este punto. Si nos fijamos en el coste computacional de la segunda parte de la consulta se aprecia que el 90\% del tiempo que tarda esta consulta reside en esta parte. La conclusión es sencilla, la base de datos se ha visto obligada a realizar una lectura completa de la tabla para encontrar a ``Lonzo Bode''.
+\begin{itemize}
+    \item A pesar de que aún no hemos realizado ninguna operación de modificación sobre la base de datos, las dos cajas verdes nos dan mucha información de los índices primarios asociados a las claves primarias de cada tabla. Y es que estas dos cajas son el resultado de la búsqueda por clave repetida (\emph{Non-Unique Key Lookup}) y por clave única respectivamente (\emph{Unique Key Lookup}). Y es debido a que nuestra base de datos ha usado estos índices que el coste es tan bajo.
+    \item No obstante, la diferencia entre usar índices y no usarlos se ve reflejado en la caja roja. Si nos fijamos en el coste computacional de la segunda parte de la consulta se aprecia que en torno al 90\% del tiempo que tarda esta consulta reside en esta parte. La conclusión es sencilla, la base de datos se ha visto obligada a realizar una lectura completa de la tabla para encontrar a ``Lonzo Bode''.
     \item Si nos fijamos aún más en el resultado podemos interpretar cómo ha realizado los \texttt{JOIN} de cada una de las tablas. El primer \texttt{JOIN}, lo ha ejecutado sobre la tabla \texttt{actor} y la tabla \texttt{film-actor}. El resultado devuelve 20 filas que se muestra en el primer rombo de \emph{nested loop}. Por tanto, en el segundo rombo tendremos el resultado del segundo  \texttt{JOIN} con la tabla \texttt{film}.
-\end{enumerate}
+\end{itemize}
 
 \subsubsection*{Optimización}
 
@@ -129,7 +129,7 @@ Ahora que ya hemos visto cómo funcionan los índices primarios y la diferencia 
 
 \begin{lstlisting}[language=SQL]
 ALTER TABLE actor
-ADD INDEX `optimizar` (`first_name` ASC, `last_name` ASC) VISIBLE;
+ADD INDEX optimizar (first_name ASC, last_name ASC) VISIBLE;
 \end{lstlisting}
 
 Con la sentencia anterior crearemos el índice compuesto que nos permitirá optimizar la consulta. Una vez lo creemos, deberemos volver a ejecutar la consulta para ver los resultados.
@@ -140,7 +140,7 @@ Con la sentencia anterior crearemos el índice compuesto que nos permitirá opti
     \caption{Resultado del explain al ejecutar la consulta optimizada.}\label{fig:ejecucion1optimizada}
 \end{figure}
 
-Una vez ejecutada la consulta (ver Figura \ref{fig:ejecucion1optimizada}, se puede apreciar que hemos mejorado la consulta fijándonos directamente en el coste, y es que hemos pasado de $112.50 \rightarrow 1.87$. Además del coste, podemos apreciar que índice se ha utilizado para corroborar que todo haya ido bien. Si nos fijamos debajo de nuestra caja asociada a la consulta debe aparecer el nombre que le hemos dado a nuestro índice, en este caso ``optimizar'' (ver Figura \ref{fig:ejecucion1part1}).
+Una vez ejecutada la consulta (ver Figura \ref{fig:ejecucion1optimizada}, se puede apreciar que hemos mejorado la consulta fijándonos directamente en el coste, y es que hemos pasado de $108.00 \rightarrow 1.87$. Además del coste, podemos apreciar que índice se ha utilizado para corroborar que todo haya ido bien. Si nos fijamos debajo de nuestra caja asociada a la consulta debe aparecer el nombre que le hemos dado a nuestro índice, en este caso ``optimizar'' (ver Figura \ref{fig:ejecucion1part1}).
 
 \begin{figure}[ht]
     \centering
@@ -152,7 +152,7 @@ Ahora que ya creemos haber optimizado al completo nuestra consulta, vamos a trat
 
 \begin{lstlisting}[language=SQL]
 ALTER TABLE actor
-ADD INDEX `optimizar` (`first_name` ASC) VISIBLE;
+ADD INDEX optimizar (first_name ASC) VISIBLE;
 \end{lstlisting}
 
 Y una vez creado ejecutamos de nuevo nuestra consulta. Si todo ha funcionado correctamente nos daremos cuenta de que el gestor ha decido utilizar este índice y no el anterior, obteniendo incluso mejores resultados a pesar de devolver 2 filas en la sentencia (ver Figura \ref{fig:ejecucion1coste}).
