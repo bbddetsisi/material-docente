@@ -16,17 +16,19 @@ math        : mathjax
 
 <!-- _class: titlepage -->
 
-# Programación contra bases de datos
+# Programación contra bases de datos en Java
 
 ## Bases de datos
 
 ### Departamento de Sistemas Informáticos
 
-#### E.T.S.I. de Sistemas Informáticos - UPM
+#### E.T.S.I. de Sistemas Informáticos
 
-##### 15 de febrero de 2024
+##### Universidad Politénica de Madrid
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+![bg left:30%](img/upm-logo.jpg)
 
 ---
 
@@ -127,12 +129,16 @@ Crea una capa intermedia entre la aplicación y el SGBD
 
 ---
 
-# _Java Database Connectivity_ (JDBC)
+# ¿Qué es _Java Database Connectivity_ (JDBC)?
 
 API para ejecutar operaciones sobre bases de datos desde Java
 
 - Independiente a la base de datos y al sistema operativo
 - Clases e interfaces para gestionar conexión y CRUD con la base de datos
+
+---
+
+# _Java Database Connectivity_ (JDBC)
 
 JDBC ha evolucionado con 4 versiones:
 
@@ -210,7 +216,7 @@ import java.sql.SQLException;
 public class LoadDriver {
   public static void main(String[] args) {
     try {
-      // Uuamos el driver JDBC de MySQL
+      // usamos el driver JDBC de MySQL
       Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
     } catch (Exception ex) {
       // manejar el error ...
