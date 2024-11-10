@@ -17,13 +17,17 @@ math        : mathjax
 
 # Seguridad en Bases de Datos
 
-##
+## Bases de datos
 
 ### Departamento de Sistemas Informáticos
+
 #### E.T.S.I. de Sistemas Informáticos
-#### Universidad Politécnica de Madrid
+
+##### Universidad Politénica de Madrid
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+![bg left:30%](img/upm-logo.jpg)
 
 ---
 
@@ -182,7 +186,7 @@ DROP USER 'nombre_de_usuario';
 
 ---
 
-## Estrategia 2. Encriptación de datos
+# Estrategia 2. Encriptación de datos
 
 La encritación de datos consiste en codificación de datos para proteger su confidencialidad.
 
@@ -235,7 +239,7 @@ ssl-cert=/ruta/al/archivo/server-cert.pem
 ssl-key=/ruta/al/archivo/server-key.pem
 ```
 
-> Si usas docker puedes customizar el fichero de configuración con `-v /my/custom:/etc/mysql/conf.d` al arrancar el contenedor.*
+> Si usas Docker puedes customizar el fichero de configuración con `-v /my/custom:/etc/mysql/conf.d` al arrancar el contenedor.
 
 ---
 
