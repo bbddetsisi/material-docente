@@ -8,7 +8,7 @@
 \usepackage[spanish]{babel}
 \usepackage{fancyhdr}
 \usepackage{float}
-\usepackage{minted}
+\usepackage{listings}
 
 \renewcommand{\headrulewidth}{0.6pt}
 \renewcommand{\footrulewidth}{0.6pt}
@@ -50,15 +50,16 @@ Antes de comenzar, abre MySQL Workbench, conéctate a la base de datos como has 
 
 Para \textbf{crear usuarios} podéis utilizar la sintaxis siguiente:
 
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
-CREATE USER 'nombre_de_usuario' IDENTIFIED BY 'contraseña';
-\end{minted}
+\begin{lstlisting}[language=SQL]
+CREATE USER 'nombre_de_usuario' IDENTIFIED BY 'password';
+\end{lstlisting}
 
 Una vez creado, debemos \textbf{asignarles los permisos} deseados. Esto lo podemos conseguir con:
 
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
-GRANT PRIVILEGE ON base_de_datos.tabla TO 'nombre_de_usuario' [WITH GRANT OPTION];
-\end{minted}
+\begin{lstlisting}[language=SQL]
+GRANT PRIVILEGE ON base_de_datos.tabla TO 'nombre_de_usuario' 
+    [WITH GRANT OPTION];
+\end{lstlisting}
 
 Recordad que:
 
@@ -72,21 +73,21 @@ Recordad que:
 
 Si en algún momento un usuario deja de requerir algún permiso, es importante \textbf{revocarlo} mediante la siguiente sentencia:
 
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=SQL]
 REVOKE PRIVILEGE ON base_de_datos.tabla FROM 'nombre_de_usuario';
-\end{minted}
+\end{lstlisting}
 
 Además, podemos mostrar los permisos de los que dispone un determinado usuario:
 
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=SQL]
 SHOW GRANTS FOR 'nombre_de_usuario';
-\end{minted}
+\end{lstlisting}
 
 Por último, podemos eliminar usuarios:
 
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=SQL]
 DROP USER 'nombre_de_usuario'
-\end{minted}
+\end{lstlisting}
 
 
 \subsection*{Gestión de usuarios mediante código}
@@ -95,10 +96,10 @@ En esta parte de la práctica vamos a crear un usuario que se llame \texttt{usua
 
 Para ello, ejecutaremos las siguientes sentencias:
 
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=SQL]
 CREATE USER 'usuario_gestor' IDENTIFIED BY 'pass_usr_gstr';
 GRANT SELECT, INSERT, UPDATE, DELETE ON peliculas.* TO 'usuario_gestor';
-\end{minted}
+\end{lstlisting}
 
 Con esto ya tendríamos el usuario \texttt{usuario\_gestor} creado y con los permisos correspondientes.
 
