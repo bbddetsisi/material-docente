@@ -18,13 +18,17 @@ math        : mathjax
 
 # Programación contra bases de datos en python
 
-##
+## Bases de datos
 
 ### Departamento de Sistemas Informáticos
+
 #### E.T.S.I. de Sistemas Informáticos
-#### Universidad Politécnica de Madrid
+
+##### Universidad Politénica de Madrid
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+![bg left:30%](img/upm-logo.jpg)
 
 ---
 
