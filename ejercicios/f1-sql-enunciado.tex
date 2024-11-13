@@ -157,11 +157,7 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
         \item E04 = Frenos sobre-calentados
         \item E05 = Error presión del aceite
         \item Cualquier otro valor = Error de comando
-    \end{itemize}
-        
-    \item Crea un procedimiento que reciba una nacionalidad como parámetro de entrada y realice una consulta sobre la tabla \texttt{drivers} para obtener todos los pilotos de esa nacionalidad.
-   
-    \item Añade una nueva columna en la tabla \texttt{drivers} que se llame años en activo. A continuación escribir un procedimiento que calcule el número total de años que ha estado un piloto compitiendo y actualice la tabla. Este procedimiento hará uso de la función creada en un ejercicio anterior.
+    \end{itemize} 
 
     \item Crea un procedimiento almacenado para obtener los pilotos y los circuitos que ganaron carreras de un año concreto (como argumento) con un constructor del mismo país que el piloto.
 
@@ -170,6 +166,10 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     \item Procedimiento almacenado de nombre \texttt{getsConstructoresYPilotos}, que tomando como entrada un año concreto, obtenga como salida los nombres de todos los pilotos que participaron en el mundial ese año y el equipo de constructores con el cual compitieron. Adicionalmente, también se quiere obtener el total de puntos que obtuvo cada piloto en el mundial.
 
     \item Codifique un procedimiento almacenado denominado \texttt{getNumberOfVictories} que disponga de un parámetro de entrada \texttt{type}. Si \texttt{type = 'nationality'}, el procedimiento listará el número de victorias que han obtenido cada una de las nacionalidades de la tabla \texttt{drivers}. Por contra, si \texttt{type} toma cualquier otro valor, el procedimiento listará el número de victorias que han obtenidos cada uno de los constructores (\texttt{constructors.name}) existentes en la base de datos. Los resultados deberá estar ordenados de mayor a menor número de victorias.
+    
+    \item Añade una nueva columna en la tabla \texttt{drivers} que se llame años en activo. A continuación escribir un procedimiento que, haciendo uso de un \texttt{Cursor}, calcule el número total de años que ha estado un piloto compitiendo y actualice la tabla.
+
+    \item Crea un procedimiento que reciba una nacionalidad como parámetro de entrada y realice una consulta sobre la tabla \texttt{drivers} para obtener todos los pilotos de esa nacionalidad. Los nombres y apellidos de estos pilotos deberán devolverse en un parámetro de salida de tipo \texttt{TEXT} separados por comas (\texttt{,}).
 \end{enumerate}
 
 
