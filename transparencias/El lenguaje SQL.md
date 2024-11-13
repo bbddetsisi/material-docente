@@ -1609,12 +1609,12 @@ Como complemento a las sentencias `INSERT`, `UPDATE` y `DELETE`, y para solventa
 
 Subrutina que se almacena en una base de datos
 
-- Similar a un subprograma en cualquier otro lenguaje de programación
+- Similar a un subprograma en cualquier otro lenguaje de programación.
 - Cuenta con un **nombre**, una **lista de parámetros** y **sentencias SQL**
 - Ventajas:
-  - **Rápidos**: El SGBD puede aprovechar hasta la caché y además posibilita evitar tráfico de red
-  - **Portables**: Son fácilmente migrables entre servidores
-  - **Fuentes disponibles**: Accesible desde la propia base de datos
+  - **Rápidos**: El SGBD puede aprovechar hasta la caché y además posibilita evitar tráfico de red.
+  - **Portables**: Son fácilmente migrables entre servidores.
+  - **Fuentes disponibles**: Accesible desde la propia base de datos.
 
 ---
 
@@ -1633,7 +1633,7 @@ Los parámetros `param`` tienen la siguiente sintaxis:
 [ IN | OUT | INOUT ] nombre_parametro tipo_parametro
 ```
 
-El cuerpo estará formado por **sentencias SQL válidas**
+El cuerpo estará formado por **sentencias SQL válidas**.
 
 ---
 
@@ -1684,7 +1684,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL sp_trabajos('C03')
+CALL sp_trabajos('C03');
 ```
 
 ---
@@ -1747,14 +1747,14 @@ SELECT @num;
 
 # Variables y variables de usuario
 
-Ya hemos visto cómo se declaran variables de usuario: anteponiendo una `@` delante del nombre
+Ya hemos visto cómo se declaran variables de usuario: anteponiendo una `@` delante del nombre:
 
 ```SQL
 SET @miVar = 10; -- Asignar valor
 SELECT @miVar;   -- Consultar valor
 ```
 
-Se pueden declarar variables locales en los procedimientos usando `DECLARE`
+Se pueden declarar variables locales en los procedimientos usando `DECLARE`:
 
 ```SQL
 DECLARE nombre_variable [,...] tipo [DEFAULT valor]
@@ -1780,7 +1780,7 @@ END$$
 DELIMITER ;
 ```
 
-Si hay **varias consultas** en el cuerpo de un procedimiento, se devuelve **el último resultado**
+Si hay **varias consultas** en el cuerpo de un procedimiento, se devuelve **el último resultado**.
 
 ---
 
@@ -1800,7 +1800,7 @@ SQL soporta varias sentencias para controlar el flujo de ejecución de los proce
 
 # Sentencia `IF`
 
-Evalúa condición y ejecuta las sentencias correspondientes
+Evalúa condición y ejecuta las sentencias correspondientes:
 
 ```SQL
 IF condicion THEN sentencias
@@ -1815,7 +1815,7 @@ Se pueden encadenar condiciones con `ELSEIF`.
 
 # Sentencia `CASE` (I)
 
-Evalúa la expresión y ejecuta las sentencias acorde al resultado obtenido
+Evalúa la expresión y ejecuta las sentencias acorde al resultado obtenido:
 
 ```SQL
 CASE variable_a_evaluar
@@ -1830,7 +1830,7 @@ END CASE
 
 # Sentencia `CASE` (y II)
 
-Alternativa: Comprueba condiciones en lugar de valores
+Alternativa: Comprueba condiciones en lugar de valores:
 
 ```SQL
 CASE
@@ -1840,7 +1840,7 @@ WHEN condicion THEN sentencias
 END CASE
 ```
 
-Una vez encuentra una verdadera, ejecuta las sentencias y sale del `CASE`
+Una vez encuentra una verdadera, ejecuta las sentencias y sale del `CASE`.
 
 - En caso contrario se ejecuta el fragmento del `ELSE`.
 
@@ -1858,7 +1858,7 @@ END LOOP;
 [etiqueta_fin_loop]
 ```
 
-Se ejecutan las sentencias **hasta abandonar el bucle con `LEAVE`**
+Se ejecutan las sentencias **hasta abandonar el bucle con `LEAVE`**.
 
 ---
 
@@ -1893,9 +1893,9 @@ END REPEAT
 [etiqueta_fin]
 ```
 
-Las sentencias se repiten hasta que la condición se cumpla
+Las sentencias se repiten hasta que la condición se cumpla.
 
-- Ambas etiquetas son opcionales en este tipo de bucle
+- Ambas etiquetas son opcionales en este tipo de bucle.
 
 ---
 
@@ -1905,14 +1905,14 @@ Las sentencias se repiten hasta que la condición se cumpla
 DELIMITER $$
 CREATE PROCEDURE my_proc_REPEAT (IN n INTEGER)
 BEGIN
-    SET @sum = 0;
-    SET @x = 1;  
+    DECLARE sum INT DEFAULT 0;
+    DECLARE x INT DEFAULT 1;  
     REPEAT
-        IF mod(@x, 2) = 0 THEN
-            SET @sum = @sum + @x;
+        IF mod(x, 2) = 0 THEN
+            SET sum = sum + x;
         END IF;
-        SET @x = @x + 1;
-    UNTIL @x > n
+        SET x = x + 1;
+    UNTIL x > n
     END REPEAT;
 END $$
 DELIMITER ;
@@ -1929,9 +1929,9 @@ END WHILE
 [etiqueta_fin]
 ```
 
-Se ejecutan las instrucciones mientras se cumple la condición
+Se ejecutan las instrucciones mientras se cumple la condición.
 
-- Similar al `REPEAT` pero con la condición de parada invertida
+- Similar al `REPEAT` pero con la condición de parada invertida.
 
 ---
 
@@ -1941,13 +1941,13 @@ Se ejecutan las instrucciones mientras se cumple la condición
 DELIMITER $$
 CREATE PROCEDURE my_proc_WHILE (IN n INTEGER)
 BEGIN
-    SET @sum = 0;
-    SET @x = 1;
-    WHILE @x<=n DO
-        IF mod(@x, 2) <> 0 THEN
-            SET @sum = @sum + @x;
+    DECLARE sum INT DEFAULT 0;
+    DECLARE x INT DEFAULT 1; 
+    WHILE x <= n DO
+        IF mod(x, 2) <> 0 THEN
+            SET sum = sum + x;
         END IF;
-        SET @x = @x + 1;
+        SET x = x + 1;
     END WHILE;
 END$$
 DELIMITER ;
@@ -1957,9 +1957,9 @@ DELIMITER ;
 
 # Cursor
 
-Los cursores son unas estructuras de control para recorrer secuencialmente los resultados de una consulta. En otras palabras, es un iterador sobre las filas resultantes de una consulta
+Los cursores son unas estructuras de control para recorrer secuencialmente los resultados de una consulta. En otras palabras, es un iterador sobre las filas resultantes de una consulta.
 
-Se suelen utilizar en subrutinas almacenadas en la base de datos, como procedimientos y funciones
+Se suelen utilizar en subrutinas almacenadas en la base de datos, como procedimientos y funciones.
 
 ---
 
@@ -1970,16 +1970,17 @@ CREATE PROCEDURE curdemo()
 BEGIN
   DECLARE done INT DEFAULT FALSE;
   DECLARE b, c INT;
-  DECLARE cur1 CURSOR FOR SELECT id, data FROM t1; -- Creación
+  DECLARE cur CURSOR FOR SELECT id, data FROM t1; -- Creación
   DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-   OPEN cur1; -- Apertura
+   OPEN cur; -- Apertura
    read_loop: LOOP
-    FETCH cur1 INTO b, c; -- Uso
+    FETCH cur INTO b, c; -- Uso
     IF done THEN
       LEAVE read_loop;
     END IF;
+    -- Añadir aquí la lógica de uso del cursor
   END LOOP;
-  CLOSE cur1; -- Cierre
+  CLOSE cur; -- Cierre
 END;
 ```
 
@@ -1990,8 +1991,8 @@ END;
 El número (y tipos) de variables donde almacenar el resultado de `FETCH` se corresponde con el número (tipo) de columnas devueltas por la consulta que alimenta el cursor:
 
 ```SQL
-DECLARE cur1 CURSOR FOR SELECT id,data FROM t1;
-FETCH cur1 INTO b, c;
+DECLARE cur CURSOR FOR SELECT id,data FROM t1;
+FETCH cur INTO b, c;
 ```
 
 Hay que declarar un manejador especial para cuando se alcance el final del cursor en un `FETCH`:
