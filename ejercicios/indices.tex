@@ -8,11 +8,34 @@
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{xcolor}
 \usepackage[
     type={CC},
     modifier={by-nc-sa},
     version={3.0},
 ]{doclicense}
+
+% Definición de colores
+\definecolor{keywordcolor}{rgb}{0.1,0.1,0.8} % Azul para palabras clave
+\definecolor{stringcolor}{rgb}{0.8,0.1,0.1}  % Rojo para cadenas
+\definecolor{commentcolor}{rgb}{0.1,0.6,0.1} % Verde para comentarios
+
+% Configuración de listings
+\lstdefinestyle{mysqlstyle}{
+  basicstyle=\ttfamily\footnotesize,          % Estilo básico
+  keywordstyle=\color{keywordcolor}\bfseries, % Estilo para palabras clave
+  commentstyle=\color{commentcolor}\itshape,  % Estilo para comentarios
+  stringstyle=\color{stringcolor},            % Estilo para cadenas
+  showstringspaces=false,                     % No mostrar espacios en cadenas
+  tabsize=2,                                  % Tamaño de tabulación
+  breaklines=true,                            % Dividir líneas largas
+  morestring=[b]",                            % Cadenas con comillas dobles
+  literate={ñ}{{\~n}}1,                       % Permite el carácter "ñ"
+  morekeywords={SELECT, INSERT, UPDATE, DELETE, FROM, WHERE, JOIN, INNER, LEFT, RIGHT, ON, GROUP, BY, ORDER, ASC, DESC, CREATE, TABLE, DROP, ALTER, DATABASE, USE, INDEX, INTO, VALUES, SET, IF, EXISTS, NOT, NULL, AND, HAVING, COUNT, DISTINCT, LIKE} % Palabras clave SQL
+}
+
+% Usar el estilo
+\lstset{style=mysqlstyle}
 
 \renewcommand{\headrulewidth}{0.6pt}
 \renewcommand{\footrulewidth}{0.6pt}
@@ -195,7 +218,7 @@ Antes de ejecutar nuestra consulta debemos tener en cuenta que esta operación l
 
 Cuando terminemos de crear índices, ejecutamos otra vez la sentencia y comparamos los resultados.
 
-\vspace{25em}
+\vspace{5em}
 \hrule
 \doclicenseThis
 
