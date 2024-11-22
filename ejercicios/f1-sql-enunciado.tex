@@ -188,7 +188,9 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
 \section*{Triggers:}
 
 \begin{enumerate}
-    \item A partir de este momento la FIA no va a permitir que haya equipos con más de 2 pilotos, por ello se debe desarrollar un trigger que impida que se puedan incorporar en un mismo equipo más de 2 pilotos a la base de datos. Para ello, se debe impedir toda operación que haga que un 3 o más pilotos pasen a formar parte del mismo equipo de constructores, ya sea mediante inserción o actualización de los datos. 
+    %\item A partir de este momento la FIA no va a permitir que haya equipos con más de 2 pilotos, por ello se debe desarrollar un trigger que impida que se puedan incorporar en un mismo equipo más de 2 pilotos a la base de datos. Para ello, se debe impedir toda operación que haga que 3 o más pilotos pasen a formar parte del mismo equipo de constructores, ya sea mediante inserción o actualización de los datos. 
+    
+    \item Desarrolle taodos los triggers necesarios para impedir que en una misma carrera puedan participar más de 2 pilotos con un constructor. Se considera que participar en una carrera es aparecer en la tabla \texttt{results} (se ignora por tanto la tabla \texttt{qualifying}).
         
     \item Crea una tabla \texttt{crashes} con la siguiente estructura:
     \begin{table}[h]
@@ -202,9 +204,11 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
 
     Crea un trigger que cuando se inserte una fila en la tabla \texttt{results} con el parámetro \texttt{statusId} de valores 3 ó 4 rellene la tabla \texttt{crashes} con la información correspondiente.
 
-    \item Crea un trigger para impedir que en un mismo año un piloto esté en dos equipos de constructores diferentes.
+    \item Crea un trigger para impedir que en un mismo año un piloto participe en carreras con dos constructores diferentes. Se considera que un piloto habrá participado en una carrera si aparece en la tabla \texttt{results}.
     
-    \item Cree una nueva tabla \textit{sponsors} en la base de datos que almacene como atributos, su identificador propio, su nombre, tipo, el identificador de la carrera que patrocina y el dinero que aporta anualmente. Luego, diseñe un trigger para la nueva tabla \textit{sponsors}. Cada carrera puede contar con varios patrocinadores, los cuales se dividen en dos tipos, oficiales (deben aportan una cantidad igual o superior a 5M de euros anuales) y cooficiales (cantidades inferiores). Diseñe un trigger que clasifique al sponsor y rellene el atributo \textit{type} de su correspondiente tabla. Ten en cuenta que un sponsor puede cambiar de año en año la cuantía que aporta.
+    \item Cree una nueva tabla \textit{sponsors} en la base de datos que almacene como atributos, su identificador propio, su nombre, tipo, el identificador de la carrera que patrocina (un patrocinador solo puede patrocinar una carrera) y el dinero que aporta anualmente. Existen dos tipos de patrocinadores: oficiales, deben aportan una cantidad igual o superior a 5M de euros, y cooficiales, para cantidades inferiores. Diseñe un trigger que clasifique al sponsor y rellene el atributo \textit{type} de su correspondiente tabla.
+    
+    \item A partir de ahora, los patrocinadores van a poder patrocinar varias carreras. Realize las modificaciones que considere necesarias en el \texttt{schema} de la base de datos y actualice los triggers para garantizar que el tipo de patrocinador sea siempre correcto.
 \end{enumerate}
 
 \vspace{2em}
