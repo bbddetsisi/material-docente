@@ -45,4 +45,15 @@ Temporary Items
 /ejercicios/**/*.out
 /ejercicios/_minted-*
 
+# Latex files into 'examenes' path
+/examenes/**/*.aux
+/examenes/**/*.log
+/examenes/**/*.fls
+/examenes/**/*.synctex.gz
+/examenes/**/*.fdb_latexmk
+/examenes/*.pdf
+/examenes/**/*.pyg
+/examenes/**/*.out
+/examenes/_minted-*
+
 /transparencias/**/*.pdf
