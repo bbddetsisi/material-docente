@@ -1,33 +1,9 @@
-\documentclass[a4paper]{article}
-
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc}
-\usepackage[a4paper, margin=3.5cm]{geometry}
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage[spanish]{babel}
-\usepackage{fancyhdr}
-\usepackage[
-    type={CC},
-    modifier={by-nc-sa},
-    version={3.0},
-]{doclicense}
-
-\renewcommand{\headrulewidth}{0.6pt}
-\renewcommand{\footrulewidth}{0.6pt}
-
-\pagestyle{fancy}
-\setlength\headheight{50pt}
-\lhead{\includegraphics[height=1.5cm]{logos/upm_logo}}
-\chead{Bases de Datos\\\vspace{.5em} Ejercicios de modelado conceptual\\\vspace{-.1em}}
-\rhead{\includegraphics[height=1.5cm]{logos/etsisi_logo}}
-\lfoot{\textbf{Tema 2:} Modelado de datos}
-\cfoot{}
-\rfoot{\thepage}
-
-\parskip 1.1ex % paragraph spacing
+\documentclass{db-practice}
 
 \begin{document}
+
+\title{Ejercicios de modelado conceptual}
+
 \section{Compañía aseguradora}
 Construye el diagrama Entidad-Relación para una compañía aseguradora de coches cuyos clientes poseen al menos un coche. Los clientes pueden ser personas tanto físicas como jurídicas, por lo que se identificarán en la plataforma por su número de identificación fiscal (NIF). Para gestionar las relaciones con sus clientes, la aseguradora también necesita almacenar el nombre, dirección postal, teléfono y correo electrónico de cada uno de ellos.
 
@@ -212,9 +188,5 @@ Un muelle puede tener asignado un servicio de aduanas, pero no todos los muelles
 Para la selección de estibadores libres que poder asignar a un barco, el sistema una vez obtenido el tipo de carga del mismo realizará las siguientes acciones: comprobará todos los estibadores cuya especialidad está relacionada con el tipo de carga del barco. Una vez realizado ese primer filtro, mirará en el histórico de actuaciones de los estibadores aquellos grupos que hace más tiempo no han trabajado. En el caso de que existan varios grupos en las mismas condiciones, se seleccionará aquel que menos componentes tenga. Como resultado de la selección se obtendrá la identificación correspondiente del estibador seleccionado. Esta selección de estibadores, podrá ser realizada tanto de forma independiente por los operadores del sistema de control portuario como durante los procesos de asignación un muelle a un barco.
 
 Cada final de mes, los responsables de la dirección del puerto desean obtener un listado con las actuaciones que han llevado a cabo cada uno de los grupos estibadores existentes en el puerto. Dicho listado reflejará la siguiente información: el nombre del grupo estibador, fecha de actuación, muelle en el que se realizó la actuación, un valor booleano que indique si intervino o no el sistema de aduanas (Sí indicará que intervino el sistema de aduanas y No indicará que no intervino el servicio de aduanas). Además se obtendrá el nombre y la matrícula del barco al que se realizó el servicio.
-
-\vspace{2em}
-\hrule
-\doclicenseThis
 
 \end{document}

@@ -1,37 +1,8 @@
-\documentclass[a4paper]{article}
-
-\usepackage{hyperref}
-\usepackage[spanish, activeacute]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[a4paper, margin=3.5cm]{geometry}
-\usepackage{lmodern,textcomp}
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage{fancyhdr}
-\usepackage{scrextend}
-\usepackage{mathtools}
-\usepackage{xcolor}
-\usepackage[
-    type={CC},
-    modifier={by-nc-sa},
-    version={3.0},
-]{doclicense}
-
-\renewcommand{\headrulewidth}{0.6pt}
-\renewcommand{\footrulewidth}{0.6pt}
-
-\pagestyle{fancy}
-\setlength\headheight{50pt}
-\lhead{\includegraphics[height=1.5cm]{logos/upm_logo}}
-\chead{Bases de Datos\\\vspace{.5em} Ejercicios de álgebra relacional\\\vspace{-.1em}}
-\rhead{\includegraphics[height=1.5cm]{logos/etsisi_logo}}
-\lfoot{\textbf{Tema 3:} Modelo relacional}
-\cfoot{}
-\rfoot{\thepage}
-
-\parskip 1.1ex % paragraph spacing
+\documentclass{db-practice}
 
 \begin{document}
+
+\title{Ejercicios de Álgebra Relacional}
 
 \section{Editoriales}
 
@@ -171,9 +142,5 @@ Se pide escribir en álgebra relacional las sentencias necesarias para:
     \item Obtener el código de aquellos agentes que sólo hayan denunciado infracciones de `Estacionamiento' (atributo \texttt{Descripción}).
     \item Obtener el código de aquellos conductores que no tengan ninguna denuncia pendiente de pago (atributo \texttt{Pagada}).
 \end{enumerate}
-
-\vspace{1em}
-\hrule
-\doclicenseThis
 
 \end{document}

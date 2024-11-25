@@ -1,58 +1,8 @@
-\documentclass[a4paper]{article}
-
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc}
-\usepackage[a4paper, margin=3.5cm]{geometry}
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage[spanish]{babel}
-\usepackage{fancyhdr}
-\usepackage{float}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage[
-    type={CC},
-    modifier={by-nc-sa},
-    version={3.0},
-]{doclicense}
-
-% Definición de colores
-\definecolor{keywordcolor}{rgb}{0.1,0.1,0.8} % Azul para palabras clave
-\definecolor{stringcolor}{rgb}{0.8,0.1,0.1}  % Rojo para cadenas
-\definecolor{commentcolor}{rgb}{0.1,0.6,0.1} % Verde para comentarios
-
-% Configuración de listings
-\lstdefinestyle{mysqlstyle}{
-  basicstyle=\ttfamily\footnotesize,          % Estilo básico
-  keywordstyle=\color{keywordcolor}\bfseries, % Estilo para palabras clave
-  commentstyle=\color{commentcolor}\itshape,  % Estilo para comentarios
-  stringstyle=\color{stringcolor},            % Estilo para cadenas
-  showstringspaces=false,                     % No mostrar espacios en cadenas
-  tabsize=2,                                  % Tamaño de tabulación
-  breaklines=true,                            % Dividir líneas largas
-  morestring=[b]",                            % Cadenas con comillas dobles
-  literate={ñ}{{\~n}}1,                       % Permite el carácter "ñ"
-  morekeywords={SELECT, INSERT, UPDATE, DELETE, FROM, WHERE, JOIN, INNER, LEFT, RIGHT, ON, GROUP, BY, ORDER, ASC, DESC, CREATE, TABLE, DROP, ALTER, DATABASE, USE, INDEX, INTO, VALUES, SET, IF, EXISTS, NOT, NULL, AND, HAVING, COUNT, DISTINCT, LIKE, START} % Palabras clave SQL
-}
-
-% Usar el estilo
-\lstset{style=mysqlstyle}
-
-\renewcommand{\headrulewidth}{0.6pt}
-\renewcommand{\footrulewidth}{0.6pt}
-
-\pagestyle{fancy}
-\setlength\headheight{50pt}
-\lhead{\includegraphics[height=1.5cm]{logos/upm_logo}}
-\chead{Bases de Datos\\\vspace{.5em} Ejercicio de transacciones\\\vspace{-.1em}}
-\rhead{\includegraphics[height=1.5cm]{logos/etsisi_logo}}
-\lfoot{\textbf{Tema 5:} Gestión de bases de datos}
-\cfoot{}
-\rfoot{\thepage}
-
-\parskip 1.1ex % paragraph spacing
+\documentclass{db-practice}
 
 \begin{document}
+
+\title{Ejercicio de transacciones}
 
 \section*{Ejercicio de Transacciones}
 
@@ -239,9 +189,5 @@ COMMIT;
 Para obtener información adicional sobre las transacciones en MySQL se puede consultar la documentación oficial en el siguiente enlace:
 
 \url{https://dev.mysql.com/doc/refman/8.0/en/commit.html}
-
-\vspace{4em}
-\hrule
-\doclicenseThis
 
 \end{document}

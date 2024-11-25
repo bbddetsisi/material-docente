@@ -1,34 +1,9 @@
-\documentclass[a4paper]{article}
-
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc}
-\usepackage[a4paper, margin=3.5cm]{geometry}
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage[spanish]{babel}
-\usepackage{fancyhdr}
-\usepackage{float}
-\usepackage[
-    type={CC},
-    modifier={by-nc-sa},
-    version={3.0},
-]{doclicense}
-
-\renewcommand{\headrulewidth}{0.6pt}
-\renewcommand{\footrulewidth}{0.6pt}
-
-\pagestyle{fancy}
-\setlength\headheight{50pt}
-\lhead{\includegraphics[height=1.5cm]{logos/upm_logo}}
-\chead{Bases de Datos\\\vspace{.5em} Ejercicios de paso a tablas\\\vspace{-.1em}}
-\rhead{\includegraphics[height=1.5cm]{logos/etsisi_logo}}
-\lfoot{\textbf{Tema 3:} Modelo relacional}
-\cfoot{}
-\rfoot{\thepage}
-
-\parskip 1.1ex % paragraph spacing
+\documentclass{db-practice}
 
 \begin{document}
+
+\title{Ejercicios de paso a tablas}
+
 \section{Compañía aseguradora}
 
 Transforme el siguiente modelo Entidad-Relación en un modelo relacional mediante las reglas del ``\textit{paso a tablas}'':
@@ -63,7 +38,7 @@ Transforme el siguiente modelo Entidad-Relación en un modelo relacional mediant
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figs/censo-union-europea}
+    \includegraphics[width=.9\textwidth]{figs/censo-union-europea}
 \end{figure}
 
 \section{Desarrollo dirigidos por modelos}
@@ -83,10 +58,5 @@ Transforme el siguiente modelo Entidad-Relación en un modelo relacional mediant
     \centering
     \includegraphics[width=\textwidth]{figs/gestion-locales-nocturnos}
 \end{figure}
-
-\newpage
-\vspace{2em}
-\hrule
-\doclicenseThis
 
 \end{document}

@@ -1,56 +1,10 @@
-\documentclass[a4paper]{article}
-
-\usepackage[utf8]{inputenc}
-\usepackage[a4paper, margin=3.5cm]{geometry}
-
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage[spanish]{babel}
-\usepackage{fancyhdr}
-\usepackage{float}
-\usepackage{listings}
-\usepackage{xcolor}
-
-
-% Definición de colores
-\definecolor{keywordcolor}{rgb}{0.1,0.1,0.8} % Azul para palabras clave
-\definecolor{stringcolor}{rgb}{0.8,0.1,0.1}  % Rojo para cadenas
-\definecolor{commentcolor}{rgb}{0.1,0.6,0.1} % Verde para comentarios
-
-% Configuración de listings
-\lstdefinestyle{mysqlstyle}{
-  basicstyle=\ttfamily\footnotesize,          % Estilo básico
-  keywordstyle=\color{keywordcolor}\bfseries, % Estilo para palabras clave
-  commentstyle=\color{commentcolor}\itshape,  % Estilo para comentarios
-  stringstyle=\color{stringcolor},            % Estilo para cadenas
-  showstringspaces=false,                     % No mostrar espacios en cadenas
-  tabsize=2,                                  % Tamaño de tabulación
-  breaklines=true,                            % Dividir líneas largas
-  morestring=[b]",                            % Cadenas con comillas dobles
-  literate={ñ}{{\~n}}1,                       % Permite el carácter "ñ"
-  morekeywords={SELECT, INSERT, UPDATE, DELETE, FROM, WHERE, JOIN, INNER, LEFT, RIGHT, ON, GROUP, BY, ORDER, ASC, DESC, CREATE, TABLE, DROP, ALTER, DATABASE, USE, INDEX, INTO, VALUES, SET, IF, EXISTS, NOT, NULL, AND, HAVING, COUNT, DISTINCT, LIKE, USER, IDENTIFIED, PRIVILEGE, WITH, SHOW, GRANTS, FOR, TO} % Palabras clave SQL
-}
-
-% Usar el estilo
-\lstset{style=mysqlstyle}
-
-\renewcommand{\headrulewidth}{0.6pt}
-\renewcommand{\footrulewidth}{0.6pt}
-
-\pagestyle{fancy}
-\setlength\headheight{50pt}
-\lhead{\includegraphics[height=1.5cm]{logos/upm_logo}}
-\chead{Bases de Datos\\\vspace{.5em} Ejercicio de usuarios\\\vspace{-.1em}}
-\rhead{\includegraphics[height=1.5cm]{logos/etsisi_logo}}
-\lfoot{Bases de datos. Ejercicio de usuarios.}
-\cfoot{}
-\rfoot{\thepage}
-
-\parskip 1.1ex % paragraph spacing
+\documentclass{db-practice}
 
 \begin{document}
 
-\section*{Ejercicio de Usuarios}
+\title{Ejercicio de gestión de usuarios}
+
+\section*{Ejercicio de gestión de usuarios}
 
 La gestión de los usuarios en las bases de datos es esencial por varios motivos:
 

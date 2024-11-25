@@ -1,41 +1,15 @@
-\documentclass[a4paper]{article}
+\documentclass{db-practice}
 
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc}
-\usepackage[a4paper, margin=3.5cm]{geometry}
-\usepackage[spanish,es-tabla]{babel}
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage{fancyhdr}
-\usepackage{float}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage[nolist]{acronym}
-\usepackage[
-    type={CC},
-    modifier={by-nc-sa},
-    version={3.0},
-]{doclicense}
-
-\renewcommand{\headrulewidth}{0.6pt}
-\renewcommand{\footrulewidth}{0.6pt}
-
-\pagestyle{fancy}
-\setlength\headheight{50pt}
-\lhead{\includegraphics[height=1.5cm]{logos/upm_logo}}
-\chead{Bases de Datos\\\vspace{.5em} Ejercicios SQL\\\vspace{-.1em}}
-\rhead{\includegraphics[height=1.5cm]{logos/etsisi_logo}}
-\lfoot{\textbf{Tema 4:} El lenguaje SQL}
-\cfoot{}
-\rfoot{\thepage}
-
-\parskip 1.1ex % paragraph spacing
-
 \begin{acronym}
     \acro{FIA}{Federación Internacional de Automovilismo}
 \end{acronym}
 
 \begin{document}
+
+\title{Ejercicios SQL}
 
 \section*{Carreras de Formula 1}
 
@@ -198,7 +172,7 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     \begin{tabular}{@{}lll@{}}
     \toprule
     \multicolumn{1}{c}{\textbf{crashId}} & \multicolumn{1}{c}{\textbf{driverId}} & \multicolumn{1}{c}{\textbf{descripción}} \\ \midrule
-                                        &                                      &                                          \\ \bottomrule
+                                         &                                       &                                          \\ \bottomrule
     \end{tabular}
     \end{table}
 
@@ -210,9 +184,5 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     
     \item A partir de ahora, los patrocinadores van a poder patrocinar varias carreras. Realize las modificaciones que considere necesarias en el \texttt{schema} de la base de datos y actualice los triggers para garantizar que el tipo de patrocinador sea siempre correcto.
 \end{enumerate}
-
-\vspace{2em}
-\hrule
-\doclicenseThis
 
 \end{document}
