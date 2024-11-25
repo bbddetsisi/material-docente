@@ -7,13 +7,12 @@
 \RequirePackage[spanish,es-tabla,activeacute]{babel}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{geometry}
-%\RequirePackage{lmodern,textcomp}
 \RequirePackage{graphicx}
 \RequirePackage{url}
 \RequirePackage{fancyhdr}
 \RequirePackage{scrextend}
 \RequirePackage{float}
-%\RequirePackage{mathtools}
+\RequirePackage{upquote}
 \RequirePackage{listings}
 \RequirePackage{xcolor}
 \RequirePackage[type={CC},modifier={by-nc-sa},version={3.0}]{doclicense}
@@ -52,10 +51,15 @@
   stringstyle=\color{stringcolor},            % Estilo para cadenas
   showstringspaces=false,                     % No mostrar espacios en cadenas
   tabsize=2,                                  % Tamaño de tabulación
-  breaklines=true,                            % Dividir líneas largas
+  breaklines=true                             % Dividir líneas largas
+}
+
+\lstdefinelanguage{SQL}{
+  morekeywords={RETURN, SELECT, INSERT, UPDATE, DELETE, FROM, WHERE, JOIN, INNER, LEFT, RIGHT, ON, GROUP, BY, ORDER, ASC, DESC, CREATE, TABLE, DROP, ALTER, DATABASE, USE, INDEX, INTO, VALUES, SET, IF, EXISTS, NOT, NULL, AND, HAVING, COUNT, DISTINCT, LIKE, IN, START, TRANSACTION, COMMIT, ROLLBACK, VISIBLE, USER, IDENTIFIED, GRANT, PRIVILEGE, TO, WITH, OPTION, REVOKE, SHOW, GRANTS, FOR}, % Palabras clave SQL
+  sensitive=false,
+  morestring=[b]',                            % Cadenas con comillas simples
   morestring=[b]",                            % Cadenas con comillas dobles
-  literate={ñ}{{\~n}}1,                       % Permite el carácter "ñ"
-  morekeywords={SELECT, INSERT, UPDATE, DELETE, FROM, WHERE, JOIN, INNER, LEFT, RIGHT, ON, GROUP, BY, ORDER, ASC, DESC, CREATE, TABLE, DROP, ALTER, DATABASE, USE, INDEX, INTO, VALUES, SET, IF, EXISTS, NOT, NULL, AND, HAVING, COUNT, DISTINCT, LIKE, USER, IDENTIFIED, PRIVILEGE, WITH, SHOW, GRANTS, FOR, TO} % Palabras clave SQL
+  literate={ñ}{{\~n}}1                        % Permite el carácter "ñ"
 }
 
 \lstset{style=mysqlstyle}
