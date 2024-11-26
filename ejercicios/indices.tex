@@ -40,7 +40,8 @@ MySQL Workbench es una herramienta muy completa que nos permite trabajar de una 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.5\columnwidth]{figs/mysqlwork-analysis.png}
-    \caption{Opción de \emph{explain} para ejecuciones analíticas.}\label{fig:mysqlwork}
+    \caption{Opción de \emph{explain} para ejecuciones analíticas.}
+    \label{fig:mysqlwork}
 \end{figure}
 
 Al ejecutar una consulta con esta opción, MySQL Workbench nos mostrará una pestaña adicional (\emph{explain}) que contiene información sobre el coste de nuestras consultas, así como también nos aporta información del tipo de búsqueda que se ha llevado a cabo en cada operación.
@@ -48,7 +49,8 @@ Al ejecutar una consulta con esta opción, MySQL Workbench nos mostrará una pes
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\columnwidth]{figs/example.png}
-    \caption{Ejemplo resultado ejecución de \emph{explain}.}\label{fig:example}
+    \caption{Ejemplo resultado ejecución de \emph{explain}.}
+    \label{fig:example}
 \end{figure}
 
 Al ejecutar una consulta sencilla con esta opción de ejecución, podemos recopilar mucha información de cómo trabaja nuestro gestor de bases de datos. Para ello vamos a analizar un resultado cualquiera como el que se muestra en la Figura \ref{fig:example}:
@@ -70,7 +72,8 @@ Carga el fichero \texttt{peliculas.sql} que puedes encontrar en el Moodle de la 
 \subsubsection*{Consulta}
 
 Crea la consulta que muestre el nombre y apellidos del actor ``Lonzo Bode'', así como el número total de películas en las que ha participado.
-    
+
+\newpage
 \begin{lstlisting}[language=SQL]
 SELECT ac.first_name, ac.last_name, COUNT(*) Total
 FROM (SELECT fi.film_id, actor_id 
@@ -79,7 +82,7 @@ FROM (SELECT fi.film_id, actor_id
             ON fi.film_id = fiac.film_id) jo 
         INNER JOIN actor ac 
             ON ac.actor_id=jo.actor_id
-WHERE ac.first_name="Lonzo" AND ac.last_name="Bode"
+WHERE ac.first_name='Lonzo' AND ac.last_name='Bode'
 GROUP BY ac.first_name, ac.last_name;
 \end{lstlisting} 
 
@@ -114,7 +117,7 @@ Con la sentencia anterior crearemos el índice compuesto que nos permitirá opti
     \caption{Resultado del explain al ejecutar la consulta optimizada.}\label{fig:ejecucion1optimizada}
 \end{figure}
 
-Una vez ejecutada la consulta (ver Figura \ref{fig:ejecucion1optimizada}, se puede apreciar que hemos mejorado la consulta fijándonos directamente en el coste, y es que hemos pasado de $108.00 \rightarrow 1.87$. Además del coste, podemos apreciar que índice se ha utilizado para corroborar que todo haya ido bien. Si nos fijamos debajo de nuestra caja asociada a la consulta debe aparecer el nombre que le hemos dado a nuestro índice, en este caso ``optimizar'' (ver Figura \ref{fig:ejecucion1part1}).
+Una vez ejecutada la consulta (ver Figura \ref{fig:ejecucion1optimizada}), se puede apreciar que hemos mejorado la consulta fijándonos directamente en el coste, y es que hemos pasado de $108.00 \rightarrow 1.87$. Además del coste, podemos apreciar que índice se ha utilizado para corroborar que todo haya ido bien. Si nos fijamos debajo de nuestra caja asociada a la consulta debe aparecer el nombre que le hemos dado a nuestro índice, en este caso ``optimizar'' (ver Figura \ref{fig:ejecucion1part1}).
 
 \begin{figure}[ht]
     \centering
@@ -150,8 +153,6 @@ Para finalizar, hemos de tener muy claro que los índices no solo nos permiten o
 Para poner a prueba esta cualidad, vamos a preparar una escritura en la tabla \texttt{film}. No obstante, para poder llevar a cabo la operación antes tenemos que desactivar la opción de \emph{safe update} de nuestro MySQL Workbench. Para acceder a esta opción (ver Figura \ref{fig:preferences}) seguimos la siguiente ruta: Edit $\rightarrow$ Preferences.
 
 Ahora vamos a realizar la operación de escritura, para ello queremos actualizar la duración de las películas e incrementar en uno todas aquellas que duran mas de 100 minutos, para ello utilizamos la siguiente consulta:
-
-\newpage
 
 \begin{lstlisting}[language=SQL]
 UPDATE film
