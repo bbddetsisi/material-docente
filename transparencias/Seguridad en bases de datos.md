@@ -124,9 +124,9 @@ Donde:
 GRANT PRIVILEGE ON schema.tabla TO 'nombre_de_usuario' WITH GRANT OPTION;
 ```
 
-Asigna los permisos que consideremos necesarios a un usuario
+Asigna los permisos que consideremos necesarios a un usuario:
 
-- `PRIVILEGE`: Uno o más de los siguientes valores que permiten ejecución de las sentencias homónimas: `CREATE`, `ALTER`, `DROP`, `INSERT`, `UPDATE`, `DELETE`, `SELECT`; `*` para todos los permisos
+- `PRIVILEGE`: Uno o más de los siguientes valores que permiten ejecución de las sentencias homónimas: `CREATE`, `ALTER`, `DROP`, `INSERT`, `UPDATE`, `DELETE`, `SELECT`; `ALL` para todos los permisos. Existen otros permisos que pueden ser otorgados (ver [https://dev.mysql.com/doc/refman/8.4/en/grant.html#grant-privileges](https://dev.mysql.com/doc/refman/8.4/en/grant.html#grant-privileges))
 - `schema.tabla`: El `schema` y la tabla(s) sobre la que aplicar los permisos, siendo `*` equivalente a _todos_ (e.g. `s.*` todas tabla de `s`, `*.*` toda tabla de todo `schema`)
 - `WITH GRANT OPTION` (opcional): , que puede omitirse, otorga al usuario la posibilidad de asignatar permisos iguales o inferiores a los suyos a otros usuarios
 
@@ -250,7 +250,7 @@ ssl-key=/ruta/al/archivo/server-key.pem
 - Verifica si SSL/TLS está habilitado ejecutando la siguiente consulta SQL: 
 
 ```sql
-SHOW VARIABLES LIKE 'have_ssl'; # Cono  SSL/TLS  habilitado have_ssl debería ser YES.
+SHOW VARIABLES LIKE 'have_ssl'; # Con SSL/TLS habilitado have_ssl debería ser YES.
 ```
 
 - Finalmente conectate a MySQL utilizando SSL/TLS desde el cliente, especifica la opción `--ssl-mode` al iniciar sesión:
