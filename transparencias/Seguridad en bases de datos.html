@@ -182,9 +182,9 @@
 <h1>Asignación de permisos</h1>
 <pre><code class="language-SQL"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">GRANT</span> PRIVILEGE <span class="hljs-keyword">ON</span> schema.tabla <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;nombre_de_usuario&#x27;</span> <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION;
 </span></span></foreignObject></svg></code></pre>
-<p>Asigna los permisos que consideremos necesarios a un usuario</p>
+<p>Asigna los permisos que consideremos necesarios a un usuario:</p>
 <ul>
-<li><code>PRIVILEGE</code>: Uno o más de los siguientes valores que permiten ejecución de las sentencias homónimas: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>SELECT</code>; <code>*</code> para todos los permisos</li>
+<li><code>PRIVILEGE</code>: Uno o más de los siguientes valores que permiten ejecución de las sentencias homónimas: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>SELECT</code>; <code>ALL</code> para todos los permisos. Existen otros permisos que pueden ser otorgados (ver <a href="https://dev.mysql.com/doc/refman/8.4/en/grant.html#grant-privileges">https://dev.mysql.com/doc/refman/8.4/en/grant.html#grant-privileges</a>)</li>
 <li><code>schema.tabla</code>: El <code>schema</code> y la tabla(s) sobre la que aplicar los permisos, siendo <code>*</code> equivalente a <em>todos</em> (e.g. <code>s.*</code> todas tabla de <code>s</code>, <code>*.*</code> toda tabla de todo <code>schema</code>)</li>
 <li><code>WITH GRANT OPTION</code> (opcional): , que puede omitirse, otorga al usuario la posibilidad de asignatar permisos iguales o inferiores a los suyos a otros usuarios</li>
 </ul>
@@ -306,7 +306,7 @@ ssl-key=/ruta/al/archivo/server-key.pem
 <p>Verifica si SSL/TLS está habilitado ejecutando la siguiente consulta SQL:</p>
 </li>
 </ul>
-<pre><code class="language-sql"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;have_ssl&#x27;</span>; # Cono  SSL<span class="hljs-operator">/</span>TLS  habilitado have_ssl debería ser YES.
+<pre><code class="language-sql"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;have_ssl&#x27;</span>; # Con SSL<span class="hljs-operator">/</span>TLS habilitado have_ssl debería ser YES.
 </span></span></foreignObject></svg></code></pre>
 <ul>
 <li>Finalmente conectate a MySQL utilizando SSL/TLS desde el cliente, especifica la opción <code>--ssl-mode</code> al iniciar sesión:</li>
