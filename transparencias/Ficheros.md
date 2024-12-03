@@ -23,11 +23,13 @@ math        : mathjax
 
 ### Departamento de Sistemas Informáticos
 
-#### E.T.S.I. de Sistemas Informáticos - UPM
+#### E.T.S.I. de Sistemas Informáticos
 
-##### 15 de febrero de 2024
+##### Universidad Politénica de Madrid
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+![bg left:30%](img/upm-logo.jpg)
 
 ---
 
