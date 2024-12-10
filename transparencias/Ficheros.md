@@ -140,7 +140,7 @@ El orden de dichos elementos se mantiene a lo largo del fichero
 2. Solo permite tipos de datos simples
 3. El separador no debe aperecer en los datos
 4. Caracteres de escape para texto con símbolos especiales
-5. No hay un estánda para comentarios
+5. No hay un estándar para comentarios
 
 </div>
 </div>
@@ -152,7 +152,7 @@ El orden de dichos elementos se mantiene a lo largo del fichero
 
 El formato **CSV** se utiliza principalmente en las siguientes situaciones
 
-- Almacén de datos de procesos temporales (p.e. sensores, logs del sistema), ya que es facil escribir al final de los ficheros
+- Almacén de datos de procesos temporales (p.e. sensores, logs del sistema), ya que es fácil escribir al final de los ficheros
 - Análisis de datos, donde se realizan operaciones sobre el conjunto de datos completo
 - Integración de sistemas y aplicaciones (bases de datos, hojas de cálculo)
 
@@ -190,8 +190,7 @@ El objeto básico de **XML** es el **documento**, y se construye a partir de
 - **Elementos**: Nodos que contienen información
 - **Atributos**: Metadatos que describen los elementos
 
-**¡OJO!** El concepto de _atributo_ en **XML** no se corresponde al de las bases de datos visto hasta ahora. En **XML** los _atributos_
-**añaden** información a los _elementos_
+**¡OJO!** El concepto de _atributo_ en **XML** no se corresponde al de las bases de datos visto hasta ahora. En **XML** los _atributos_ **añaden** información a los _elementos_
 
 ---
 
@@ -413,6 +412,32 @@ Podemos usar caracteres especiales en las reglas de una DTD:
     <!ELEMENT calle-cliente (#PCDATA)>
     <!ELEMENT ciudad-cliente (#PCDATA)>
 ]>
+```
+
+---
+
+```xml
+<banco>
+    <cuenta>
+        <número-cuenta>C-401</número-cuenta>
+        <nombre-sucursal> Centro </nombre-sucursal>
+        <saldo> 500 </saldo>
+    </cuenta>
+    <cuenta>
+        <número-cuenta>C-402</número-cuenta>
+        <nombre-sucursal> Navacerrada </nombre-sucursal>
+        <saldo> 900 </saldo>
+    </cuenta>
+    <cliente>
+        <nombre-cliente>Pedro</nombre-cliente>
+        <calle-cliente>Arenal</calle-cliente>
+        <ciudad-cliente>Toledo</ciudad-cliente>
+    </cliente>
+    <impositor>
+        <nombre-cliente>Pedro</nombre-cliente>
+        <número-cuenta>C-401</número-cuenta>
+    </cliente>
+</banco>
 ```
 
 ---
