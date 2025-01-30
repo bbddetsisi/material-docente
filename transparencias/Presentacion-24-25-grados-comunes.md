@@ -153,4 +153,3 @@ Es obligatorio alcanzar una nota mínima de 5 puntos sobre 10.
 2. Elmasri, R. A., & Navathe, S. B. (2007). *Fundamentos de sistemas de bases de datos* (No. 004.65). Addison Wesley.
 3. Silberschatz, A., Korth, H. F., Sudarshan, S., Pérez, F. S., Santiago, A. I., & Sánchez, A. V. (2002). *Fundamentos de bases de datos*.
 4. Date, C. J. (2001). *Introducción a los sistemas de bases de datos*. Pearson Educación.
-
