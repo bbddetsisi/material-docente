@@ -71,10 +71,8 @@ En esta asignatura nos centramos en las **bases de datos relacionales**
 
 # Resultados de aprendizaje
 
-- **RA77** (RA-APID-6): Diseño, creación, consulta y manipulación de repositorios de datos, e integración con
-aplicaciones del sistema
-- **RA76** (RA-APID-5) Configuración, administración, uso y optimización de sistemas gestores de bases de datos
-relacionales
+- **RA77** (RA-APID-6): Diseño, creación, consulta y manipulación de repositorios de datos, e integración con aplicaciones del sistema
+- **RA76** (RA-APID-5) Configuración, administración, uso y optimización de sistemas gestores de bases de datos relacionales
 
 ---
 
