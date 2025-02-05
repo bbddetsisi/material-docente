@@ -76,7 +76,6 @@ Existen dos aproximaciones para el almacenamiento de los datos utilizados por un
 
 # Sistemas basados en ficheros
 
-
 ![width:800px](img/t1/almacenamiento-en-ficheros.png)
 
 Cada programa utiliza sus propios datos:
@@ -114,7 +113,7 @@ Cuando se utilizan bases de datos los programas "*comparten*" los datos
 ---
 
 <!-- _class: cite -->
- 
+
 <div class="cite-author" data-text="Definición alternativa de base de datos">
 
 «Conjunto **exhaustivo**, con redundancia controlada de **datos estructurados**, fiables y homogéneos, organizados con **independencia** de su utilización y de su implementación en máquina, accesibles en tiempo útil, **compartibles** por usuarios concurrentes que tienen necesidades de información diferentes y no predecibles en el tiempo»
@@ -218,17 +217,18 @@ Definen cómo debe almacenarse la información en un dispositivo físico
 
 # Bases de datos relacionales
 
-Cumplen con el modelo relacional:
+El tipo más usado, que cumplen con el modelo relacional:
 
-- Normalización
+- Datos organizados en relaciones (tablas)
+  - Se pueden "unir" para recuperar información
+- Uso de claves primarias y foráneas
+- Integridad de los datos (de entidad y referencial)
+  - Normalización: RConjunto de reglas para minimizar redundancia y mejorar la integridad de los datos
+- Operaciones basadas en el álgebra relacional
 
-Es el tipo de base de datos más utilizado
+Utilizan el lenguaje SQL<sup>1</sup> para consultar y manipular datos
 
-Utilizan el lenguaje SQL (*Structured Query Languaje*) para consultar y manipular datos
-
-Los datos son almacenados en tablas:
-
-- Es posible "unir" diferentes tablas para recuperar información
+> <sup>1</sup> [*Structured Query Language*](https://es.wikipedia.org/wiki/SQL)
 
 ![bg vertical right:20% 75%](img/t1/mysql.png)
 ![bg 75%](img/t1/oracle.png)
@@ -238,7 +238,7 @@ Los datos son almacenados en tablas:
 
 # Bases de datos no relacionales
 
-No cumplen el modelo relacional:
+**No** cumplen el modelo relacional:
 
 - De «*reciente*» aparición
   - Si la década de los 2000 es reciente...
@@ -248,7 +248,7 @@ Se especializan en resolver un problema concreto:
 
 - Escalabilidad, rendimiento, flexibilidad...
 
-Se ven en otras asignaturas. 
+Se ven en otras asignaturas.
 
 ![bg vertical right:34% 140%](img/t1/no-sql.png)
 
