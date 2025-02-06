@@ -376,11 +376,11 @@ FROM drivers
 WHERE races.raceId IN (SELECT raceId
                        FROM results 
                            INNER JOIN drivers ON drivers.driverId = results.driverId
-                       WHERE drivers.nationality = "Russian")
+                       WHERE drivers.nationality = 'Russian')
   AND races.raceId IN (SELECT raceId
                        FROM results 
                            INNER JOIN drivers ON drivers.driverId = results.driverId
-                       WHERE drivers.nationality = "Polish")
+                       WHERE drivers.nationality = 'Polish')
 \end{lstlisting}
       
 % Obtener el nombre y apellidos de los pilotos y el número de vueltas totales recorridas en el año 2011 siempre y cuando sea mayor que la media del número de vueltas totales recorridas el año anterior por todos los pilotos.
@@ -416,11 +416,11 @@ SELECT drivers.nationality
 FROM drivers
     INNER JOIN results ON results.driverId = drivers.driverId
     INNER JOIN races ON races.raceId = results.raceId
-WHERE races.name = "Australian Grand Prix"
+WHERE races.name = 'Australian Grand Prix'
 GROUP BY drivers.driverId, drivers.nationality
 HAVING COUNT(*) = (SELECT COUNT(*)
                    FROM races
-                   WHERE name = "Australian Grand Prix")
+                   WHERE name = 'Australian Grand Prix')
 \end{lstlisting}
 
 % Eliminar de la tabla \texttt{qualifying} aquellas tuplas donde un piloto no haya participado en la clasificación.
