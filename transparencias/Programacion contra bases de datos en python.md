@@ -633,3 +633,11 @@ Para eliminar un registro bastará con pasar la instancia del elemento que se qu
 session.delete(s01e02)
 session.commit()
 ```
+
+---
+
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/bbddetsisi/material-docente>

@@ -294,4 +294,10 @@ mysql --ssl-mode=REQUIRED -u usuario -p
 - **Validación de Datos de Entrada**: Filtrar y validar los datos ingresados para prevenir inyecciones de SQL.
 - **Respaldo Regular**: Realizar copias de seguridad de la base de datos de forma regular para evitar pérdida de datos en caso de un incidente de seguridad.
 
+---
 
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/bbddetsisi/material-docente>

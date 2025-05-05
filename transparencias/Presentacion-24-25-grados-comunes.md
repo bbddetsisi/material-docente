@@ -153,3 +153,11 @@ Es obligatorio alcanzar una nota mínima de 5 puntos sobre 10.
 2. Elmasri, R. A., & Navathe, S. B. (2007). *Fundamentos de sistemas de bases de datos* (No. 004.65). Addison Wesley.
 3. Silberschatz, A., Korth, H. F., Sudarshan, S., Pérez, F. S., Santiago, A. I., & Sánchez, A. V. (2002). *Fundamentos de bases de datos*.
 4. Date, C. J. (2001). *Introducción a los sistemas de bases de datos*. Pearson Educación.
+
+---
+
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/bbddetsisi/material-docente>

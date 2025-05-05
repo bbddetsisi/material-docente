@@ -595,4 +595,4 @@ Para cada profesor hay que indicar aquellos que pueden cubrirle
 
 Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-Puede encontrar su código en el siguiente enlace: <https://github.com/etsisi/Aprendizaje-profundo>
+Puede encontrar su código en el siguiente enlace: <https://github.com/bbddetsisi/material-docente>

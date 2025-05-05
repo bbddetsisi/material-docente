@@ -186,3 +186,11 @@ Ahora pulsa el icono del rayo.
 La base de datos se habrá cargado y podremos trabajar con ella.
 
 ![w:600 center drop-shadow](img/sql/funcionando.png)
+
+---
+
+# Licencia<!--_class: license -->
+
+Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Puede encontrar su código en el siguiente enlace: <https://github.com/bbddetsisi/material-docente>

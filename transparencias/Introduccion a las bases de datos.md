@@ -5,9 +5,7 @@ paginate    : true
 theme       : bbdd
 header      : Introducción a las bases de datos
 description : >
-  Introducción a las bases de datos. 
-  E.T.S.I. Sistemas Informáticos.
-  Universidad Politecnic de Madrid
+  Introducción a las bases de datos. E.T.S.I. Sistemas Informáticos. Universidad Politécnica de Madrid
 ---
 
 <!-- _class: titlepage -->
@@ -417,4 +415,4 @@ Más adelante en la asignatura trabajaremos la conexión desde aplicaciones
 
 Esta obra está licenciada bajo una licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-Puede encontrar su código en el siguiente enlace: <https://github.com/etsisi/Aprendizaje-profundo>
+Puede encontrar su código en el siguiente enlace: <https://github.com/bbddetsisi/material-docente>
