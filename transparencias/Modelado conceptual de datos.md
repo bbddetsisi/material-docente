@@ -6,9 +6,8 @@ theme       : bbdd
 header      : Modelado conceptual de datos
 footer      : Bases de datos
 description : >
-  Cómo estructurar y organizar los datos para facilitar su   almacenamiento, recuperación y manipulación en sistemas de bases de   datos. 
-  E.T.S.I. Sistemas Informáticos.
-  Universidad Politecnic de Madrid
+  Cómo estructurar y organizar los datos para facilitar su almacenamiento, recuperación y manipulación en sistemas de bases de datos. E.T.S.I. Sistemas Informáticos.
+  Universidad Politécnica de Madrid
 
 math        : mathjax
 ---

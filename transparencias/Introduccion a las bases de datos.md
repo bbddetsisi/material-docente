@@ -409,7 +409,7 @@ Prácticamente todo lenguaje de programación dispone de bibliotecas para conect
 - C#: ADO.NET
 - ...
 
-Más adelante en la asignatura trabajaremos la conesión desde aplicaciones
+Más adelante en la asignatura trabajaremos la conexión desde aplicaciones
 
 ---
 

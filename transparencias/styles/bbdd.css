@@ -266,7 +266,7 @@ section.titlepage h4,
 section.titlepage h5 {
   font-weight: 400;
   color: var(--titlepage-color);
-  line-height: 0;
+  line-height: 0.35;
   letter-spacing: var(--letter-spacing);
 }
 

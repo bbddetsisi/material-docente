@@ -11,6 +11,8 @@ keywords    : >
   Bases de datos, Presentación, Grado en Ciencia de Datos e Inteligencia Artificial, ETSISI, UPM
 ---
 
+<!-- _class: titlepage -->
+
 # Presentación de la asigntura
 
 ## Bases de datos - Curso 2024-2025
