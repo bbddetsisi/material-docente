@@ -1,10 +1,13 @@
 \documentclass{db-practice}
 
+\title{Ejercicios de álgebra relacional}
+
 \begin{document}
+\maketitle
 
-\title{Ejercicios de Álgebra Relacional}
+\section{Enunciados}
 
-\section{Editoriales}
+\subsection{Editoriales}
 
 Sean las relaciones siguientes:
 
@@ -25,7 +28,7 @@ Se pide escribir en álgebra relacional las respuestas a las preguntas siguiente
     \item Obtener los valores de \texttt{L\#} para los libros suministrados por todas las papelerías que no sean de `Madrid'.
 \end{enumerate}
 
-\section{Programas}
+\subsection{Programas}
 
 Dada la base de datos compuesta por las siguientes relaciones:
 
@@ -45,7 +48,7 @@ Se pide expresar en términos de álgebra relacional la secuencia de operaciones
     \item Obtener los modelos de los ordenadores que son usados por personas mayores de 30 años durante más de 3 horas.
 \end{enumerate}
 
-\section{Videoteca}
+\subsection{Videoteca}
 
 Sean las relaciones siguientes:
 
@@ -64,7 +67,7 @@ Se pide escribir en álgebra relacional las sentencias necesarias para responder
     \item Aficionados que no son socios de ningún videoclub donde tengan alguna película de su gusto.
 \end{enumerate}
 
-\section{Maquinaria}
+\subsection{Maquinaria}
 
 Dada la base de datos formada por las siguientes tablas:
 
@@ -84,7 +87,7 @@ Se pide dar soluciones algebraicas a las siguientes consultas:
     \item Obtener todos los nombres de fincas en las que se ha trabajado más de 5 horas con máquinas cuyo precio por hora sea superior a 25€.
 \end{enumerate}
 
-\section{Prácticas}
+\subsection{Prácticas}
 
 Dada la base de datos compuesta por las siguientes tablas:
 
@@ -105,7 +108,7 @@ Se pide dar solución en álgebra relacional a las consultas:
     \item Obtener el nombre de los alumnos que no han suspendido ninguna práctica de las que han entregado.
 \end{enumerate}
 
-\section{Ciclismo}
+\subsection{Ciclismo}
 
 La Federación Internacional de Ciclismo Profesional desea tener una Base de Datos Relacional (BDR) con las siguientes tablas:
 
@@ -124,7 +127,7 @@ Se pide escribir las sentencias necesarias en álgebra relacional para:
     \item Obtener los ciclistas que han obtenido un primer y un segundo puestos en competiciones con una duración inferior a 15 días.
 \end{enumerate}
 
-\section{Infracciones de tráfico}
+\subsection{Infracciones de tráfico}
 
 Dada las tablas siguientes:
 
@@ -141,6 +144,78 @@ Se pide escribir en álgebra relacional las sentencias necesarias para:
     \item Obtener el nombre de aquellos conductores que hayan sido denunciados por todas las infracciones inferiores a 600€.
     \item Obtener el código de aquellos agentes que sólo hayan denunciado infracciones de `Estacionamiento' (atributo \texttt{Descripción}).
     \item Obtener el código de aquellos conductores que no tengan ninguna denuncia pendiente de pago (atributo \texttt{Pagada}).
+\end{enumerate}
+
+\section{Soluciones}
+
+\subsection{Editoriales}
+
+\begin{enumerate}
+    \item $\Pi_{Nombre} \left( PAPELERIA \bowtie ELP \bowtie \sigma_{Ciudad='Madrid'} \left( EDITORIALES \right) \right)$
+    \item $\Pi_{E\#} \left( \sigma_{A\tilde{n}o=1978} \left( LIBRO \right) \bowtie \sigma_{P\#='P1'} \left( ELP \right) \right) \cap \Pi_{E\#} \left( \sigma_{A\tilde{n}o=1978} \left( LIBRO \right) \bowtie \sigma_{P\#='P3'} \left( ELP \right) \right)$
+    \item $\Pi_{P\#} \left( \sigma_{E\#='E1'} \left( ELP \right) \right) - \Pi_{P\#} \left( \sigma_{E\# \neq 'E1'} \left( ELP \right) \right)$
+    \item $\Pi_{L\#,P\#} \left( ELP \right) \div \Pi_{P\#} \left( \sigma_{Ciudad \neq 'Madrid'} \left( PAPELERIAS \right) \right)$
+\end{enumerate}
+
+\subsection{Programas}
+
+\begin{enumerate}
+    \item $\Pi_{U\#, P\#} \left( USOS \right) \div \Pi_{\#} \left( \sigma_{Distribuidor='D1'} \left( PROGRAMAS \right) \right)$
+    \item $\Pi_{P\#} \left( \sigma_{U\#='U5'} \left( USOS \right)\right) - \Pi_{P\#} \left( \sigma_{U\#\neq'U5'} \left( USOS \right)\right)$
+    \item $\Pi_{Distribuidor} \left( \sigma_{P\#='P5'} \left( Programas \right) \right) \cap \Pi_{Distribuidor} \left( \sigma_{P\#='P8'} \left( Programas \right) \right)$
+    \item $\Pi_{Modelo} \left( \sigma_{Edad > 30} \left( USUARIOS \right) \bowtie \sigma_{tiempo > 3} \left( USOS \right) \bowtie ORDENADORES \right)$
+\end{enumerate}
+
+\subsection{Videoteca}
+
+\begin{enumerate}
+    \item $\Pi_{Pelicula} \left( \sigma_{Aficionado='Jose Perez'} \left( GUSTA \right) \right)$
+    \item $\Pi_{Videoclub} \left( VIDEOTECA \bowtie \sigma_{Aficionado='Jose Perez'} \left( GUSTA \right) \right)$
+    \item $\Pi_{Aficionado} \left( SOCIO \bowtie VIDEOTECA \bowtie GUSTA \right)$
+    \item $\left( \Pi_{Aficionado} \left( GUSTA \right) \cup \Pi_{Aficionado} \left( SOCIO \right) \right) -$ \\
+          $\Pi_{Aficionado} \left( SOCIO \bowtie VIDEOTECA \bowtie GUSTA \right)$
+\end{enumerate}
+
+\subsection{Maquinaria}
+
+\begin{enumerate}
+    \item $\Pi_{T\#,M\#} \left( PARTES \right) \div \Pi_{M\#} \left( \sigma_{Tipo=1} \left( MAQUINAS \right) \right)$
+    \item $\Pi_{F\#} \left( \sigma_{M\#='M1'} \left( PARTES \right) \right) \cap \Pi_{F\#} \left( \sigma_{M\#='M3'} \left( PARTES \right) \right)$
+    \item $\Pi_{M\#} \left( MAQUINAS \right) - \Pi_{M\#} \left( PARTES \right)$
+    \item $\Pi_{Nombre} \left( FINCAS \bowtie \left( \sigma_{tiempo>5} \left( PARTES \right) \bowtie \sigma_{PrecioHora>25} \left( MAQUINAS \right) \right) \right)$
+\end{enumerate}
+
+\subsection{Prácticas}
+
+\begin{enumerate}
+    \item $\Pi_{Nombre} \left( ALUMNOS \bowtie \left( \Pi_{A\#,P\#} \left( \sigma_{Nota>5} \left( ENTREGA \right) \right) \div \Pi_{P\#} \left( \sigma_{Curso=3} \left( PRACTICAS \right) \right) \right) \right)$
+    \item $\Pi_{Nombre} \left( ALUMNOS \bowtie \left( \Pi_{A\#,P\#} \left( ENTREGA \right) \div \Pi_{P\#} \left( \sigma_{Curso=3} \left( PRACTICAS \right) \right)\right) \right)$
+    \item $\Pi_{A\#} \left( \sigma_{Curso=2} \left( ENTREGA \bowtie PRACTICAS \right) \right) \cap$ \\
+          $ \Pi_{A\#} \left( \sigma_{Curso=3} \left( ENTREGA \bowtie PRACTICAS \right) \right)$
+    \item $\Pi_{A\#} \left( \sigma_{Curso=2} \left( ENTREGA \bowtie PRACTICAS \right) \right) -$ \\
+          $\Pi_{A\#} \left( \sigma_{Curso \neq 2} \left( ENTREGA \bowtie PRACTICAS \right) \right)$
+    \item $\Pi_{A\#} \left( \sigma_{Grupo='BD-11'} \left( ALUMNOS \right) \bowtie \left( \sigma_{Curso=2} \left( PRACTICAS \right) \bowtie ENTREGA \right) \right)$
+    \item $\Pi_{Nombre} \left( ALUMNOS \bowtie \left( \Pi_{A\#} \left( \sigma_{Nota \geq 5} \left( ENTREGA \right) \right) - \Pi_{A\#} \left( \sigma_{Nota<5} \left( ENTREGA \right) \right) \right) \right)$
+\end{enumerate}
+
+\subsection{Ciclismo}
+
+\begin{enumerate}
+    \item $\Pi_{C\#} \left( CLASIFICACION \right) -$ \\
+          $\Pi_{C\#} \left( CLASIFICACION \bowtie \sigma_{Duracion>15} \left( COMPETICIONES \right) \right)$
+    \item $\Pi_{C\#} (CICLISTAS \bowtie \sigma_{Pais=Espa\tilde{n}a} (EQUIPOS) \bowtie$ \\
+          $(\Pi_{C\#,M\#} (CLASIFICACION) \div \Pi_{M\#} (\sigma_{Pais='Espa\tilde{n}a'} (COMPETICIONES))))$
+    \item $\Pi_{C\#} (\sigma_{Duracion<15} (COMPETICIONES) \bowtie \sigma_{Puesto=1} (CLASIFICACION)) \cap$ \\
+          $\Pi_{C\#} (\sigma_{Duracion<15} (COMPETICIONES \bowtie \sigma_{Puesto=2} (CLASIFICACION)))$
+\end{enumerate}
+
+\subsection{Infracciones de tráfico}
+
+\begin{enumerate}
+    \item $\Pi_{Nombre} \left( CONDUCTOR \bowtie \left( \Pi_{C\#,I\#} \left( DENUNCIA \right) \div \Pi_{I\#} \left( \sigma_{Importe<600} \left( INFRACCION \right) \right) \right) \right)$
+    \item $\Pi_{A\#} (\sigma_{Descripcion='Estacionamiento'} (DENUNCIA \bowtie INFRACCION)) -$ \\
+          $\Pi_{A\#} (\sigma_{Descripcion \neq 'Estacionamiento'} (DENUNCIA \bowtie INFRACCION))$
+    \item $\Pi_{C\#} \left( DENUNCIA \right) - \Pi_{C\#} \left( \sigma_{Pagada='No'} \left( DENUNCIA \right) \right)$
 \end{enumerate}
 
 \end{document}

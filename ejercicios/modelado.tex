@@ -1,43 +1,49 @@
 \documentclass{db-practice}
 
-\begin{document}
-
 \title{Ejercicios de modelado conceptual}
 
-\section{Compañía aseguradora}
+\begin{document}
+\maketitle
+
+\section{Enunciados}
+
+
+\subsection{Compañía aseguradora}
 Construye el diagrama Entidad-Relación para una compañía aseguradora de coches cuyos clientes poseen al menos un coche. Los clientes pueden ser personas tanto físicas como jurídicas, por lo que se identificarán en la plataforma por su número de identificación fiscal (NIF). Para gestionar las relaciones con sus clientes, la aseguradora también necesita almacenar el nombre, dirección postal, teléfono y correo electrónico de cada uno de ellos.
 
 Cada póliza de seguros cubre uno o más coches y tiene asociados a ella uno o más pagos. Cada pago se corresponde con un periodo de tiempo, tiene una fecha de vencimiento y es necesario registrar cuándo se realiza el pago por parte del cliente. Para cálculos internos de la aseguradora, es necesario reflejar la marca y modelo de los vehículos, así como el color de su pintura y el año de matriculación.
 
 Por último, la compañía quiere llevar un registro de los partes de accidente en los cuales estén involucrados los vehículos asegurados por su empresa, reflejándose también en la base de datos el identificador del parte, la fecha del accidente y el texto descriptivo del mismo.
 
-\section{Paquetería}
+\subsection{Paquetería}
 Diseñar una base de datos para una empresa de entrega de paquetes a nivel mundial (por ejemplo, DHL o FedEx). La base de datos debe ser capaz de realizar un seguimiento de los clientes que envían artículos y de los clientes que reciben artículos; algunos clientes pueden hacer ambas cosas. Cada paquete debe ser identificable y trazable, por lo que la base de datos debe ser capaz de almacenar la ubicación del paquete y su historial de ubicaciones. Las ubicaciones incluyen camiones, aviones, aeropuertos y almacenes.
 
-\section{Tienda de mascotas}
-Una tienda de mascotas nos ha pedido que diseñe una base de datos para almacenar información sobre las ventas de animales y mercancías. El formulario de venta se muestra a continuación.
+\subsection{Tienda de mascotas}
+Una tienda de mascotas nos ha pedido que diseñe una base de datos para almacenar información sobre las ventas de animales y mercancías. El formulario de venta se muestra a continuación:
+
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{figs/mascotas}
+    \includegraphics[width=\textwidth]{figs/modelado/mascotas}
 \end{figure}
+
 Construye el diagrama Entidad-Relación para la base de datos de la tienda.
 
-\section{Hospital}
+\subsection{Hospital}
 Se creará una base de datos para almacenar información sobre los pacientes en el hospital. A su llegada, los datos personales de cada paciente (nombre, dirección y número de teléfono) se registran en la medida de lo posible y se le asigna un número de admisión. Luego se les asigna a una sala en particular (Accidentes y Emergencias, Cardiología, Oncología, etc.). En cada sala hay un número de médicos y enfermeros. Un paciente será tratado por un médico y varios enfermeros durante su estancia, y cada médico y enfermero puede estar involucrado con varios pacientes en un momento dado.
 
-\section{Permisos de circulación}
+\subsection{Permisos de circulación}
 La Dirección General de Tráfico administra los exámenes de conducir así como la emisión de los carnés. Cualquier persona que quiera conseguir su carné debe superar en primer lugar un examen teórico en cualquiera de los centros oficiales de exámenes del territorio nacional. El examen teórico se supera con menos de cuatro fallos, por lo que resulta de interés llevar un registro de los exámenes teóricos a los que se presenta una persona, incluyendo fecha del examen, centro oficial y número de fallos.
 
 Una vez superado el examen teórico, el interesado debe superar un examen práctico el cual, de nuevo, deberá llevarse a cabo en un centro oficial. Este examen consta de calificación binaria Apto/No apto. Una vez superado este examen, se emite un carné de conducir a nombre del interesado con un número único, que incluirá el permiso del cual se había examinado. Hay que tener en cuenta que en un mismo carné de conducir se pueden incluir distintos permisos para todo tipo de vehículos, aunque como mínimo todo carné tendrá vinculado un permiso, que se corresponde con el primer examen práctico superado. Si un conductor se presenta a exámenes adicionales para obtener otros tipos de permisos y los aprueba, será necesario incluirlos en su carné, indicando la fecha en la que se obtuvo ese permiso en particular.
 
-\section{Galería de arte}
+\subsection{Galería de arte}
 Una galería de arte nos ha encargado el diseño de una base de datos para su negocio. La galería mantiene información sobre los artistas, sus nombres (que son únicos), lugares de nacimiento, edad y estilo de arte. Para cada obra de arte, el artista, el año en que fue hecha, su título único, su tipo de arte (por ejemplo, pintura, litografía, escultura, fotografía), y su precio deben ser almacenados. 
 
 Las obras de arte también se clasifican en grupos de varios tipos, por ejemplo, retratos, naturalezas muertas, obras de Picasso u obras del siglo XIX; una obra determinada puede pertenecer a más de un grupo. Cada grupo se identifica con un nombre (como los que se acaban de dar) que describe al grupo. 
 
 Por último, la galería guarda información sobre los clientes. Para cada cliente, la galería mantiene el nombre único de esa persona, su dirección, el correo electrónico y su teléfono. Además, se requiere registrar en la base de datos cada vez que un cliente hace una visita a la galería, incluyendo la cantidad total de euros gastados en la visita, y los artistas y grupos de arte que gustaron al cliente.
 
-\section{Gimnasio}
+\subsection{Gimnasio}
 Un gimnasio quiere construir una base de datos para su negocio. Esto es lo que nos cuentan en la reunión de requisitos:
 
 ``\textit{Para cada miembro llevamos un registro de su número de identificación único, un nombre, un código postal y la fecha en que se pagó la suscripción. Para cada tipo de suscripción llevamos un registro de su ID único, así como el nombre y el precio.} 
@@ -48,7 +54,7 @@ Un gimnasio quiere construir una base de datos para su negocio. Esto es lo que n
 
 \textit{Cada miembro paga exactamente por un tipo de suscripción o bien compra pases de un día de una o varias categorías. Cada pase diario pertenece exactamente a una categoría de pase mientras que una categoría puede tener muchos pases de un día emitidos para ella. Cada transacción de venta involucra por lo menos un artículo. Cada vez que se vende un artículo, llevamos un registro de la cantidad.}''
 
-\section{Alquiler de coches}
+\subsection{Alquiler de coches}
 Una empresa de alquiler de coches prepara un sistema de reserva web de coches. Este sistema se basa en que los usuarios pueden reservar un coche en una ciudad concreta indicando la ciudad en que devolverán el coche. Lógicamente también es necesario saber el día de comienzo de alquiler y el que retornarán el coche y la hora. 
 
 La empresa oferta perfiles de coches y cada perfil tiene coches de un modelo y marca concretos. Los clientes quedan identificados por su nombre, DNI, domicilio y teléfono. El sistema sólo lo pide para usuarios no registrados. La forma de acceder a la aplicación, inicialmente, es diferente para usuarios registrados y no registrados. Los clientes pueden elegir la que más les convenga. Los registrados entran por medio de un \textit{log-in} y una palabra de acceso.
@@ -57,8 +63,9 @@ Puede ocurrir que para un perfil de vehículo no queden disponibles unidades. En
 
 Al cliente se le realiza un cargo con el coste inicialmente previsto contra su tarjeta de crédito, que debe aportar caso de que el sistema no la tenga (el cliente puede cambiar su número de tarjeta en cualquier momento). Finalmente, tras volver a confirmar el alquiler, el sistema terminará la transacción.
 
-\section{Censo de la Unión Europea}
+\subsection{Censo de la Unión Europea}
 ¡Enhorabuena! Has conseguido un trabajo de planificación de bases de datos para la Unión Europea. Tu primera tarea en el trabajo es ayudar a los distintos países a mantener la información sobre sus habitantes. Tu modelo debe capturar la siguiente información:
+
 \begin{itemize}
     \item En cada país, hay provincias que contienen ciudades. No puede haber dos provincias con el mismo nombre en un mismo país. Del mismo modo, no puede haber dos ciudades con el mismo nombre en una misma provincia.
     \item La gente vive en las ciudades. Hombres y mujeres trabajan en una ciudad, mientras que los menores estudian en una escuela de una ciudad (no es necesario saber qué escuela).
@@ -69,8 +76,10 @@ Al cliente se le realiza un cargo con el coste inicialmente previsto contra su t
 
 Dibuja un diagrama de entidad-relación para modelar la información descrita anteriormente.
 
-\section{Subastas en línea}
+\subsection{Subastas en línea}
+
 Considera un sistema de base de datos para subastas en línea en el que los miembros (compradores y vendedores) participen en la venta de artículos. Los requisitos de datos para este sistema se resumen de la siguiente manera: 
+
 \begin{itemize}
     \item El sitio en línea tiene miembros, cada uno de los cuales es identificado por un número único de miembro y es descrito por una dirección de correo electrónico, nombre, contraseña, dirección de casa y número de teléfono.
     \item Un miembro puede ser un comprador o un vendedor. Un comprador tiene una dirección de envío registrada en la base de datos. Un vendedor tiene un número de cuenta bancaria registrado en la base de datos.
@@ -80,7 +89,8 @@ Considera un sistema de base de datos para subastas en línea en el que los miem
     \item El comprador y el vendedor pueden puntuar sus transacciones completadas. La puntuación contiene una calificación de la otra parte que participa en la transacción (1-10) y un comentario.
 \end{itemize}
 
-\section{Cadena de restaurantes}
+\subsection{Cadena de restaurantes}
+
 Una cadena de restaurantes quiere construir una base de datos para gestionar su negocio. En primer lugar quiere llevar un registro de cada uno de sus restaurantes, almacenando su identificador único, su dirección, la ciudad en la que se encuentra, el correo electrónico de su gerente y su teléfono.
 
 El gerente quiere gestionar los diferentes menús que se ofrecen en los restaurantes. Cada restaurante es libre de ofrecer los menús que su gerente considera adecuados, por lo que es posible que dos restaurantes ofrezcan distintos menús.
@@ -91,7 +101,8 @@ Los ingredientes se pueden adquirir de varios proveedores. Los ingredientes se a
 
 La compañía mantiene el precio y los números de artículo de todos los ingredientes de todos los productos de su menú. También se mantiene la cantidad necesaria para cada ingrediente. Debido a las ofertas especiales y a los descuentos por volumen, el precio al que se adquiere un bien suele ser diferente del precio de catálogo. Por lo tanto, la base de datos debe conservar el precio al que se adquiere realmente un ingrediente.
 
-\section{Exposición de pósteres}
+\subsection{Exposición de pósteres}
+
 El escenario es que eres uno de los organizadores de una exposición de pósteres sobre ``Problemas globales del siglo XXI'', y debes diseñar una base de datos para hacer un seguimiento de la gestión de la exposición.  Estos se explican a continuación:
 
 \paragraph{Fase de presentación}: Los diseñadores gráficos crean pósteres para la exposición con el fin de ilustrar uno de los problemas globales elegidos.  La información relevante sobre los diseñadores incluye su nombre y su afiliación, es decir, la organización para la que trabajan.  Un póster tiene un título y se le asigna un número de identificación, y puede ser creado por varios diseñadores gráficos, aunque cada uno de ellos sólo puede participar con un póster.  Cuando un grupo de diseñadores gráficos crea un póster, distinguimos entre el diseñador principal y los co-diseñadores.  En el caso de un solo diseñador gráfico, se considera que esa persona es el diseñador principal del póster.  El diseñador principal es siempre el punto de contacto, por lo que debe proporcionar una dirección de correo electrónico.
@@ -99,7 +110,8 @@ El escenario es que eres uno de los organizadores de una exposición de póstere
 \paragraph{Fase de selección}: Todos los pósteres creados para esta exposición son juzgados por miembros de un jurado.  Un juez es un experto en diseño gráfico con experiencia en comunicación para la sensibilización y el beneficio público.  La información del juez que es relevante para el comité organizador incluye el nombre del juez, su afiliación y correo electrónico.  Cada póster es juzgado por tres jueces diferentes.  Al juzgar un póster, el juez da una decisión: aceptar o rechazar.  Sólo se seleccionará un cartel para la exposición si los tres jueces toman una decisión de ``aceptación''.  Ten en cuenta que a los jueces no se les permite competir en los ``Problemas Globales del Siglo XXI''.
 \paragraph{Fase de presentación}: Todos los pósteres seleccionados son presentados en la exposición por sus diseñadores principales.  A la presentación de pósteres se le asignan un stand y una sesión de exposición.  Cada sesión de la exposición tiene lugar en una fecha específica, y se han anunciado 4 temas de sesión: derechos humanos, contaminación ambiental, pobreza y guerra.
 
-\section{Desarrollo dirigidos por modelos}
+\subsection{Desarrollo dirigidos por modelos}
+
 El departamento de Ingeniería de una empresa informática ha decidido actualizar la gestión de sus proyectos teniendo en cuenta que se están adaptando a las nuevas tendencias en el desarrollo de software mediante la aplicación de Desarrollo Dirigido por Modelos (Model Driven Development\footnote{\url{https://martinfowler.com/bliki/ModelDrivenSoftwareDevelopment.html}}).
 
 El Departamento ha decidido que quiere disponer de un repositorio con los activos de la empresa relacionados con el desarrollo. Estos activos se corresponden, entre otros con los datos de los proyectos que se llevan a cabo, los diagramas, los modelos que se han utilizado para la realización de los proyectos, etc.
@@ -122,7 +134,8 @@ Aplicando la filosofía de reutilización, un mismo modelo, sin cambios, puede a
 
 Con respecto a las transformaciones, además de la definición de nuevas transformaciones de modelos, pueden modificarse las existentes. También es necesario obtener dos informes más; dado un modelo, conocer las transformaciones de las que es origen y conocer las transformaciones de las que es destino.
 
-\section{Gestión de locales nocturnos}
+\subsection{Gestión de locales nocturnos}
+
 Un empresario dedicado a la explotación de locales nocturnos de diversión, desea informatizar algunas actividades de la gestión diaria de dichos locales. Para ello, proporciona la siguiente información:
 
 Dispone de una serie de empleados en plantilla, de los que interesa conocer el DNI, número de la SS, nombre y apellidos, domicilio. De los locales que gestiona, desea saber: el nombre del garito (único), dirección, aforo, y tipo (pub, discoteca, cafetería, \ldots) y número de empleados que trabajan en él. Un empleado trabaja en un único local, aunque fuera de su horario habitual los empleados pueden hacer horas extras trabajando en cualquier otro local del empresario. En un local trabajan uno o varios empleados de forma continua, pero otros empleados pueden hacer horas extras en él, interesando en este caso la fecha y las horas que ha trabajado (cualquier empleado puede hacer horas extras en cualquiera de los locales del empresario). 
@@ -133,7 +146,8 @@ De los tipos de bebidas que puede adquirir el empresario para los locales, inter
 
 Por otra parte, también le interesa conocer por cada suministro realizado, el distribuidor, el tipo de bebida y el local al que se suministran, así como la cantidad suministrada y la fecha en que se realiza el suministro. Es de interés para el empresario además, conocer las existencias para cada uno de los tipos de bebidas que tiene en cada uno de los locales y el stock mínimo para cada uno de estos tipos de bebidas, éste puede ser diferente para cada local.
 
-\section{Empresa de telefonía}
+\subsection{Empresa de telefonía}
+
 Una empresa de servicios de telefonía desea mejorar su sistema de gestión. Actualmente tiene un subsistema para la gestión de los clientes y otro para la gestión de los tipos de contratos. Pero el resto está sin plantear. 
 
 Hablando el gerente con el departamento comercial lo que a ellos les gustaría es poder conocer qué cliente tiene, en realidad, qué contrato. El problema es que hay pocos tipos de contratos (particular, PYME, micropyme, administración o gran empresa) y cada uno se caracteriza por una tarifa base, junto con un perfil de trato a cliente. Pero cada contrato, a día de hoy, tiene múltiples opciones y cada cliente puede tener contratadas una o varias, y cambiarlas cuando desee. 
@@ -151,7 +165,8 @@ Para realizar un contrato previamente se da de alta al cliente, siendo responsab
 
 Por otra parte hay que tener en cuenta que las consultas que ahora nos interesan se hacen por tipo de cliente. Al realizar un contrato, eso sí, siempre hay que consultar la situación de los últimos seis meses por si ya existe un contrato y es moroso. Al Departamento comercial, del acto de firmar un contrato, le interesa el código de cliente, DNI y nombre y la cuenta bancaria de cargo, la fecha en que realizó, así como el código del comercial que lo gestionó.
 
-\section{Gestión de proyectos y comercial}
+\subsection{Gestión de proyectos y comercial}
+
 La oficina comercial de una empresa de ingeniería quiere implantar un nuevo sistema informático para la gestión de proyectos. La empresa quiere mantener la información de  los proyectos para los clientes actuales así como los que ha llevado a cabo en los últimos años. 
 
 Un papel importante en la gestión de los proyectos lo desarrollan los comerciales. De los cuales se quiere conocer su nombre, dirección, teléfono fijo y teléfono móvil; además los comerciales tienen un código interno asignado cuando pasan a formar parte de la empresa y se quiere conocer en cuántas comunidades autónomas han tenido clientes.
@@ -170,7 +185,8 @@ Un comercial sólo puede visitar a las empresas clientes de su comunidad autóno
 
 Lo más importante para la empresa es almacenar información de los proyectos activos, es decir, los que actualmente se están llevando a cabo. Cada proyecto tiene asignado un número de proyecto (denominado número de contrato), un presupuesto, una fecha de inicio y una fecha límite de realización. Los proyectos están activos durante el tiempo transcurrido entre el inicio y la fecha límite de realización y pasan, de forma automática, a ser no activos, en cualquier otra fecha. Es importante conocer el día en el que se realizó la firma del contrato entre la empresa y el cliente y por supuesto es importante conocer el comercial que ha posibilitado la firma del contrato. Se quiere conocer en todo momento la lista de proyectos activos que tiene la empresa.
 
-\section{Puerto comercial}
+\subsection{Puerto comercial}
+
 Los responsables de un puerto comercial desean que se implante un sistema de información para el control de los barcos que llegan y salen del puerto y sus cargas. El sistema de información deberá ayudar a los responsables del puerto en las tareas de asignación de muelles y servicios de estibación así como en el control de aduanas.
 
 Cuando un barco llega al puerto, se le asigna un muelle de acuerdo con el calado del barco y, si la carga llega del extranjero, el muelle debe contar con servicio de aduanas. Además se le asignará un grupo de estibadores junto con el muelle. Se desea mantener un histórico de todos los muelles a los que se asigna un barco en sus diferentes visitas al puerto así como los distintos grupos de estibadores que han trabajado con el barco en cada ocasión. Se deberá poder consultar qué grupo de estibadores ha trabajado en cual barco y en qué muelles. Es importante que este histórico mantenga las fechas de llegada y salida de cada barco en cada muelle.
@@ -188,5 +204,109 @@ Un muelle puede tener asignado un servicio de aduanas, pero no todos los muelles
 Para la selección de estibadores libres que poder asignar a un barco, el sistema una vez obtenido el tipo de carga del mismo realizará las siguientes acciones: comprobará todos los estibadores cuya especialidad está relacionada con el tipo de carga del barco. Una vez realizado ese primer filtro, mirará en el histórico de actuaciones de los estibadores aquellos grupos que hace más tiempo no han trabajado. En el caso de que existan varios grupos en las mismas condiciones, se seleccionará aquel que menos componentes tenga. Como resultado de la selección se obtendrá la identificación correspondiente del estibador seleccionado. Esta selección de estibadores, podrá ser realizada tanto de forma independiente por los operadores del sistema de control portuario como durante los procesos de asignación un muelle a un barco.
 
 Cada final de mes, los responsables de la dirección del puerto desean obtener un listado con las actuaciones que han llevado a cabo cada uno de los grupos estibadores existentes en el puerto. Dicho listado reflejará la siguiente información: el nombre del grupo estibador, fecha de actuación, muelle en el que se realizó la actuación, un valor booleano que indique si intervino o no el sistema de aduanas (Sí indicará que intervino el sistema de aduanas y No indicará que no intervino el servicio de aduanas). Además se obtendrá el nombre y la matrícula del barco al que se realizó el servicio.
+
+\section{Soluciones}
+
+\subsection{Compañía aseguradora}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-1}
+\end{figure}
+
+\subsection{Paquetería}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-2}
+\end{figure}
+
+\subsection{Tienda de mascotas}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-3}
+\end{figure}
+
+\subsection{Hospital}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-4}
+\end{figure}
+
+\subsection{Permisos de circulación}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-5}
+\end{figure}
+
+\subsection{Galería de arte}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-6}
+\end{figure}
+
+\subsection{Gimnasio}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-7}
+\end{figure}
+
+\subsection{Alquiler de coches}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-8}
+\end{figure}
+
+\subsection{Censo de la Unión Europea}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-9}
+\end{figure}
+
+\subsection{Subastas en línea}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-10}
+\end{figure}
+
+\subsection{Cadena de restaurantes}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-11}
+\end{figure}
+
+\subsection{Exposición de pósteres}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-12}
+\end{figure}
+
+\subsection{Desarrollo dirigidos por modelos}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-13}
+\end{figure}
+
+\subsection{Gestión de locales nocturnos}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-14}
+\end{figure}
+
+\subsection{Empresa de telefonía}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-15}
+\end{figure}
+
+\subsection{Gestión de proyectos y comercial}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-16}
+\end{figure}
+
+\subsection{Puerto comercial}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/modelado/ejercicio-17}
+\end{figure}
 
 \end{document}

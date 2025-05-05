@@ -270,7 +270,7 @@ Lenguaje de consultas **muy limitado**
 
 ---
 
-## Bases de datos clave-valor (NoSQL)
+# Bases de datos clave-valor (NoSQL)
 
 Almacena toda la información en pares `<clave, valor>`
 
@@ -289,7 +289,7 @@ Ventajas:
 
 ---
 
-## Bases de datos de alta escalabilidad (NoSQL)
+# Bases de datos de alta escalabilidad (NoSQL)
 
 Bases de datos distribuidas:
 
@@ -311,7 +311,7 @@ p { font-size: 0.9rem; }
 section {padding-right: 24px;}
 </style>
 
-## Bases de datos orientadas a grafos (NoSQL)
+# Bases de datos orientadas a grafos (NoSQL)
 
 Representan la información mediante un grafo:
 

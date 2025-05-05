@@ -826,7 +826,7 @@ $R\Join_F S$ o $R *_F S$
 
 ---
 
-# Obtener los apellidos y teléfono de los alumnos de nombre Rosa
+# Obtener los apellidos y teléfono de los estudiantes de nombre Rosa
 
 $$\prod_{\textrm{apellidos},\textrm{telefono}} (\sigma_{\textrm{nombre}='\textrm{Rosa}'}(Alumnos))$$
 
@@ -836,7 +836,7 @@ $$\prod_{\textrm{apellidos},\textrm{telefono}} (\sigma_{\textrm{nombre}='\textrm
 
 ---
 
-# Obtener las notas obtenidas en la asignatura de Inglés
+# Obtener nombre, apellidos y notas de los estudiantes que han cursado Inglés
 
 $$\prod_{\textrm{nombre},\textrm{apellidos},\textrm{nota}}(\sigma_{\textrm{nombreA}='\textrm{Inglés}'}(Alumnos\Join Notas\Join Asignaturas))$$
 
@@ -847,7 +847,7 @@ $$\prod_{\textrm{nombre},\textrm{apellidos},\textrm{nota}}(\sigma_{\textrm{nombr
 
 ---
 
-# Obtener los alumnos que figuren matriculados en todas las asignaturas
+# Obtener el número de matrícula de los estudiantes matriculados en todas las asignaturas
 
 $$\prod_{\textrm{Nmat},\textrm{codA}}(Notas)\div\prod_{\textrm{codA}}(Asignaturas)$$
 
@@ -858,7 +858,7 @@ $$\prod_{\textrm{Nmat},\textrm{codA}}(Notas)\div\prod_{\textrm{codA}}(Asignatura
 
 ---
 
-# Otra alternativa al anterior
+# Obtener nombre y apellidos de matrícula de los estudiantes matriculados en todas las asignaturas
 
 $$\prod_{\textrm{nombre},\textrm{apellidos}}(Alumnos\Join (\prod_{\textrm{Nmat},\textrm{codA}}(Notas)\div \prod_{\textrm{codA}}(Asignaturas)))$$
 
@@ -869,7 +869,7 @@ $$\prod_{\textrm{nombre},\textrm{apellidos}}(Alumnos\Join (\prod_{\textrm{Nmat},
 
 ---
 
-# Obtener los alumnos que figuren matriculados en las asignaturas de Inglés y Dibujo
+# Obtener el número de matrícula de los estudiantes matriculados en Inglés y Dibujo
 
 $$\prod_{\textrm{Nmat}}(\sigma_{\textrm{nombreA}='\textrm{Inglés}'}(Asignaturas)\Join Notas) \bigcap \prod_{\textrm{Nmat}}(\sigma_{\textrm{nombreA}='\textrm{Dibujo}'}(Asignaturas)\Join Notas)$$
 
@@ -880,7 +880,7 @@ $$\prod_{\textrm{Nmat}}(\sigma_{\textrm{nombreA}='\textrm{Inglés}'}(Asignaturas
 
 ---
 
-# Obtener los alumnos que no han suspendido ninguna asignatura
+# Obtener el número de matrícula de los estudiantes que no han suspendido ninguna asignatura
 
 $$\prod_{\textrm{Nmat}}(\sigma_{\textrm{nota}\geq 5}(Notas))-\prod_{\textrm{Nmat}}(\sigma_{\textrm{nota}<5}(Notas))$$
 
