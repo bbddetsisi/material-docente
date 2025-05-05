@@ -100,7 +100,7 @@ Lo habitual es que un mismo servidor reciba conexiones de diferentes clientes:
 ---
 
 <!-- _class: section -->
-# DRIVERS NATIVOS 
+# Drivers nativos
 
 ---
 
@@ -291,17 +291,32 @@ mydb.close()
 
 # SQLAlchemy
 
-SQLAlchemy es el conjunto de herramientas SQL de Python y un ORM$^1$ que ofrece a los desarrolladores de aplicaciones toda la potencia y flexibilidad de SQL.
+SQLAlchemy es el conjunto de herramientas SQL de Python y un ORM<sup>1</sup> que ofrece a los desarrolladores de aplicaciones toda la potencia y flexibilidad de SQL.
 
 Proporciona un conjunto completo de patrones de persistencia de nivel empresarial bien conocidos, diseñados para un acceso a la base de datos eficiente y de alto rendimiento, adaptados a un lenguaje de dominio sencillo y pitónico.
 
-Para instalar:
+> <sup>1</sup> _Object Relational Mapping_
+
+---
+
+# SQLAlchemy 2.x
+
+Introduce cambios muy profundos en la API y el comportamiento de la biblioteca
+
+- Un único estilo de consultas basado en `select()` y `Session.execute()`
+- _Declarative Mapping_ modernizado, con soporte de tipado
+  - `DeclarativeBase`, `Mapped[T]` y `mapped_column()`
+- Manejo de transacciones más seguro con _context managers_
+  - `with Session(engine) as session:`
+    - Al cerrar el bloque `with` se hace `close()`, **¡¡pero no `commit()`!!**
+    - Si hay excepción, se ejecuta un `rollback()` y todo se queda como estaba
+- Compatibilidad futura garantizada (la rama 1.x ahora es de mantenimiento)
+
+Instalación:
 
 ```bash
-pip install sqlalchemy pymysql
+pip install pymysql sqlalchemy  # o `sqlalchemy>=2.0`, pero no es necesario
 ```
-
-> $^1$: Object Relational Mapper
 
 ---
 
@@ -317,23 +332,29 @@ Es una de las librerías para trabajar con bases de datos más usada en Python.
 
 ---
 
-# Conexión con el SGBD
+# Creación del motor y de sesiones
 
-Las conexiones con el SGBD se gestionan mediante un **motor (engine)**, que no es más que un objeto que representa una base de datos.
+SQLAlchemy se basa en el concepto de **motor** y **sesión**
+
+- El **motor** es el objeto que se encarga de gestionar la conexión con el SGBD
+
+  ```python
+  from sqlalchemy import create_engine
+  engine = create_engine("mysql+pymysql://user:password@host:3306/database")
+  ```
+  
+  - La conexión se configura mediante una **cadena de conexión** con el siguiente formato:
+
+      ```text
+      [DB_TYPE]+[DB_CONNECTOR]://[USERNAME]:[PASSWORD]@[HOST]:[PORT]/[DB_NAME]
+      ```
+
+- La **sesión** es el objeto que se encarga de gestionar las transacciones con el SGBD
 
 ```python
-"""Conexión con la BBDD."""
-from sqlalchemy import create_engine
-
-engine = create_engine(
-    "mysql+pymysql://user:password@host:3600/database",
-)
-```
-
-Como se puede observar, la conexión se configura mediante una **cadena de conexión** con el siguiente formato:
-
-```text
-[DB_TYPE]+[DB_CONNECTOR]://[USERNAME]:[PASSWORD]@[HOST]:[PORT]/[DB_NAME]
+from sqlalchemy.orm import Session
+with Session(engine) as session:
+    # Consultas, inserciones, etc.
 ```
 
 ---
@@ -345,7 +366,7 @@ Podemos usar SQLAlchemy de forma similar al conector oficial de MySQL que ya hem
 ```python
 res = engine.execute("SELECT * FROM tabla")
 for row in res.fetchall():
-   ...
+   # Cosis
 ```
 
 La principal diferencia es que SQLAlchemy abre la conexión, ejecuta la consulta y cierra la conexión de manera automática.
@@ -365,7 +386,31 @@ Aunque interesante, este modo de funcionamiento es similar al conector nativo, p
 
 ---
 
-# SQLAlchemy: ejemplo de uso
+# Definiendo tablas como modelos de SQLAlchemy<!--fit-->
+
+Modelos $\rightarrow$ clases que representan una tabla SQL en nuestra base de datos
+
+- Atributos del modelo $\rightarrow$ columnas de una tabla.
+- Instancias del modelo $\rightarrow$ filas de una tabla.
+
+Creamos modelos definiendo clases de Python que extienden una clase base<sup>2</sup>:
+
+```python
+from sqlalchemy.orm import DeclarativeBase
+
+class Base(DeclarativeBase):
+    pass
+```
+
+La parte más crítica es la de cómo modelar las relaciones
+
+- Afortunadamente, con un ejemplo queda muy claro cómo hacerlo.
+
+> <sup>2</sup> Lo más habitual es usar un `DeclarativeBase` propio, y por convenio se le llama `Base`. Usar directamente `DeclarativeBase` no es recomendable por la abstracción interna que hace de la base de datos.
+
+---
+
+# Ejemplo: Problema de las series
 
 Vamos a estudiar el funcionamiento de **SQLAlchemy** mediante el siguiente ejemplo:
 
@@ -376,7 +421,7 @@ Vamos a estudiar el funcionamiento de **SQLAlchemy** mediante el siguiente ejemp
 
 ---
 
-# SQLAlchemy: ejemplo de uso
+# Ejemplo: Diagrama de entidad-relación
 
 <center>
 
@@ -385,7 +430,7 @@ Vamos a estudiar el funcionamiento de **SQLAlchemy** mediante el siguiente ejemp
 
 ---
 
-# SQLAlchemy: ejemplo de uso
+# Ejemplo: Diagrama relacional
 
 <center>
 
@@ -394,245 +439,198 @@ Vamos a estudiar el funcionamiento de **SQLAlchemy** mediante el siguiente ejemp
 
 ---
 
-# Definiendo las tablas como modelos de SQLAlchemy
-
-Los modelos de datos son clases de Python que representan una tabla SQL en nuestra base de datos, donde los atributos de un modelo se traducen en columnas de una tabla.
-
-Al trabajar con ORMs, la creación de instancias de nuestros modelos se traduce en la creación de filas en una tabla SQL.
-
-Creamos modelos definiendo clases de Python que extienden una clase Base:
+# Ejemplo: Modelando los usuarios
 
 ```python
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import String, DateTime, func
 
-Base = declarative_base()
-```
-
-Nuestros modelos **deben** extender la clase `Base`.
-
----
-
-# Modelando los usuarios
-
-Empezamos nuestros modelos con los *Usuarios*:
-
-```python
-from sqlalchemy import Column, Table, ForeignKey
-from sqlalchemy.types import Integer, String, DateTime
-from sqlalchemy.sql import func
-from sqlalchemy.orm import relationship
 
 class Usuario(Base):
-   # Nombre de la tabla que se creará en la BD
-   __tablename__ = "usuarios"
+    __tablename__ = "usuarios"
 
-   # Atributos del modelo (columnas de la tabla)
-   id = Column(Integer, primary_key=True, autoincrement="auto")
-   alias = Column(String(255), unique=True, nullable=False)
-   fecha_alta = Column(DateTime, server_default=func.now())
+    id: Mapped[int] = mapped_column(primary_key=True)  # ← autoincrement implícito
+    alias: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
+    fecha_alta: Mapped[DateTime] = mapped_column(DateTime, server_default=func.now())
 
-   def __repr__(self):
-      return f"<Usuario: {self.alias}>"
+    # N:M con capítulos
+    capitulos: Mapped[List["Capitulo"]] = relationship(
+        secondary="visualiza", back_populates="usuarios"
+    )
+
+    def __repr__(self) -> str:
+        return f"<Usuario {self.alias}>"
 ```
 
 ---
 
-# Modelando las series
-
-El modelo para las *Series* se construye de manera similar a los usuarios:
+# Ejemplo: Modelando las series
 
 ```python
 class Serie(Base):
    __tablename__ = "series"
 
-   id = Column(Integer, primary_key=True, autoincrement="auto")
-   titulo = Column(String(500), nullable=False)
-   genero = Column(String(150), nullable=False)
-   fecha_alta = Column(DateTime, server_default=func.now())
+   id: Mapped[int] = mapped_column(primary_key=True)
+   titulo: Mapped[str] = mapped_column(String(500), nullable=False)
+   genero: Mapped[str] = mapped_column(String(150), nullable=False)
+   fecha_alta: Mapped[DateTime] = mapped_column(server_default=func.now())
 
-   def __repr__(self):
+   # 1:M con capítulos
+   capitulos: Mapped[List["Capitulo"]] = relationship(
+      back_populates="serie",
+      cascade="all, delete-orphan"
+   )
+
+   def __repr__(self) -> str:
       return f"<Serie '{self.titulo}'>"
 ```
 
 ---
 
-# Relaciones 1:N
-
-Para los *capítulos* necesitamos establecer una relación 1:N con la serie a la que pertenecen. Definimos la clave externa en la columna:
+# Ejemplo: Modelando los capítulos
 
 ```python
 class Capitulo(Base):
    __tablename__ = "capitulos"
 
-   id = Column(Integer, primary_key=True, autoincrement="auto")
-   titulo = Column(String(500), nullable=False)
-   duracion = Column(Integer, nullable=False)
-   id_serie = Column(Integer, ForeignKey("series.id")) # Referencia a nombre de tabla
+   id: Mapped[int] = mapped_column(primary_key=True)
+   titulo: Mapped[str] = mapped_column(String(500), nullable=False)
+   duracion: Mapped[int] = mapped_column(Integer, nullable=False)
+   id_serie: Mapped[int] = mapped_column(ForeignKey("series.id"), index=True)
 
-   serie = relationship("Serie", backref="capitulos") # Referencia a nombre de la clase
+   # 1:N con serie
+   serie: Mapped["Serie"] = relationship(back_populates="capitulos")
+   # N:M con usuarios
+   usuarios: Mapped[List["Usuario"]] = relationship(
+      secondary="visualiza", back_populates="capitulos"
+   )
 
-   def __repr__(self):
-      return f"<Capítulo '{self.titulo}' ({self.serie})>"
+   def __repr__(self) -> str:
+      return f"<Capítulo '{self.titulo}' de {self.serie.titulo}>"
 ```
 
 ---
 
-# Relaciones N:M
+# Ejemplo: Tabla de asociación (N:M)
 
-Para las relaciones N:M se define una **tabla de asociación** en SQLAlchemy:
+Para las relaciones N:M es necesario definir una tabla de asociación que contenga las claves foráneas de las tablas involucradas:
 
 ```python
-tabla_asoc = Table('visualiza', Base.metadata,
-   Column('id_usuario', ForeignKey('usuarios.id'), primary_key=True),
-   Column('id_capitulo', ForeignKey('capitulos.id'), primary_key=True)
+visualiza = Table(
+    "visualiza",
+    Base.metadata,
+    mapped_column("id_usuario", ForeignKey("usuarios.id"), primary_key=True),
+    mapped_column("id_capitulo", ForeignKey("capitulos.id"), primary_key=True),
 )
 ```
 
-Ahora solo queda añadir las relaciones a los modelos **Usuario**:
-
-```python
-   capitulos = relationship("Capitulo", secondary=tabla_asoc, backref="usuarios")
-```
+Esta tabla es la que llevaría atributos adicionales en caso de ser necesarios
 
 ---
 
-# Creación del modelo de datos
+# Ejemplo: Creación del modelo de datos
 
-Una vez hemos definido nuestros modelos es el momento de crear las tablas correspondientes en la base de datos. Para ello basta con ejecutar el método `create_all()` de nuestra clase `Base`:
+Una vez hemos definido nuestros modelos es el momento de crear las tablas correspondientes en la base de datos
 
-```python
-Base.metadata.create_all(engine)
-```
+- Para ello basta con ejecutar el método `create_all()` de nuestra clase `Base`:
 
-Será SLQAlchemy quien generará las sentencias SQL correspondientes para crear en la base de datos los modelos definidos.
+   ```python
+   Base.metadata.create_all(engine)
+   ```
 
----
+SLQAlchemy **generará** las **sentencias SQL** correspondientes a la creación de las tablas **y las ejecutará** contra la base de datos
 
-# Creación de registros
-
-Vamos a añadir un usuario a nuestra base de datos, pero en lugar de usar una sentencia `INSERT` vamos a aprovechar el ORM de SQLAlchemy. Lo primero es crearnos una sesión:
-
-```python
-from sqlalchemy.orm import sessionmaker
-Session = sessionmaker(bind=engine)
-session = Session()
-```
-
-A partir de ahora tenemos una conexión abierta con la BD que se corresponde con una transacción abierta, por lo que tendremos que confirmar los cambios `commit()` de manera manual.
+- Se debe usar una sola vez en el _bootstrap_ de la aplicación
 
 ---
 
-# Creación de registros
+# Ejemplo: Creación de registros
 
-Vamos a crear una nueva instancia de un usuario utilizando nuestro modelo `Usuario` para ello:
+Aprovechando el ORM, vamos a añadir un usuario, una serie con algunos de sus capítulos y a relacionar al usuario con los capítulos que ha visto.
 
 ```python
-u1 = Usuario(
-   alias="Carlos Boyero"
+with Session(engine) as session:
+    u1 = Usuario(alias="Katee Sackhoff")
+    battlestar = Serie(titulo="Battlestar Galactica (2004)", genero="Science Fiction")
+    p1 = Capitulo(titulo="Part/Night 1", duracion=118, serie=battlestar)
+    p2 = Capitulo(titulo="Part/Night 2", duracion=118, serie=battlestar)
+
+    u1.capitulos.append(p1)
+
+    session.add_all([u1, battlestar, p1, p2])
+    session.commit()   
+```
+
+Si todo ha ido bien, la sesión se habrá cerrado con un `commit()` y los cambios se habrán propagado a la base de datos.
+
+- Y si no, se habrá hecho un `rollback()` y no se habrá modificado nada
+
+---
+
+# Ejemplo: Recuperando registros de la BD
+
+No tiene sentido contar la API aquí, para eso está su [documentación oficial](https://docs.sqlalchemy.org/en/20/orm/query.html)
+
+- Capítulos de más de 40 minutos:
+
+   ```python
+   caps = session.scalars(
+      select(Capitulo).where(Capitulo.duracion > 40)
+   ).all()  # Scalars devuelve sólo la primera columna (el id)
+   ```
+
+- Número de series por género
+
+   ```python
+   res = session.execute(
+      select(Serie.genero, func.count())
+      .group_by(Serie.genero)
+   ).all()
+   ```
+
+Los **resultados** de las consultas son ya **tipos de Python**, no hace falta convertirlos
+
+---
+
+# Ejemplo: Actualización y borrado de registros
+
+Actualizar una instancia implica la propagación de cambios cuando finaliza la transacción
+
+```python
+with Session(engine) as session:
+    cap = session.get(Capitulo, 1)
+    cap.duracion += 5  # Editamos
+    session.flush()    # Forzamos la propagación
+
+    serie = session.get(Serie, 1)
+    session.delete(serie)  # Eliminamos la serie (y capítulos huérfanos)
+    session.commit()       # Propagamos los cambios (obligatorio)
+```
+
+La función `flush()` fuerza la propagación de los cambios a la base de datos, pero no hace `commit()`
+
+---
+
+# Ejemplo: Relaciones 1:1
+
+En ocasiones podemos querer modelar relaciones 1:1 entre tablas.
+
+```python
+class Perfil(Base):
+   __tablename__ = "perfiles"
+
+   id: Mapped[int] = mapped_column(ForeignKey("usuarios.id"), primary_key=True)
+   bio: Mapped[str] = mapped_column(String(500))
+
+   usuario: Mapped[Usuario] = relationship(back_populates="perfil", uselist=False)
+
+
+Usuario.perfil = relationship(
+    "Perfil", back_populates="usuario", uselist=False, cascade="all, delete-orphan"
 )
 ```
 
-Para que nuestro usuario se propague a la BD bastará con añadir la instancia a nuestra sesión:
-
-```python
-session.add(u1)
-session.commit()
-```
-
----
-
-# Registros relacionados: serie y capítulos
-
-Creamos una nueva serie:
-
-```python
-perdidos = Serie(titulo="Lost", genero="Ciencia Ficción")
-session.add(perdidos)
-session.commit()
-```
-
-Vamos a añadir dos capítulos de la serie que acabamos de crear:
-
-```python
-s01e01 = Capitulo(titulo="Pilot, Part 1", duracion=42, id_serie=perdidos.id)
-s01e02 = Capitulo(titulo="Pilot, Part 2", duracion=41, id_serie=perdidos.id)
-session.add(s01e01)
-session.add(s01e02)
-session.commit()
-```
-
----
-
-# Visalizaciones del usuario
-
-Recordemos que nuestro modelo `Usuario` disponía de un atributo `capitulos` vinculado a la tabla que modela nuestra relación N:M.
-
-Para decir que un usuario ha visto un capítulo en concreto, basta con añadir la instancia del capítulo a este atributo:
-
-```python
-u1.capitulos.append(s01e01)
-session.commit()
-```
-
----
-
-# Recuperando registros de la BD
-
-Para realizar consultas a la BD y obtener el objeto correspondiente a nuestro modelo usaremos la función `query()` de la sesión abierta.
-
-Por ejemplo, podemos obtener todos los capítulos de la base de datos:
-
-```python
-caps = session
-   .query(Capitulo) # FROM Capitulos
-   .all()           # SELECT *
-```
-
-La variable `caps` contendrá una colección de instancias de capítulos:
-
-```python
-for c in caps:
-   print(c)
-```
-
----
-
-# API de consultas
-
-La [API de SLQAlchemy](https://docs.sqlalchemy.org/en/14/orm/loading_objects.html) para realizar consultas es bastante extensa y permite realizar búsquedas más complejas. Por ejemplo, podemos aplicar filtros sobre valores de columnas:
-
-```python
-res = session
-   .query(Capitulos)
-   .filter_by(duracion >= 25)
-   .all()
-```
-
-e incluso aplicar funciones de agregación y agrupamiento:
-
-```python
-res = session
-   .query(func.Count(Serie.id))
-   .group_by(Serie.genero)
-   .all()
-```
-
----
-
-# Actualización y eliminación de registros
-
-La actualización de una instancia implica que los cambios se propagan a la base de datos cuando finalice la transacción. Podemos forzar la propagación de cambios con:
-
-```python
-session.flush()
-```
-
-Para eliminar un registro bastará con pasar la instancia del elemento que se quiere eliminar al método `delete()` de la sesión que tengamos abierta:
-
-```python
-session.delete(s01e02)
-session.commit()
-```
+La clave está en el atributo `uselist=False`, que indica que esa relación es 1:1.
 
 ---
 
