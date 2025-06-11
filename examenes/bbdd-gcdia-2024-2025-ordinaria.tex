@@ -98,9 +98,18 @@ WHERE tipo = 'oculta'
 \begin{solution}[6em]
 
 \begin{lstlisting}[language=sql]
-SELECT COUNT(*) 
-FROM NEURONA 
+SELECT COUNT(*)
+FROM NEURONA
 WHERE id_c IN (SELECT id_c FROM CAPA WHERE tipo = 'salida');
+\end{lstlisting}
+
+o
+
+\begin{lstlisting}[language=sql]
+SELECT COUNT(DISTINCT id)
+FROM NEURONA n
+JOIN CAPA c ON c.id = n.ic_c
+WHERE tipo = 'salida';
 \end{lstlisting}
 
 \end{solution}
@@ -123,10 +132,20 @@ HAVING SUM(peso) < 0;
 \begin{solution}[6em]
 
 \begin{lstlisting}[language=sql]
-SELECT id 
-FROM NEURONA 
-WHERE f_act = 'sigmoide' 
+SELECT id
+FROM NEURONA
+WHERE f_act = 'sigmoide'
   AND id_c IN (SELECT id_c FROM CAPA WHERE tipo = 'oculta');
+\end{lstlisting}
+
+o
+
+\begin{lstlisting}[language=sql]
+SELECT n.id 
+FROM NEURONA n
+JOIN CAPA c ON c.id = n.id_c
+WHERE n.f_act = 'sigmoide'
+  AND c.tipo = 'oculta';
 \end{lstlisting}
 
 \end{solution}
@@ -138,6 +157,8 @@ WHERE f_act = 'sigmoide'
 \begin{solution}[34em]
 
 \begin{lstlisting}[language=sql]
+DELIMITER $$
+
 CREATE TRIGGER validar_enlace
 BEFORE INSERT ON ENLACE
 FOR EACH ROW
@@ -149,10 +170,13 @@ BEGIN
   SELECT pos INTO pos_to FROM CAPA WHERE id_c = NEW.capa_to;
 
   IF pos_to <> pos_from + 1 THEN
-    SIGNAL SQLSTATE '45000'
+    SIGNAL SQLSTATE '7291'
     SET MESSAGE_TEXT = 'Las capas no son consecutivas';
   END IF;
 END;
+$$
+
+DELIMITER ;
 \end{lstlisting}
 
 \end{solution}
@@ -162,7 +186,7 @@ END;
 \begin{solution}
 
 \begin{lstlisting}[language=sql]
-DELIMITER //
+DELIMITER $$
 
 CREATE PROCEDURE contar_enlaces_oculta(
     IN id_capa INT,
@@ -172,38 +196,31 @@ CREATE PROCEDURE contar_enlaces_oculta(
 BEGIN
   DECLARE tipo_capa VARCHAR(20);
 
-  -- Comprobar si la capa existe y es de tipo 'oculta'
   SELECT tipo INTO tipo_capa
   FROM CAPA
   WHERE id_c = id_capa;
 
   IF tipo_capa = 'oculta' THEN
-    -- Contar enlaces entrantes
     SELECT COUNT(*) INTO num_entrantes
     FROM ENLACE
     WHERE capa_to = id_capa;
 
-    -- Contar enlaces salientes
     SELECT COUNT(*) INTO num_salientes
     FROM ENLACE
     WHERE capa_from = id_capa;
   ELSE
-    -- Si no es oculta, devolver -1 como señal de error
-    SET num_entrantes = -1;
-    SET num_salientes = -1;
+    SIGNAL SQLSTATE '7291'
+    SET MESSAGE_TEXT = 'La capa tiene que ser oculta';
   END IF;
 END;
-//
+$$
 
 DELIMITER ;
-
 \end{lstlisting}
 
 \end{solution}
 
 \end{parts}
-
-\newpage
 
 \question[2] \textbf{Programación contra bases de datos.}
 
