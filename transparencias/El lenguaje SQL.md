@@ -939,40 +939,40 @@ SELECT codC
 
 ---
 
-# Operador `MINUS`
+# Operador `MINUS` o `EXCEPT`
 
 Elimina las filas del primer operando que se encuentren en el segundo
 
-- **MySQL no soporta este operador**, por lo que hay que usar `NOT IN` en su lugar.
+- **MySQL usa EXCEPT**.
 
 <cite>Obtener los códigos de aquellos conductores que tengan categoría inferior a 18 y no hayan trabajado con la máquina M03</cite>
 
 ```SQL
 SELECT codC
   FROM conductores
-  WHERE categoria < 18 AND codC NOT IN (
-    SELECT codC
-    FROM trabajos
-    WHERE codM = 'M03'
-  );
+  WHERE categoria < 18
+EXCEPT
+SELECT codC
+  FROM trabajos
+  WHERE codM = 'M03';
 ```
 
 ---
 
 # Operador `INTERSECT`
 
-Obtiene las filas comunes al resultado de dos subconsultas. **MySQL no soporta este operador**, por lo que hay que usar `IN` en su lugar
+Obtiene las filas comunes al resultado de dos subconsultas.
 
 <cite>Obtener los códigos de los conductores que hayan utilizado las máquinas M01 y M03</cite>
 
 ```SQL
 SELECT codC
-FROM trabajos
-WHERE codM = 'M01' AND codC IN (
-  SELECT codC
   FROM trabajos
-  WHERE codM = 'M03'
-);
+  WHERE codM = 'M01'
+INTERSECT
+SELECT codC
+  FROM trabajos
+  WHERE codM = 'M03';
 ```
 
 ---
