@@ -61,7 +61,7 @@ math        : mathjax
 | 1989 | SQL-89   | Revisión menor                                        |
 | 1992 | SQL-92   | Revisión mayor                                        |
 | 1999 | SQL:1999 | Expresiones regulares, consultas recursivas, triggers |
-| 2003 | SQL:2003 | XML básico, sequence, autoincrment                    |
+| 2003 | SQL:2003 | XML básico, sequence, autoincrement                   |
 | 2005 | SQL:2005 | XML avanzado                                          |
 | 2008 | SQL:2008 | `ORDER BY`, `TRUNCATE`                                |
 | 2011 | SQL:2011 | Datos temporales, `FETCH`                             |
@@ -185,7 +185,7 @@ Modificadores de columna:
 
 | Familia    | Tipos                      |
 |------------|----------------------------|
-| Numericos  | `INTEGER`, `DECIMAL`       |
+| Numéricos  | `INTEGER`, `DECIMAL`       |
 | Texto      | `VARCHAR(size)`, `TEXT`    |
 | Enumerados | `ENUM('val1', ..., 'valn')`|
 | Fecha      | `DATETIME`, `TIMESTAMP`    |
@@ -483,7 +483,7 @@ Supongamos que tenemos las siguientes tablas:
 
 | ~~ID_E~~ | NOMBRE   | APELLIDOS    | ID_D |
 |----------|----------|--------------|------|
-| 11       | Fernando | Ruíz Pérez   | 2    |
+| 11       | Fernando | Ruiz Pérez   | 2    |
 | 67       | Raúl     | Gómez García | 4    |
 
 </div>
@@ -1664,7 +1664,7 @@ DELIMITER ;
 
 # Parámetros del procedimiento
 
-Los parámetros de un procedimiento pueden sertres tipos
+Los parámetros de un procedimiento pueden ser de tres tipos
 
 - `IN` (por defecto): El procedimiento puede modificar el valor, pero la modificación no es visible para el invocador cuando el procedimiento acaba
 - `OUT`: Su valor inicial es NULL dentro del procedimiento, y su valor es visible para el invocador cuando el procedimiento acaba
@@ -1822,7 +1822,7 @@ CASE variable_a_evaluar
 WHEN valor1 THEN sentencias
 [...]
 WHEN valorN THEN sentencias
-[ELSE setencias]
+[ELSE sentencias]
 END CASE
 ```
 
@@ -1887,7 +1887,7 @@ DELIMITER ;
 
 ```SQL
 [etiqueta_inicio:]REPEAT
-    sentecias
+    sentencias
 UNTIL condicion
 END REPEAT
 [etiqueta_fin]
@@ -1924,7 +1924,7 @@ DELIMITER ;
 
 ```SQL
 [etiqueta_inicio:]WHILE condicion DO
-    setencias
+    sentencias
 END WHILE
 [etiqueta_fin]
 ```

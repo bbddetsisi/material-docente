@@ -7,10 +7,10 @@ header      : Presentación de la asignatura Bases de Datos. Curso 2024-2025.
 description : >
   Presentación de la asignatura Bases de Datos. Curso 2024-2025.
   E.T.S.I. Sistemas Informáticos.
-  Universidad Politecnic de Madrid
+  Universidad Politécnica de Madrid
 ---
 
-# Presentación de la asigntura
+# Presentación de la asignatura
 
 ## Bases de datos - Curso 2024-2025
 

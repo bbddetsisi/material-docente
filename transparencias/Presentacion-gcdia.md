@@ -13,7 +13,7 @@ keywords    : >
 
 <!-- _class: titlepage -->
 
-# Presentación de la asigntura
+# Presentación de la asignatura
 
 ## Bases de datos - Curso 2024-2025
 

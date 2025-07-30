@@ -24,7 +24,7 @@ math        : mathjax
 
 #### E.T.S.I. de Sistemas Informáticos
 
-##### Universidad Politénica de Madrid
+##### Universidad Politécnica de Madrid
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -128,15 +128,15 @@ La forma más fácil de instalarlo es usar pip:
 pip install pyodbc
 ```
 
-Consulta la [documentación de instalación](https://github.com/mkleehammer/pyodbc/wiki/Install) para innformación adicional.
+Consulta la [documentación de instalación](https://github.com/mkleehammer/pyodbc/wiki/Install) para información adicional.
 
 ---
 
 # MySQL Connector/ODBC
 
-Para conectarnos a una base de datos **MySQL** mediante el protocolo ODBC es necesario instalar el driver específico que nos porporciona el fabricante.
+Para conectarnos a una base de datos **MySQL** mediante el protocolo ODBC es necesario instalar el driver específico que nos proporciona el fabricante.
 
-Este driver será dependiende del sistema operativo desde el cual nos queramos conectar al sistema gestor de bases de datos y, por tanto, su [instalación](https://dev.mysql.com/doc/connector-odbc/en/) es diferente para cada SO.
+Este driver será dependiente del sistema operativo desde el cual nos queramos conectar al sistema gestor de bases de datos y, por tanto, su [instalación](https://dev.mysql.com/doc/connector-odbc/en/) es diferente para cada SO.
 
 Aunque usemos una librería específica de Python para conectarnos (**pyodbc**), esta se basa en el conector oficial de **MySQL** para funcionar.
 
@@ -323,7 +323,7 @@ pip install pymysql sqlalchemy  # o `sqlalchemy>=2.0`, pero no es necesario
 # ¿Quién usa SQLAlchemy?
 
 - Yelp!
-- reddit
+- Reddit
 - DropBox
 - The OpenStack Project
 - Survey Monkey

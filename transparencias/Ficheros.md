@@ -126,10 +126,10 @@ El orden de dichos elementos se mantiene a lo largo del fichero
 ## Ventajas
 
 1. Información estructurada $\rightarrow$ Lectura y escritura es rápida y sencilla
-2. No añade información supérflua a los datos (salvo separador y delimitador)
-3. Facil de entender, editar y generar
+2. No añade información superflua a los datos (salvo separador y delimitador)
+3. Fácil de entender, editar y generar
 4. Se considera formato estándar<sup>1</sup>
-5. Fácil interoperabilidad con otras aplicaciones
+5. Fácil interoperatividad con otras aplicaciones
 
 </div>
 <div class="column">
@@ -138,7 +138,7 @@ El orden de dichos elementos se mantiene a lo largo del fichero
 
 1. Información estructurada $\rightarrow$ Todos registro tienen que tener el mismo número de campos
 2. Solo permite tipos de datos simples
-3. El separador no debe aperecer en los datos
+3. El separador no debe aparecer en los datos
 4. Caracteres de escape para texto con símbolos especiales
 5. No hay un estándar para comentarios
 
@@ -166,7 +166,7 @@ El formato **CSV** se utiliza principalmente en las siguientes situaciones
 
 # Orígenes de XML
 
-Viene del _Standard Generalized Markup Lenguage_ (SGML)
+Viene del _Standard Generalized Markup Language_ (SGML)
 
 - Definido como estándar en 1986<sup>2</sup>
 - _Metalenguaje_ para mantener documentación estructurada en formato electrónico
@@ -305,7 +305,7 @@ Se incluyen en la etiqueta inicial a continuación del nombre de la misma
 
 - **Metalenguaje**: Permite definir lenguajes para representar información
 - **Simplicidad**: Facilidad de procesar por software y de entender por personas
-  - Utilizable con cualquier lenguaje o alfabeto (representa el estándar unicode)
+  - Utilizable con cualquier lenguaje o alfabeto (representa el estándar Unicode)
   - Sensible a mayúsculas y minúsculas
   - Gramática de obligado cumplimiento
 - **Auto-descriptivo**: Datos como texto, metadatos como etiquetas y atributos
@@ -358,7 +358,7 @@ Además de estar bien formados, podemos comprobar la **validez** de un documento
 
 <cite>Se dice que un documento XML es válido con respecto a un esquema si tanto su estructura como sus elementos cumplen con la especificación de dicho esquema</cite>
 
-Para especificar equemas se usa:
+Para especificar esquemas se usa:
 
 - _Document Type Definition_ (DTD)
 - _XML Schema_ (XSD)
@@ -719,7 +719,7 @@ Otros operadores de búsqueda interesantes:
      <libro id="2">
           <titulo>Indignaos</titulo>
           <autor>Stephane Hessel</autor>
-          <autor>Jose Luis Sampedro</autor>
+          <autor>José Luis Sampedro</autor>
           <año>2011</año>
           <precio>15</precio>
      </libro>
@@ -943,7 +943,7 @@ Lista de valores
             "numero" : "222111111"
         } ,
         {
-            "tipo" : "movil" ,
+            "tipo" : "móvil" ,
             "numero" : "111111111"
         }
     ]

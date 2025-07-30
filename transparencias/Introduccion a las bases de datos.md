@@ -90,7 +90,7 @@ Cada programa utiliza sus propios datos:
 
 Cuando se utilizan bases de datos los programas "*comparten*" los datos
 
-- Las bases de datos se definen y manipulan mediante un **Sistema de Gestión de Bases de Datos** (SGDB)
+- Las bases de datos se definen y manipulan mediante un **Sistema de Gestión de Bases de Datos** (SGBD)
 
 ---
 
@@ -154,7 +154,7 @@ Modelos de datos **lógicos**
 Modelos de datos **físicos**
 
 - Estructuras de datos de bajo nivel usadas para almacenar información
-- Dependientes del SGDB
+- Dependientes del SGBD
 
 ![bg left:10% 70%](img/t1/abstraccion.png)
 
