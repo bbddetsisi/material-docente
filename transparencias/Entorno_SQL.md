@@ -65,7 +65,7 @@ Si instalas `Docker` en tu ordenador, estos pasos no serán necesarios, ya que p
 
 Ahora vamos a ejecutar el programa `Docker Desktop` que dispone tanto del servicio de `Docker` para gestionar los contenedores y como de una interfaz gráfica que nos facilita la gestión de estos.
 
-Busca la aplicación `Docker Desktop` en el menú de inicio y ejecutala.
+Busca la aplicación `Docker Desktop` en el menú de inicio y ejecútala.
 
 ---
 

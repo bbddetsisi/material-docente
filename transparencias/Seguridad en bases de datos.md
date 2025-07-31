@@ -53,7 +53,7 @@ math        : mathjax
 ---
 
 <!-- _class: section -->
-# AMENANZAS A LA SEGURIDAD DE LAS BASES DE DATOS
+# AMENAZAS A LA SEGURIDAD DE LAS BASES DE DATOS
 
 
 ---
@@ -128,7 +128,7 @@ Asigna los permisos que consideremos necesarios a un usuario:
 
 - `PRIVILEGE`: Uno o más de los siguientes valores que permiten ejecución de las sentencias homónimas: `CREATE`, `ALTER`, `DROP`, `INSERT`, `UPDATE`, `DELETE`, `SELECT`; `ALL` para todos los permisos. Existen otros permisos que pueden ser otorgados (ver [https://dev.mysql.com/doc/refman/8.4/en/grant.html#grant-privileges](https://dev.mysql.com/doc/refman/8.4/en/grant.html#grant-privileges))
 - `schema.tabla`: El `schema` y la tabla(s) sobre la que aplicar los permisos, siendo `*` equivalente a _todos_ (e.g. `s.*` todas tabla de `s`, `*.*` toda tabla de todo `schema`)
-- `WITH GRANT OPTION` (opcional): , que puede omitirse, otorga al usuario la posibilidad de asignatar permisos iguales o inferiores a los suyos a otros usuarios
+- `WITH GRANT OPTION` (opcional): , que puede omitirse, otorga al usuario la posibilidad de asignar permisos iguales o inferiores a los suyos a otros usuarios
 
 `FLUSH PRIVILEGES` tras asignar permisos fuerza su refresco en algunos SGBD
 
@@ -188,7 +188,7 @@ DROP USER 'nombre_de_usuario';
 
 # Estrategia 2. Encriptación de datos
 
-La encritación de datos consiste en codificación de datos para proteger su confidencialidad.
+La encriptación de datos consiste en codificación de datos para proteger su confidencialidad.
 
 En MySQL existen diferente mecanismos que permiten esta encriptación.
 
@@ -253,7 +253,7 @@ ssl-key=/ruta/al/archivo/server-key.pem
 SHOW VARIABLES LIKE 'have_ssl'; # Con SSL/TLS habilitado have_ssl debería ser YES.
 ```
 
-- Finalmente conectate a MySQL utilizando SSL/TLS desde el cliente, especifica la opción `--ssl-mode` al iniciar sesión:
+- Finalmente conéctate a MySQL utilizando SSL/TLS desde el cliente, especifica la opción `--ssl-mode` al iniciar sesión:
 
 ```bash
 mysql --ssl-mode=REQUIRED -u usuario -p

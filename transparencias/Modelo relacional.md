@@ -120,7 +120,7 @@ Denominamos:
   - En este caso el grado es *n*.
 - **Tupla**: Cada una las filas de la tabla
 
-La misma tabla puede respresentarse textualmente del siguiente modo:
+La misma tabla puede representarse textualmente del siguiente modo:
 
 $$R \left ( A_1,A_2,\ldots,A_n \right )$$
 
@@ -373,7 +373,7 @@ Dado el siguiente modelo ER, transformarlo al modelo relacional:
 
 Las formas normales en bases de datos son una serie de reglas o directrices que se utilizan para diseñar esquemas de bases de datos relacionales de manera que se minimicen las redundancias de datos y se asegure la integridad de la información almacenada
 
-El objetivo principal de las formas normales es **eliminar las anomalías en la inserción, borrado o actualización de datos**, es decir, evitar introducir datos que la estrucutra de la base de datos no lo permita o perder información por una actualización o un borrado. Esto, además, garantiza *a posteriori* que una base de datos esté bien estructurada y optimizada para consultas
+El objetivo principal de las formas normales es **eliminar las anomalías en la inserción, borrado o actualización de datos**, es decir, evitar introducir datos que la estructura de la base de datos no lo permita o perder información por una actualización o un borrado. Esto, además, garantiza *a posteriori* que una base de datos esté bien estructurada y optimizada para consultas
 
 ---
 
