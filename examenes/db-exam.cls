@@ -3,6 +3,7 @@
 
 \LoadClassWithOptions{exam}
 
+\RequirePackage{hyperref}
 \RequirePackage{kvoptions}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
