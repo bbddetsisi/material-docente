@@ -110,7 +110,7 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-header="Seguridad en bases de datos" data-footer="Bases de datos" data-class="section" data-theme="bbdd" class="section" data-marpit-pagination="5" data-marpit-pagination-total="28" style="--paginate:true;--header:Seguridad en bases de datos;--footer:Bases de datos;--class:section;--theme:bbdd;">
 <header>Seguridad en bases de datos</header>
 
-<h1>AMENANZAS A LA SEGURIDAD DE LAS BASES DE DATOS</h1>
+<h1>AMENAZAS A LA SEGURIDAD DE LAS BASES DE DATOS</h1>
 <footer>Bases de datos</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-header="Seguridad en bases de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="6" data-marpit-pagination-total="28" style="--paginate:true;--header:Seguridad en bases de datos;--footer:Bases de datos;--theme:bbdd;">
@@ -186,7 +186,7 @@
 <ul>
 <li><code>PRIVILEGE</code>: Uno o más de los siguientes valores que permiten ejecución de las sentencias homónimas: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>SELECT</code>; <code>ALL</code> para todos los permisos. Existen otros permisos que pueden ser otorgados (ver <a href="https://dev.mysql.com/doc/refman/8.4/en/grant.html#grant-privileges">https://dev.mysql.com/doc/refman/8.4/en/grant.html#grant-privileges</a>)</li>
 <li><code>schema.tabla</code>: El <code>schema</code> y la tabla(s) sobre la que aplicar los permisos, siendo <code>*</code> equivalente a <em>todos</em> (e.g. <code>s.*</code> todas tabla de <code>s</code>, <code>*.*</code> toda tabla de todo <code>schema</code>)</li>
-<li><code>WITH GRANT OPTION</code> (opcional): , que puede omitirse, otorga al usuario la posibilidad de asignatar permisos iguales o inferiores a los suyos a otros usuarios</li>
+<li><code>WITH GRANT OPTION</code> (opcional): , que puede omitirse, otorga al usuario la posibilidad de asignar permisos iguales o inferiores a los suyos a otros usuarios</li>
 </ul>
 <p><code>FLUSH PRIVILEGES</code> tras asignar permisos fuerza su refresco en algunos SGBD</p>
 <footer>Bases de datos</footer>
@@ -232,7 +232,7 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="Seguridad en bases de datos" data-footer="Bases de datos" data-theme="bbdd" data-marpit-pagination="18" data-marpit-pagination-total="28" style="--paginate:true;--header:Seguridad en bases de datos;--footer:Bases de datos;--theme:bbdd;">
 <header>Seguridad en bases de datos</header>
 <h1>Estrategia 2. Encriptación de datos</h1>
-<p>La encritación de datos consiste en codificación de datos para proteger su confidencialidad.</p>
+<p>La encriptación de datos consiste en codificación de datos para proteger su confidencialidad.</p>
 <p>En MySQL existen diferente mecanismos que permiten esta encriptación.</p>
 <footer>Bases de datos</footer>
 </section>
@@ -309,7 +309,7 @@ ssl-key=/ruta/al/archivo/server-key.pem
 <pre><code class="language-sql"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;have_ssl&#x27;</span>; # Con SSL<span class="hljs-operator">/</span>TLS habilitado have_ssl debería ser YES.
 </span></span></foreignObject></svg></code></pre>
 <ul>
-<li>Finalmente conectate a MySQL utilizando SSL/TLS desde el cliente, especifica la opción <code>--ssl-mode</code> al iniciar sesión:</li>
+<li>Finalmente conéctate a MySQL utilizando SSL/TLS desde el cliente, especifica la opción <code>--ssl-mode</code> al iniciar sesión:</li>
 </ul>
 <pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>mysql --ssl-mode=REQUIRED -u usuario -p
 </span></span></foreignObject></svg></code></pre>
