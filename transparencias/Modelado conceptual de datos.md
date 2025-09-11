@@ -350,57 +350,7 @@ Modelo de datos conceptual que representa un esquema de bases de datos
 - Descripción sencilla y global de una BBDD
 - Se construye a partir de los requisitos de datos
 
-**Estándar más utilizado** para el modelado conceptual
-
----
-
-# El modelo Entidad-Relación (ER)
-
-![w:700](img/t2/modelo-er.png)
-
----
-
-# Notación alternativa: Martin (I)
-
-1. Las cardinalidades mínima y máxima se representan en la línea de la relación
-2. No existe rombo $\rightarrow$ Las entidades se relacionan directamente
-   - Se puede indicar el nombre de la relación en la línea
-
-![](img/t2/martin1.png)
-
----
-
-# Notación alternativa: Martin (II)
-
-Reglas de transformación de Chen a Martin (relaciones):
-
-![w:600](img/t2/er-1n.png)
-
-se transforma en
-
-![w:600](img/t2/martin-1n.png)
-
----
-
-# Notación alternativa: Martin (III)
-
-Reglas de transformación de Chen a Martin (relación N:M):
-
-![w:600](img/t2/er-nm.png)
-
-se transforma en
-
-![w:600](img/t2/martin-nm.png)
-
----
-
-# Notación alternativa: Martin ( y IV)
-
-Reglas de transformación de Chen a Martin (entidad débil):
-
-![](img/t2/martin-debil.png)
-
-`Empleado` es entidad débil, por eso la línea de la relación ahora es continua
+**Estándar _de facto_ más utilizado** para el modelado conceptual
 
 ---
 
@@ -588,6 +538,119 @@ Para cada profesor hay que indicar aquellos que pueden cubrirle
 ## Diagrama completo
 
 ![](img/t2/ejercicio-paso-a-paso-relacion-todas.png)
+
+---
+
+<!-- _class: section -->
+# NOTACIÓN ALTERNATIVA
+
+---
+
+# Problemas de la notación Chen
+
+La notación de Chen permite identificar de manera sencilla los datos que deben almacenarse en una base de datos. No obstante, presenta algunas limitaciones, entre ellas:
+
+- **Exceso de símbolos y dispersión**
+  - Chen emplea óvalos para atributos, rombos para relaciones y rectángulos para entidades, lo que provoca que los diagramas resulten extensos y difíciles de interpretar cuando el modelo incluye muchas entidades.
+- **Cardinalidades poco claras**
+  - Las cardinalidades suelen representarse con números (1, N, M) o con anotaciones junto a las líneas, lo que puede generar ambigüedad cuando se cruzan múltiples relaciones.
+
+Para superar estas dificultades, a inicios de la década de 1980 James Martin propuso una notación más simple y minimalista, capaz de representar la misma información de manera más compacta y clara.
+
+---
+
+# Entidades con notación Martin
+
+Las entidades pasan de ser rectángulos con óvalos a rectángulos con listados de atributos.
+
+La clave de la entidad se denota mediante *PK* (*Primary Key*) o subrayada (o ambas).
+
+![w:800](img/t2/martin-entidad.png)
+
+---
+
+# Cardinalidades con notación Martin
+
+Las cardinalidades dejan de representarse con números (0 ó 1) y letras (N o M) y pasan a usar una notación *pata de cuervo* (*crow's foot*).
+- En ocasiones se omiten las cardinalidades mínimas.
+
+![w:700](img/t2/martin-cardinalidades.png)
+
+---
+
+# Relaciones con notación Martin (1 de 5)
+
+Desaparecen los rombos: las entidades se unen con una línea sólida (algunos programas las ponen discontínuas) incluyendo las cardinalidades con la notación *pata de cuervo*.
+
+![w:700](img/t2/martin-relacion-sin-nombre.png)
+
+---
+
+# Relaciones con notación Martin (2 de 5)
+
+Las relaciones pueden incluir opcionalmente el nombre de la relación sobre la línea.
+
+![w:700](img/t2/martin-relacion-con-nombre.png)
+
+---
+
+# Relaciones con notación Martin (3 de 5)
+
+Si la relación tiene atributos, se ponen junto al nombre de la misma.
+
+![w:800](img/t2/martin-relacion-con-atributos.png)
+
+---
+
+# Relaciones con notación Martin (4 de 5)
+
+Cuando la cardinalidad de la relación es N:M es habitual incluir una **entidad asociativa** descomponiendo la relación N:M en dos relaciones 1:N.
+
+![w:800](img/t2/martin-relacion-asociativa.png)
+
+---
+
+# Relaciones con notación Martin (5 de 5)
+
+Si la relación tuviera atributos, puede mantenerse la entidad asociativa e incluirse los atributos en el nombre de cualquiera de las dos relaciones... o bien transformar la entidad asociativa en una entidad normal e incluir los atributos en la misma.
+
+![w:800](img/t2/martin-relacion-nm-con-atributos.png)
+
+---
+
+# Relaciones $n$-arias
+
+Cuando el grado de la relación es mayor que dos, la relación se transforma **siempre** en una entidad asociativa con o sin atributos.
+
+![w:800](img/t2/martin-relacion-n-aria.png)
+
+---
+
+# Entidades débiles (1 de 2)
+
+Cuando las entidades son débiles, se representan de forma normal, pero la relación que lo hace débil se representa mediante una línea discontinua.
+
+![w:700](img/t2/martin-entidad-debil-identificacion.png)
+
+---
+
+# Entidades débiles (2 de 2)
+
+Si la dependencia fuera de identificación, el atributo discriminador se subraya en discontinuo.
+
+![w:700](img/t2/martin-entidad-debil.png)
+
+---
+
+# Conclusiones de la notación Martin
+
+La notación de Martin se usa tanto en el modelo conceptual como en el modelo lógico de una base de datos.
+
+- En el conceptual (visto en este tema), representa entidades, atributos y relaciones para comprender el dominio del problema.
+
+- En el lógico (que veremos más adelante), añade detalles técnicos como claves foráneas que se acercan al modelo físico.
+
+Aunque la notación sea la misma, no deben confundirse: cada nivel tiene distinto propósito y nivel de abstracción.
 
 ---
 
