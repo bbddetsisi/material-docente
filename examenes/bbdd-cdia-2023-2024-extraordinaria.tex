@@ -1,82 +1,14 @@
-%\documentclass[12pt,a4paper,addpoints]{exam}
-\documentclass[12pt,a4paper,addpoints,answers]{exam}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
-\usepackage{adjustbox}
-\usepackage{multirow}
-\usepackage{graphicx}
-\usepackage{minted}
-\usepackage{tikz}
-\usepackage{amsmath}
-\usepackage{setspace}
-\usepackage{afterpage}
-\usepackage{wrapfig}
-
-
-% Términos en castellano
-\pointpoints{Punto}{Puntos}
-\bonuspointpoints{Punto extra}{Puntos extra}
-\renewcommand{\solutiontitle}{\noindent\textbf{Solución propuesta:}\enspace\\}
-\chqword{Pregunta}
-\chpgword{Página}
-\chpword{Punto}
-\chbpword{Punto extra}
-\chsword{Obtenidos}
-\chtword{Totales}
-\hpword{Puntos:}
-\hsword{Nota:}
-\hqword{Bloque:}
-\htword{Total:}
-
-\pagestyle{headandfoot}
-\firstpageheadrule
-\runningheadrule
-\firstpageheader{Bases de Datos I}{}{Convocatoria extraordinaria\\Curso 2023/2024}
-\runningheader{Bases de Datos I}{}{Convocatoria extraordinaria\\Curso 2023/2024}
-\firstpagefooter{}{}{\thepage\,/\,\numpages}
-\runningfooter{}{}{\thepage\,/\,\numpages}
+\documentclass[
+    12pt,
+    a4paper,
+    addpoints,
+    answers,
+    convocatoria=ext,
+    titulacion=CD,
+    curso=2023/2024,
+]{db-exam}
 
 \begin{document}
-
-\begin{table}[t]
-\renewcommand{\arraystretch}{1.2}
-\small
-\centering
-\begin{tabular}{|l|p{5.5cm}|p{5.cm}|}
-\hline
-\multirow{3}{*}{\includegraphics[width=2.5cm]{logos/etsisi}} & \multicolumn{2}{l|}{Apellidos:} \\ \cline{2-3} 
-                  & \multicolumn{2}{l|}{Nombre:}    \\ \cline{2-3} 
-                  & DNI:  & Num. mat.: \\ \hline
-\end{tabular}%
-\label{tab:datos}
-\end{table}
-
-%\begin{center}
-%\gradetable[h][questions]
-%\end{center}
-
-\begin{center}\textbf{Normativa de examen}\end{center}
-\begin{itemize}
-    \item No está permitido el uso de dispositivos móviles ni otros dispositivos electrónicos.
-    \item Cada estudiante podrá disponer de un folio tamaño A4 con las anotaciones que considere oportunas para desarrollar su examen. El folio podrá contener texto por ambas caras.
-    \item Durante el examen, el profesor podrán solicitar acreditar la identidad de los participantes en el mismo. Deberá tener en todo momento su Documento Nacional de Identidad y/o Carné de la UPM visible sobre la mesa.
-    \item El examen deberá estar escrito en bolígrafo de color azul o negro.
-    \item No se permite abandonar el aula de examen durante los primeros 15 minutos. Transcurrido este tiempo, no se permitirá entrar al examen. 
-    \item El examen tiene una duración máxima de \textbf{2.5 horas}. 
-    \item Justifique sus respuestas lo mejor posible indicando, si fuese necesario, los pasos realizados.
-    \item Las calificaciones provisionales serán publicadas en el Moodle de la asignatura el viernes 14 de junio de 2024.
-    \item La fecha para la revisión del examen se anunciará en el Moodle de la asignatura junto a la publicación de las calificaciones.
-\end{itemize}
-
-\vspace{1cm}
-
-\begin{center}
-\gradetable[h][questions]
-\end{center}
-
-\newpage
-
 
 \begin{questions}
 
@@ -103,7 +35,7 @@ Cada vez que un entrenador captura un pokémon de un número determinado, esta s
 
 \begin{solution}
 \begin{center}
-\includegraphics[width=.8\textwidth]{figs/2024-extraordinaria-gcdia-mer.pdf}
+\includegraphics[width=.8\textwidth]{figs/bbdd-cdia-2023-2024-extraordinaria/2024-extraordinaria-gcdia-mer.pdf}
 \end{center}
 \end{solution}
 \end{parts}
@@ -115,7 +47,7 @@ Cada vez que un entrenador captura un pokémon de un número determinado, esta s
 
 Dado la siguiente creación de tablas en SQL:
 
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 CREATE TABLE entrenadores (
     alias VARCHAR(50) UNIQUE NOT NULL,
     edad INT NOT NULL,
@@ -147,7 +79,7 @@ CREATE TABLE capturas (
     CONSTRAINT fk_localizacion 
         FOREIGN KEY (localizacion) REFERENCES localizaciones (nombre)
 );
-\end{minted}
+\end{lstlisting}
 
 Se pide:
 \begin{parts}
@@ -156,20 +88,20 @@ Se pide:
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{alias} de los entrenadores que nunca han capturado un pokemon en la \texttt{localizacion} `\textit{Monte Moon}'.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT alias
 FROM entrenadores
 WHERE alias NOT IN (SELECT entrenador
                      FROM capturas
                      WHERE localizacion = 'Monte Moon')
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % interseccion
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{nombre} de los pokemons que han sido capturados por los entrenadores `\textit{Ash Ketchum}' y `\textit{Gary Oak}'.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT nombre
 FROM pokemons
 WHERE num IN (SELECT pokemon
@@ -178,14 +110,14 @@ WHERE num IN (SELECT pokemon
   AND num IN (SELECT pokemon
               FROM capturas
               WHERE entrenador = 'gary Oak')         
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % division
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{alias} de los entrenadores que se hayan capturado todos los pokemon de \texttt{tipo} `\textit{fuego}'.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT alias
 FROM entrenadores
 WHERE NOT EXISTS (SELECT *
@@ -197,55 +129,55 @@ WHERE NOT EXISTS (SELECT *
                                             pokemons.num
                                       AND capturas.entrenador = 
                                             entrenadores.nombre))
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % maximo
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{nombre} de la localización o localizaciones donde más pokemons se han capturado.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT localizacion
 FROM capturas
 GROUP BY localizacion
 HAVING COUNT(*) >= ALL (SELECT COUNT(*)
                         FROM capturas
                         GROUP BY localizacion);
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % minimo
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{tipo} (o \texttt{tipos}) de pokemons del que existen menos pokemons.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT tipo
 FROM pokemons
 GROUP BY tipo
 HAVING COUNT(*) <= ALL (SELECT COUNT(*)
                         FROM pokemons
                         GROUP BY tipo);
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % joins
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{alias} de los entrenadores que hayan capturado el pokemon denominado \textit{New} en la localización `\textit{Cueva Celeste}'.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT DISTINCT alias
 FROM capturas
     INNER JOIN pokemons ON pokemons.num = captura.pokemon
 WHERE nombre = 'New'
   AND localizacion = 'Cueva Celeste';
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % procedmiento
 \part[1] Escriba un procedimiento almacenado en SQL que dado el \texttt{nombre} de un pokemon, que se pasará como parámetro de entrada, liste por pantalla el número de veces que ha sido capturado en cada localización. Si un pokemon nunca ha sido capturado no es necesario que aparezca en el listado. El listado debe aparecer ordenador de mayor a menor número de capturas.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 DELIMITER $$
 CREATE PROCEDURE num_veces_capturado (IN nombre_pokemon VARCHAR(50))
 BEGIN
@@ -257,14 +189,14 @@ BEGIN
     ORDER BY num_capturas DESC;
 END$$
 DELIMITER ;
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % trigger
 \part[1] Escriba un \textit{trigger} en SQL que impida que los entrenadores menores de 16 años que añadan nuevas capturas de pokemons de \texttt{tipo} `\textit{fuego}' para evitar sufrir quemaduras.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 DELIMITER $$
 CREATE TRIGGER evita_fuego_16 BEFORE INSERT ON pokemons 
 FOR EACH ROW
@@ -287,21 +219,21 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % permisos de usuario
 \part[\half] Cree un usuario denominado `\textit{cartógrafo}' y otórguele permisos de consulta e inserción sobre la tabla \texttt{localizaciones}. A continuación, inserte una nueva localización denominada `\textit{Pueblo Paleta}' de tipo `\textit{ciudad}'.
 
 \begin{solution}[12em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 
 CREATE USER 'cartógrafo' IDENTIFIED BY '1234';
 
 GRANT SELECT, INSERT ON localizaciones TO 'cartógrafo';
 
 INSERT INTO localizaciones VALUES ("Pueblo Paleta", "Ciudad");
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 \end{parts}
@@ -314,7 +246,7 @@ INSERT INTO localizaciones VALUES ("Pueblo Paleta", "Ciudad");
 \begin{parts}
 \part[1] Tomando como punto de partida un \texttt{SCHEMA} de bases de datos basado en el modelo relacional del bloque anterior, complete los huecos del siguiente código fuente en \texttt{python} de tal manera que se satisfaga la funcionalidad indicada como comentarios.
 
-\begin{minted}[baselinestretch=1,fontsize=\small]{python}
+\begin{lstlisting}[language=python]
 import mysql.connector
 
 # establecimiento de conexion
@@ -357,10 +289,10 @@ for (nombre_pokemon, tipo_pokemon) in cursor:
 cursor.close()
 cnx.close()
 mydb.close()
-\end{minted}
+\end{lstlisting}
 
 \begin{solution}[1em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{python}
+\begin{lstlisting}[language=python]
 import mysql.connector
 
 # establecimiento de conexion
@@ -402,7 +334,7 @@ for (nombre_pokemon, tipo_pokemon) in cursor:
 cursor.close()
 cnx.close()
 mydb.close()
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 \end{parts}

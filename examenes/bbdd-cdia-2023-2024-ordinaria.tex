@@ -1,82 +1,14 @@
-%\documentclass[12pt,a4paper,addpoints]{exam}
-\documentclass[12pt,a4paper,addpoints,answers]{exam}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
-\usepackage{adjustbox}
-\usepackage{multirow}
-\usepackage{graphicx}
-\usepackage{minted}
-\usepackage{tikz}
-\usepackage{amsmath}
-\usepackage{setspace}
-\usepackage{afterpage}
-\usepackage{wrapfig}
-
-
-% Términos en castellano
-\pointpoints{Punto}{Puntos}
-\bonuspointpoints{Punto extra}{Puntos extra}
-\renewcommand{\solutiontitle}{\noindent\textbf{Solución propuesta:}\enspace\\}
-\chqword{Pregunta}
-\chpgword{Página}
-\chpword{Punto}
-\chbpword{Punto extra}
-\chsword{Obtenidos}
-\chtword{Totales}
-\hpword{Puntos:}
-\hsword{Nota:}
-\hqword{Bloque:}
-\htword{Total:}
-
-\pagestyle{headandfoot}
-\firstpageheadrule
-\runningheadrule
-\firstpageheader{Bases de Datos I}{}{Convocatoria ordinaria\\Curso 2023/2024}
-\runningheader{Bases de Datos I}{}{Convocatoria ordinaria\\Curso 2023/2024}
-\firstpagefooter{}{}{\thepage\,/\,\numpages}
-\runningfooter{}{}{\thepage\,/\,\numpages}
+\documentclass[
+    12pt,
+    a4paper,
+    addpoints,
+    answers,
+    convocatoria=ord,
+    titulacion=CD,
+    curso=2023/2024,
+]{db-exam}
 
 \begin{document}
-
-\begin{table}[t]
-\renewcommand{\arraystretch}{1.2}
-\small
-\centering
-\begin{tabular}{|l|p{5.5cm}|p{5.cm}|}
-\hline
-\multirow{3}{*}{\includegraphics[width=2.5cm]{logos/etsisi}} & \multicolumn{2}{l|}{Apellidos:} \\ \cline{2-3} 
-                  & \multicolumn{2}{l|}{Nombre:}    \\ \cline{2-3} 
-                  & DNI:  & Num. mat.: \\ \hline
-\end{tabular}%
-\label{tab:datos}
-\end{table}
-
-%\begin{center}
-%\gradetable[h][questions]
-%\end{center}
-
-\begin{center}\textbf{Normativa de examen}\end{center}
-\begin{itemize}
-    \item No está permitido el uso de dispositivos móviles ni otros dispositivos electrónicos.
-    \item Cada estudiante podrá disponer de un folio tamaño A4 con las anotaciones que considere oportunas para desarrollar su examen. El folio podrá contener texto por ambas caras.
-    \item Durante el examen, el profesor podrán solicitar acreditar la identidad de los participantes en el mismo. Deberá tener en todo momento su Documento Nacional de Identidad y/o Carné de la UPM visible sobre la mesa.
-    \item El examen deberá estar escrito en bolígrafo de color azul o negro.
-    \item No se permite abandonar el aula de examen durante los primeros 15 minutos. Transcurrido este tiempo, no se permitirá entrar al examen. 
-    \item El examen tiene una duración máxima de \textbf{2.5 horas}. 
-    \item Justifique sus respuestas lo mejor posible indicando, si fuese necesario, los pasos realizados.
-    \item Las calificaciones provisionales serán publicadas en el Moodle de la asignatura el viernes 14 de junio de 2024.
-    \item La fecha para la revisión del examen se anunciará en el Moodle de la asignatura junto a la publicación de las calificaciones.
-\end{itemize}
-
-\vspace{1cm}
-
-\begin{center}
-\gradetable[h][questions]
-\end{center}
-
-\newpage
-
 
 \begin{questions}
 
@@ -100,7 +32,7 @@ En caso de que el caos decidiera hacer una visita, los guardas pueden dirigirse 
 
 
 \begin{solution}
-    \includegraphics[width=\textwidth]{figs/2024-ordinaria-gcdia-mer.png}
+    \includegraphics[width=\textwidth]{figs/bbdd-cdia-2023-2024-ordinaria/2024-ordinaria-gcdia-mer.png}
 \end{solution}
 \end{parts}
 
@@ -126,20 +58,20 @@ Se pide:
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{nombre} de las criaturas que nunca han recibido un \texttt{tratamiento} cuyo \texttt{nombre} sea `\textit{tónico de bailes}'.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT nombre
 FROM critura
 WHERE nombre NOT IN (SELECT critaura
                      FROM aplica
                      WHERE tratamiento = 'tónico de bailes')
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % interseccion
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{nombre} del personal que ha aplicado algún tratamiento a las criaturas cuyo \texttt{nombre} sea `\textit{Risueño Rob}' y `\textit{Caféinomano Eduardo}'.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT nombre
 FROM personal
 WHERE nombre IN (SELECT personal
@@ -148,14 +80,14 @@ WHERE nombre IN (SELECT personal
   AND nombre IN (SELECT personal
                  FROM aplica
                  WHERE criatura = 'Cafeinómano Eduardo')         
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % division
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{nombre} del tratamiento que se haya aplicado a todas las criaturas de la \texttt{especie} `\textit{zombi}'.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT nombre
 FROM tratamiento
 WHERE NOT EXISTS (SELECT *
@@ -167,42 +99,42 @@ WHERE NOT EXISTS (SELECT *
                                             tratamiento.nombre
                                       AND aplica.criatura = 
                                             criatura.nombre))
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % maximo
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{nombre} del tratamiento o tratamientos más veces aplicado.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT tratamiento
 FROM aplica
 GROUP BY tratamiento
 HAVING COUNT(*) >= ALL (SELECT COUNT(*)
                         FROM aplica
                         GROUP BY tratamiento);
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % joins
 \part[\half] Escriba una consulta en SQL que devuelva el \texttt{nombre} de las criaturas de la \texttt{especie} `\textit{sirena}' a las que se le haya aplicado algun tratamiento por personal de la \texttt{especialidad} `\textit{Pociones de la Eternidad}'.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 SELECT DISTINCT criatura.nombre
 FROM aplica
     INNER JOIN criatura ON criatura.nombre = aplica.criatura
     INNER JOIN personal ON personal.nombre = aplica.personal
 WHERE criatura.especie = 'sirena'
   AND personal.especialidad = 'Pociones de la Eternidad';
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % procedmiento
 \part[1] Escriba un procedimiento almacenado en SQL que dado el nombre de una \texttt{enfermedad}, que se pasará como parámetro de entrada, liste por pantalla el número de veces que se han aplicado tratamientos para dicha enfermedad a cada \texttt{especie}. Si una especie nunca ha recibido tratamientos no es necesario que aparezca en el listado. El listado debe aparecer ordenador de mayor a menor número de tratamientos aplicados.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 DELIMITER $$
 CREATE PROCEDURE num_tratamientos_especie (IN enf VARCHAR(30))
 BEGIN
@@ -215,14 +147,14 @@ BEGIN
     ORDER BY num_veces DESC;
 END$$
 DELIMITER ;
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % trigger
 \part[1] Escriba un \textit{trigger} en SQL que impida que se inserten nuevas aplicaciones de tratamiento a criaturas si ya se han aplicado antes aunque sean realizadas por personal diferente.
 
 \begin{solution}[15em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 DELIMITER $$
 CREATE TRIGGER evita_tratamiento_duplicado BEFORE INSERT ON aplica 
 FOR EACH ROW
@@ -241,14 +173,14 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 % vista con usuario
 \part[1] Cree una vista en SQL que permita conocer el número de tratamientos aplicado por cada personal (las columnas de la vista deberán ser el \texttt{nombre} del personal y el número total de tratamiento aplicados). A continuación, cree un usuario denominado `\textit{gerente}' que tenga únicamente permisos de consulta sobre esa vista.
 
 \begin{solution}[12em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{sql}
+\begin{lstlisting}[language=sql]
 CREATE VIEW num_tratamientos_personal AS
 SELECT personal, COUNT(*) AS num_tratamiento
 FROM aplica
@@ -257,7 +189,7 @@ GROUP BY personal;
 CREATE USER 'gerente' IDENTIFIED BY '1234';
 
 GRANT SELECT ON num_tratamientos_personal TO 'gerente';
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 \end{parts}
@@ -270,7 +202,7 @@ GRANT SELECT ON num_tratamientos_personal TO 'gerente';
 \begin{parts}
 \part[1] Tomando como punto de partida un \texttt{SCHEMA} de bases de datos basado en el modelo relacional del bloque anterior, complete los huecos del siguiente código fuente en \texttt{python} de tal manera que se satisfaga la funcionalidad indicada como comentarios.
 
-\begin{minted}[baselinestretch=1,fontsize=\small]{python}
+\begin{lstlisting}[language=python]
 import mysql.connector
 
 # establecimiento de conexion
@@ -307,10 +239,10 @@ cursor.close()
 cnx.close()
 mydb.close()
 
-\end{minted}
+\end{lstlisting}
 
 \begin{solution}[1em]
-\begin{minted}[baselinestretch=1,fontsize=\small]{python}
+\begin{lstlisting}[language=python]
 import mysql.connector
 
 # establecimiento de conexion
@@ -346,7 +278,7 @@ for (nombre, sexo) in cursor:
 cursor.close()
 cnx.close()
 mydb.close()
-\end{minted}
+\end{lstlisting}
 \end{solution}
 
 \end{parts}
