@@ -25,7 +25,7 @@
 \ifthenelse{\equal{\@bbdd@convocatoria}{ext}}{%
     \renewcommand{\convocatoria}{Convocatoria extraordinaria}%
 }{%
-\ifthenelse{\equal{\reporttype}{}}{%
+\ifthenelse{\equal{\@bbdd@titulacion}{}}{%
     \PackageError{db-exam}{Conv}{Falta el parámetro 'convocatoria'}%
 }{}}}
 
@@ -45,7 +45,7 @@
 \ifthenelse{\equal{\@bbdd@titulacion}{NoCD}}{
     \renewcommand{\titulacion}{Bases de Datos}
 {
-\ifthenelse{\equal{\reporttype}{}}{
+\ifthenelse{\equal{\@bbdd@convocatoria}{}}{
     \PackageError{db-exam}{Tit}{Falta el parámetro 'titulacion'}
 }
 {}}}}
