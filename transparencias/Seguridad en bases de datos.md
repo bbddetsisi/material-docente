@@ -23,7 +23,7 @@ math        : mathjax
 
 #### E.T.S.I. de Sistemas Informáticos
 
-##### Universidad Politénica de Madrid
+##### Universidad Politécnica de Madrid
 
 [![height:30](https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
