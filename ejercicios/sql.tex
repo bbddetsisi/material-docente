@@ -45,7 +45,7 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     \item Existen tres tipos adicionales de valores con formato temporal como son \textit{time} de tipo \texttt{TIME}, \textit{date} y \textit{birthday} de tipo \texttt{DATE} y \textit{year} de tipo \texttt{YEAR}.
 \end{itemize}
 
-\subsection{Consultas SQL:}
+\subsection*{Consultas SQL:}
 
 \begin{enumerate}
     \item Obtener el nombre y apellidos de los pilotos españoles.
@@ -113,7 +113,7 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     \item Codifique una consulta que obtenga el nombre y apellidos de los pilotos que hayan quedado entre los 10 primeros puestos (\texttt{positionOrder <= 10}) de todas las carreras del año 2017.
 \end{enumerate}
 
-\subsection{Procedimientos almacenados:}
+\subsection*{Procedimientos almacenados:}
 
 \begin{enumerate}
     \item Crea un procedimiento almacenado de nombre \texttt{getRacesInAYear}, que obtenga como salida los nombres de las carreras y el número total de constructores que han participado en la carrera, para un año concreto que se pasará como parámetro de entrada. En el procedimiento no se definirán parámetros de salida.  
@@ -141,8 +141,7 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     \item Crea un procedimiento que reciba una nacionalidad como parámetro de entrada y realice una consulta sobre la tabla \texttt{drivers} para obtener todos los pilotos de esa nacionalidad. Los nombres y apellidos de estos pilotos deberán devolverse en un parámetro de salida de tipo \texttt{TEXT} separados por comas (\texttt{,}).
 \end{enumerate}
 
-
-\subsection{Funciones almacenadas:}
+\subsection*{Funciones almacenadas:}
 
 \begin{enumerate}
     \item Escribe una función que devuelva el número de puntos que se ha conseguido el campeón de ese año en cada mundial.
@@ -154,7 +153,7 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     \item Codifique una función almacenada llamada \texttt{diffPoints} que reciba los identificadores de dos pilotos como parámetros (\texttt{driver1} y \texttt{driver2}) y devuelva la diferencia de puntos totales conseguidos por \texttt{driver1} con respecto de \texttt{driver2}. Tenga en cuenta que el valor será positivo si \texttt{driver1} ha conseguido más puntos que \texttt{driver2} y negativo en caso contrario.
 \end{enumerate}
 
-\subsection{Triggers:}
+\subsection*{Triggers:}
 
 \begin{enumerate}
     %\item A partir de este momento la FIA no va a permitir que haya equipos con más de 2 pilotos, por ello se debe desarrollar un trigger que impida que se puedan incorporar en un mismo equipo más de 2 pilotos a la base de datos. Para ello, se debe impedir toda operación que haga que 3 o más pilotos pasen a formar parte del mismo equipo de constructores, ya sea mediante inserción o actualización de los datos. 
@@ -180,9 +179,75 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     %\item A partir de ahora, los patrocinadores van a poder patrocinar varias carreras. Realize las modificaciones que considere necesarias en el \texttt{schema} de la base de datos y actualice los triggers para garantizar que el tipo de patrocinador sea siempre correcto.
 \end{enumerate}
 
+\section{Titanic Spaceship}
+
+En el año 2912, la humanidad ha ampliado sus horizontes más allá de la Tierra, estableciendo colonias en diversos planetas y lunas del universo. Las ciudades espaciales flotantes se han transformado en centros vibrantes de investigación y comercio, donde la vida cotidiana se entrelaza con tecnología avanzada y una rica diversidad cultural. Viajar entre planetas se ha vuelto algo habitual, y la exploración de nuevos mundos se considera una prioridad, aunque no sin desafíos. A pesar de los avances, persisten tensiones sociales y desigualdades, ya que algunos disfrutan de las comodidades del espacio mientras otros enfrentan la dura realidad de la vida en las periferias. Sin embargo, cada nuevo descubrimiento alimenta la esperanza de un futuro más unido y sostenible para la humanidad.
+
+En la sede de la Agencia Espacial Europea, se ha recibido un mensaje alarmante de una fuente situada a cuatro años luz de distancia. La comunicación revela una situación preocupante relacionada con la Nave Espacial Titanic, un transatlántico interestelar que partió hace un mes con más de 8.000 pasajeros a bordo. La nave se encontraba en su viaje inaugural, transportando emigrantes de nuestro sistema solar hacia tres exoplanetas recién habitables que orbitan en estrellas cercanas.
+
+Mientras rodeaba Alfa Centauri en ruta a su primer destino, el cálido 55 Cancri E, la Nave Espacial Titanic colisionó con una anomalía del espacio-tiempo oculta dentro de una nube de polvo. Aunque la nave permaneció intacta, casi la mitad de los pasajeros fueron transportados a una dimensión alterna.
+
+Para ayudar a los equipos de rescate y recuperar a los pasajeros perdidos, es crucial ralizar un análisis de la base de datos que contiene información detallada sobre cada pasajero. Tras grandes esfuerzos por parte de los mejores ingenieros informáticos con los que Agencia Espacial Europea ha podido contar, se ha recuperado el siguiente esquema de la base de datos:
+
+\includegraphics[width=\textwidth]{figs/sql/titanic-spaceship-diagram.png}
+
+Resuelve los siguientes ejercicios para poder traer de vuelta a esta dimensión a los pasajeros perdidos.
+
+\subsection*{Consultas SQL}
+
+\begin{enumerate}
+    \item Obtener el listado de los pasajeros que han embarcado obteniendo para cada uno su nombre, cabina asignada (con formato: Letra Cubierta-Número Cabina-Lado Cabina, por ejemplo ``B-1-P'') y planeta destino al que viajaban (incluyendo el sistema al que pertenece), de aquellos pasajeros cuya cabina esta localizada en una cubierta de tercera clase desde la letra A a la D y que no están en criosueño.
+    \item Obtener para cada zona de entretenimiento el gasto total que han tenido los pasajeros VIP en ella mostrando el nombre de la zona, el gasto total y el tipo de pasajero (``\texttt{VIP}''), haciendo lo mismo con el gasto correspondiente a los pasajeros que no sean VIP para los cuales se mostrará el valor ``\texttt{NO VIP}'' en el tipo de pasajero. Tipo de pasajero se mostrará como una columna que podrá tomar los dos posibles valores mencionados anteriormente (``\texttt{VIP}'' o ``\texttt{NO VIP}'').
+    \item Obtener el nombre de los planetas, y el sistema al que pertenecen, de aquellos planetas en los que han nacido menos pasajeros que el promedio de nacimientos en todos los planetas.
+    \item Obtener el nombre de los pasajeros y su gasto total por zona de entretenimiento de aquellos pasajeros alojados en la cubierta `\texttt{A}' y que han realizado gastos en todas los zonas de entretenimiento, ordenados por nombre de pasajero en orden alfabético y por cada pasajero que aparezcan los gastos de mayor importe primero.
+    \item Obtener las cabinas (mostrando la información de cubierta, número y lado) ocupadas por pasajeros que han gastado en el entretenimiento más popular, es decir en aquel en el que han participado más pasajeros.
+    \item Obtener los nombres de los planetas, así como el sistema al que pertenecen, de aquellos planetas a los que no han viajado pasajeros VIP y que además son los planetas donde han nacido alguno de los pasajeros con mayor edad.
+    \item Obtener aquellas cabinas (mostrando la información de cubierta, número y lado) con más de 3 pasajeros \texttt{NO VIP} y cuyos pasajeros han gastado más del doble del gasto promedio total por cabina.
+    \item Obtener los planetas donde la cantidad de pasajeros nacidos en él, y que han gastado en al menos 4 tipos diferentes de entretenimiento, es mayor al 25\% del total de pasajeros de dicho planeta, mostrando además del nombre del planeta y sistema al que pertenece, tanto el total de pasajeros nacidos en él, así como el número de pasajeros del mismo que gastaron en los tipos de entretenimiento.
+
+\end{enumerate}
+
+\subsection*{Vistas:}
+
+\begin{enumerate}
+    \item  Crea una nueva vista denominada \texttt{entretenimiento\_pasajeros} que contenga los siguientes datos:
+
+    \begin{itemize}
+        \item id, nombre, y edad de cada pasajero.
+        \item Si el pasajero fue o no transportado.
+        \item nombre y sistema del planeta al que está viajando el pasajero.
+        \item numero, lado y cubierta de la cabina en la que está hospedado y la clase de la cubierta asociada.
+        \item nombre del entretenimiento en el que más ha gastado el pasajero, junto con la cantidad gastada en dicho entretenimiento.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Procedimientos almacenados:}
+
+\begin{enumerate}
+    \item Para facilitar una identificación más rápida y precisa de los tutores legales de los menores en cada cabina, se ha determinado la necesidad de añadir un parámetro adicional en el registro de cada pasajero. Este parámetro permitirá identificar al tutor legal en caso de que el pasajero sea menor de edad. Para implementar este cambio, es necesario actualizar la tabla \texttt{pasajeros} y añadir un nuevo campo denominado \texttt{tutor}.
+
+    Tras modificar la estructura de la tabla, se desarrollará un procedimiento para asignar automáticamente el tutor de cada menor. Este procedimiento tomará en cuenta que el tutor de cada pasajero menor de 18 años debe ser un adulto de mayor edad que se encuentre en la misma cabina (con la misma letra, número y lado) que el menor. Si no hubiera un adulto en la misma cabina que pueda cumplir esta función, el menor deberá colocarse en criosueño, salvo que ya se encuentre en esta condición. Los menores que ya estén en criosueño no requerirán asignación de tutor, permaneciendo en esta condición sin cambios adicionales.
+\end{enumerate}
+
+\subsection*{Funciones almacenados:}
+
+\begin{enumerate}
+    \item Se quiere crear una función que permita obtener el porcentaje de pasajeros que viajan a un destino concreto (sistema y planeta), para una cubierta determinada, cuyos datos pasaremos como parámetro. A fin de comprobar su correcto funcionamiento, crear una consulta que muestre la ocupación de todas las cubiertas disponibles para el destino ``55 Cancri e'' sistema ``Copernico'' ordenada alfabéticamente por la letra de la cubierta.
+\end{enumerate}
+
+\subsection*{Triggers:}
+
+\begin{enumerate}
+    \item Para evitar que pueda haber algún ciber-delincuente en alguno de los entretenimientos ofrecidos por en la nave, se quieren crear tantos triggers como sean necesarios para evitar que existan gastos en entretenimientos con saldo negativo, es decir, la cantidad en gastos sea menor que 0. En caso de producirse el ciber-ataque, deberá mostraserse el siguiente mensaje de error: ``\textit{ERROR: Bienvenido ciber-delincuente, pero no puedes sacar dinero en un entretenimiento}''.
+
+    \item Para mejorar la satisfacción de los pasajeros, se ha decidido asignar automáticamente la condición de VIP a cualquier pasajero cuyo gasto total en entretenimientos supere la cantidad de 5000. Actualice la condición de VIP a todos los pasajeros que ya hayan superado los 5000 en gastos mediante una sentencia \texttt{UPDATE} y, además, cree los triggers necesarios para otorgar dicha condición a futuros pasajeros.
+\end{enumerate}
+
 \section{Soluciones}
 
-\subsection{Consultas SQL}
+\subsection*{Carreras de Fórmula 1}
+
+\subsubsection*{Consultas SQL}
 
 \begin{enumerate}
 
@@ -599,7 +664,7 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM races WHERE year = 2017)
 
 \end{enumerate}
 
-\subsection{Procedimientos almacenados:}
+\subsubsection*{Procedimientos almacenados:}
 
 \begin{enumerate}
 
@@ -771,7 +836,7 @@ DELIMITER ;
 
 \end{enumerate}
 
-\subsection{Funciones almacenadas}
+\subsubsection*{Funciones almacenadas}
 
 \begin{enumerate}
 \item
@@ -860,7 +925,7 @@ DELIMITER ;
 \end{lstlisting}
 \end{enumerate}
 
-\subsection{Triggers}
+\subsubsection*{Triggers}
 \begin{enumerate}
 \item
 \begin{lstlisting}[language=SQL]
@@ -1020,6 +1085,284 @@ DELIMITER ;
 \end{lstlisting}
 
 \end{enumerate}
+
+\subsection*{Titanic Spacheship}
+
+\subsubsection*{Consultas SQL}
+
+\begin{enumerate}
+\item
+\begin{lstlisting}[language=SQL]
+SELECT nombre, CONCAT(cubierta, '-', numero_cabina, '-', lado_cabina), planeta_destino, sistema_destino
+FROM pasajeros
+WHERE cubierta IN (SELECT letra FROM cubiertas WHERE clase = 3)
+  AND cubierta IN ('A', 'B', 'C', 'D')
+  AND criosueño = 0;
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT entretenimientos.nombre, SUM(gastos.cantidad), "VIP"
+FROM entretenimientos
+    INNER JOIN gastos ON gastos.entretenimiento = entretenimientos.id
+    INNER JOIN pasajeros ON pasajeros.id = gastos.pasajero
+WHERE pasajeros.vip = 1
+GROUP BY entretenimientos.id, entretenimientos.nombre;
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT planeta_natal, sistema_natal, COUNT(*)
+FROM pasajeros
+GROUP BY planeta_natal, sistema_natal
+HAVING COUNT(*) < (SELECT AVG (num_nacimientos)
+                   FROM (SELECT COUNT(*) AS num_nacimientos
+                         FROM pasajeros
+                         GROUP BY planeta_natal, sistema_natal) t);
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT pasajeros.nombre, entretenimientos.nombre, SUM(gastos.cantidad)
+FROM entretenimientos
+    INNER JOIN gastos ON gastos.entretenimiento = entretenimientos.id
+    INNER JOIN pasajeros ON pasajeros.id = gastos.pasajero
+WHERE pasajeros.cubierta = 'A'
+  AND pasajeros.id IN (SELECT pasajero 
+                       FROM gastos 
+                       GROUP BY pasajero 
+                       HAVING COUNT(*) = (SELECT COUNT(*) FROM entretenimientos))
+GROUP BY pasajeros.id, entretenimientos.id, 
+         pasajeros.nombre, entretenimientos.nombre
+ORDER BY pasajeros.nombre, SUM(gastos.cantidad);
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT cubierta, numero_cabina, lado_cabina
+FROM pasajeros
+WHERE transportado = 1
+  AND id IN (SELECT pasajero
+             FROM gastos
+             WHERE entretenimiento = (SELECT entretenimiento
+                                      FROM gastos
+                                      GROUP BY entretenimiento
+                                      HAVING COUNT(*) 
+                                          >= ALL (SELECT COUNT(*)
+                                                  FROM gastos
+                                                  GROUP BY entretenimiento)));
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT DISTINCT planeta_destino, sistema_destino
+FROM pasajeros
+WHERE vip = 0
+  AND (planeta_destino, sistema_destino) IN (SELECT planeta_destino, sistema_destino
+                                             FROM pasajeros
+                                             WHERE edad >= ALL (SELECT edad FROM pasajeros));
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT DISTINCT cubierta, numero_cabina, lado_cabina
+FROM pasajeros
+    INNER JOIN gastos ON gastos.pasajero = pasajeros.id
+WHERE vip = 0
+GROUP BY cubierta, numero_cabina, lado_cabina
+HAVING COUNT(*) > 3
+   AND SUM(gastos.cantidad) 
+       > (SELECT AVG(gasto_cabina) * 2
+          FROM (SELECT SUM(cantidad) AS gasto_cabina
+                FROM pasajeros
+                    INNER JOIN gastos ON gastos.pasajero = pasajeros.id
+                GROUP BY cubierta, numero_cabina, lado_cabina) t);
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT planeta_natal, sistema_natal, COUNT(*) AS num_pasajeros_4_ent, num_pasajeros
+FROM pasajeros
+	NATURAL JOIN (SELECT planeta_natal, sistema_natal, COUNT(*) AS num_pasajeros
+                  FROM pasajeros
+                  GROUP BY planeta_natal, sistema_natal) t
+WHERE id IN (SELECT pasajero 
+             FROM gastos 
+             GROUP BY pasajero 
+             HAVING COUNT(DISTINCT entretenimiento) >= 4)
+GROUP BY planeta_natal, sistema_natal
+HAVING COUNT(*) >= (num_pasajeros / 4);
+
+\end{lstlisting}
+\end{enumerate}
+
+\subsubsection*{Vistas}
+\begin{enumerate}
+\item 
+\begin{lstlisting}[language=SQL]
+CREATE VIEW entretenimiento_pasajeros
+AS SELECT id, pasajeros.nombre, edad, transportado, planeta_destino, sistema_destino, cubierta, numero_cabina, lado_cabina, cantidad, t.nombre AS entretenimiento
+   FROM pasajeros
+       INNER JOIN (SELECT pasajero, cantidad, nombre
+                   FROM gastos g1
+                       INNER JOIN entretenimientos ON entretenimientos.id = g1.entretenimiento
+                   WHERE cantidad = (SELECT MAX(cantidad)
+                                     FROM gastos g2
+                                     WHERE g2.pasajero = g1.pasajero)) t
+         ON pasajeros.id = t.pasajero;
+\end{lstlisting}
+\end{enumerate}
+
+\subsubsection*{Procedimientos almacenados}
+\begin{enumerate}
+\item
+\begin{lstlisting}[language=SQL]
+ALTER TABLE pasajeros ADD COLUMN tutor VARCHAR(7) NULL;
+ALTER TABLE pasajeros ADD CONSTRAINT FOREIGN KEY (tutor) REFERENCES pasajeros(id);
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS asignar_tutores;
+CREATE PROCEDURE asignar_tutores()
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE id_menor VARCHAR(7);
+    DECLARE id_tutor VARCHAR(7);
+
+    DECLARE cur CURSOR FOR 
+        SELECT id FROM pasajeros WHERE edad < 18 AND criosueño = 0;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN cur;
+    read_loop: LOOP
+        FETCH cur INTO id_menor;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+                
+        SELECT id INTO id_tutor
+        FROM pasajeros
+        WHERE edad >= 18
+          AND (numero_cabina, lado_cabina, cubierta) = 
+            (SELECT numero_cabina, lado_cabina, cubierta 
+             FROM pasajeros 
+             WHERE id = id_menor)
+        LIMIT 1;
+        
+        SET done = FALSE;
+        
+        IF id_tutor IS NOT NULL THEN
+            UPDATE pasajeros SET tutor = id_tutor WHERE id = id_menor;
+        ELSE 
+            UPDATE pasajeros SET criosueño = 1 WHERE id = id_menor;
+        END IF;
+    END LOOP;
+
+    CLOSE cur;
+END $$
+DELIMITER ;
+\end{lstlisting}
+\end{enumerate}
+
+\subsubsection*{Funciones almacenadas}
+\begin{enumerate}
+\item
+\begin{lstlisting}[language=SQL]
+DELIMITER $$
+DROP FUNCTION IF EXISTS ocupacion;
+CREATE FUNCTION ocupacion(letra_cubierta VARCHAR(1), planeta VARCHAR(50), sistema VARCHAR(50))
+RETURNS FLOAT
+DETERMINISTIC
+BEGIN
+   DECLARE pasajeros_cubierta INT;
+   DECLARE total_pasajeros INT;
+      
+   SELECT COUNT(DISTINCT numero_cabina, lado_cabina) INTO pasajeros_cubierta
+   FROM pasajeros
+   WHERE cubierta = letra_cubierta 
+     AND planeta_destino = planeta 
+     AND sistema_destino = sistema;
+   
+   SELECT COUNT(*) INTO total_pasajeros
+   FROM cabinas
+   WHERE cubierta = letra_cubierta;
+   
+   RETURN (pasajeros_cubierta / total_pasajeros);
+END$$   
+DELIMITER ;
+
+SELECT DISTINCT cubierta, ocupacion(cubierta, '55 Cancri e', 'Copernico')
+FROM pasajeros
+WHERE planeta_destino = '55 Cancri e'
+  AND sistema_destino = 'Copernico'
+ORDER BY cubierta ASC;
+\end{lstlisting}
+\end{enumerate}
+
+\subsubsection*{Triggers}
+\begin{enumerate}
+\item
+\begin{lstlisting}[language=SQL]
+DELIMITER $$
+CREATE TRIGGER evitar_insertar_gasto_negativo BEFORE INSERT ON gastos
+FOR EACH ROW
+BEGIN
+ IF (NEW.cantidad < 0) THEN
+    SIGNAL SQLSTATE '02000'
+    SET MESSAGE_TEXT = 'ERROR: Bienvenido ciber-delincuente, pero no puedes sacar dinero en un entretenimiento.';
+ END IF;
+END$$
+DELIMITER ; 
+
+DELIMITER $$
+CREATE TRIGGER evitar_actualizar_gasto_negativo BEFORE UPDATE ON gastos
+FOR EACH ROW
+BEGIN
+ IF (NEW.cantidad < 0) THEN
+    SIGNAL SQLSTATE '02000'
+    SET MESSAGE_TEXT = 'ERROR: Bienvenido ciber-delincuente, pero no puedes sacar dinero en un entretenimiento.';
+ END IF;
+END$$
+DELIMITER ; 
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+DELIMITER $$
+CREATE TRIGGER promocionar_vip_insertar BEFORE INSERT ON gastos
+FOR EACH ROW
+BEGIN
+    DECLARE total_gastado DOUBLE;
+    
+    SELECT SUM(cantidad) INTO total_gastado
+    FROM gastos
+    WHERE pasajero = NEW.pasajero;
+    
+    IF (total_gastado + NEW.cantidad) > 5000 THEN
+        UPDATE pasajeros SET vip = 1 WHERE id = NEW.pasajero;
+    END IF;
+END$$
+DELIMITER ;  
+
+DELIMITER $$
+CREATE TRIGGER promocionar_vip_actualizar BEFORE UPDATE ON gastos
+FOR EACH ROW
+BEGIN
+    DECLARE total_gastado DOUBLE;
+    
+    SELECT SUM(cantidad) INTO total_gastado
+    FROM gastos
+    WHERE pasajero = NEW.pasajero;
+    
+    IF (total_gastado - OLD.cantidad + NEW.cantidad) > 5000 THEN
+        UPDATE pasajeros SET vip = 1 WHERE id = NEW.pasajero;
+    END IF;
+END$$
+DELIMITER ;  
+\end{lstlisting}
+\end{enumerate}
+
+
+
 
 
 \end{document}
