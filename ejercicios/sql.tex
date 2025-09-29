@@ -1135,7 +1135,7 @@ WHERE cubierta IN (SELECT letra FROM cubiertas WHERE clase = 3)
 
 \item
 \begin{lstlisting}[language=SQL]
-SELECT entretenimientos.nombre, SUM(gastos.cantidad), "VIP"
+SELECT entretenimientos.nombre, SUM(gastos.cantidad), 'VIP'
 FROM entretenimientos
     INNER JOIN gastos ON gastos.entretenimiento = entretenimientos.id
     INNER JOIN pasajeros ON pasajeros.id = gastos.pasajero
@@ -1406,7 +1406,7 @@ FROM author a
     INNER JOIN affiliation af ON aaf.affiliation_id = af.affiliation_id
     INNER JOIN author_article aar ON a.author_id = aar.author_id
     INNER JOIN article ar ON ar.DOI = aar.DOI
-WHERE af.affiliation_name LIKE "%Universidad%Politecnica%Madrid%"
+WHERE af.affiliation_name LIKE '%Universidad%Politecnica%Madrid%'
   AND (YEAR(publication_date) = 2020 OR YEAR(publication_date) = 2021)
 ORDER BY author_name;
 \end{lstlisting}
@@ -1419,7 +1419,7 @@ FROM author a
     INNER JOIN affiliation af ON aaf.affiliation_id = af.affiliation_id
     INNER JOIN author_article aar ON a.author_id = aar.author_id
     INNER JOIN article ar ON ar.DOI = aar.DOI
-WHERE af.affiliation_name LIKE "%Universidad%Politecnica%Madrid%"
+WHERE af.affiliation_name LIKE '%Universidad%Politecnica%Madrid%'
   AND YEAR(publication_date) = 2020 
   AND a.author_id IN (SELECT author_id 
                       FROM author_article aar 
@@ -1551,7 +1551,7 @@ BEGIN
       LEAVE process_loop;
     END IF;
     set currentAuthors = 0;
-    set journal = "";
+    set journal = '';
     
     SELECT DISTINCT COUNT(DISTINCT author_id) INTO currentAuthors
     FROM article a 
