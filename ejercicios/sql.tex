@@ -238,6 +238,44 @@ Resuelve los siguientes ejercicios para poder traer de vuelta a esta dimensión 
     \item Para mejorar la satisfacción de los pasajeros, se ha decidido asignar automáticamente la condición de VIP a cualquier pasajero cuyo gasto total en entretenimientos supere la cantidad de 5000. Actualice la condición de VIP a todos los pasajeros que ya hayan superado los 5000 en gastos mediante una sentencia \texttt{UPDATE} y, además, cree los triggers necesarios para otorgar dicha condición a futuros pasajeros.
 \end{enumerate}
 
+\section{Artículos científicos}
+
+Un conjunto de editoriales europeas busca automatizar la gestión de sus revistas, autores y artículos mediante una base de datos que contemple sus características esenciales. Las revistas se clasifican por su factor de impacto y cuartil, y se publican periódicamente bajo una editorial. Los artículos, identificados por su DOI, título, fecha de publicación, URL y citas, se asocian a una revista y a uno o varios autores, quienes también tienen afiliaciones institucionales y pueden pertenecer a grupos de investigación vinculados a un área específica. El sistema debe registrar procesos editoriales como el envío a revisores, sus evaluaciones y fechas, así como colaboraciones informales entre autores y referencias entre artículos de la propia base. El siguiente diagrama contiene el esquema de la base de datos que guarda esta información.
+
+\includegraphics[width=\textwidth]{figs/sql/articulos-cientificos-diagram.png}
+
+\subsection*{Consultas SQL:}
+
+\begin{enumerate}
+    \item Obtener los nombres, en orden alfabético, de aquellos autores que perteneciendo a la ``Universidad Politécnica de Madrid'' han publicado algún artículo en el año 2020 o en el año 2021.
+    \item Obtener los nombres, en orden alfabético, de aquellos autores que perteneciendo a la ``Universidad Politécnica de Madrid'' han publicado algún artículo en el año 2020 y también en el año 2021.
+    \item Obtener el nombre de los autores y el nombre de la afiliación de aquellos autores que, perteneciendo a alguna entidad española, no han publicado ningún artículo ni en 2020 ni en 2021, ordenados por afiliación y dentro de cada entidad, por nombre de autor.
+    \item Obtener el nombre de la revista, su issn y el total de citas (\texttt{num\_citations}) de todos los artículos publicados para cada una de ellas en aquellas revistas que están clasificadas dentro del primer cuartil de factor de impacto (\texttt{q1}).
+    \item Obtener el nombre de la revista y el total de citas (\texttt{num\_citations}) que hayan recibido sus artículos para aquella/s revista/s que, perteneciendo al primer cuartil del factor de impacto (\texttt{q1}), tengan el mayor número de citas de toda la base de datos.
+    \item Obtener aquellas entidades (\texttt{affiliation\_name}) que tienen asociados al menos 10 autores que hayan publicado más de 5 artículos en el año más reciente que figuren en la base de datos (este año debe calcularse de forma dinámica con la consulta).
+    \item Obtener el nombre de aquellas revistas que, habiendo publicado más de 300 artículos en el año de mayor antigüedad que figure en la base de datos tengan un factor de impacto (\texttt{jif}) superior a la media de los factores de impacto del global de las revistas de la base de datos. El año debe calcularse de forma dinámica con la consulta.
+    \item Obtener el nombre de aquellas revistas que hayan recibido en el global de sus artículos un mayor número de citas que la media de las citas recibidas por cada revista para el global de sus artículos de la base de datos.
+    \item Obtener el nombre de aquellos autores que hayan publicado artículos en todos los diferentes años que figuren en la base de datos.
+\end{enumerate}
+
+\subsection*{Procedimientos alamacenados:}
+
+\begin{enumerate}
+    \item Crear un procedimiento que, recibiendo un año como parámetro, devuelva, en dos parámetros de salida, el nombre de la revista y el número de autores para aquella revista que haya publicado en dicho año el artículo con un mayor número de autores. Si existen varias revistas con el máximo de autores, habrá que proporcionar como resultado una cadena que contenga, separados por puntos y comas, los nombres de dichas revistas (en un parámetro de salida solamente puede devolverse un valor). Se deberá usar obligatoriamente, al menos, un cursor en la resolución del procedimiento.
+\end{enumerate}
+
+\subsection*{Funciones alamacenadas:}
+
+\begin{enumerate}
+    \item Crear una función que, recibiendo como parámetro un identificador de una revista devuelva el número medio de artículos por año que dicha revista ha publicado. Escribir el código necesario para poder probarlo.
+\end{enumerate}
+
+\subsection*{Triggers:}
+
+\begin{enumerate}
+    \item Crear la tabla correspondiente a la asignación y realización de las revisiones de los artículos por parte de los autores (que actúan como revisores) que se ha obtenido en el análisis inicial. Una vez creada, crear un \textit{trigger} que impida que se pueda insertar a un revisor de un artículo si dicho revisor figura ya como autor del mismo. Probar su funcionamiento con el código necesario.
+\end{enumerate}
+
 \section{Soluciones}
 
 \subsection*{Carreras de Fórmula 1}
@@ -1354,6 +1392,247 @@ BEGIN
 END$$
 DELIMITER ;  
 \end{lstlisting}
+\end{enumerate}
+
+\subsection*{Artículos científicos}
+
+\subsubsection*{Consultas SQL}
+\begin{enumerate}
+\item
+\begin{lstlisting}[language=SQL]
+SELECT distinct author_name
+FROM author a 
+    INNER JOIN author_affiliation aaf ON a.author_id = aaf.author_id
+    INNER JOIN affiliation af ON aaf.affiliation_id = af.affiliation_id
+    INNER JOIN author_article aar ON a.author_id = aar.author_id
+    INNER JOIN article ar ON ar.DOI = aar.DOI
+WHERE af.affiliation_name LIKE "%Universidad%Politecnica%Madrid%"
+  AND (YEAR(publication_date) = 2020 OR YEAR(publication_date) = 2021)
+ORDER BY author_name;
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT distinct author_name
+FROM author a 
+    INNER JOIN author_affiliation aaf ON a.author_id = aaf.author_id
+    INNER JOIN affiliation af ON aaf.affiliation_id = af.affiliation_id
+    INNER JOIN author_article aar ON a.author_id = aar.author_id
+    INNER JOIN article ar ON ar.DOI = aar.DOI
+WHERE af.affiliation_name LIKE "%Universidad%Politecnica%Madrid%"
+  AND YEAR(publication_date) = 2020 
+  AND a.author_id IN (SELECT author_id 
+                      FROM author_article aar 
+                          INNER JOIN article ar ON ar.DOI = aar.DOI
+                      WHERE YEAR(ar.publication_date) = 2021) 
+ORDER BY author_name;
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT distinct author_name, af.affiliation_name
+FROM author a 
+    INNER JOIN author_affiliation aaf ON a.author_id = aaf.author_id
+    INNER JOIN affiliation af ON aaf.affiliation_id = af.affiliation_id
+WHERE a.author_id NOT IN (SELECT author_id
+                          FROM author_article aar 
+                              INNER JOIN article ar ON aar.DOI = ar.DOI
+                          WHERE YEAR(publication_date) = 2020)
+  AND a.author_id NOT IN (SELECT author_id 
+                          FROM author_article aar 
+                              INNER JOIN article ar ON aar.DOI = ar.DOI
+                          WHERE YEAR(ar.publication_date) = 2021) 
+  AND country_name = 'Spain'                        
+ORDER BY af.affiliation_name DESC, author_name;
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT journal_name, issn, SUM(num_citations) total_citas
+FROM journal j INNER JOIN article a ON j.journal_id = a.journal_id
+WHERE JIF_Quartile = 'Q1'
+GROUP BY journal_name, issn
+ORDER BY total_citas DESC;
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT journal_name, SUM(num_citations) total_citas
+FROM journal j INNER JOIN article a ON j.journal_id = a.journal_id
+WHERE JIF_Quartile = 'Q1'
+GROUP BY journal_name
+HAVING SUM(num_citations) >= ALL (SELECT SUM(num_citations)
+                                  FROM journal j INNER JOIN article a 
+                                      ON j.journal_id = a.journal_id
+                                  WHERE JIF_Quartile = 'Q1'
+                                  GROUP BY journal_name);
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT affiliation_name
+FROM affiliation a 
+    INNER JOIN author_affiliation aaf ON a.affiliation_id = aaf.affiliation_id
+WHERE aaf.author_id IN (SELECT au.author_id
+                        FROM author au 
+                            INNER JOIN author_article aua 
+                                ON au.author_id = aua.author_id
+                            INNER JOIN article ar 
+                                ON aua.DOI = ar.DOI
+                        WHERE YEAR(ar.publication_date) = 
+                            (SELECT MAX(YEAR(publication_date))
+                             FROM article)
+                        GROUP BY au.author_id 
+                        HAVING COUNT(DISTINCT ar.DOI) >=5)     
+GROUP BY affiliation_name
+HAVING COUNT(DISTINCT aaf.author_id) >= 10;
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT journal_name
+FROM journal j 
+    INNER JOIN article a ON j.journal_id = a.journal_id
+WHERE JIF > (SELECT AVG(JIF)
+             FROM journal)
+  AND YEAR(a.publication_date) = (SELECT MIN(YEAR(publication_date))
+                                  FROM article)
+GROUP BY journal_name
+HAVING COUNT(DISTINCT a.DOI) >= 300;
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT journal_name, total_citas
+FROM journal j 
+    INNER JOIN article a ON j.journal_id = a.journal_id
+    INNER JOIN (SELECT journal_id, SUM(num_citations) as total_citas
+                FROM article
+                GROUP BY journal_id) as journal_citations 
+                    ON j.journal_id = journal_citations.journal_id
+GROUP BY j.journal_id, journal_name
+HAVING total_citas > (SELECT AVG(total_citas)
+                      FROM (SELECT SUM(num_citations) as total_citas
+                            FROM article
+                            GROUP BY journal_id) as T);
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=SQL]
+SELECT author_name
+FROM author a 
+    INNER JOIN author_article aa ON a.author_id = aa.author_id
+    INNER JOIN article ar ON ar.DOI = aa.DOI
+GROUP BY a.author_id, a.author_name
+HAVING COUNT(DISTINCT YEAR(publication_date)) = 
+    (SELECT COUNT(DISTINCT YEAR(publication_date))
+     FROM article);
+\end{lstlisting}
+\end{enumerate}
+
+\subsubsection*{Procedimientos almacenados}
+\begin{enumerate}
+\item
+\begin{lstlisting}[language=SQL]
+CREATE PROCEDURE maxAuthors (IN year INT, OUT journal VARCHAR(300), OUT numauthors INT)
+BEGIN
+  DECLARE done bool DEFAULT FALSE;
+  DECLARE j_id BIGINT;
+  DECLARE j_name VARCHAR(300);
+  DECLARE maxjournal VARCHAR(300);
+  DECLARE currentAuthors, maxAuthors INT;
+  DECLARE journal_cursor CURSOR FOR SELECT journal_id, journal_name FROM journal;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE; 
+  OPEN journal_cursor;
+  SET maxAuthors = 0;
+  process_loop: LOOP
+    FETCH journal_cursor into j_id, j_name;
+    IF done THEN
+      LEAVE process_loop;
+    END IF;
+    set currentAuthors = 0;
+    set journal = "";
+    
+    SELECT DISTINCT COUNT(DISTINCT author_id) INTO currentAuthors
+    FROM article a 
+        INNER JOIN author_article aa ON a.DOI = aa.DOI
+    WHERE journal_id = j_id 
+      AND YEAR(publication_date) = year
+    GROUP BY a.DOI, a.title
+    HAVING COUNT(DISTINCT author_id) >= ALL (SELECT COUNT(DISTINCT author_id) 
+                                             FROM article a 
+                                                 INNER JOIN author_article aa ON a.DOI = aa.DOI
+                                             WHERE journal_id = j_id 
+                                               AND YEAR(publication_date) = year
+                                             GROUP BY a.DOI, a.title);
+                                             
+    IF currentAuthors > maxAuthors THEN
+      SET maxAuthors = currentAuthors;
+      SET maxjournal = j_name;     
+    ELSEIF currentAuthors = maxAuthors THEN
+      SET maxjournal = CONCAT(maxjournal, '; ', j_name);     
+    END IF;      
+  END LOOP;
+  
+  CLOSE journal_cursor; 
+  SET numauthors = maxAuthors;
+  SET journal = maxjournal;
+END$$
+DELIMITER ; 
+\end{lstlisting}
+\end{enumerate}
+
+\subsubsection*{Funciones almacenadas}
+\begin{enumerate}
+\item
+\begin{lstlisting}[language=SQL]
+DELIMITER $$
+CREATE FUNCTION avgArticles (journal BIGINT)
+RETURNS FLOAT
+DETERMINISTIC
+BEGIN
+   DECLARE numArticles INT;
+   DECLARE numanios INT;
+      
+   SELECT COUNT(DISTINCT DOI) INTO numArticles
+   FROM article
+   where journal_id = journal;
+   
+   SELECT COUNT(DISTINCT YEAR(publication_date)) INTO numanios
+   FROM article;
+   
+   RETURN (numArticles/numanios);
+END$$   
+DELIMITER ;
+\end{lstlisting}
+\end{enumerate}
+
+\subsubsection*{Triggers}
+\begin{enumerate}
+\item
+\begin{lstlisting}[language=SQL]
+CREATE TABLE reviews (
+  author_id BIGINT NOT NULL,
+  DOI VARCHAR(200) NOT NULL,
+  sending_date DATE,
+  review_done BOOL,
+  review_result SMALLINT,
+  PRIMARY KEY (author_id, DOI),
+  FOREIGN KEY (author_id) REFERENCES author (author_id),
+  FOREIGN KEY (DOI) REFERENCES article (DOI)
+);
+
+DELIMITER $$
+CREATE TRIGGER avoidReview BEFORE INSERT ON reviews
+FOR EACH row
+BEGIN
+ IF (NEW.author_id IN (SELECT author_article.author_id FROM author_article WHERE DOI = NEW.DOI)) THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'ERROR: No puede revisar un autor del articulo';
+ END IF;
+END$$
+DELIMITER ;  
+\end{lstlisting} 
 \end{enumerate}
 
 
