@@ -1,88 +1,14 @@
-%\documentclass[12pt,a4paper,addpoints]{exam}
-\documentclass[12pt,a4paper,addpoints,answers]{exam}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
-\usepackage{multirow}
-\usepackage{graphicx}
-\usepackage{xcolor}
-\usepackage{listings}
-\usepackage{upquote}
-\usepackage{xcolor}
-\usepackage{listings}
-\usepackage{amsmath}
-
-
-% Definición de colores
-\definecolor{keywordcolor}{rgb}{0.1,0.1,0.8} % Azul para palabras clave
-\definecolor{stringcolor}{rgb}{0.8,0.1,0.1}  % Rojo para cadenas
-\definecolor{commentcolor}{rgb}{0.1,0.6,0.1} % Verde para comentarios
-
-% Configuración de listings
-\lstdefinestyle{mysqlstyle}{
-  basicstyle=\ttfamily\footnotesize,          % Estilo básico
-  keywordstyle=\color{keywordcolor}\bfseries, % Estilo para palabras clave
-  commentstyle=\color{commentcolor}\itshape,  % Estilo para comentarios
-  stringstyle=\color{stringcolor},            % Estilo para cadenas
-  showstringspaces=false,                     % No mostrar espacios en cadenas
-  tabsize=2,                                  % Tamaño de tabulación
-  breaklines=true,                            % Dividir líneas largas
-  morestring=[b]",                            % Cadenas con comillas dobles
-  literate={ñ}{{\~n}}1,                       % Permite el carácter "ñ"
-  morekeywords={SELECT, INSERT, UPDATE, DELETE, FROM, WHERE, JOIN, INNER, LEFT, RIGHT, ON, GROUP, BY, ORDER, ASC, DESC, CREATE, TABLE, DROP, ALTER, DATABASE, USE, INDEX, INTO, VALUES, SET, IF, EXISTS, NOT, NULL, AND, HAVING, COUNT, DISTINCT, LIKE, BEFORE, FOR, EACH, ROW, DECLARE, IF, SIGNAL, OPEN, CURSOR, FOUND, USER, TO, IDENTIFIED} % Palabras clave SQL
-}
-
-% Usar el estilo
-\lstset{style=mysqlstyle}
-
-
-
-% Términos en castellano
-\pointpoints{Punto}{Puntos}
-\renewcommand{\solutiontitle}{\noindent\textbf{Solución propuesta:}\enspace\\}
-\renewcommand{\questionlabel}{\textbf{EJERCICIO \thequestion.}}
-
-% Tabla para que el alumno introduzca sus datos
-\def\studentdata{
-    \begin{table}[t]
-        \renewcommand{\arraystretch}{1.2}
-        \small
-        \centering
-        \begin{tabular}{|l|p{4cm}|p{4cm}|p{2.5cm}|}
-            \hline
-            \multirow{3}{*}{\includegraphics[width=2.5cm]{logos/etsisi.png}} & \multicolumn{3}{l|}{Apellidos:} \\ \cline{2-4} 
-                                                                             & \multicolumn{3}{l|}{Nombre:}    \\ \cline{2-4} 
-                                                                             & DNI:  & Num. mat.: & Grupo: \\ \hline
-        \end{tabular}%
-    \end{table}
-}
-
-% Estilo de la cabecera y pie de pagina
-\pagestyle{headandfoot}
-\firstpageheadrule
-\runningheadrule
-\header{Bases de Datos}{}{Convocatoria ordinaria\\Curso 2024/2054}
-\firstpagefootrule
-\runningfootrule
-\footer{}{}{Página\,\thepage\,de\,\numpages}
+\documentclass[
+    12pt,
+    a4paper,
+    addpoints,
+    answers,
+    convocatoria=ord,
+    titulacion=NoCD,
+    curso=2024/2025,
+]{db-exam}
 
 \begin{document}
-
-\studentdata
-
-\begin{center}\textbf{Normativa de examen}\end{center}
-\begin{itemize}
-    \item No está permitido el uso de dispositivos móviles ni otros dispositivos electrónicos, así como libros ni apuntes.
-    \item Durante el examen, los profesores podrán solicitar acreditar la identidad de los participantes en el mismo. Deberá tener en todo momento su Documento Nacional de Identidad y/o Carné de la Universidad Politécnica de Madrid visible sobre la mesa.
-    \item Deberá escribir su nombre, con bolígrafo, en todas las hojas de las que consta el examen.
-    \item Los ejercicios deberán resolverse con bolígrafo, excepto el diagrama solicitado en el ejercicio 1, el cual podrá completarse opcionalmente a lápiz.
-    \item No se permite abandonar el aula de examen durante los primeros 20 minutos. Transcurrido este tiempo, no se permitirá entrar al examen. 
-    \item El examen tiene una duración máxima de \textbf{2 horas y 30 minutos}. 
-    \item Justifique sus respuestas lo mejor posible indicando, si fuese necesario, los pasos realizados.
-    \item Las calificaciones provisionales serán publicadas en el Moodle de la asignatura a los 15 días hábiles desde la fecha de realización del examen.
-    \item La fecha para la revisión del examen se anunciará en el Moodle de la asignatura una vez publicadas las calificaciones provisionales.
-\end{itemize}
-\newpage
 
 \begin{questions}
 
@@ -329,7 +255,6 @@ DELIMITER ;
 \end{parts}
 
 \newpage
-\studentdata
 \question[\half] Con base en la base de datos del modelo relacional propuesto en el ejercicio 2, se requiere mejorar la seguridad implementando controles de acceso a la tabla \texttt{empleado}. El objetivo es garantizar que únicamente un nuevo usuario, identificado como \texttt{recursos\_humanos}, tenga permiso para realizar operaciones de lectura y escritura (inserción, actualización y eliminación) sobre esta tabla.
 
 Se solicita detallar todas las sentencias SQL necesarias para:
