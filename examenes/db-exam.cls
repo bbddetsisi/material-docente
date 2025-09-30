@@ -66,7 +66,7 @@
 \AtBeginDocument{%
     \pagestyle{headandfoot}
     \runningheadrule
-    \header{\textbf{Nombre y apellidos:}}{}{\titulacion\\\convocatoria\\Curso \curso}
+    \header{\titulacion}{}{\convocatoria\\Curso \curso}
     \runningfootrule
     \footer{\doclicenseIcon}{}{Página\,\thepage\,de\,\numpages}
     

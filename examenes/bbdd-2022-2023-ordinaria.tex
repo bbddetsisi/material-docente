@@ -44,7 +44,7 @@ Para dar cobertura a todo esto, se debe comenzar por establecer un modelo Entida
 \end{solution}
 
 \newpage
-\question{Consultas}
+\question{\textbf{Consultas}}
 
 Una cadena de muebles con nombre ``TLMT: Te lo montas tú'' necesita que hagamos algunas consultas sobre su base de datos. Para ello nos proporciona el diagrama relacional de una base de datos en producción. 
   
@@ -157,7 +157,7 @@ WHERE id_pieza IN (SELECT id_pieza
 \end{parts}
 
 \newpage
-\question{Gestión}
+\question{\textbf{Gestión}}
 
 \begin{parts}
 
@@ -263,7 +263,7 @@ DELIMITER ;
 \end{parts}
 
 \newpage
-\question{Ficheros}
+\question{\textbf{Ficheros}}
 
 Tomando como referencia el siguiente archivo XML, resuelva las preguntas a continuación.   
 
@@ -308,7 +308,7 @@ return  for $y in $x/autores
 
 \part [\half] Realice una consulta \textbf{XPATH} que devuelva el título de aquellos libros que cuesten más de 70\euro{}.
 \begin{solution}
-\begin{verbatim}       
+\begin{verbatim}
 /libros/libro[precio>70]/titulo
 \end{verbatim}
 \end{solution}
