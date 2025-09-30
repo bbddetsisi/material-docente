@@ -72,19 +72,6 @@
     
     \firstpageheadrule
     \firstpagefootrule
-
-    \begin{center}\textbf{Normativa de examen}\end{center}
-    \begin{itemize}
-        \item No se permite el uso de ningún dispositivo electrónico, así como libros ni apuntes.
-        \item Cada estudiante podrá disponer de un folio tamaño A4 con las anotaciones que considere oportunas para desarrollar su examen. El folio podrá contener texto por ambas caras.
-        \item Durante el examen, los profesores podrán solicitar acreditar la identidad de los participantes en el mismo. Deberá tener en todo momento su documento nacional de identidad, permiso de residencia o carné de estudiante visible sobre la mesa.
-        \item Deberá escribir su nombre y apellidos, con bolígrafo, en todas las hojas de las que consta el examen.
-        \item No se permite abandonar el aula de examen durante los primeros 20 minutos. Transcurrido este tiempo, no se permitirá entrar al examen.
-        \item El examen tiene una duración máxima de \textbf{2.5 horas}. 
-        \item Justifique sus respuestas lo mejor posible indicando, si fuese necesario, los pasos realizados.
-        \item Las calificaciones provisionales serán publicadas en el aula virtual de la asignatura dentro de los 15 días naturales desde la fecha de realización del examen, publicándose ahí la fecha para su revisión.
-    \end{itemize}
-    \newpage
 }
 % Definición de colores
 \definecolor{keywordcolor}{rgb}{0.1,0.1,0.8} % Azul para palabras clave
