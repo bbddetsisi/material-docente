@@ -292,9 +292,9 @@ Si `SUMINISTROS` posee la tupla: (*P2*, *A012*, 1000, *13/01/98*):
   valores nulos
 - **Integridad referencial**: Dos condiciones:
   1. En `PROVEEDORES` existe una tupla tal que `COD_PROV=P2`
-  2. En `ARTICULOS` existe otra tupla etal que `COD_ART=A012`
+  2. En `ARTÍCULOS` existe otra tupla tal que `COD_ART=A012`
 
-**Conclusión**: No podrá existir una tupla en la relación `SUMINISTROS` tal que figure un código de proveedor o un código de artículo que no existan previamente en sus respectivas relaciones de `PROVEEDORES` y `ARTICULOS`.
+**Conclusión**: No podrá existir una tupla en la relación `SUMINISTROS` tal que figure un código de proveedor o un código de artículo que no existan previamente en sus respectivas relaciones de `PROVEEDORES` y `ARTÍCULOS`.
 
 ---
 
@@ -858,7 +858,7 @@ $$\prod_{\textrm{Nmat},\textrm{codA}}(Notas)\div\prod_{\textrm{codA}}(Asignatura
 
 ---
 
-# Obtener nombre y apellidos de matrícula de los estudiantes matriculados en todas las asignaturas
+# Obtener nombre y apellidos de los estudiantes matriculados en todas las asignaturas
 
 $$\prod_{\textrm{nombre},\textrm{apellidos}}(Alumnos\Join (\prod_{\textrm{Nmat},\textrm{codA}}(Notas)\div \prod_{\textrm{codA}}(Asignaturas)))$$
 
