@@ -609,6 +609,9 @@ table th:nth-child(1) {text-decoration: underline;}
 
 Será necesario dividir la tabla anterior en:
 
+<div class="columns">
+<div class="column">
+
 | Id | Título                  | Autor             |
 | -- | ----------------------- | ----------------- |
 | 1  | El marciano             | Andy Weir         |
@@ -617,10 +620,16 @@ Será necesario dividir la tabla anterior en:
 | 4  | El pozo de la ascensión | Brandon Sanderson |
 | 5  | El héroe de las eras    | Brandon Sanderson |
 
+</div>
+<div class="column">
+
 | Autor             | Editorial |
 | ----------------- | --------- |
 | Andy Weir         | Alfaguara |
 | Brandon Sanderson | SM        |
+
+</div>
+</div>
 
 ---
 
