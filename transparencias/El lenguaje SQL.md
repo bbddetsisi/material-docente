@@ -1082,7 +1082,7 @@ SELECT codC, SUM(tiempo)
 
 # Cláusula `HAVING` (II)
 
-<cite>Obtener para los conductores que hayan utilizado la misma máquina más de una vez entre el 12/09/02 y el 18/09/02, el código de conductor, el código de máquina y el tiempo total empleado</cite>
+<cite>Obtener para los conductores que hayan utilizado la misma máquina más de una vez entre el 12/09/11 y el 18/09/11, el código de conductor, el código de máquina y el tiempo total empleado</cite>
 
 ```SQL
 SELECT codC, codM, SUM(tiempo) FROM trabajos
