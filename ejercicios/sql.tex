@@ -89,13 +89,13 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     
     \item Obtener nombre y apellidos del piloto, el nombre del circuito, el año de la carrera donde un piloto español obtuvo el tiempo de parada más pequeño (atributo \texttt{miliseconds}). Incluya este atributo en la salida de la consulta.
 
-    \item Codifique una consulta que obtenga el nombre de aquellos constructores que sean italianos (\texttt{nationality = 'Italian'}) con los que hayan disputado carreras al menos un piloto italiano.
+    \item Codifique una consulta que obtenga el nombre de aquellos constructores que sean italianos (\texttt{nationality = `Italian'}) con los que hayan disputado carreras al menos un piloto italiano.
             
     \item Codifique una consulta que obtenga el nombre y apellidos del piloto que más accidentes (\texttt{status.status = `Accident'}) ha tenido. Mostrar también el número de accidentes.
             
     \item Codifique una consulta que obtenga el nombre y apellidos de los pilotos que hayan calificado entre los 10 primeros puestos (\texttt{position <= 10}) de todas las carreras del año 2015.
     
-    \item Obtener una lista con los nombres de aquellos constructores italianos (‘Italian’ en inglés) que nunca han competido con pilotos italianos.
+    \item Obtener una lista con los nombres de aquellos constructores italianos (`Italian' en inglés) que nunca han competido con pilotos italianos.
     
     \item Obtener toda la información de los constructores que en todas las carreras del año 2006, consiguieron que alguno de sus pilotos quedara entre los diez primeros de la clasificación.
     
@@ -369,8 +369,8 @@ ORDER BY circuits.circuitId
 \begin{lstlisting}[language=SQL]
 SELECT *
 FROM constructors
-WHERE constructors.constructorId NOT IN (SELECT qualifying.constructorId 
-                                         FROM qualifying)  
+WHERE constructorId NOT IN (SELECT qualifying.constructorId 
+                            FROM qualifying)  
 \end{lstlisting}
         
 % Obtener nombres, apellidos de los pilotos que han ganado más de 30 grandes premios así como el número de grandes premios que han ganado.
