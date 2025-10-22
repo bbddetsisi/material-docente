@@ -71,7 +71,7 @@ Adicionalmente, se hace constar que este modelo tiene añadidas las siguientes r
     
     \item Obtener el nombre de los pilotos, el circuito y el total de paradas, para aquellos pilotos que entre todos los grandes premios disputados han realizado en alguno de ellos el mayor número de paradas y también los que han realizado el menor número de ellas.
       
-    \item De entre todos los pilotos que han participado en todas las rondas de clasificación (Q1, Q2 y Q3) del gran premio de Abu Dhabi de 2017 (\texttt{qualifying.q1 <> '' AND qualifying.q2 <> '' AND qualifying.q3 <> ''}), obtener el nombre de los pilotos y el id de los equipos, para aquellos equipos que tienen a sus dos pilotos en esa situación.
+    \item De entre todos los pilotos que han participado en todas las rondas de clasificación (Q1, Q2 y Q3) del gran premio de Abu Dhabi de 2017 (\texttt{qualifying.q1<>\textquotesingle\textquotesingle AND qualifying.q2<>\textquotesingle\textquotesingle AND qualifying.q3<>\textquotesingle\textquotesingle}), obtener el nombre de los pilotos y el id de los equipos, para aquellos equipos que tienen a sus dos pilotos en esa situación.
     
     \item Obtener el nombre y apellido de los pilotos y el nombre de aquellas carreras en las que han participado pilotos rusos y polacos.
             
@@ -471,7 +471,8 @@ SELECT drivers.forename, drivers.surname, races.name, races.year
 FROM drivers
     INNER JOIN results ON results.driverId = drivers.driverId
     INNER JOIN races ON races.raceId = results.raceId
-WHERE races.raceId IN (SELECT raceId
+WHERE drivers.nationality IN ('Russian', 'Polish')
+  AND races.raceId IN (SELECT raceId
                        FROM results 
                            INNER JOIN drivers ON drivers.driverId = results.driverId
                        WHERE drivers.nationality = 'Russian')
