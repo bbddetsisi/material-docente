@@ -1759,6 +1759,7 @@ Se pueden declarar variables locales en los procedimientos usando `DECLARE`:
 ```SQL
 DECLARE nombre_variable [,...] tipo [DEFAULT valor]
 ```
+En MySQL, todas las declaraciones de variables locales (usando `DECLARE`) deben ir inmediatamente después del `BEGIN` de un bloque `BEGIN`...`END`.
 
 ---
 
