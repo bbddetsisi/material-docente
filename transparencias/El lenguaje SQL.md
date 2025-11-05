@@ -1903,10 +1903,10 @@ Las sentencias se repiten hasta que la condición se cumpla.
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE my_proc_REPEAT (IN n INTEGER)
+CREATE PROCEDURE my_proc_REPEAT (IN n INTEGER, OUT sum INTEGER)
 BEGIN
-    DECLARE sum INT DEFAULT 0;
     DECLARE x INT DEFAULT 1;  
+    SET sum = 0;
     REPEAT
         IF mod(x, 2) = 0 THEN
             SET sum = sum + x;
@@ -1939,10 +1939,10 @@ Se ejecutan las instrucciones mientras se cumple la condición.
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE my_proc_WHILE (IN n INTEGER)
+CREATE PROCEDURE my_proc_WHILE (IN n INTEGER, OUT num INTEGER)
 BEGIN
-    DECLARE sum INT DEFAULT 0;
     DECLARE x INT DEFAULT 1; 
+    SET num = 0;
     WHILE x <= n DO
         IF mod(x, 2) <> 0 THEN
             SET sum = sum + x;
