@@ -1627,7 +1627,7 @@ BEGIN
 END
 ```
 
-Los parámetros `param`` tienen la siguiente sintaxis:
+Los parámetros ``param`` tienen la siguiente sintaxis:
 
 ```SQL
 [ IN | OUT | INOUT ] nombre_parametro tipo_parametro
