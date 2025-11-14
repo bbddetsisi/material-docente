@@ -2027,7 +2027,7 @@ RETURNS datatype
 DETERMINISTIC
 BEGIN
     statements;
-    RETURN (value);
+    RETURN value;
 END $$
 DELIMITER ;
 ```
@@ -2046,7 +2046,7 @@ DETERMINISTIC
 BEGIN
     DECLARE cmasiva DECIMAL;
     SET cmasiva = cantidad * 1.21;
-    RETURN (cmasiva);
+    RETURN cmasiva;
 END$$
 DELIMITER ;
 ```
