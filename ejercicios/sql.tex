@@ -273,7 +273,7 @@ Un conjunto de editoriales europeas busca automatizar la gestión de sus revista
 \subsection*{Triggers:}
 
 \begin{enumerate}
-    \item Crear la tabla correspondiente a la asignación y realización de las revisiones de los artículos por parte de los autores (que actúan como revisores) que se ha obtenido en el análisis inicial. Una vez creada, crear un \textit{trigger} que impida que se pueda insertar a un revisor de un artículo si dicho revisor figura ya como autor del mismo. Probar su funcionamiento con el código necesario.
+    \item Se desea extender el esquema de la base de datos con información referente al proceso de revisión se artículos. Crea una nueva tabla que registre los autores a los que se les asigna la revisión de un artículo. Incluye además información referente a la fecha de asignación de la revisión, el estado de la revisión (completada o no completada) y resultado de la revisión (aceptado o rechazado para publicación). Ten en cuenta que un autor puede revisar varios artículos. Una vez creada, codifica un \textit{trigger} que impida que se pueda insertar a un revisor de un artículo si dicho revisor figura ya como autor del mismo. Probar su funcionamiento con el código necesario.
 \end{enumerate}
 
 \section{Soluciones}
