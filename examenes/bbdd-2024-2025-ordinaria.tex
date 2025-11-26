@@ -121,8 +121,7 @@ WHERE idCliente NOT IN
      INNER JOIN compra ON compra.idCliente = cliente.idCliente
      INNER JOIN tienda ON tienda.idTienda = compra.idTienda
      INNER JOIN centro_comercial cc ON cc.idCentroComercial = tienda.idCentroComercial
-   WHERE cliente.idCliente = compra.idCliente
-     AND cliente.municipio <> cc.municipio)
+   WHERE cliente.municipio <> cc.municipio)
 \end{lstlisting}
 \end{solution}
 
