@@ -149,12 +149,14 @@ HAVING COUNT(DISTINCT tienda.idTienda) = (SELECT COUNT(*)
 SELECT nombre, apellidos
 FROM empleado
 WHERE idEmpleado IN (SELECT idEmpleado
-                     FROM trabaja
-                        NATURAL JOIN cetegoria
+                     FROM trabaja tr
+                        INNER JOIN tienda ti ON ti.idTienda = tr.idTienda
+                        INNER JOIN categoria cat ON cat.idCategoria = ti.idCategoria
                      WHERE nombre = 'hogar')
   AND idEmpleado IN (SELECT idEmpleado
-                     FROM trabaja
-                        NATURAL JOIN cetegoria
+                     FROM trabaja tr
+                        INNER JOIN tienda ti ON ti.idTienda = tr.idTienda
+                        INNER JOIN categoria cat ON cat.idCategoria = ti.idCategoria
                      WHERE nombre = 'deportes')
 \end{lstlisting}
 \end{solution}
