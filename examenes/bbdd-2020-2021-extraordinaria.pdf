@@ -194,7 +194,7 @@ stream
       </dc:rights>
       <dc:date>
         <rdf:Seq>
-          <rdf:li>2025-11-26T09:43:12Z</rdf:li>
+          <rdf:li>2025-12-03T14:21:58Z</rdf:li>
         </rdf:Seq>
       </dc:date>
       <dc:type>
@@ -208,12 +208,12 @@ stream
           <rdf:li>es</rdf:li>
         </rdf:Bag>
       </dc:language>
-      <xmp:CreateDate>2025-11-26T09:43:12Z</xmp:CreateDate>
-      <xmp:ModifyDate>2025-11-26T09:43:12Z</xmp:ModifyDate>
-      <xmp:MetadataDate>2025-11-26T09:43:12Z</xmp:MetadataDate>
+      <xmp:CreateDate>2025-12-03T14:21:58Z</xmp:CreateDate>
+      <xmp:ModifyDate>2025-12-03T14:21:58Z</xmp:ModifyDate>
+      <xmp:MetadataDate>2025-12-03T14:21:58Z</xmp:MetadataDate>
       <xmp:CreatorTool>LaTeX with hyperref</xmp:CreatorTool>
       <xmpMM:DocumentID>uuid:90a33efd-1d1d-4ce4-8e4c-e4c9b1d7f7ae</xmpMM:DocumentID>
-      <xmpMM:InstanceID>uuid:ef75f754-6c41-4333-905f-d188dc4626c9</xmpMM:InstanceID>
+      <xmpMM:InstanceID>uuid:aea826c4-c4c4-4c4c-8cea-ea339b1d7a88</xmpMM:InstanceID>
       <xmpMM:VersionID>1</xmpMM:VersionID>
       <xmpMM:RenditionClass>default</xmpMM:RenditionClass>
       <prism:complianceProfile>three</prism:complianceProfile>
@@ -442,8 +442,8 @@ endobj
 30 0 obj
 <<
 /Title()/Subject()/Creator(LaTeX with hyperref)/Producer(pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) kpathsea version 6.4.1)
-/CreationDate (D:20251126094312Z)
-/ModDate (D:20251126094312Z)
+/CreationDate (D:20251203142158Z)
+/ModDate (D:20251203142158Z)
 /Trapped /False
 /PTEX.Fullbanner (This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) kpathsea version 6.4.1)
 >>
@@ -474,7 +474,7 @@ endobj
 /W [1 2 1]
 /Root 29 0 R
 /Info 30 0 R
-/ID [<C2FCA16B32BE1AF2AE1D553C57077343> <C2FCA16B32BE1AF2AE1D553C57077343>]
+/ID [<246EC4AC665EA672B0D8DD3A2F8286AD> <246EC4AC665EA672B0D8DD3A2F8286AD>]
 /Length 104       
 /Filter /FlateDecode
 >>
