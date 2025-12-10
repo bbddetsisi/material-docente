@@ -1058,7 +1058,7 @@ Vinculamos un extremo (coche) con el otro (empleado).
     "_id": "D001",
     "nombreDepartamento": "Ventas",
     "empleados": [
-        {"nombre": "Pepe", "apellidos": "Pérez"}
+        {"nombre": "Pepe", "apellidos": "Pérez"},
         {"nombre": "Luis", "apellidos": "López"}
     ]
 }
