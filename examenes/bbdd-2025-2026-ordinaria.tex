@@ -254,6 +254,9 @@ UPDATE pais
 SET nombreP = 'Utopia',
     poblacion = poblacion + (SELECT poblacion
                              FROM pais
+                             WHERE idP = 42),
+    extension = extension + (SELECT extension
+                             FROM pais
                              WHERE idP = 42)
 WHERE idP = 23;
 
