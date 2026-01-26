@@ -257,7 +257,10 @@ SET nombreP = 'Utopia',
                              WHERE idP = 42),
     extension = extension + (SELECT extension
                              FROM pais
-                             WHERE idP = 42)
+                             WHERE idP = 42),
+    costa = costa OR (SELECT costa
+                      FROM pais
+                      WHERE idP = 42)
 WHERE idP = 23;
 
 UPDATE tiene_turismo
