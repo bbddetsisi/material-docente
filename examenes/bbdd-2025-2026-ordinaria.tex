@@ -270,13 +270,18 @@ SET num_turistas = num_turistas + (SELECT num_turistas
 WHERE ipP_destino = 23
   AND año = 2026;
 
-UPDATE se_habla
-SET num_hablantes = num_hablantes + (SELECT num_hablantes
-                                     FROM se_habla
-                                     WHERE idP = 42
-                                       AND año = 2026)
-WHERE idP = 23
-  AND año = 2026;
+UPDATE se_habla sh1
+INNER JOIN se_habla sh2 ON sh1.idI = sh2.idI
+SET sh1.num_hablantes = sh1.num_hablantes + sh2.num_hablantes
+WHERE sh1.idP = 23 AND sh2.idP = 42;
+
+INSERT INTO se_habla (idP, idI, num_hablantes)
+SELECT 23, idI, num_hablantes
+FROM se_habla
+WHERE idP = 42
+  AND idI NOT IN (SELECT idI
+                  FROM se_habla
+                  WHERE idP = 23);
 
 DELETE FROM tiene_turismo
 WHERE ipP_destino = 42 
