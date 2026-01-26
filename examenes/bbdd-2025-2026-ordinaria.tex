@@ -251,7 +251,10 @@ DELIMITER ;
 START TRANSACTION;
 
 UPDATE pais
-SET nombreP = 'Utopia'
+SET nombreP = 'Utopia',
+    poblacion = poblacion + (SELECT poblacion
+                             FROM pais
+                             WHERE idP = 42)
 WHERE idP = 23;
 
 UPDATE tiene_turismo
