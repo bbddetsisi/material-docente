@@ -42,7 +42,7 @@ En esta asignatura nos centramos en las **bases de datos relacionales**
   - Niveles conceptual, lógico y físico
   - Y por supuesto, cómo trabajar en cada uno de ellos
 - Se aborda el almacenamiento de datos en **diferentes niveles de abstracción**
-- **Contenido práctico**, permitiendo aplicar los conocimientos teóricos en entornos reales
+- **Contenido práctico**, así aplicamos los conocimientos teóricos en entornos reales
 - Usaremos **herramientas reales** que se usan en la industria
 
 ---
@@ -50,7 +50,7 @@ En esta asignatura nos centramos en las **bases de datos relacionales**
 # Profesorado
 
 - Alberto Díaz Álvarez (**Coordinador**). [alberto.diaz@upm.es](mailto:alberto.diaz@upm.es). *Despacho 4406*.
-- Fernando Ortega Requena. fernando.ortega@upm.es](mailto:fernando.diaz@ortega.es). *Despacho 1110*.
+- Fernando Ortega Requena. [fernando.ortega@upm.es](mailto:fernando.ortega@upm.es). *Despacho 1110*.
 
 ---
 
@@ -58,7 +58,7 @@ En esta asignatura nos centramos en las **bases de datos relacionales**
 
 - Fundamentos de programación
   - Programación en Python
-- Estructuras de datos 
+- Estructuras de datos
 
 ---
 
@@ -110,18 +110,16 @@ Las clases se desarrollarán en el aula 3202 en el siguiente horario:
 
 Evaluación progresiva $\equiv$ Evaluación global
 
-- Práctica 1 (15%)
-  - En equipos
+- Práctica 1 (En equipos **15%**)
   - Entrega: Domingo 29 de marzo de 2026
-- Práctica 2 (10%)
-  - En equipos
+- Práctica 2 (En equipos **10%**)
   - Entrega: Domingo 24 de mayo de 2026
-- Examen final (75%)
-  - Nota mínima de 3.0 sobre 10.0
-  - Todo el temario
+- Examen final (**75%**)
+  - Nota mínima de 3 sobre 10
+  - Entra **todo el temario**
   - Evaluación: Miércoles 10 de junio de 2026 a las 12:00 (Aula 3204)
 
-Es necesaria una nota total mayor o igual a 5.0 sobre 10.0 para superar la asignatura
+Es necesaria una nota total mayor o igual a 5 sobre 10 para superar la asignatura
 
 **NO PRESENTADO $\iff$ no se realiza ninguna evaluación de la convocatoria**
 
