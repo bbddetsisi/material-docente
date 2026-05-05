@@ -205,6 +205,72 @@ Para la selección de estibadores libres que poder asignar a un barco, el sistem
 
 Cada final de mes, los responsables de la dirección del puerto desean obtener un listado con las actuaciones que han llevado a cabo cada uno de los grupos estibadores existentes en el puerto. Dicho listado reflejará la siguiente información: el nombre del grupo estibador, fecha de actuación, muelle en el que se realizó la actuación, un valor booleano que indique si intervino o no el sistema de aduanas (Sí indicará que intervino el sistema de aduanas y No indicará que no intervino el servicio de aduanas). Además se obtendrá el nombre y la matrícula del barco al que se realizó el servicio.
 
+\subsection{Agricultura inteligente}
+
+################################################################################
+
+Una empresa de explotación agrícola nos ha encargado el diseño de una base de
+datos para su sistema de monitorización de viñedos. El sistema recoge datos de
+sensores sobre el terreno, predicciones meteorológicas e históricos climáticos.
+A partir de las entrevistas con el cliente, se han extraído los siguientes
+requisitos:
+
+La unidad principal de estudio son las parcelas agrícolas. De cada parcela
+necesitamos registrar su nombre (único en todo el sistema), un número de serie
+(también único), y sus coordenadas exactas (latitud y longitud). Dentro de cada
+parcela se instalan varios dispositivos físicos, los cuales pertenecen a una
+única parcela y se identifica globalmente por un número de serie único. Además,
+para localizar físicamente el dispositivo dentro de la parcela, se anota
+opcionalmente el bloque, la altura a la que está colgado (en cm) y la fila en la
+que está ubicado (esta sí es obligatoria). Es importante poder ordenar dichos
+dispositivos a la hora de mostrarlos por pantalla, y que dicho orden sea
+configurable por cada usuario, aunque por defecto será por número de serie de
+forma ascendente. Por seguridad, el sistema no debe permitir borrar una
+parcela si esta tiene dispositivos asociados.
+
+Cada dispositivo agrupa múltiples sensores. Un sensor pertenece a un solo
+dispositivo y se identifica de forma única mediante un número de serie corto
+(sufijo) dentro de su dispositivo (es decir, el mismo sufijo podría repetirse en
+dispositivos distintos, pero no en el mismo). Todo sensor tiene un valor numérico
+de prioridad. Nota: Si un dispositivo se retira y se borra del sistema, todos sus
+sensores deben eliminarse con él.
+
+Para saber qué mide cada sensor, necesitamos catalogarlos. Cada sensor tiene
+asignado un único tipo de Sensor (ej. Termómetro, Pluviómetro), cuyo nombre es
+único en el sistema. Además, cada sensor registra un único tipo de Medida (ej.
+Temperatura, Humedad). De los tipos de medida guardamos su nombre (que es único)
+y la unidad en la que se expresa (ej. °C, %).
+
+Por otro lado, los viñedos están sometidos a tratamientos experimentales. Un
+tratamiento se define unívocamente por la combinación de tres elementos: el
+cultivo de cubierta utilizado, la variedad de uva y si utiliza o no una cámara
+de techo abierto (OTC). Un sensor puede estar opcionalmente asociado a un único
+tratamiento de viña que está midiendo en ese momento.
+
+Los sensores envían información constantemente, generando lecturas. De cada
+lectura nos interesa guardar el sensor que la produjo, la fecha y hora exacta
+(timestamp) en la que se tomó, y el valor numérico registrado. La combinación de
+un sensor concreto y una fecha/hora exacta determina una lectura de forma única.
+Si se elimina un sensor, se debe eliminar todo su histórico de lecturas.
+
+El sistema se nutre de datos externos para complementar las lecturas físicas.
+Por cada parcela, se guardan los datos solares diarios (para una parcela y una
+fecha concreta (combinación que no puede repetirse), se almacena la hora exacta
+del amanecer, del mediodía solar y del anochecer), el historial climático (para
+una parcela y un momento exacto (timestamp), guardamos la presión en superficie,
+temperatura, humedad relativa, punto de rocío y evapotranspiración) y la
+previsión climática horaria (para una parcela y una hora de predicción concretas,
+se guarda un texto formato JSON con todas las variables calculadas, hasta las 16
+horas diarias siguientes).
+
+El sistema es utilizado por usuarios registrados, de los que se quiere almacenar
+su nombre de usuario y contraseña. Para personalizar la experiencia, cada
+usuario puede configurar opcionalmente una de las parcelas como su «parcela por
+defecto» para que la aplicación final muestre los datos de esta parcela sin
+necesidad de seleccionarla manualmente.
+
+Finalmente, los usuarios pueden solicitar Exportaciones de Datos. Estas exportaciones son procesos independientes en el sistema. De cada exportación se registra automáticamente la fecha y hora de solicitud, su estado actual (Pendiente, Procesando, Completado o Fallo), el fichero CSV resultante (si lo hay), posibles mensajes de error y los filtros que se aplicaron para generarlo.
+
 \section{Soluciones}
 
 \subsection{Compañía aseguradora}

@@ -2,4 +2,5 @@
     "cSpell.ignoreWords": ["marp"],
     "markdown.marp.themes": ["transparencias/styles/bbdd.css"],
     "markdown.marp.html": "all",
+    "editor.rulers": [72, 80, 120, 180]
 }
