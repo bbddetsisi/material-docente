@@ -181,7 +181,7 @@ stream
           </rdf:li>
         </rdf:Bag>
       </pdfaExtension:schemas>
-      <pdf:Producer>pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) kpathsea version 6.4.1</pdf:Producer>
+      <pdf:Producer>pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) kpathsea version 6.4.2</pdf:Producer>
       <pdf:Keywords></pdf:Keywords>
       <pdf:PDFVersion>1.7</pdf:PDFVersion>
       <xmpRights:Marked>True</xmpRights:Marked>
@@ -194,7 +194,7 @@ stream
       </dc:rights>
       <dc:date>
         <rdf:Seq>
-          <rdf:li>2026-02-02T09:59:04Z</rdf:li>
+          <rdf:li>2026-05-05T07:34:35Z</rdf:li>
         </rdf:Seq>
       </dc:date>
       <dc:type>
@@ -208,12 +208,12 @@ stream
           <rdf:li>es</rdf:li>
         </rdf:Bag>
       </dc:language>
-      <xmp:CreateDate>2026-02-02T09:59:04Z</xmp:CreateDate>
-      <xmp:ModifyDate>2026-02-02T09:59:04Z</xmp:ModifyDate>
-      <xmp:MetadataDate>2026-02-02T09:59:04Z</xmp:MetadataDate>
+      <xmp:CreateDate>2026-05-05T07:34:35Z</xmp:CreateDate>
+      <xmp:ModifyDate>2026-05-05T07:34:35Z</xmp:ModifyDate>
+      <xmp:MetadataDate>2026-05-05T07:34:35Z</xmp:MetadataDate>
       <xmp:CreatorTool>LaTeX with hyperref</xmp:CreatorTool>
       <xmpMM:DocumentID>uuid:aea8826c-9590-4546-8900-05959bbbb13e</xmpMM:DocumentID>
-      <xmpMM:InstanceID>uuid:d1d1888d-c4c9-4bb6-a0a3-ef754626c4c9</xmpMM:InstanceID>
+      <xmpMM:InstanceID>uuid:1d1333ef-26c9-4b67-b205-f7f759054c90</xmpMM:InstanceID>
       <xmpMM:VersionID>1</xmpMM:VersionID>
       <xmpMM:RenditionClass>default</xmpMM:RenditionClass>
       <prism:complianceProfile>three</prism:complianceProfile>
@@ -450,11 +450,11 @@ endstream
 endobj
 33 0 obj
 <<
-/Title()/Subject()/Creator(LaTeX with hyperref)/Producer(pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) kpathsea version 6.4.1)
-/CreationDate (D:20260202095904Z)
-/ModDate (D:20260202095904Z)
+/Title()/Subject()/Creator(LaTeX with hyperref)/Producer(pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) kpathsea version 6.4.2)
+/CreationDate (D:20260505073435Z)
+/ModDate (D:20260505073435Z)
 /Trapped /False
-/PTEX.Fullbanner (This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) kpathsea version 6.4.1)
+/PTEX.Fullbanner (This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) kpathsea version 6.4.2)
 >>
 endobj
 5 0 obj
@@ -484,7 +484,7 @@ endobj
 /W [1 2 1]
 /Root 32 0 R
 /Info 33 0 R
-/ID [<4851E8CB14430BFF14A29E84247C8ED0> <4851E8CB14430BFF14A29E84247C8ED0>]
+/ID [<82C2DEC9B6079948DE9C7799F842029D> <82C2DEC9B6079948DE9C7799F842029D>]
 /Length 103       
 /Filter /FlateDecode
 >>
