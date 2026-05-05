@@ -218,13 +218,15 @@ necesitamos registrar su nombre (único en todo el sistema), un número de serie
 (también único), y sus coordenadas exactas (latitud y longitud). Dentro de cada
 parcela se instalan varios dispositivos físicos, los cuales pertenecen a una
 única parcela y se identifica globalmente por un número de serie único. Además,
-para localizar físicamente el dispositivo dentro de la parcela, se anota
-opcionalmente el bloque, la altura a la que está colgado (en cm) y la fila en la
-que está ubicado (esta sí es obligatoria). Es importante poder ordenar dichos
-dispositivos a la hora de mostrarlos por pantalla, y que dicho orden sea
-configurable por cada usuario, aunque por defecto será por número de serie de
-forma ascendente. Por seguridad, el sistema no debe permitir borrar una
-parcela si esta tiene dispositivos asociados.
+para localizar físicamente el dispositivo dentro de la parcela, se anota la fila
+en la que está localizado el dispositivo, la altura a la que está instalado (en
+centímetros) y, opcionalmente, la columna en la que se encuentra (en caso de que
+el dispositivo se aplique a las viñas de una localización más específica que
+únicamente una fila). Es importante poder ordenar dichos dispositivos a la hora
+de mostrarlos por pantalla, y que dicho orden sea configurable por cada usuario,
+aunque por defecto será por número de serie de forma ascendente. Por seguridad,
+el sistema no debe permitir borrar una parcela si esta tiene dispositivos
+asociados.
 
 Cada dispositivo agrupa múltiples sensores. Un sensor pertenece a un solo
 dispositivo y se identifica de forma única mediante un número de serie corto
@@ -243,14 +245,16 @@ porcentaje).
 Por otro lado, los viñedos están sometidos a tratamientos experimentales. Un
 tratamiento se define unívocamente por la combinación de tres elementos: el
 cultivo de cubierta utilizado, la variedad de uva y si utiliza o no una cámara
-de techo abierto (OTC). Un sensor puede estar opcionalmente asociado a un único
-tratamiento de viña que está midiendo en ese momento.
+de techo abierto (OTC). Un dispositivo puede estar opcionalmente asociado a un
+único tratamiento de viña que está midiendo en ese momento.
 
-Los sensores envían información constantemente, generando lecturas. De cada
-lectura nos interesa guardar el sensor que la produjo, la fecha y hora exacta
-(timestamp) en la que se tomó, y el valor numérico registrado. La combinación de
-un sensor concreto y una fecha/hora exacta determina una lectura de forma única.
-Si se elimina un sensor, se debe eliminar todo su histórico de lecturas.
+Los sensores envían información constantemente, cada uno a una frecuencia
+potencialmente diferente (desde 0,01 Hz hasta 0,5 Hz), generando lecturas. De
+cada lectura nos interesa guardar el sensor que la produjo, la fecha y hora
+exacta (timestamp) en la que se tomó, y el valor numérico registrado. La
+combinación de un sensor concreto y una fecha/hora exacta determina una lectura
+de forma única. Si se elimina un sensor, se debe eliminar todo su histórico de
+lecturas.
 
 El sistema se nutre de datos externos para complementar las lecturas físicas.
 Por cada parcela, se guardan los datos solares diarios (para una parcela y una
