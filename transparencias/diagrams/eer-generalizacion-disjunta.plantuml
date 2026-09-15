@@ -1,0 +1,17 @@
+@startchen eer-generalizacion-disjunta
+entity EMPLEADO {
+    código <<key>>
+    email
+    nombre
+}
+
+entity ASALARIADO {
+    nomina
+}
+
+entity POR_HORAS {
+    tarifa_hora
+}
+
+EMPLEADO ->- d {ASALARIADO, POR_HORAS}
+@endchen

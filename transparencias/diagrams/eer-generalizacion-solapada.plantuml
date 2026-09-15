@@ -1,0 +1,17 @@
+@startchen eer-generalizacion-solapada
+entity PIEZA {
+    num_pieza <<key>>
+    descripción
+    peso
+}
+entity PIEZA_FABRICADA {
+    id_taller
+    coste_mano_obra
+}
+entity PIEZA_COMPRADA {
+    proveedor
+    fecha_compra
+}
+
+PIEZA =>= o {PIEZA_COMPRADA, PIEZA_FABRICADA}
+@endchen

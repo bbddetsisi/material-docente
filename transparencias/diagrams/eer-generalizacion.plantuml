@@ -1,0 +1,30 @@
+@startchen
+
+entity  PERSONA {
+    DNI <<key>>
+    nombre
+    dirección
+    email
+    fecha_nacimiento
+}
+
+entity ESTUDIANTE {
+    titulación
+    año_matriculación
+}
+
+entity PDI {
+    cargo
+    departamento
+}
+
+entity PTGAS {
+    cargo
+    moscosos
+}
+
+PERSONA ->- ESTUDIANTE
+PERSONA ->- PDI
+PERSONA ->- PTGAS
+
+@endchen
