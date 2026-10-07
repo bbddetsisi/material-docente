@@ -59,7 +59,7 @@ El avance se organiza en torno a tres *hitos formativos*:
 - *Hito 1: Fase conceptual y lógica*
   - Análisis de los textos de los clientes y extracción de entidades, atributos, claves y relaciones.
   - Elaboración del Diagrama Entidad-Relación.
-  - Transformación al Esquema Relacional con indicación explícita de claves primarias (`PK`) y foráneas (`FK`), junto con sus políticas de mantenimiento de integridad referencial (`ON DELETE` / `ON UPDATE`).
+  - Transformación al Esquema Relacional con indicación explícita de claves primarias (`PK`) y foráneas (`FK`).
 
 - *Hito 2: Implementación SQL y lógica procedimental*
   - Creación del script DDL de creación de tablas.
@@ -179,6 +179,9 @@ A partir de la narrativa de los responsables de LogiPack Express, el estudiantad
 - *Diagrama Entidad-Relación Extendido:* Identificación rigurosa de entidades fuertes y débiles, atributos, claves, cardinalidades mínimas y máximas, relaciones reflexivas, atributos propios en relaciones N:M y jerarquías de especialización/generalización (con indicación de cobertura total/parcial y solapada/disjunta).
 - *Dominio de datos:* Definición detallada de los tipos de datos, restricciones y reglas de negocio que aplican a cada atributo del sistema.
 - *Semántica no contemplada:* Identificación de cualquier requisito funcional o de integridad que no pueda representarse en el modelo E-R y que deba trasladarse al modelo relacional o a la implementación SQL.
+
+== Modelado Lógico
+Una vez completado el modelo conceptual, se procederá a la transformación del mismo al modelo relacional, especificando las claves primarias y foráneas, así como las restricciones de integridad referencial y de dominio que no puedan representarse en el modelo E-R.
 
 #showybox(
   title-style: (
