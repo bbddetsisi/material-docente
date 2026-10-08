@@ -50,10 +50,22 @@ jobs:
           continue_on_error: true
           latexmk_shell_escape: true
 
+      - name: Find Typst files
+        id: typst
+        run: |
+          echo "files=$(printf '%s ' practicas/*.typ)" >> "$GITHUB_OUTPUT"
+
+      - name: Compile Typst files
+        uses: ammar-ahmed22/compile-typst-action@v2
+        with:
+          source_paths: ${{ steps.typst.outputs.files }}
+          fonts_path: 'practicas/fonts'
+
       - name: Copy pdf files
         run: |
           mkdir -p build/ejercicios  && cp ejercicios/*.pdf build/ejercicios
           mkdir -p build/examenes  && cp examenes/*.pdf build/examenes
+          mkdir -p build/practicas  && cp practicas/*.pdf build/practicas
 
       - name: Deploy preview
         if: ${{ github.event_name == 'pull_request' }}
