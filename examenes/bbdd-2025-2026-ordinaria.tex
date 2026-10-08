@@ -78,7 +78,7 @@ $)]$
 \part[\half] Resolver mediante álgebra relacional: ``\textit{Obtener el id y nombre de aquellos países del continente Europeo donde se hablan todos los idiomas existentes}''.
 
 \begin{solution}[22em]
-$\Pi_{idP, nombreP, idI}(\sigma_{\text{nombreC>='Europa'}} ( CONTINENTE \bowtie PAIS \\
+$\Pi_{idP, nombreP, idI}(\sigma_{\text{nombreC='Europa'}} ( CONTINENTE \bowtie PAIS \\
 \bowtie SE\_HABLA)) \div \Pi_{idI} (IDIOMA) $
 \end{solution}
 
