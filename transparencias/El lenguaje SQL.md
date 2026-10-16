@@ -183,12 +183,12 @@ Modificadores de columna:
 
 # Tipos de datos en SQL
 
-| Familia    | Tipos                      |
-|------------|----------------------------|
-| Numéricos  | `INTEGER`, `DECIMAL`       |
-| Texto      | `VARCHAR(size)`, `TEXT`    |
-| Enumerados | `ENUM('val1', ..., 'valn')`|
-| Fecha      | `DATETIME`, `TIMESTAMP`    |
+| Familia    | Tipos                              |
+|------------|------------------------------------|
+| Numéricos  | `INTEGER`, `DECIMAL`               |
+| Texto      | `VARCHAR(size)`, `TEXT`            |
+| Enumerados | `ENUM('val1', ..., 'valn')`        |
+| Fecha      | `DATE`, `DATETIME`, `TIMESTAMP`    |
 
 Más tipos en <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 
@@ -207,7 +207,7 @@ CREATE TABLE corporacion.personas (
   nombre    VARCHAR(30) NOT NULL,
   apellidos VARCHAR(60) NOT NULL,
   dni       VARCHAR(10) UNIQUE NOT NULL,
-  fecha_nac DATETIME
+  fecha_nac DATE
 );
 ```
 
@@ -242,7 +242,7 @@ CREATE TABLE corporacion.personas (
   nombre    VARCHAR(30) NOT NULL,
   apellidos VARCHAR(60) NOT NULL,
   dni       VARCHAR(10) UNIQUE NOT NULL,
-  fecha_nac DATETIME,
+  fecha_nac DATE,
   PRIMARY KEY (id)
 );
 ```
@@ -396,7 +396,7 @@ CREATE TABLE personas (
   id        INTEGER AUTO_INCREMENT,
   nombre    VARCHAR(30) NOT NULL,
   apellidos VARCHAR(60) NOT NULL,
-  fecha_nac DATETIME,
+  fecha_nac DATE,
   PRIMARY KEY (id)
 );
 
