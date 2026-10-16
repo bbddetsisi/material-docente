@@ -147,7 +147,7 @@ A continuación se presentan las notas directas tomadas por el equipo de anális
     thickness: (left: 2pt),
     radius: 0pt
   ),
-  title: [#emoji.notepad Notas de la Reunión 3: Facturación, reclamaciones y calidad del servicio],
+  title: [#fa-file-pen() Notas de la Reunión 3: Facturación, reclamaciones y calidad del servicio],
   [
     #quote(quotes: true, attribution: [Marcos (Director Financiero)])[
       Con los particulares cobramos cada envío al momento del registro. Sin embargo, con las empresas asociadas trabajamos mediante facturación mensual agrupada: el último día natural de cada mes cerramos una factura con todos los paquetes remitidos por dicha empresa a lo largo de ese periodo.
@@ -182,6 +182,9 @@ A partir de la narrativa de los responsables de LogiPack Express, el estudiantad
 
 == Modelado Lógico
 Una vez completado el modelo conceptual, se procederá a la transformación del mismo al modelo relacional, especificando las claves primarias y foráneas, así como las restricciones de integridad referencial y de dominio que no puedan representarse en el modelo E-R.
+
+== Modelado Físico
+El modelo físico se implementará en un motor de base de datos relacional (MySQL) mediante un script DDL que cree las tablas, relaciones y restricciones necesarias para garantizar la integridad de los datos y la eficiencia de las consultas. Además, hay que generar un conjunto de datos de prueba representativo que permita verificar el correcto funcionamiento del sistema.
 
 #showybox(
   title-style: (
