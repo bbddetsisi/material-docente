@@ -740,8 +740,7 @@ SELECT codC
 
 # Operador `BETWEEN`
 
-- Establece una comparación en un rango.
-- Se utiliza con valores numéricos o de fecha.
+- Establece una comparación en un rango (valores numéricos o de fecha).
 - También se puede utilizar `NOT BETWEEN`.
 
 <cite>Obtener el nombre de las máquinas cuyo precio por hora esté comprendido entre 70 y 90 euros</cite>
@@ -771,7 +770,7 @@ Establece una comparación entre cadenas de caracteres con la inclusión de como
 ```SQL
 SELECT nombre
   FROM conductores
-  WHERE nombre LIKE '%Pérez%';
+  WHERE nombre LIKE '% Pérez %';
 ```
 
 | Nombre       |
@@ -839,7 +838,7 @@ SELECT codC, codM, codP, fecha FROM trabajos WHERE tiempo IS NULL;
 
 ---
 
-# Operadores `ALL` y `ANY`
+# Operadores `ALL` y `ANY` (I)
 
 Permiten comparar valores con respecto de un conjunto
 
@@ -847,6 +846,10 @@ Permiten comparar valores con respecto de un conjunto
 - Van acompañados de un operador de comparación (`>`, `>=`, `<`, `<=`, `=`, `<>`):
 - Comprueba que la condición se cumple para todos (`ALL`) o al menos para uno (`ANY`)
 - `ANY` implica que la condición se cumpla respecto de, al menos, un elemento del conjunto.
+
+---
+
+# Operadores `ALL` y `ANY` (y II)
 
 <cite>Obtener proyectos que no sean ninguna de las localidades de aquellos conductores con categoría superior a 17:
 
