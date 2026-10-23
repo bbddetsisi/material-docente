@@ -230,7 +230,7 @@ Esta situación es muy habitual en la vida profesional: rara vez se parte de cer
 #caja-aviso(
   [#fa-triangle-exclamation() A partir de este hito se usa el modelo de la consultora],
   [
-    Todas las consultas de este hito, y el resto de la práctica, deben resolverse sobre el script `logipack_express.sql` proporcionado, *sin modificar ni añadir tablas o columnas*. Vuestro modelo del hito 1 no se pierde: os servirá para entender el de la consultora y para detectar en qué se diferencian (ver @sec-comparativa).
+    Todas las consultas de este hito, y el resto de la práctica, deben resolverse sobre el script `logipack_express.sql` proporcionado, *sin modificar ni añadir tablas o columnas*. Vuestro modelo del hito 1 no se pierde: os servirá para entender el de la consultora y para detectar en qué se diferencian.
   ]
 )
 
@@ -370,7 +370,7 @@ Calcular el porcentaje de ocupación volumétrica actual de cada Centro de Distr
 Identificar todos los paquetes activos (aún no en `Entregado` ni `Devuelto a Origen`) que lleven más de 48 horas continuas sin registrar ningún nuevo cambio de estado en la tabla de seguimiento. Mostrar: código del paquete, razón social/nombre del emisor, teléfono de destino, horas de paralización acumuladas, última ubicación registrada y nombre del empleado que realizó el último escaneo.
 
 #caja-pista[
-  - El modelo no guarda el teléfono del destinatario (@tab-diferencias). En su lugar, mostrad la dirección de destino y el teléfono del cliente emisor.
+  - El modelo no guarda el teléfono del destinatario. En su lugar, mostrad la dirección de destino y el teléfono del cliente emisor.
   - El nombre del emisor es la razón social si es una empresa o el nombre y los apellidos si es un particular.
   - Mostrad también el estado actual y la fecha del último movimiento.
   - Ordenad de mayor a menor tiempo de paralización.
