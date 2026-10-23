@@ -248,13 +248,7 @@ Esta situación es muy habitual en la vida profesional: rara vez se parte de cer
   caption: [Ficheros que acompañan a este enunciado],
 )
 
-Los scripts están probados en *MySQL 8.4*. Hay que cargarlos en este orden, sobre una base de datos vacía:
-
-```sh
-mysql -u usuario -p -e "CREATE DATABASE logipack CHARACTER SET utf8mb4"
-mysql -u usuario -p logipack < logipack_express.sql
-mysql -u usuario -p logipack < logipack_express_datos.sql
-```
+Los scripts están probados en *MySQL 8.4*.
 
 El script de tablas empieza borrando las tablas si existen, de modo que se puede volver a ejecutar en cualquier momento para dejar la base de datos en su estado inicial (después hay que volver a cargar los datos).
 
