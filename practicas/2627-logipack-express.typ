@@ -23,6 +23,7 @@
 #let caja-nota(titulo, cuerpo) = showybox(
   title-style: (weight: 900, color: blue.darken(40%), sep-thickness: 0pt, align: left),
   frame: (title-color: blue.lighten(80%), border-color: blue.darken(40%), thickness: (left: 2pt), radius: 0pt),
+  breakable: true,
   title: titulo,
   cuerpo,
 )
@@ -56,9 +57,6 @@
     ]
   ],
   // bibliography: bibliography("refs.bib"),
-  figure-index: (enabled: true, title: "Índice de figuras"),
-  table-index: (enabled: true, title: "Índice de tablas"),
-  listing-index: (enabled: true, title: "Índice de listados"),
 )
 
 = Introducción y Objetivos
@@ -438,6 +436,134 @@ Localizar y listar aquellos paquetes que presenten saltos antirreglamentarios en
   - En la 11a, mostrad también la fecha de entrega y el estado inmediatamente anterior a la entrega.
   - En la 11b, el orden "lógico" de los estados es el de la máquina de estados: `Registrado` (1), `En Almacén Origen` (2), `En Tránsito` (3), `En Centro Intermedio` (4), `En Reparto` (5), `Disponible en Taquilla` (6) y `Entregado` o `Devuelto a Origen` (7). `Incidencia` puede darse en cualquier punto y se excluye del análisis. Hay una incoherencia cuando, ordenando las transiciones de un bulto por fecha, un estado aparece detrás de otro de orden lógico mayor.
   - Revisad si alguno de los paquetes de la 11b aparece también en otras consultas (por ejemplo, en la 4). ¿Por qué ocurre?
+]
+
+= Programación en el servidor de base de datos
+La última parte del hito 2 consiste en trasladar al servidor algunas de las reglas de negocio que LogiPack Express considera críticas: el cálculo de tarifas, el registro de los cambios de estado, la facturación mensual y varias comprobaciones automáticas de seguridad y auditoría. Igual que en las consultas, para cada rutina se incluye el enunciado, tal y como lo formuló LogiPack Express, y unas precisiones que lo adaptan al modelo de la consultora.
+
+Indicaciones generales:
+
+- Todas las rutinas se implementan en MySQL 8.4 sobre las tablas de la consultora. Reunidlas en un script independiente (por ejemplo, `logipack_express_rutinas.sql`) que empiece borrándolas si existen (`DROP PROCEDURE IF EXISTS`, `DROP FUNCTION IF EXISTS`, `DROP TRIGGER IF EXISTS`), de modo que se pueda volver a ejecutar en cualquier momento.
+- Los errores se lanzan con `SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = '...'`, con un mensaje que explique el problema.
+- Las fechas de los nuevos movimientos se toman del reloj del sistema (`NOW(3)`), no de `@ahora`.
+- Probad cada rutina con casos válidos y con casos que deban fallar, y comprobad el contenido de las tablas antes y después de cada llamada.
+
+#caja-aviso(
+  [#fa-triangle-exclamation() Única excepción: la tabla de auditoría],
+  [
+    El modelo de la consultora no incluye la tabla de auditoría que pidió Elena. Es *la única tabla* que se puede añadir al esquema, y debe crearse exactamente con esta definición (en el script de rutinas, no en `logipack_express.sql`):
+
+    ```sql
+    CREATE TABLE IF NOT EXISTS auditoria_estados (
+        id                   INT           NOT NULL AUTO_INCREMENT,
+        usuario              VARCHAR(300)  NOT NULL,
+        fecha_hora           DATETIME(3)   NOT NULL,
+        codigo_seguimiento   VARCHAR(30)   NOT NULL,
+        estado_nuevo         VARCHAR(30)   NOT NULL,
+        CONSTRAINT pk_auditoria_estados PRIMARY KEY (id)
+    );
+    ```
+  ]
+)
+
+== Función `CalcularCostoEnvio`
+Dadas las características de un paquete, calcular el importe que hay que cobrar por su envío.
+
+*Parámetros de entrada:* `p_alto`, `p_ancho`, `p_largo`, `p_peso`, `p_urgente`, `p_seguro`, `p_valor_declarado`.
+
+#caja-pista[
+  - El importe se calcula con la fórmula de tarifas (@sec-tarifa). Los parámetros se corresponden con las columnas de la tabla `bulto` del mismo nombre.
+  - La función devuelve un `DECIMAL(10,2)`. Como solo hace cálculos y no consulta ninguna tabla, se declara `DETERMINISTIC`.
+  - Comprobadla recalculando con ella el importe bruto de la consulta 5: debe salir el mismo resultado.
+]
+
+== Procedimiento `RegistrarTransitoPaquete`
+Registrar un nuevo cambio de estado de un paquete, comprobando antes que el cambio es posible. Si el paquete no existe o ya ha terminado su recorrido (`Entregado` o `Devuelto a Origen`), la operación debe rechazarse con un error.
+
+*Parámetros de entrada:* `p_codigo_seguimiento`, `p_nuevo_estado`, `p_codigo_centro`, `p_matricula_vehiculo`, `p_direccion_destino`, `p_dni_empleado`, `p_observaciones`.
+
+#caja-pista[
+  - El bulto no tiene una columna de estado: su estado actual es el de su última transición. Registrar el cambio consiste en insertar una nueva fila en `transicion` con `fecha_hora = NOW(3)` y los datos recibidos (los que no se usen se pasan como `NULL`).
+  - El procedimiento lanza un error si:
+    + el bulto no existe,
+    + `p_nuevo_estado` no es uno de los nueve estados válidos, o
+    + el estado actual del bulto es `'Entregado'` o `'Devuelto a Origen'`.
+  - No es necesario comprobar el orden completo de la máquina de estados.
+]
+
+== Disparador `ControlIncidenciasReintentos`
+Elena fue muy clara: un repartidor tiene autorizados como máximo *dos intentos* de entrega a domicilio. Si el destinatario no estaba en casa las dos veces, el paquete no puede volver a salir a reparto.
+
+#caja-pista[
+  - Es un disparador `BEFORE INSERT` sobre `transicion` que solo actúa cuando el nuevo estado es `'En Reparto'`.
+  - Si el bulto ya tiene dos o más transiciones `'Incidencia'` con la observación `'Cliente ausente'`, cancela la inserción con un error.
+  - Probadlo insertando directamente en `transicion` una fila `'En Reparto'` para algún bulto de los datos con dos ausencias, por ejemplo `'LP-2026-10463'`. (Con `RegistrarTransitoPaquete` no serviría, porque ese bulto ya está entregado y el procedimiento lo rechazaría antes de llegar al disparador.)
+]
+
+== Procedimiento `GenerarFacturacionMensualEmpresa`
+Generar la factura de una empresa para un mes determinado, incluyendo en ella todos sus envíos pendientes de facturar. Si la empresa no tiene nada que facturar ese mes, no se debe crear ninguna factura. La operación debe ser atómica: si algo falla a mitad, no debe quedar ningún cambio a medias.
+
+*Parámetros de entrada:* `p_nif_empresa`, `p_mes`, `p_anio`. *Parámetro de salida:* `p_numero_factura`.
+
+#caja-pista[
+  - Los envíos facturables son los mismos que en la consulta 5: los de la empresa que aún no tienen factura y en los que algún bulto se entregó en el mes indicado.
+  - El modelo de la consultora no guarda importes en `factura`: una factura son sus datos de cabecera más los envíos que la referencian (`envio.factura_nif_empresa` y `envio.factura_numero`). Por tanto, el procedimiento:
+    + Inserta la factura con el siguiente número de la empresa (el mayor que tenga más uno), fecha de expedición el último día del mes (`LAST_DAY`) y estado `'Pendiente'`.
+    + Asigna esa factura a los envíos facturables con un `UPDATE` sobre `envio`.
+    + Devuelve el número de la factura en `p_numero_factura`, o `NULL` si no había nada que facturar.
+  - La atomicidad se consigue con una transacción y un manejador de errores, tal y como se explica en el recuadro siguiente.
+  - Comprobad que, después de facturar septiembre de 2026 para una empresa, la consulta 5 ya no muestra nada que facturar para ella, y que una segunda llamada con los mismos parámetros no crea otra factura.
+]
+
+#caja-nota(
+  [#fa-lightbulb() Transacciones y manejadores de errores en un procedimiento],
+  [
+    El procedimiento hace dos cambios que deben ir juntos: insertar la factura y asignarla a los envíos. Si el `INSERT` funciona pero el `UPDATE` falla, quedaría una factura vacía en la base de datos. Para evitarlo, ambos cambios se agrupan en una *transacción*:
+
+    - `START TRANSACTION` marca el inicio. A partir de ahí, los cambios no son definitivos.
+    - `COMMIT` confirma todos los cambios de la transacción y los hace permanentes.
+    - `ROLLBACK` los deshace todos y deja la base de datos como estaba antes de `START TRANSACTION`.
+
+    El problema es que, *dentro de un procedimiento*, MySQL no hace `ROLLBACK` automáticamente cuando una sentencia falla. La ejecución se detiene, pero la transacción se queda abierta con los cambios que ya se hubieran hecho, y cualquier `COMMIT` posterior de la misma sesión (incluidos los implícitos, como el que provoca otro `START TRANSACTION` o una sentencia `CREATE`) acabaría confirmándolos. Por eso hay que decirle a MySQL qué hacer cuando ocurra un error. Eso es un *manejador* (_handler_):
+
+    ```sql
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;   -- deshace los cambios de la transacción
+        RESIGNAL;   -- relanza el error original a quien llamó al procedimiento
+    END;
+    ```
+
+    Se lee así: «si en cualquier punto del procedimiento se produce un error SQL (`SQLEXCEPTION`), ejecuta este bloque y sal del procedimiento (`EXIT`)». El `RESIGNAL` es importante: sin él, el error quedaría «tragado» y quien llamó al procedimiento (por ejemplo, la aplicación Java del hito 3) creería que todo ha ido bien.
+
+    Hay que tener en cuenta el orden de las declaraciones dentro del `BEGIN ... END`: primero las variables (`DECLARE`), después los manejadores y, por último, el resto de sentencias.
+
+    *Cómo comprobar que funciona.* Un procedimiento correcto rara vez falla, así que hay que provocar el error a propósito. Por ejemplo, añadid temporalmente esta línea entre el `INSERT` y el `UPDATE`:
+
+    ```sql
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error de prueba';
+    ```
+
+    Al llamar al procedimiento debe aparecer el mensaje `'Error de prueba'`, y una consulta a `factura` debe mostrar que *no se ha creado* la factura. Si la factura aparece, el manejador no está haciendo su trabajo. No olvidéis quitar la línea después.
+  ]
+)
+
+== Disparador `CheckCapacidadVehiculo`
+No se puede sobrecargar ningún vehículo. Al asignar un paquete a un vehículo, hay que comprobar que ni el peso total ni el volumen total de la carga superan los límites del vehículo.
+
+#caja-pista[
+  - Los paquetes se asignan a un camión al añadirlos a un manifiesto, así que es un disparador `BEFORE INSERT` sobre `manifiesto_bulto`. El vehículo es el del manifiesto (`manifiesto.matricula_vehiculo`).
+  - La carga es la de los bultos que ya están en ese manifiesto más el bulto que se va a añadir.
+  - Los límites son `vehiculo.mma` (en _kg_) y `vehiculo.volumen` (en $m^3$). El volumen de un bulto en $m^3$ es $("alto" dot "ancho" dot "largo") / 1000000$, porque las medidas están en centímetros.
+  - Si se supera cualquiera de los dos límites, se cancela la inserción con un error que indique qué límite se ha superado.
+]
+
+== Disparadores de auditoría e inmutabilidad
+Los cambios de estado de los paquetes son sagrados: nadie puede modificarlos ni borrarlos, y cada nuevo cambio debe quedar registrado en una tabla de auditoría junto con el usuario de la base de datos que lo hizo.
+
+#caja-pista[
+  - `AuditCambiosEstadoPaquete`: disparador `AFTER INSERT` sobre `transicion` que inserta una fila en `auditoria_estados` con el usuario de la sesión (`USER()`), la fecha y hora actual con milisegundos (`NOW(3)`), el código de seguimiento y el nuevo estado.
+  - `ImpedirCambiosTransicion`: disparadores `BEFORE UPDATE` y `BEFORE DELETE` sobre `transicion` que siempre lanzan un error.
 ]
 
 #showybox(
