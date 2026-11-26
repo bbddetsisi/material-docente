@@ -977,7 +977,7 @@ BEGIN
     WHERE constructorId = NEW.constructorId
       AND raceId = NEW.raceId;
         
-    IF numResults >= 2 THEN
+    IF numDrivers >= 2 THEN
         SIGNAL SQLSTATE '03000'
         SET MESSAGE_TEXT = 'Error: no pueden participar mas de dos pilotos por equipo';
     END IF;
