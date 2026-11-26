@@ -1940,7 +1940,7 @@ Se ejecutan las instrucciones mientras se cumple la condición.
 
 ```SQL
 DELIMITER $$
-CREATE PROCEDURE my_proc_WHILE (IN n INTEGER, OUT num INTEGER)
+CREATE PROCEDURE my_proc_WHILE (IN n INTEGER, OUT sum INTEGER)
 BEGIN
     DECLARE x INT DEFAULT 1; 
     SET num = 0;
