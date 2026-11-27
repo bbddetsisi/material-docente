@@ -2121,7 +2121,7 @@ DELIMITER ;
 
 ---
 
-# Eventos `BEFORE`y `AFTER`
+# Eventos `BEFORE`
 
 Los eventos `BEFORE` se ejecutan antes de que se lleve a cabo el evento en cuestión:
 
@@ -2129,11 +2129,27 @@ Los eventos `BEFORE` se ejecutan antes de que se lleve a cabo el evento en cuest
 - `BEFORE UPDATE`
 - `BEFORE DELETE`
 
+Tu *trigger* deberá ser `BEFORE` si necesitas:
+
+- Modificar valores en las variables `NEW`.
+- No necesitas valores autogenerados como `AUTO_INCREMENT`.
+- Quieres cancelar la ejecución de una acción sin tocar la tabla (menor coste).
+
+---
+
+# Eventos `AFTER`
+
 Los eventos `AFTER` se ejecutan una vez se ha producido el evento:
 
 - `AFTER INSERT`
 - `AFTER UPDATE`
 - `AFTER DELETE`
+
+Tu *trigger* deberá ser `AFTER` si necesitas:
+
+- No vas a modificar las variables `NEW`.
+- Necesitas valores autogenerados como `AUTO_INCREMENT`.
+- Eres consciente de que si cancelas la ejecición necesitarás hacer *rollback* (costoso) en la tabla.
 
 ---
 
