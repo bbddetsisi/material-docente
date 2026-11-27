@@ -2223,6 +2223,22 @@ Presta atención a la forma de lanzar una excepción en MYSQL
 
 ---
 
+# Códigos de error: `SIGNAL SQLSTATE`
+
+`SQLSTATE` es una cadena obligatoria de **5 caracteres alfanuméricos** (`Clase` [2] + `Subclase` [3]):
+
+| Rango `SQLSTATE` | Categoría | Efecto al ejecutar `SIGNAL` |
+| :--- | :--- | :--- |
+| `'00000'` | Éxito | **No permitido** (error de sintaxis) |
+| `'01000'` – `'01ZZZ'` | *Warning* | Registra aviso, **no detiene** la ejecución |
+| `'02000'` – `'02ZZZ'` | *Not Found* | Ausencia de filas; aborta si no hay *handler* |
+| `'03000'` – `'ZZZZZ'` | Excepción | **Aborta** la sentencia y hace *rollback* |
+
+- **`'45000'` (por defecto):** excepción genérica definida por el usuario en el estándar SQL.
+- **`'50000'` – `'99999'`:** rango numérico libre ideal para crear códigos de negocio propios sin colisionar con el motor (evitar `'03000'`–`'49999'`).
+
+---
+
 # Algunos ejemplos (II)
 
 Corregir valores inusuales o fuera de rango en consultas de inserción y/o modificación:
@@ -2242,7 +2258,24 @@ DELIMITER ;
 
 ---
 
-# Algunos ejemplos (y III)
+# Algunos ejemplos (III)
+
+Crear valores por defecto complejos:
+
+```SQL
+DELIMITER $$
+CREATE TRIGGER createEmail
+BEFORE INSERT ON usuario
+FOR EACH ROW
+BEGIN
+  SET NEW.email = LOWER(CONCAT(NEW.nombre, '.', NEW.apellido, '@upm.es'));
+END$$
+DELIMITER ;
+```
+
+---
+
+# Algunos ejemplos (y IV)
 
 Llevar un registro de los elementos que se borran en la base de datos:
 
